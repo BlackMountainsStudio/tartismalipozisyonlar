@@ -1,0 +1,119 @@
+"use client";
+
+import { Clock, ExternalLink, AlertTriangle, ShieldAlert, Eye, Flag } from "lucide-react";
+import ConfidenceBadge from "./ConfidenceBadge";
+
+interface IncidentCardProps {
+  id: string;
+  type: string;
+  minute: number | null;
+  description: string;
+  confidenceScore: number;
+  sources: string[];
+  status: string;
+  matchInfo?: string;
+  actions?: React.ReactNode;
+}
+
+const INCIDENT_TYPE_LABELS: Record<string, { label: string; icon: React.ReactNode }> = {
+  POSSIBLE_PENALTY: {
+    label: "Penaltı Pozisyonu",
+    icon: <Flag className="h-4 w-4" />,
+  },
+  POSSIBLE_OFFSIDE_GOAL: {
+    label: "Ofsayt Tartışması",
+    icon: <Eye className="h-4 w-4" />,
+  },
+  MISSED_RED_CARD: {
+    label: "Verilmeyen Kırmızı Kart",
+    icon: <ShieldAlert className="h-4 w-4" />,
+  },
+  VAR_CONTROVERSY: {
+    label: "VAR Tartışması",
+    icon: <AlertTriangle className="h-4 w-4" />,
+  },
+};
+
+const STATUS_STYLES: Record<string, string> = {
+  PENDING: "bg-amber-500/10 text-amber-400 ring-amber-500/30",
+  APPROVED: "bg-emerald-500/10 text-emerald-400 ring-emerald-500/30",
+  REJECTED: "bg-red-500/10 text-red-400 ring-red-500/30",
+};
+
+export default function IncidentCard({
+  type,
+  minute,
+  description,
+  confidenceScore,
+  sources,
+  status,
+  matchInfo,
+  actions,
+}: IncidentCardProps) {
+  const typeInfo = INCIDENT_TYPE_LABELS[type] ?? {
+    label: type,
+    icon: <AlertTriangle className="h-4 w-4" />,
+  };
+
+  return (
+    <div className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-5 transition-all hover:border-zinc-700">
+      <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+        <div className="flex items-center gap-2">
+          <span className="text-amber-400">{typeInfo.icon}</span>
+          <span className="font-semibold text-white">{typeInfo.label}</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <ConfidenceBadge score={confidenceScore} />
+          <span
+            className={`rounded-full px-2 py-0.5 text-xs font-medium ring-1 ring-inset ${STATUS_STYLES[status] ?? STATUS_STYLES.PENDING}`}
+          >
+            {status}
+          </span>
+        </div>
+      </div>
+
+      {(minute || matchInfo) && (
+        <div className="mb-3 flex items-center gap-3 text-sm text-zinc-400">
+          {minute && (
+            <span className="flex items-center gap-1">
+              <Clock className="h-3.5 w-3.5" />
+              {minute}&apos;
+            </span>
+          )}
+          {matchInfo && <span>{matchInfo}</span>}
+        </div>
+      )}
+
+      <p className="mb-4 text-sm leading-relaxed text-zinc-300">
+        {description}
+      </p>
+
+      {sources.length > 0 && (
+        <div className="mb-4">
+          <p className="mb-1.5 text-xs font-medium text-zinc-500">Kaynaklar</p>
+          <div className="flex flex-wrap gap-2">
+            {(sources as string[]).slice(0, 3).map((source, i) => (
+              <a
+                key={i}
+                href={source}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1 rounded-md bg-zinc-800 px-2 py-1 text-xs text-zinc-400 transition-colors hover:bg-zinc-700 hover:text-white"
+              >
+                <ExternalLink className="h-3 w-3" />
+                Kaynak {i + 1}
+              </a>
+            ))}
+            {sources.length > 3 && (
+              <span className="rounded-md bg-zinc-800 px-2 py-1 text-xs text-zinc-500">
+                +{sources.length - 3} more
+              </span>
+            )}
+          </div>
+        </div>
+      )}
+
+      {actions && <div className="flex flex-wrap gap-2 border-t border-zinc-800 pt-4">{actions}</div>}
+    </div>
+  );
+}

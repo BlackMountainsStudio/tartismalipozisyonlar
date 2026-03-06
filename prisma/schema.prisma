@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Match {
+  id        String   @id @default(cuid())
+  homeTeam  String
+  awayTeam  String
+  league    String   @default("Süper Lig")
+  week      Int
+  date      DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  incidents      Incident[]
+  crawledContent CrawledContent[]
+
+  @@index([homeTeam])
+  @@index([awayTeam])
+  @@index([week])
+}
+
+model Incident {
+  id              String @id @default(cuid())
+  matchId         String
+  minute          Int?
+  type            String
+  description     String
+  confidenceScore Float
+  sources         String @default("[]")
+  status          String @default("PENDING")
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  match Match @relation(fields: [matchId], references: [id], onDelete: Cascade)
+
+  @@index([matchId])
+  @@index([status])
+  @@index([type])
+}
+
+model CrawledContent {
+  id          String    @id @default(cuid())
+  matchId     String
+  source      String
+  url         String    @unique
+  rawContent  String
+  processed   Boolean   @default(false)
+  processedAt DateTime?
+  createdAt   DateTime  @default(now())
+
+  match Match @relation(fields: [matchId], references: [id], onDelete: Cascade)
+
+  @@index([matchId])
+  @@index([source])
+  @@index([processed])
+}
