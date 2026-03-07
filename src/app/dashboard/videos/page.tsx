@@ -61,7 +61,7 @@ export default function DashboardVideosPage() {
               ? inc.relatedVideos
               : typeof inc.relatedVideos === "string"
                 ? (() => { try { return JSON.parse(inc.relatedVideos) as string[]; } catch { return []; } })()
-                : [],
+                : [], // eslint-disable-line @typescript-eslint/no-unused-vars
           };
         })
       );
