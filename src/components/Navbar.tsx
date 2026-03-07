@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Shield, LayoutDashboard, MessageSquare, Send, Mail, Scale, ListFilter } from "lucide-react";
+import { Shield, LayoutDashboard, Send, Scale, ListFilter } from "lucide-react";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -10,7 +10,7 @@ export default function Navbar() {
 
   return (
     <nav className="sticky top-0 z-50 border-b border-zinc-800 bg-zinc-950/80 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
+      <div className={`mx-auto flex h-16 items-center justify-between px-4 sm:px-6 ${isDashboard ? "" : "max-w-7xl"}`}>
         <Link href="/" className="flex items-center gap-2">
           <Shield className="h-7 w-7 text-red-500" />
           <span className="text-lg font-bold text-white">
@@ -19,43 +19,29 @@ export default function Navbar() {
         </Link>
 
         <div className="flex items-center gap-1">
-          <NavLink href="/" active={pathname === "/"}>
-            Maçlar
-          </NavLink>
-          <NavLink href="/pozisyonlar" active={pathname.startsWith("/pozisyonlar")}>
-            <ListFilter className="h-4 w-4" />
-            Pozisyonlar
-          </NavLink>
-          <NavLink href="/commentators" active={pathname.startsWith("/commentators")}>
-            <Scale className="h-4 w-4" />
-            Yorumcular
-          </NavLink>
-          <NavLink href="/oneri" active={pathname === "/oneri"}>
-            <Send className="h-4 w-4" />
-            Bize Yazın
-          </NavLink>
-          <NavLink href="/dashboard" active={pathname === "/dashboard"}>
-            <LayoutDashboard className="h-4 w-4" />
-            Yönetim
-          </NavLink>
-          {isDashboard && (
+          {!isDashboard && (
             <>
-              <NavLink
-                href="/dashboard/suggestions"
-                active={pathname === "/dashboard/suggestions"}
-              >
-                <Mail className="h-4 w-4" />
-                Mesajlar
+              <NavLink href="/" active={pathname === "/"}>
+                Maçlar
               </NavLink>
-              <NavLink
-                href="/dashboard/chat"
-                active={pathname === "/dashboard/chat"}
-              >
-                <MessageSquare className="h-4 w-4" />
-                AI Chat
+              <NavLink href="/pozisyonlar" active={pathname.startsWith("/pozisyonlar")}>
+                <ListFilter className="h-4 w-4" />
+                Pozisyonlar
+              </NavLink>
+              <NavLink href="/commentators" active={pathname.startsWith("/commentators")}>
+                <Scale className="h-4 w-4" />
+                Yorumcular
+              </NavLink>
+              <NavLink href="/oneri" active={pathname === "/oneri"}>
+                <Send className="h-4 w-4" />
+                Bize Yazın
               </NavLink>
             </>
           )}
+          <NavLink href={isDashboard ? "/" : "/dashboard"} active={isDashboard}>
+            <LayoutDashboard className="h-4 w-4" />
+            {isDashboard ? "Siteye Dön" : "Yönetim"}
+          </NavLink>
         </div>
       </div>
     </nav>

@@ -1,245 +1,196 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import MatchCard from "@/components/MatchCard";
-import { Plus, Loader2, Search } from "lucide-react";
+import Link from "next/link";
+import {
+  Loader2,
+  Trophy,
+  Crosshair,
+  Users,
+  Mail,
+  Video,
+  Gavel,
+  MessageSquare,
+  TrendingUp,
+  Clock,
+  CheckCircle2,
+  AlertTriangle,
+} from "lucide-react";
 
-interface Match {
-  id: string;
-  homeTeam: string;
-  awayTeam: string;
-  league: string;
-  week: number;
-  date: string;
-  incidents: { id: string; type: string; status: string; confidenceScore: number }[];
+interface Stats {
+  totalMatches: number;
+  totalIncidents: number;
+  pendingIncidents: number;
+  approvedIncidents: number;
+  totalCommentators: number;
+  totalOpinions: number;
+  totalSuggestions: number;
+  newSuggestions: number;
 }
 
 export default function DashboardPage() {
-  const [matches, setMatches] = useState<Match[]>([]);
+  const [stats, setStats] = useState<Stats | null>(null);
   const [loading, setLoading] = useState(true);
-  const [showAddForm, setShowAddForm] = useState(false);
-  const [search, setSearch] = useState("");
-  const [formData, setFormData] = useState({
-    homeTeam: "",
-    awayTeam: "",
-    week: "",
-    date: "",
-    league: "Süper Lig",
-  });
-  const [submitting, setSubmitting] = useState(false);
+  const [recentIncidents, setRecentIncidents] = useState<
+    { id: string; type: string; description: string; status: string; match?: { homeTeam: string; awayTeam: string } }[]
+  >([]);
 
   useEffect(() => {
-    fetchMatches();
+    fetchStats();
   }, []);
 
-  async function fetchMatches() {
+  async function fetchStats() {
     try {
-      const res = await fetch("/api/matches");
-      const data = await res.json();
-      setMatches(Array.isArray(data) ? data : []);
+      const [matchesRes, incidentsRes, commentatorsRes, suggestionsRes] =
+        await Promise.all([
+          fetch("/api/matches"),
+          fetch("/api/incidents"),
+          fetch("/api/commentators"),
+          fetch("/api/suggestions"),
+        ]);
+
+      const matches = await matchesRes.json();
+      const incidents = await incidentsRes.json();
+      const commentators = await commentatorsRes.json();
+      const suggestions = await suggestionsRes.json();
+
+      const matchList = Array.isArray(matches) ? matches : [];
+      const incidentList = Array.isArray(incidents) ? incidents : [];
+      const commentatorList = Array.isArray(commentators) ? commentators : [];
+      const suggestionList = Array.isArray(suggestions) ? suggestions : [];
+
+      setStats({
+        totalMatches: matchList.length,
+        totalIncidents: incidentList.length,
+        pendingIncidents: incidentList.filter((i: { status: string }) => i.status === "PENDING").length,
+        approvedIncidents: incidentList.filter((i: { status: string }) => i.status === "APPROVED").length,
+        totalCommentators: commentatorList.length,
+        totalOpinions: commentatorList.reduce(
+          (acc: number, c: { opinions?: unknown[] }) => acc + (c.opinions?.length ?? 0),
+          0
+        ),
+        totalSuggestions: suggestionList.length,
+        newSuggestions: suggestionList.filter((s: { status: string }) => s.status === "NEW").length,
+      });
+
+      setRecentIncidents(incidentList.slice(0, 5));
     } catch (err) {
-      console.error("Failed to fetch matches:", err);
-      setMatches([]);
+      console.error("Failed to fetch stats:", err);
     } finally {
       setLoading(false);
     }
   }
 
-  async function handleAddMatch(e: React.FormEvent) {
-    e.preventDefault();
-    setSubmitting(true);
-    try {
-      const res = await fetch("/api/matches", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-      if (res.ok) {
-        setShowAddForm(false);
-        setFormData({
-          homeTeam: "",
-          awayTeam: "",
-          week: "",
-          date: "",
-          league: "Süper Lig",
-        });
-        fetchMatches();
-      }
-    } catch (err) {
-      console.error("Failed to add match:", err);
-    } finally {
-      setSubmitting(false);
-    }
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center py-20">
+        <Loader2 className="h-8 w-8 animate-spin text-red-500" />
+      </div>
+    );
   }
 
-  const filteredMatches = matches.filter((m) => {
-    if (!search) return true;
-    const q = search.toLowerCase();
-    return (
-      m.homeTeam.toLowerCase().includes(q) ||
-      m.awayTeam.toLowerCase().includes(q)
-    );
-  });
+  const statCards = [
+    { label: "Toplam Maç", value: stats?.totalMatches ?? 0, icon: Trophy, color: "text-blue-400", bg: "bg-blue-500/10", href: "/dashboard/matches" },
+    { label: "Toplam Pozisyon", value: stats?.totalIncidents ?? 0, icon: Crosshair, color: "text-red-400", bg: "bg-red-500/10", href: "/dashboard/incidents" },
+    { label: "Bekleyen", value: stats?.pendingIncidents ?? 0, icon: Clock, color: "text-amber-400", bg: "bg-amber-500/10", href: "/dashboard/incidents" },
+    { label: "Onaylanan", value: stats?.approvedIncidents ?? 0, icon: CheckCircle2, color: "text-emerald-400", bg: "bg-emerald-500/10", href: "/dashboard/incidents" },
+    { label: "Yorumcular", value: stats?.totalCommentators ?? 0, icon: Users, color: "text-purple-400", bg: "bg-purple-500/10", href: "/dashboard/commentators" },
+    { label: "Uzman Görüşleri", value: stats?.totalOpinions ?? 0, icon: MessageSquare, color: "text-cyan-400", bg: "bg-cyan-500/10", href: "/dashboard/opinions" },
+    { label: "Mesajlar", value: stats?.totalSuggestions ?? 0, icon: Mail, color: "text-pink-400", bg: "bg-pink-500/10", href: "/dashboard/suggestions" },
+    { label: "Yeni Mesaj", value: stats?.newSuggestions ?? 0, icon: AlertTriangle, color: "text-orange-400", bg: "bg-orange-500/10", href: "/dashboard/suggestions" },
+  ];
+
+  const quickActions = [
+    { label: "Maç Ekle", icon: Trophy, href: "/dashboard/matches", color: "bg-blue-600 hover:bg-blue-500" },
+    { label: "Pozisyon Ekle", icon: Crosshair, href: "/dashboard/incidents", color: "bg-red-600 hover:bg-red-500" },
+    { label: "Video Ara", icon: Video, href: "/dashboard/videos", color: "bg-purple-600 hover:bg-purple-500" },
+    { label: "Hakem Yorumu", icon: Gavel, href: "/dashboard/referee", color: "bg-amber-600 hover:bg-amber-500" },
+    { label: "Yorumcu Ekle", icon: Users, href: "/dashboard/commentators", color: "bg-emerald-600 hover:bg-emerald-500" },
+    { label: "AI Chat", icon: MessageSquare, href: "/dashboard/chat", color: "bg-cyan-600 hover:bg-cyan-500" },
+  ];
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
-      <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <h1 className="text-2xl font-bold text-white">Yönetim Paneli</h1>
-          <p className="mt-1 text-sm text-zinc-400">
-            Maçları yönetin ve AI tarafından tespit edilen olayları inceleyin
-          </p>
-        </div>
-        <button
-          onClick={() => setShowAddForm(!showAddForm)}
-          className="flex items-center gap-2 rounded-lg bg-red-600 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-red-500"
-        >
-          <Plus className="h-4 w-4" />
-          Maç Ekle
-        </button>
+    <div className="mx-auto max-w-7xl px-6 py-8">
+      <div className="mb-8">
+        <h1 className="text-2xl font-bold text-white">Yönetim Paneli</h1>
+        <p className="mt-1 text-sm text-zinc-400">
+          TartışmalıPozisyonlar platformunu yönetin
+        </p>
       </div>
 
-      {showAddForm && (
-        <form
-          onSubmit={handleAddMatch}
-          className="mb-8 rounded-xl border border-zinc-800 bg-zinc-900/50 p-6"
-        >
-          <h2 className="mb-4 text-lg font-semibold text-white">
-            Yeni Maç Ekle
-          </h2>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            <div>
-              <label className="mb-1.5 block text-xs font-medium text-zinc-400">
-                Ev Sahibi
-              </label>
-              <input
-                type="text"
-                value={formData.homeTeam}
-                onChange={(e) =>
-                  setFormData({ ...formData, homeTeam: e.target.value })
-                }
-                required
-                placeholder="ör. Fenerbahçe"
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 outline-none focus:border-red-500"
-              />
+      <div className="mb-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
+        {statCards.map((card) => (
+          <Link
+            key={card.label}
+            href={card.href}
+            className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-4 transition-colors hover:border-zinc-700"
+          >
+            <div className="flex items-center gap-3">
+              <div className={`rounded-lg p-2 ${card.bg}`}>
+                <card.icon className={`h-4 w-4 ${card.color}`} />
+              </div>
+              <div>
+                <p className="text-2xl font-bold text-white">{card.value}</p>
+                <p className="text-xs text-zinc-500">{card.label}</p>
+              </div>
             </div>
-            <div>
-              <label className="mb-1.5 block text-xs font-medium text-zinc-400">
-                Deplasman
-              </label>
-              <input
-                type="text"
-                value={formData.awayTeam}
-                onChange={(e) =>
-                  setFormData({ ...formData, awayTeam: e.target.value })
-                }
-                required
-                placeholder="ör. Trabzonspor"
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 outline-none focus:border-red-500"
-              />
-            </div>
-            <div>
-              <label className="mb-1.5 block text-xs font-medium text-zinc-400">
-                Lig
-              </label>
-              <input
-                type="text"
-                value={formData.league}
-                onChange={(e) =>
-                  setFormData({ ...formData, league: e.target.value })
-                }
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 outline-none focus:border-red-500"
-              />
-            </div>
-            <div>
-              <label className="mb-1.5 block text-xs font-medium text-zinc-400">
-                Hafta
-              </label>
-              <input
-                type="number"
-                value={formData.week}
-                onChange={(e) =>
-                  setFormData({ ...formData, week: e.target.value })
-                }
-                required
-                min="1"
-                placeholder="ör. 12"
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 outline-none focus:border-red-500"
-              />
-            </div>
-            <div>
-              <label className="mb-1.5 block text-xs font-medium text-zinc-400">
-                Tarih
-              </label>
-              <input
-                type="date"
-                value={formData.date}
-                onChange={(e) =>
-                  setFormData({ ...formData, date: e.target.value })
-                }
-                required
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 outline-none focus:border-red-500"
-              />
-            </div>
-            <div className="flex items-end">
-              <button
-                type="submit"
-                disabled={submitting}
-                className="flex w-full items-center justify-center gap-2 rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-red-500 disabled:opacity-50"
-              >
-                {submitting ? (
-                  <Loader2 className="h-4 w-4 animate-spin" />
-                ) : (
-                  <Plus className="h-4 w-4" />
-                )}
-                Oluştur
-              </button>
-            </div>
-          </div>
-        </form>
-      )}
-
-      <div className="mb-6">
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-500" />
-          <input
-            type="text"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Maç ara..."
-            className="w-full rounded-lg border border-zinc-700 bg-zinc-800 py-2.5 pl-10 pr-4 text-sm text-white placeholder-zinc-500 outline-none focus:border-red-500"
-          />
-        </div>
+          </Link>
+        ))}
       </div>
 
-      {loading ? (
-        <div className="flex items-center justify-center py-20">
-          <Loader2 className="h-8 w-8 animate-spin text-red-500" />
-        </div>
-      ) : filteredMatches.length === 0 ? (
-        <div className="flex flex-col items-center justify-center py-20 text-center">
-          <p className="text-lg text-zinc-400">Maç bulunamadı</p>
-          <p className="mt-1 text-sm text-zinc-500">
-            Tartışmalı pozisyonları tespit etmek için maç ekleyin
-          </p>
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {filteredMatches.map((match) => (
-            <MatchCard
-              key={match.id}
-              id={match.id}
-              homeTeam={match.homeTeam}
-              awayTeam={match.awayTeam}
-              week={match.week}
-              date={match.date}
-              incidentCount={match.incidents.length}
-              pendingCount={
-                match.incidents.filter((i) => i.status === "PENDING").length
-              }
-              linkPrefix="/dashboard/matches"
-            />
+      <div className="mb-8">
+        <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold text-white">
+          <TrendingUp className="h-5 w-5 text-red-400" />
+          Hızlı İşlemler
+        </h2>
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+          {quickActions.map((action) => (
+            <Link
+              key={action.label}
+              href={action.href}
+              className={`flex flex-col items-center gap-2 rounded-xl px-4 py-4 text-sm font-medium text-white transition-colors ${action.color}`}
+            >
+              <action.icon className="h-5 w-5" />
+              {action.label}
+            </Link>
           ))}
+        </div>
+      </div>
+
+      {recentIncidents.length > 0 && (
+        <div>
+          <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold text-white">
+            <Clock className="h-5 w-5 text-amber-400" />
+            Son Pozisyonlar
+          </h2>
+          <div className="space-y-2">
+            {recentIncidents.map((inc) => (
+              <Link
+                key={inc.id}
+                href={`/dashboard/incidents`}
+                className="flex items-center gap-4 rounded-xl border border-zinc-800 bg-zinc-900/50 p-4 transition-colors hover:border-zinc-700"
+              >
+                <Crosshair className="h-4 w-4 shrink-0 text-red-400" />
+                <div className="min-w-0 flex-1">
+                  <p className="truncate text-sm text-white">{inc.description}</p>
+                  <p className="text-xs text-zinc-500">
+                    {inc.match?.homeTeam} vs {inc.match?.awayTeam}
+                  </p>
+                </div>
+                <span
+                  className={`shrink-0 rounded-full px-2 py-0.5 text-xs font-medium ${
+                    inc.status === "APPROVED"
+                      ? "bg-emerald-500/10 text-emerald-400"
+                      : inc.status === "REJECTED"
+                        ? "bg-red-500/10 text-red-400"
+                        : "bg-amber-500/10 text-amber-400"
+                  }`}
+                >
+                  {inc.status === "APPROVED" ? "Onaylı" : inc.status === "REJECTED" ? "Reddedildi" : "Beklemede"}
+                </span>
+              </Link>
+            ))}
+          </div>
         </div>
       )}
     </div>

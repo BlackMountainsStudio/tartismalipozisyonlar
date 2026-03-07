@@ -98,7 +98,7 @@ export async function PATCH(
   try {
     const { id } = await params;
     const body = await request.json();
-    const { status, description, minute, type, mergeWithId } = body;
+    const { status, description, minute, type, mergeWithId, videoUrl, relatedVideos, refereeComments, newsArticles } = body;
 
     if (mergeWithId) {
       const sourceIncident = await prisma.incident.findUnique({
@@ -153,6 +153,10 @@ export async function PATCH(
     if (description) updateData.description = description;
     if (minute !== undefined) updateData.minute = minute ? parseInt(minute) : null;
     if (type) updateData.type = type;
+    if (videoUrl !== undefined) updateData.videoUrl = videoUrl || null;
+    if (relatedVideos !== undefined) updateData.relatedVideos = typeof relatedVideos === "string" ? relatedVideos : JSON.stringify(relatedVideos);
+    if (refereeComments !== undefined) updateData.refereeComments = typeof refereeComments === "string" ? refereeComments : JSON.stringify(refereeComments);
+    if (newsArticles !== undefined) updateData.newsArticles = typeof newsArticles === "string" ? newsArticles : JSON.stringify(newsArticles);
 
     const incident = await prisma.incident.update({
       where: { id },
