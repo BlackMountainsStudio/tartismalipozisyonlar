@@ -68,7 +68,8 @@ async function upsertIncidents(matchId, incidents) {
     const hasRefereeComments = Object.prototype.hasOwnProperty.call(incident, "refereeComments");
     const hasNewsArticles = Object.prototype.hasOwnProperty.call(incident, "newsArticles");
 
-    const existing = await pool.query(
+    // Önce aynı maç+dakika+tür+açıklama ile ara; yoksa sadece maç+dakika+tür ile ara (mevcut kaydı güncellemek için)
+    let existing = await pool.query(
       `
         SELECT "id"
         FROM "Incident"
@@ -81,22 +82,38 @@ async function upsertIncidents(matchId, incidents) {
       [matchId, incident.minute ?? null, incident.type, incident.description]
     );
 
+    if (!existing.rows[0]) {
+      existing = await pool.query(
+        `
+          SELECT "id"
+          FROM "Incident"
+          WHERE "matchId" = $1
+            AND "minute" IS NOT DISTINCT FROM $2
+            AND "type" = $3
+          LIMIT 1
+        `,
+        [matchId, incident.minute ?? null, incident.type]
+      );
+    }
+
     if (existing.rows[0]) {
       await pool.query(
         `
           UPDATE "Incident"
           SET
-            "sources" = $2,
-            "status" = $3,
-            "videoUrl" = CASE WHEN $4::boolean THEN $5 ELSE "videoUrl" END,
-            "relatedVideos" = CASE WHEN $6::boolean THEN $7 ELSE "relatedVideos" END,
-            "refereeComments" = CASE WHEN $8::boolean THEN $9 ELSE "refereeComments" END,
-            "newsArticles" = CASE WHEN $10::boolean THEN $11 ELSE "newsArticles" END,
+            "description" = $2,
+            "sources" = $3,
+            "status" = $4,
+            "videoUrl" = CASE WHEN $5::boolean THEN $6 ELSE "videoUrl" END,
+            "relatedVideos" = CASE WHEN $7::boolean THEN $8 ELSE "relatedVideos" END,
+            "refereeComments" = CASE WHEN $9::boolean THEN $10 ELSE "refereeComments" END,
+            "newsArticles" = CASE WHEN $11::boolean THEN $12 ELSE "newsArticles" END,
             "updatedAt" = NOW()
           WHERE "id" = $1
         `,
         [
           existing.rows[0].id,
+          incident.description,
           JSON.stringify(incident.sources ?? []),
           incident.status ?? "APPROVED",
           hasVideoUrl,
