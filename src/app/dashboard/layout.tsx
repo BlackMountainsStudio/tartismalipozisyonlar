@@ -14,8 +14,10 @@ import {
   ChevronLeft,
   ChevronRight,
   Trophy,
+  Menu,
+  X,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const SIDEBAR_ITEMS = [
   { href: "/dashboard", icon: LayoutDashboard, label: "Genel Bakış", exact: true },
@@ -37,6 +39,19 @@ export default function DashboardLayout({
 }) {
   const pathname = usePathname();
   const [collapsed, setCollapsed] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Mobile menü açıkken body scroll'unu engelle
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
 
   function isActive(href: string, exact?: boolean) {
     if (exact) return pathname === href;
@@ -45,9 +60,33 @@ export default function DashboardLayout({
 
   return (
     <div className="flex min-h-[calc(100vh-4rem)]">
+      {/* Mobile Menu Button */}
+      <button
+        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        className="fixed left-4 top-20 z-40 flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-800 bg-zinc-950 text-zinc-400 transition-colors active:bg-zinc-800 active:text-white md:hidden"
+        aria-label="Menü"
+      >
+        {mobileMenuOpen ? (
+          <X className="h-5 w-5" />
+        ) : (
+          <Menu className="h-5 w-5" />
+        )}
+      </button>
+
+      {/* Mobile Menu Overlay */}
+      {mobileMenuOpen && (
+        <div
+          className="fixed inset-0 z-30 bg-black/50 md:hidden"
+          onClick={() => setMobileMenuOpen(false)}
+        />
+      )}
+
+      {/* Sidebar - Desktop & Mobile */}
       <aside
-        className={`sticky top-16 flex h-[calc(100vh-4rem)] flex-col border-r border-zinc-800 bg-zinc-950 transition-all duration-200 ${
+        className={`fixed left-0 top-16 z-40 flex h-[calc(100vh-4rem)] flex-col border-r border-zinc-800 bg-zinc-950 transition-all duration-200 md:sticky md:translate-x-0 ${
           collapsed ? "w-16" : "w-60"
+        } ${
+          mobileMenuOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
         }`}
       >
         <div className="flex-1 overflow-y-auto py-4">
@@ -58,10 +97,11 @@ export default function DashboardLayout({
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`flex min-h-[44px] items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors touch-manipulation ${
                     active
                       ? "bg-red-500/10 text-red-400"
-                      : "text-zinc-400 hover:bg-zinc-800/50 hover:text-white"
+                      : "text-zinc-400 active:bg-zinc-800/50 active:text-white"
                   }`}
                   title={collapsed ? item.label : undefined}
                 >
@@ -73,9 +113,10 @@ export default function DashboardLayout({
           </nav>
         </div>
 
+        {/* Collapse Button - Desktop Only */}
         <button
           onClick={() => setCollapsed(!collapsed)}
-          className="flex items-center justify-center border-t border-zinc-800 py-3 text-zinc-500 transition-colors hover:text-white"
+          className="hidden items-center justify-center border-t border-zinc-800 py-3 text-zinc-500 transition-colors active:bg-zinc-800 active:text-white md:flex"
         >
           {collapsed ? (
             <ChevronRight className="h-4 w-4" />
@@ -85,7 +126,7 @@ export default function DashboardLayout({
         </button>
       </aside>
 
-      <main className="flex-1 overflow-y-auto">{children}</main>
+      <main className="flex-1 overflow-y-auto px-4 py-6 md:px-6">{children}</main>
     </div>
   );
 }

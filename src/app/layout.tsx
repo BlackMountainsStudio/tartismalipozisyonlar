@@ -18,6 +18,11 @@ export const metadata: Metadata = {
   title: "Tartışmalı Pozisyonlar - Hakem Kararları Analiz Platformu",
   description:
     "Tartışmalı hakem kararlarını topluluk tartışmalarını analiz ederek otomatik tespit eden AI destekli platform. tartismalipozisyonlar.com",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+  },
 };
 
 export default function RootLayout({

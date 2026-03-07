@@ -100,10 +100,10 @@ export default function HomePage() {
               <Shield className="h-12 w-12 text-red-500" />
             </div>
           </div>
-          <h1 className="mb-4 text-4xl font-bold tracking-tight text-white sm:text-5xl">
+          <h1 className="mb-4 text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
             Tartışmalı<span className="text-red-500">Pozisyonlar</span>
           </h1>
-          <p className="mx-auto max-w-2xl text-lg text-zinc-400">
+          <p className="mx-auto max-w-2xl text-base text-zinc-400 sm:text-lg">
             Tartışmalı hakem kararlarını Reddit ve Ekşi Sözlük tartışmalarını
             analiz ederek otomatik tespit eden AI destekli platform.
           </p>
@@ -156,18 +156,20 @@ export default function HomePage() {
         </div>
 
         {/* Sıralama ve gruplama */}
-        <div className="mb-6 flex flex-wrap items-center gap-4 rounded-xl border border-zinc-800 bg-zinc-900/40 p-4">
-          <div className="flex items-center gap-2">
-            <ArrowUpDown className="h-4 w-4 text-zinc-500" />
-            <span className="text-sm font-medium text-zinc-400">Hafta sırası</span>
+        <div className="mb-6 flex flex-col gap-4 rounded-xl border border-zinc-800 bg-zinc-900/40 p-4 sm:flex-row sm:flex-wrap sm:items-center">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
+            <div className="flex items-center gap-2">
+              <ArrowUpDown className="h-4 w-4 text-zinc-500" />
+              <span className="text-sm font-medium text-zinc-400">Hafta sırası</span>
+            </div>
             <div className="flex rounded-lg border border-zinc-700 bg-zinc-800 p-0.5">
               <button
                 type="button"
                 onClick={() => setWeekSort("asc")}
-                className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
+                className={`min-h-[44px] rounded-md px-4 py-2 text-sm font-medium transition-colors touch-manipulation ${
                   weekSort === "asc"
                     ? "bg-red-500/20 text-red-400 ring-1 ring-red-500/50"
-                    : "text-zinc-400 hover:text-white"
+                    : "text-zinc-400 active:bg-zinc-700 active:text-white"
                 }`}
               >
                 1 → 24
@@ -175,43 +177,47 @@ export default function HomePage() {
               <button
                 type="button"
                 onClick={() => setWeekSort("desc")}
-                className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
+                className={`min-h-[44px] rounded-md px-4 py-2 text-sm font-medium transition-colors touch-manipulation ${
                   weekSort === "desc"
                     ? "bg-red-500/20 text-red-400 ring-1 ring-red-500/50"
-                    : "text-zinc-400 hover:text-white"
+                    : "text-zinc-400 active:bg-zinc-700 active:text-white"
                 }`}
               >
                 24 → 1
               </button>
             </div>
           </div>
-          <div className="h-4 w-px bg-zinc-700" />
-          <div className="flex flex-wrap items-center gap-2">
-            <Users className="h-4 w-4 text-zinc-500" />
-            <span className="text-sm font-medium text-zinc-400">Takım filtresi</span>
-            {TRACKED_TEAMS.map((team) => (
-              <label
-                key={team}
-                className="flex cursor-pointer items-center gap-1.5 rounded-lg border border-zinc-700 bg-zinc-800 px-2.5 py-1.5 transition-colors hover:bg-zinc-700"
-              >
-                <input
-                  type="checkbox"
-                  checked={selectedTeams.includes(team)}
-                  onChange={() => toggleTeam(team)}
-                  className="h-3.5 w-3.5 rounded border-zinc-600 text-red-500 focus:ring-red-500"
-                />
-                <span className="text-sm text-zinc-300">{team}</span>
-              </label>
-            ))}
-            {selectedTeams.length > 0 && (
-              <button
-                type="button"
-                onClick={clearTeamFilter}
-                className="rounded-md px-2 py-1 text-xs font-medium text-zinc-500 hover:text-white"
-              >
-                Temizle
-              </button>
-            )}
+          <div className="hidden h-4 w-px bg-zinc-700 sm:block" />
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+            <div className="flex items-center gap-2">
+              <Users className="h-4 w-4 text-zinc-500" />
+              <span className="text-sm font-medium text-zinc-400">Takım filtresi</span>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {TRACKED_TEAMS.map((team) => (
+                <label
+                  key={team}
+                  className="flex min-h-[44px] cursor-pointer items-center gap-2 rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 transition-colors active:bg-zinc-700 touch-manipulation"
+                >
+                  <input
+                    type="checkbox"
+                    checked={selectedTeams.includes(team)}
+                    onChange={() => toggleTeam(team)}
+                    className="h-4 w-4 rounded border-zinc-600 text-red-500 focus:ring-red-500"
+                  />
+                  <span className="text-sm text-zinc-300">{team}</span>
+                </label>
+              ))}
+              {selectedTeams.length > 0 && (
+                <button
+                  type="button"
+                  onClick={clearTeamFilter}
+                  className="min-h-[44px] rounded-md px-3 py-2 text-sm font-medium text-zinc-500 active:bg-zinc-800 active:text-white touch-manipulation"
+                >
+                  Temizle
+                </button>
+              )}
+            </div>
           </div>
         </div>
 
