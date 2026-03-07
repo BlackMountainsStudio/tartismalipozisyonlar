@@ -23,7 +23,30 @@
       "homeTeam": "Fenerbahçe",
       "awayTeam": "Galatasaray",
       "league": "Süper Lig 2025-26",
-      "incidents": []
+      "incidents": [
+        {
+          "minute": 44,
+          "type": "GOAL_DISALLOWED",
+          "description": "Fenerbahce'nin korner sonrasi buldugu gol VAR incelemesiyle iptal edildi. Skriniar'in elle oynadigi ve hucum fazinda kural ihlali oldugu gerekcesiyle verilen iptal karari derbinin en cok konusulan anlarindan biri oldu.",
+          "confidenceScore": 0.84,
+          "sources": [
+            "https://hurriyet.com.tr/sporarena/fenerbahce-galatasaray-derbisinde-cok-konusulan-kararlar-iptal-edilen-gol-penalti-beklentisi-43039078",
+            "https://www.tgrthaber.com/futbol/eski-hakemler-fenerbahce-galatasaray-macinin-tartismali-pozisyonlarini-yorumladi-penalti-kirmizi-kart-2973745"
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 45,
+          "type": "POSSIBLE_PENALTY",
+          "description": "Baris Alper Yilmaz'in kaleciyle temas sonrasi yerde kaldigi pozisyonda Galatasaray penaltı bekledi. Mac sonu eski hakem yorumlarinda pozisyon net penaltı olarak degerlendirilmedi ancak karar uzun sure tartisildi.",
+          "confidenceScore": 0.73,
+          "sources": [
+            "https://hurriyet.com.tr/sporarena/fenerbahce-galatasaray-derbisinde-cok-konusulan-kararlar-iptal-edilen-gol-penalti-beklentisi-43039078",
+            "https://www.milliyet.com.tr/skorer/fenerbahce-galatasaray-derbisinin-tartismali-pozisyonlari-trioda-degerlendirildi-7493806"
+          ],
+          "status": "APPROVED"
+        }
+      ]
     }
   ]
 }
