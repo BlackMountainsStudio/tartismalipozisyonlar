@@ -28,15 +28,15 @@ export default function CommentSection({ matchId, incidentId }: CommentSectionPr
     : `matchId=${matchId}`;
   const isMatchDiscussion = Boolean(matchId) && !incidentId;
   const sectionTitle = isMatchDiscussion ? "Maç Yorumları" : "Yorumlar";
-  const textareaLabel = isMatchDiscussion ? "Maçla İlgili Yorumunuz" : "Yorumunuz";
+  const textareaLabel = isMatchDiscussion ? "Maç Hakkındaki Yorumunuz" : "Yorumunuz";
   const textareaPlaceholder = isMatchDiscussion
-    ? "Maçla ilgili genel yorumunuzu veya gözden kaçan pozisyonları yazın..."
+    ? "Maç hakkında yorumlarınızı paylaşın. Gözden kaçırdığımız bir pozisyon varsa lütfen iletin."
     : "Bu pozisyon hakkında ne düşünüyorsunuz?";
   const emptyTitle = isMatchDiscussion
     ? "Bu maç için henüz yorum yapılmamış"
     : "Henüz yorum yapılmamış";
   const emptySubtitle = isMatchDiscussion
-    ? "Maçla ilgili ilk yorumu siz bırakın!"
+    ? "Maç hakkında yorum yapabilir, gözden kaçan bir pozisyon varsa bize iletebilirsiniz."
     : "İlk yorumu siz yapın!";
 
   const fetchComments = useCallback(async () => {

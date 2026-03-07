@@ -2,17 +2,12 @@ import fs from "node:fs";
 import path from "node:path";
 import dotenv from "dotenv";
 import pg from "pg";
-import { PrismaPg } from "@prisma/adapter-pg";
-import { PrismaClient } from "../src/generated/prisma/client.js";
 
 dotenv.config({ path: path.join(process.cwd(), ".env") });
 
 const pool = new pg.Pool({
   connectionString: process.env.DATABASE_URL,
 });
-
-const adapter = new PrismaPg(pool);
-const prisma = new PrismaClient({ adapter });
 
 const weeksDir = path.join(process.cwd(), "data", "season-2025-26", "weeks");
 
@@ -28,57 +23,77 @@ function loadWeekFiles() {
 }
 
 async function upsertMatch(match) {
-  const existing = await prisma.match.findFirst({
-    where: {
-      homeTeam: match.homeTeam,
-      awayTeam: match.awayTeam,
-      week: match.week,
-      league: match.league,
-      date: new Date(match.date),
-    },
-  });
+  const existingResult = await pool.query(
+    `
+      SELECT "id"
+      FROM "Match"
+      WHERE "homeTeam" = $1
+        AND "awayTeam" = $2
+        AND "week" = $3
+        AND "league" = $4
+        AND "date" = $5::timestamp
+      LIMIT 1
+    `,
+    [match.homeTeam, match.awayTeam, match.week, match.league, match.date]
+  );
 
-  if (existing) {
-    return existing;
+  if (existingResult.rows[0]) {
+    return existingResult.rows[0];
   }
 
-  return prisma.match.create({
-    data: {
-      homeTeam: match.homeTeam,
-      awayTeam: match.awayTeam,
-      league: match.league,
-      week: match.week,
-      date: new Date(match.date),
-    },
-  });
+  const insertResult = await pool.query(
+    `
+      INSERT INTO "Match" ("id", "homeTeam", "awayTeam", "league", "week", "date", "createdAt", "updatedAt")
+      VALUES (concat('season_', md5(random()::text || clock_timestamp()::text)), $1, $2, $3, $4, $5::timestamp, NOW(), NOW())
+      RETURNING "id"
+    `,
+    [match.homeTeam, match.awayTeam, match.league, match.week, match.date]
+  );
+
+  return insertResult.rows[0];
 }
 
 async function upsertIncidents(matchId, incidents) {
   for (const incident of incidents) {
-    const existing = await prisma.incident.findFirst({
-      where: {
-        matchId,
-        minute: incident.minute ?? null,
-        type: incident.type,
-        description: incident.description,
-      },
-    });
+    const existing = await pool.query(
+      `
+        SELECT "id"
+        FROM "Incident"
+        WHERE "matchId" = $1
+          AND "minute" IS NOT DISTINCT FROM $2
+          AND "type" = $3
+          AND "description" = $4
+        LIMIT 1
+      `,
+      [matchId, incident.minute ?? null, incident.type, incident.description]
+    );
 
-    if (existing) {
+    if (existing.rows[0]) {
       continue;
     }
 
-    await prisma.incident.create({
-      data: {
+    await pool.query(
+      `
+        INSERT INTO "Incident" (
+          "id", "matchId", "minute", "type", "description", "confidenceScore",
+          "sources", "status", "videoUrl", "relatedVideos", "refereeComments",
+          "newsArticles", "createdAt", "updatedAt"
+        )
+        VALUES (
+          concat('incident_', md5(random()::text || clock_timestamp()::text)),
+          $1, $2, $3, $4, $5, $6, $7, NULL, '[]', '[]', '[]', NOW(), NOW()
+        )
+      `,
+      [
         matchId,
-        minute: incident.minute ?? null,
-        type: incident.type,
-        description: incident.description,
-        confidenceScore: incident.confidenceScore ?? 0.75,
-        sources: JSON.stringify(incident.sources ?? []),
-        status: incident.status ?? "APPROVED",
-      },
-    });
+        incident.minute ?? null,
+        incident.type,
+        incident.description,
+        incident.confidenceScore ?? 0.75,
+        JSON.stringify(incident.sources ?? []),
+        incident.status ?? "APPROVED",
+      ]
+    );
   }
 }
 
@@ -108,6 +123,5 @@ main()
     process.exitCode = 1;
   })
   .finally(async () => {
-    await prisma.$disconnect();
     await pool.end();
   });
