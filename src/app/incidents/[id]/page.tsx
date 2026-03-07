@@ -132,6 +132,21 @@ function extractYouTubeId(url: string): string | null {
   return match ? match[1] : null;
 }
 
+function getVideoProviderLabel(url: string): string {
+  try {
+    const hostname = new URL(url).hostname.replace(/^www\./, "");
+    if (hostname.includes("youtube.com") || hostname.includes("youtu.be")) {
+      return "YouTube";
+    }
+    if (hostname.includes("beinsports.com.tr")) {
+      return "beIN Sports";
+    }
+    return hostname;
+  } catch {
+    return "Harici kaynak";
+  }
+}
+
 export default function IncidentDetailPage({
   params,
 }: {
@@ -186,6 +201,7 @@ export default function IncidentDetailPage({
   const opinions = incident.opinions ?? [];
 
   const activeYtId = activeVideo ? extractYouTubeId(activeVideo) : null;
+  const activeVideoProvider = activeVideo ? getVideoProviderLabel(activeVideo) : null;
 
   const agreeCount = opinions.filter((o) => o.stance === "AGREE").length;
   const disagreeCount = opinions.filter((o) => o.stance === "DISAGREE").length;
@@ -255,6 +271,23 @@ export default function IncidentDetailPage({
             </div>
           )}
 
+          {activeVideo && !activeYtId && (
+            <a
+              href={activeVideo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mb-5 flex items-center justify-between gap-4 rounded-xl border border-zinc-700 bg-zinc-800/30 p-5 transition-colors hover:border-zinc-600 hover:bg-zinc-800/50"
+            >
+              <div>
+                <p className="text-sm font-semibold text-white">Pozisyon videosunu aç</p>
+                <p className="mt-1 text-xs text-zinc-400">
+                  Bu video {activeVideoProvider} üzerinde doğrudan pozisyon sayfasına gidiyor.
+                </p>
+              </div>
+              <ExternalLink className="h-5 w-5 shrink-0 text-red-400" />
+            </a>
+          )}
+
           {relatedVideos.length > 0 && (
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               {relatedVideos.map((vid, i) => {
@@ -280,7 +313,7 @@ export default function IncidentDetailPage({
                     </div>
                     <div className="min-w-0 flex-1">
                       <p className="text-sm font-medium leading-snug text-white line-clamp-2">{vid.title}</p>
-                      <p className="mt-1 text-xs text-zinc-500">YouTube</p>
+                      <p className="mt-1 text-xs text-zinc-500">{getVideoProviderLabel(vid.url)}</p>
                     </div>
                   </button>
                 );
@@ -318,17 +351,7 @@ export default function IncidentDetailPage({
             {opinions.map((op) => {
               const si = STANCE_INFO[op.stance] ?? STANCE_INFO.NEUTRAL;
               return (
-                <div key={op.id} className={`relative rounded-lg border p-4 ${si.bg}`}>
-                  {op.sourceUrl && (
-                    <a
-                      href={op.sourceUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="absolute right-3 top-3 flex items-center gap-1 rounded-md bg-zinc-800/60 px-2 py-1 text-[10px] font-medium text-red-400 transition-colors hover:bg-zinc-800 hover:text-red-300"
-                    >
-                      Kaynak <ExternalLink className="h-2.5 w-2.5" />
-                    </a>
-                  )}
+                <div key={op.id} className={`rounded-lg border p-4 ${si.bg}`}>
                   <div className="mb-2 flex items-center gap-2">
                     <Link
                       href={`/commentators/${op.commentator.slug}`}
@@ -344,13 +367,23 @@ export default function IncidentDetailPage({
                       <ChevronRight className="h-3.5 w-3.5" />
                     </Link>
                   </div>
-                  <p className="pr-16 text-sm leading-relaxed text-zinc-300 italic">
+                  <p className="text-sm leading-relaxed text-zinc-300 italic">
                     &ldquo;{op.comment}&rdquo;
                   </p>
                   <div className="mt-2 flex items-center justify-between">
                     <span className={`flex items-center gap-1 text-xs font-medium ${si.style}`}>
                       {si.icon} {si.label}
                     </span>
+                    {op.sourceUrl && (
+                      <a
+                        href={op.sourceUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1 rounded-md bg-zinc-800/60 px-2 py-1 text-[10px] font-medium text-red-400 transition-colors hover:bg-zinc-800 hover:text-red-300"
+                      >
+                        Bu yorumu nereden aldık? <ExternalLink className="h-2.5 w-2.5" />
+                      </a>
+                    )}
                   </div>
                 </div>
               );
@@ -381,22 +414,6 @@ export default function IncidentDetailPage({
                   </div>
                 </div>
                 <ExternalLink className="mt-1 h-3.5 w-3.5 shrink-0 text-zinc-600 group-hover:text-red-400" />
-              </a>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* === KAYNAKLAR === */}
-      {incident.sources.length > 0 && (
-        <div className="mb-8 rounded-xl border border-zinc-800 bg-zinc-900/50 p-6">
-          <h2 className="mb-4 text-lg font-bold text-white">Kaynaklar</h2>
-          <div className="flex flex-wrap gap-2">
-            {incident.sources.map((source, i) => (
-              <a key={i} href={source.startsWith("http") ? source : "#"} target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-1.5 rounded-lg bg-zinc-800 px-3 py-2 text-sm text-zinc-400 transition-colors hover:bg-zinc-700 hover:text-white">
-                <ExternalLink className="h-3.5 w-3.5" />
-                {source.startsWith("http") ? new URL(source).hostname : source}
               </a>
             ))}
           </div>

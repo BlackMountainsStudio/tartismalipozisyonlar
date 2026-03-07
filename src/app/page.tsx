@@ -51,6 +51,18 @@ export default function HomePage() {
     );
   });
 
+  const groupedMatches = filteredMatches.reduce<Record<number, Match[]>>((groups, match) => {
+    if (!groups[match.week]) {
+      groups[match.week] = [];
+    }
+    groups[match.week].push(match);
+    return groups;
+  }, {});
+
+  const sortedWeeks = Object.keys(groupedMatches)
+    .map(Number)
+    .sort((a, b) => a - b);
+
   return (
     <div>
       {/* Hero */}
@@ -129,20 +141,46 @@ export default function HomePage() {
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {filteredMatches.map((match) => (
-              <MatchCard
-                key={match.id}
-                id={match.id}
-                homeTeam={match.homeTeam}
-                awayTeam={match.awayTeam}
-                week={match.week}
-                date={match.date}
-                incidentCount={
-                  match.incidents.filter((i) => i.status === "APPROVED").length
-                }
-                linkPrefix="/matches"
-              />
+          <div className="space-y-10">
+            {sortedWeeks.map((week) => (
+              <section key={week}>
+                <div className="mb-4 flex items-center justify-between gap-3">
+                  <div>
+                    <h3 className="text-xl font-bold text-white">Hafta {week}</h3>
+                    <p className="mt-1 text-sm text-zinc-500">
+                      {groupedMatches[week].length} maç listeleniyor
+                    </p>
+                  </div>
+                  <span className="rounded-full border border-zinc-800 bg-zinc-900/70 px-3 py-1 text-xs font-medium text-zinc-400">
+                    {groupedMatches[week].reduce(
+                      (sum, match) =>
+                        sum + match.incidents.filter((i) => i.status === "APPROVED").length,
+                      0
+                    )}{" "}
+                    tartışma
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+                  {groupedMatches[week]
+                    .slice()
+                    .sort((a, b) => a.date.localeCompare(b.date))
+                    .map((match) => (
+                      <MatchCard
+                        key={match.id}
+                        id={match.id}
+                        homeTeam={match.homeTeam}
+                        awayTeam={match.awayTeam}
+                        week={match.week}
+                        date={match.date}
+                        incidentCount={
+                          match.incidents.filter((i) => i.status === "APPROVED").length
+                        }
+                        linkPrefix="/matches"
+                      />
+                    ))}
+                </div>
+              </section>
             ))}
           </div>
         )}

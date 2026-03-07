@@ -55,6 +55,11 @@ async function upsertMatch(match) {
 
 async function upsertIncidents(matchId, incidents) {
   for (const incident of incidents) {
+    const hasVideoUrl = Object.prototype.hasOwnProperty.call(incident, "videoUrl");
+    const hasRelatedVideos = Object.prototype.hasOwnProperty.call(incident, "relatedVideos");
+    const hasRefereeComments = Object.prototype.hasOwnProperty.call(incident, "refereeComments");
+    const hasNewsArticles = Object.prototype.hasOwnProperty.call(incident, "newsArticles");
+
     const existing = await pool.query(
       `
         SELECT "id"
@@ -69,6 +74,33 @@ async function upsertIncidents(matchId, incidents) {
     );
 
     if (existing.rows[0]) {
+      await pool.query(
+        `
+          UPDATE "Incident"
+          SET
+            "sources" = $2,
+            "status" = $3,
+            "videoUrl" = CASE WHEN $4::boolean THEN $5 ELSE "videoUrl" END,
+            "relatedVideos" = CASE WHEN $6::boolean THEN $7 ELSE "relatedVideos" END,
+            "refereeComments" = CASE WHEN $8::boolean THEN $9 ELSE "refereeComments" END,
+            "newsArticles" = CASE WHEN $10::boolean THEN $11 ELSE "newsArticles" END,
+            "updatedAt" = NOW()
+          WHERE "id" = $1
+        `,
+        [
+          existing.rows[0].id,
+          JSON.stringify(incident.sources ?? []),
+          incident.status ?? "APPROVED",
+          hasVideoUrl,
+          incident.videoUrl ?? null,
+          hasRelatedVideos,
+          JSON.stringify(incident.relatedVideos ?? []),
+          hasRefereeComments,
+          JSON.stringify(incident.refereeComments ?? []),
+          hasNewsArticles,
+          JSON.stringify(incident.newsArticles ?? []),
+        ]
+      );
       continue;
     }
 
@@ -81,7 +113,7 @@ async function upsertIncidents(matchId, incidents) {
         )
         VALUES (
           concat('incident_', md5(random()::text || clock_timestamp()::text)),
-          $1, $2, $3, $4, $5, $6, $7, NULL, '[]', '[]', '[]', NOW(), NOW()
+          $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, NOW(), NOW()
         )
       `,
       [
@@ -92,6 +124,10 @@ async function upsertIncidents(matchId, incidents) {
         incident.confidenceScore ?? 0.75,
         JSON.stringify(incident.sources ?? []),
         incident.status ?? "APPROVED",
+        incident.videoUrl ?? null,
+        JSON.stringify(incident.relatedVideos ?? []),
+        JSON.stringify(incident.refereeComments ?? []),
+        JSON.stringify(incident.newsArticles ?? []),
       ]
     );
   }

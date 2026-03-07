@@ -9,6 +9,48 @@ function parseJson<T>(raw: string, fallback: T): T {
   }
 }
 
+async function getResolvedVideoUrl(incident: {
+  id: string;
+  matchId: string;
+  videoUrl: string | null;
+  match: { date: Date };
+}) {
+  if (!incident.videoUrl) {
+    return null;
+  }
+
+  const sameVideoIncidents = await prisma.incident.findMany({
+    where: {
+      videoUrl: incident.videoUrl,
+      NOT: { id: incident.id },
+    },
+    select: {
+      matchId: true,
+      match: {
+        select: {
+          date: true,
+        },
+      },
+    },
+  });
+
+  const earliestConflictingMatchDate = sameVideoIncidents
+    .filter((item) => item.matchId !== incident.matchId)
+    .reduce<number | null>((earliest, item) => {
+      const matchTime = item.match.date.getTime();
+      return earliest === null ? matchTime : Math.min(earliest, matchTime);
+    }, null);
+
+  if (
+    earliestConflictingMatchDate !== null &&
+    incident.match.date.getTime() > earliestConflictingMatchDate
+  ) {
+    return null;
+  }
+
+  return incident.videoUrl;
+}
+
 export async function GET(
   _request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
@@ -35,6 +77,7 @@ export async function GET(
     return NextResponse.json({
       ...incident,
       sources: parseJson(incident.sources, []),
+      videoUrl: await getResolvedVideoUrl(incident),
       refereeComments: parseJson(incident.refereeComments, []),
       relatedVideos: parseJson(incident.relatedVideos, []),
       newsArticles: parseJson(incident.newsArticles, []),
