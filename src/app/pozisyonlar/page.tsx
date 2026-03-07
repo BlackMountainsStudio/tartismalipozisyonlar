@@ -138,7 +138,7 @@ export default function PozisyonlarPage() {
   const hasFilters = selectedTeams.length > 0 || selectedTypes.length > 0;
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
+    <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
       <div className="mb-10">
         <h1 className="text-3xl font-bold text-white sm:text-4xl">
           Var <span className="text-red-500">Odası</span>

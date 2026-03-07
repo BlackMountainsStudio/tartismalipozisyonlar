@@ -1,9 +1,14 @@
 "use client";
 
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Clock, AlertTriangle, ShieldAlert, Eye, Flag, ChevronRight, Video } from "lucide-react";
 import ConfidenceBadge from "./ConfidenceBadge";
 import { getVideoLinkLabel } from "@/lib/linkLabels";
+
+function extractYouTubeId(url: string): string | null {
+  const match = url.match(/(?:watch\?v=|youtu\.be\/|embed\/|shorts\/)([a-zA-Z0-9_-]{11})/);
+  return match ? match[1] : null;
+}
 
 interface IncidentCardProps {
   id: string;
@@ -58,6 +63,7 @@ export default function IncidentCard({
   actions,
   clickable = false,
 }: IncidentCardProps) {
+  const router = useRouter();
   const typeInfo = INCIDENT_TYPE_LABELS[type] ?? {
     label: type,
     icon: <AlertTriangle className="h-4 w-4" />,
@@ -97,19 +103,46 @@ export default function IncidentCard({
         {description}
       </p>
 
-      {videoUrl && (
-        <a
-          href={videoUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={(e) => e.stopPropagation()}
-          className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-red-400 hover:text-red-300"
-          title={videoUrl}
-        >
-          <Video className="h-3.5 w-3.5" />
-          {getVideoLinkLabel(videoUrl)}
-        </a>
-      )}
+      {videoUrl && (() => {
+        const ytId = extractYouTubeId(videoUrl);
+        return (
+        <div className="mt-3" onClick={(e) => e.stopPropagation()}>
+          {ytId ? (
+            <div className="aspect-video overflow-hidden rounded-lg border border-zinc-700/50">
+              <iframe
+                src={`https://www.youtube.com/embed/${ytId}`}
+                className="h-full w-full"
+                allowFullScreen
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                title={getVideoLinkLabel(videoUrl)}
+              />
+            </div>
+          ) : (
+            <span
+              role="link"
+              tabIndex={0}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                window.open(videoUrl, "_blank", "noopener,noreferrer");
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  window.open(videoUrl, "_blank", "noopener,noreferrer");
+                }
+              }}
+              className="inline-flex cursor-pointer items-center gap-1.5 text-xs font-medium text-red-400 hover:text-red-300"
+              title={videoUrl}
+            >
+              <Video className="h-3.5 w-3.5" />
+              {getVideoLinkLabel(videoUrl)}
+            </span>
+          )}
+        </div>
+        );
+      })()}
 
       {clickable && (
         <div className="mt-3 text-xs font-medium text-red-400">
@@ -123,12 +156,20 @@ export default function IncidentCard({
 
   if (clickable) {
     return (
-      <Link
-        href={`/incidents/${id}`}
-        className="block rounded-xl border border-zinc-800 bg-zinc-900/50 p-5 transition-all hover:border-red-500/30 hover:bg-zinc-900"
+      <div
+        role="link"
+        tabIndex={0}
+        onClick={() => router.push(`/incidents/${id}`)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            router.push(`/incidents/${id}`);
+          }
+        }}
+        className="block cursor-pointer rounded-xl border border-zinc-800 bg-zinc-900/50 p-5 transition-all hover:border-red-500/30 hover:bg-zinc-900"
       >
         {cardContent}
-      </Link>
+      </div>
     );
   }
 

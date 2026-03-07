@@ -1,0 +1,76 @@
+{
+  "week": 25,
+  "matches": [
+    {
+      "week": 25,
+      "date": "2026-03-07",
+      "homeTeam": "Beşiktaş",
+      "awayTeam": "Galatasaray",
+      "league": "Süper Lig 2025-26",
+      "incidents": [
+        {
+          "minute": 20,
+          "type": "POSSIBLE_PENALTY",
+          "description": "Baris Alper Yilmaz'in ceza sahasina girdigi atakta Agbadou mudahalesi sonrasi yerde kaldigi pozisyonda Galatasaray penalti bekledi. Hakem oyunu devam ettirdi, VAR'dan inceleme tavsiyesi gelmemesi derbi sonrasi Ekşi basliklarinda en cok tartisilan kararlardan biri oldu.",
+          "confidenceScore": 0.84,
+          "sources": [
+            "https://eksisozluk.com/7-mart-2026-besiktas-galatasaray-maci--8074595?a=popular",
+            "https://eksisozluk.com/7-mart-2026-turk-futbolunda-kara-gece--8080944?a=popular",
+            "https://turkinform.com.tr/ben-dev-derbide-galatasaray-cephesinden-penalti-itirazi-var-odasi-sessiz-kaldi"
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": null,
+          "type": "MISSED_RED_CARD",
+          "description": "Besiktas cephesi, Sane'nin faulunde yalnizca sari kart cikmasina sert tepki gosterdi. Kulubun resmi hesabinin 'Daha ne olmasi gerekiyor?' paylasimi ve ayni pozisyonun derbi sonu tartisma basliklarina tasinmasi, kamuoyunda verilmeyen kirmizi kart itirazini one cikardi. Ahmet Cakar da bu pozisyonda kirmizi kart olmasi gerektigini belirtti.",
+          "confidenceScore": 0.81,
+          "sources": [
+            "https://www.youtube.com/shorts/DeODXRRJBeA",
+            "https://eksisozluk.com/7-mart-2026-besiktas-galatasaray-maci--8074595?a=popular",
+            "https://eksisozluk.com/7-mart-2026-turk-futbolunda-kara-gece--8080944?a=popular",
+            "https://turkinform.com.tr/besiktas-cephesinden-sari-kart-kararina-tepki-daha-ne-olmasi-gerekiyor"
+          ],
+          "videoUrl": "https://www.youtube.com/shorts/DeODXRRJBeA",
+          "relatedVideos": [
+            { "url": "https://www.youtube.com/shorts/DeODXRRJBeA", "title": "Ahmet Çakar: Sane pozisyonunda kırmızı kart olmalıydı (YouTube Shorts)" }
+          ],
+          "refereeComments": [
+            { "author": "Ahmet Çakar", "text": "Sane'nin ilk sarı aldığı pozisyonda kırmızı kart olması lazım.", "sourceUrl": "https://www.youtube.com/shorts/DeODXRRJBeA" }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": null,
+          "type": "POSSIBLE_OFFSIDE_GOAL",
+          "description": "Victor Osimhen'in golunde Besiktas cephesi ofsayt itirazinda bulundu. Yari otomatik ofsayt sistemi ihlal olmadigini aciklasa da, VAR gorselinin yayinlanmasi ve karar sonrasi tepkiler pozisyonu haftanin en cok konusulan ofsayt tartismalarindan biri haline getirdi.",
+          "confidenceScore": 0.77,
+          "sources": [
+            "https://eksisozluk.com/7-mart-2026-besiktas-galatasaray-maci--8074595?a=popular",
+            "https://eksisozluk.com/7-mart-2026-turk-futbolunda-kara-gece--8080944?a=popular",
+            "https://turkinform.com.tr/besiktasin-ofsayt-itirazinda-bulundugu-golun-var-goruntusu-yayinlandi"
+          ],
+          "status": "APPROVED"
+        }
+      ]
+    },
+    {
+      "week": 25,
+      "date": "2026-03-08",
+      "homeTeam": "Fenerbahçe",
+      "awayTeam": "Samsunspor",
+      "league": "Süper Lig 2025-26",
+      "note": "Tarama tamamlandi; Ekşi basligi incelendi, belirgin tartismali hakem karari tespit edilmedi",
+      "incidents": []
+    },
+    {
+      "week": 25,
+      "date": "2026-03-09",
+      "homeTeam": "Kayserispor",
+      "awayTeam": "Trabzonspor",
+      "league": "Süper Lig 2025-26",
+      "note": "Tarama tamamlandi; Ekşi basligi incelendi, belirgin tartismali hakem karari tespit edilmedi",
+      "incidents": []
+    }
+  ]
+}

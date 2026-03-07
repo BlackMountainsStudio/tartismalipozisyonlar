@@ -72,14 +72,14 @@ export default function PublicMatchDetailPage({
 
   if (!match) {
     return (
-      <div className="mx-auto max-w-7xl px-4 py-20 text-center sm:px-6">
+      <div className="mx-auto max-w-4xl px-4 py-20 text-center sm:px-6">
         <p className="text-lg text-zinc-400">Maç bulunamadı</p>
       </div>
     );
   }
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6">
+    <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
       <button
         onClick={() => router.push("/")}
         className="mb-6 flex items-center gap-2 text-sm text-zinc-400 transition-colors hover:text-white"

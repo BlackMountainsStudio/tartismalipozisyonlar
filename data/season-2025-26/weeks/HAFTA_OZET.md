@@ -5,6 +5,7 @@
 
 | Hafta | Dolu | Atlanan |
 |-------|------|---------|
+| 25 | BJK–GS (3 incident), FB–Samsunspor (tarama, tartışma yok), Kayseri–TS (tarama, tartışma yok) | — |
 | 24 | TS–Fatih Karagümrük (tarama, tartışma yok), GS–Alanyaspor (3 incident), Kocaeli–BJK (tarama, tartışma yok), Antalya–FB (2 incident) | — |
 | 23 | — | Konya–GS, BJK–Göztepe, Gaziantep–TS, FB–Kasımpaşa |
 | 22 | TS–FB (3 incident) | GS–Eyüpspor, Başakşehir–BJK |

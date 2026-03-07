@@ -1,0 +1,17 @@
+# Football AI Platform - Cursor Rules
+
+## Git Workflow
+- Her commit işlemi tamamlandıktan sonra otomatik olarak `git push` yapılmalıdır
+- Commit mesajları Türkçe olmalı ve değişiklikleri açıkça açıklamalıdır
+- Commit öncesi linter hataları kontrol edilmeli ve düzeltilmelidir
+
+## Code Style
+- TypeScript strict mode kullanılmalı
+- Component'lerde "use client" direktifi gerektiğinde eklenmeli
+- Tailwind CSS class'ları kullanılmalı
+- Mobil responsive tasarım öncelikli olmalı
+
+## Project Conventions
+- Site adı: "Var Odası"
+- Domain: "varodasi.com"
+- Marka renkleri: Kırmızı (#ef4444) ve zinc tonları

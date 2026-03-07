@@ -45,7 +45,7 @@ export default function CommentatorsPage() {
   }
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6">
+    <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
       <div className="mb-10 text-center">
         <div className="mb-4 flex justify-center">
           <div className="rounded-2xl bg-red-500/10 p-4">
