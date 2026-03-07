@@ -3,7 +3,8 @@
 import { useState, useEffect, useCallback, use } from "react";
 import { useRouter } from "next/navigation";
 import IncidentCard from "@/components/IncidentCard";
-import { ArrowLeft, Loader2, Calendar, Trophy } from "lucide-react";
+import CommentSection from "@/components/CommentSection";
+import { ArrowLeft, Loader2, Calendar, Trophy, Shield } from "lucide-react";
 
 interface Incident {
   id: string;
@@ -118,11 +119,12 @@ export default function PublicMatchDetailPage({
 
       {incidents.length === 0 ? (
         <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-zinc-800 py-16 text-center">
+          <Shield className="mb-4 h-10 w-10 text-zinc-700" />
           <p className="text-lg text-zinc-400">
-            Bu maç için onaylanmış tartışmalı pozisyon bulunmuyor
+            Bu maç için tartışmalı pozisyon bulunamadı
           </p>
           <p className="mt-1 text-sm text-zinc-500">
-            Pozisyonlar yöneticiler tarafından onaylandıktan sonra burada görünecek
+            Hakem kararlarında önemli bir tartışma tespit edilmedi
           </p>
         </div>
       ) : (
@@ -146,6 +148,10 @@ export default function PublicMatchDetailPage({
         </div>
       )}
 
+      {/* Maç Hakkında Genel Yorumlar */}
+      <div className="mt-10">
+        <CommentSection matchId={matchId} />
+      </div>
     </div>
   );
 }
