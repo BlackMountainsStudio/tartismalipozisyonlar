@@ -18,6 +18,7 @@ interface IncidentCardProps {
 }
 
 const INCIDENT_TYPE_LABELS: Record<string, { label: string; icon: React.ReactNode }> = {
+  MAÇ_ÖZETİ: { label: "Maç Özeti", icon: <Eye className="h-4 w-4" /> },
   POSSIBLE_PENALTY: { label: "Penaltı Pozisyonu", icon: <Flag className="h-4 w-4" /> },
   PENALTY: { label: "Penaltı Kararı", icon: <Flag className="h-4 w-4" /> },
   POSSIBLE_OFFSIDE_GOAL: { label: "Ofsayt Tartışması", icon: <Eye className="h-4 w-4" /> },

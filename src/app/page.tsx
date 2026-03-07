@@ -2,7 +2,16 @@
 
 import { useState, useEffect } from "react";
 import MatchCard from "@/components/MatchCard";
-import { Shield, Loader2, TrendingUp, AlertTriangle, Search } from "lucide-react";
+import { Shield, Loader2, TrendingUp, AlertTriangle, Search, ArrowUpDown, Users } from "lucide-react";
+
+const TRACKED_TEAMS = [
+  "Fenerbahçe",
+  "Galatasaray",
+  "Beşiktaş",
+  "Trabzonspor",
+] as const;
+
+type WeekSort = "asc" | "desc";
 
 interface Match {
   id: string;
@@ -18,6 +27,8 @@ export default function HomePage() {
   const [matches, setMatches] = useState<Match[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
+  const [weekSort, setWeekSort] = useState<WeekSort>("desc");
+  const [selectedTeams, setSelectedTeams] = useState<string[]>([]);
 
   useEffect(() => {
     async function fetchMatches() {
@@ -43,12 +54,20 @@ export default function HomePage() {
   );
 
   const filteredMatches = seasonMatches.filter((m) => {
-    if (!search) return true;
-    const q = search.toLowerCase();
-    return (
-      m.homeTeam.toLowerCase().includes(q) ||
-      m.awayTeam.toLowerCase().includes(q)
-    );
+    if (search) {
+      const q = search.toLowerCase();
+      if (
+        !m.homeTeam.toLowerCase().includes(q) &&
+        !m.awayTeam.toLowerCase().includes(q)
+      )
+        return false;
+    }
+    if (selectedTeams.length > 0) {
+      const hasTeam =
+        selectedTeams.includes(m.homeTeam) || selectedTeams.includes(m.awayTeam);
+      if (!hasTeam) return false;
+    }
+    return true;
   });
 
   const groupedMatches = filteredMatches.reduce<Record<number, Match[]>>((groups, match) => {
@@ -61,7 +80,15 @@ export default function HomePage() {
 
   const sortedWeeks = Object.keys(groupedMatches)
     .map(Number)
-    .sort((a, b) => a - b);
+    .sort((a, b) => (weekSort === "asc" ? a - b : b - a));
+
+  const toggleTeam = (team: string) => {
+    setSelectedTeams((prev) =>
+      prev.includes(team) ? prev.filter((t) => t !== team) : [...prev, team]
+    );
+  };
+
+  const clearTeamFilter = () => setSelectedTeams([]);
 
   return (
     <div>
@@ -125,6 +152,66 @@ export default function HomePage() {
               placeholder="Maç ara..."
               className="w-full rounded-lg border border-zinc-700 bg-zinc-800 py-2.5 pl-10 pr-4 text-sm text-white placeholder-zinc-500 outline-none focus:border-red-500"
             />
+          </div>
+        </div>
+
+        {/* Sıralama ve gruplama */}
+        <div className="mb-6 flex flex-wrap items-center gap-4 rounded-xl border border-zinc-800 bg-zinc-900/40 p-4">
+          <div className="flex items-center gap-2">
+            <ArrowUpDown className="h-4 w-4 text-zinc-500" />
+            <span className="text-sm font-medium text-zinc-400">Hafta sırası</span>
+            <div className="flex rounded-lg border border-zinc-700 bg-zinc-800 p-0.5">
+              <button
+                type="button"
+                onClick={() => setWeekSort("asc")}
+                className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
+                  weekSort === "asc"
+                    ? "bg-red-500/20 text-red-400 ring-1 ring-red-500/50"
+                    : "text-zinc-400 hover:text-white"
+                }`}
+              >
+                1 → 24
+              </button>
+              <button
+                type="button"
+                onClick={() => setWeekSort("desc")}
+                className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
+                  weekSort === "desc"
+                    ? "bg-red-500/20 text-red-400 ring-1 ring-red-500/50"
+                    : "text-zinc-400 hover:text-white"
+                }`}
+              >
+                24 → 1
+              </button>
+            </div>
+          </div>
+          <div className="h-4 w-px bg-zinc-700" />
+          <div className="flex flex-wrap items-center gap-2">
+            <Users className="h-4 w-4 text-zinc-500" />
+            <span className="text-sm font-medium text-zinc-400">Takım filtresi</span>
+            {TRACKED_TEAMS.map((team) => (
+              <label
+                key={team}
+                className="flex cursor-pointer items-center gap-1.5 rounded-lg border border-zinc-700 bg-zinc-800 px-2.5 py-1.5 transition-colors hover:bg-zinc-700"
+              >
+                <input
+                  type="checkbox"
+                  checked={selectedTeams.includes(team)}
+                  onChange={() => toggleTeam(team)}
+                  className="h-3.5 w-3.5 rounded border-zinc-600 text-red-500 focus:ring-red-500"
+                />
+                <span className="text-sm text-zinc-300">{team}</span>
+              </label>
+            ))}
+            {selectedTeams.length > 0 && (
+              <button
+                type="button"
+                onClick={clearTeamFilter}
+                className="rounded-md px-2 py-1 text-xs font-medium text-zinc-500 hover:text-white"
+              >
+                Temizle
+              </button>
+            )}
           </div>
         </div>
 

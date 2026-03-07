@@ -49,59 +49,81 @@ export async function POST(request: NextRequest) {
 
     const hasOpenAI = !!process.env.OPENAI_API_KEY;
 
+    const runCrawlAndAnalyze = async (forceLocal = false): Promise<{
+      message: string;
+      crawledSources?: number;
+      commentsAnalyzed?: number;
+      incidentsDetected?: number;
+      mode?: string;
+    }> => {
+      const { CrawlerOrchestrator } = await import("@/crawler");
+      const { detectIncidents, detectIncidentsLocal, mapIncidentType } = await import("@/agents/incidentDetector");
+      const useAI = hasOpenAI && !forceLocal;
+
+      const orchestrator = new CrawlerOrchestrator(2);
+      orchestrator.addJob(match.homeTeam, match.awayTeam, matchId);
+      const resultsMap = await orchestrator.processQueue();
+      const results = resultsMap.get(matchId) ?? [];
+
+      const allComments: string[] = [];
+      const crawlEntries: { source: string; url: string; rawContent: string }[] = [];
+
+      for (const result of results) {
+        crawlEntries.push({
+          source: result.source,
+          url: result.url,
+          rawContent: result.content,
+        });
+        if (result.source === "reddit") {
+          const r = result as { comments: { body: string }[] };
+          allComments.push(...r.comments.map((c) => c.body));
+        } else if (result.source === "eksisozluk") {
+          const e = result as { entries: { body: string }[] };
+          allComments.push(...e.entries.map((ent) => ent.body));
+        }
+      }
+
+      const matchContext = `${match.homeTeam} vs ${match.awayTeam} (Week ${match.week})`;
+      const detectedIncidents = useAI
+        ? await detectIncidents(allComments, matchContext)
+        : detectIncidentsLocal(allComments, matchContext);
+
+      for (const incident of detectedIncidents) {
+        await prisma.incident.create({
+          data: {
+            matchId,
+            minute: incident.minute,
+            type: mapIncidentType(incident.type),
+            description: incident.description,
+            confidenceScore: incident.confidence,
+            sources: JSON.stringify(crawlEntries.map((e) => e.url)),
+          },
+        });
+      }
+
+      return {
+        message: useAI ? "Crawl and analysis completed (live)" : "Crawl and analysis completed (local, no API key)",
+        crawledSources: crawlEntries.length,
+        commentsAnalyzed: allComments.length,
+        incidentsDetected: detectedIncidents.length,
+        mode: useAI ? undefined : "local",
+      };
+    };
+
     if (hasOpenAI) {
       try {
-        const { CrawlerOrchestrator } = await import("@/crawler");
-        const { detectIncidents, mapIncidentType } = await import("@/agents/incidentDetector");
-
-        const orchestrator = new CrawlerOrchestrator(2);
-        orchestrator.addJob(match.homeTeam, match.awayTeam, matchId);
-        const resultsMap = await orchestrator.processQueue();
-        const results = resultsMap.get(matchId) ?? [];
-
-        const allComments: string[] = [];
-        const crawlEntries: { source: string; url: string; rawContent: string }[] = [];
-
-        for (const result of results) {
-          crawlEntries.push({
-            source: result.source,
-            url: result.url,
-            rawContent: result.content,
-          });
-          if (result.source === "reddit") {
-            allComments.push(...result.comments.map((c) => c.body));
-          } else if (result.source === "eksisozluk") {
-            allComments.push(...result.entries.map((e) => e.body));
-          }
-        }
-
-        if (allComments.length > 0) {
-          const matchContext = `${match.homeTeam} vs ${match.awayTeam} (Week ${match.week})`;
-          const detectedIncidents = await detectIncidents(allComments, matchContext);
-
-          for (const incident of detectedIncidents) {
-            await prisma.incident.create({
-              data: {
-                matchId,
-                minute: incident.minute,
-                type: mapIncidentType(incident.type),
-                description: incident.description,
-                confidenceScore: incident.confidence,
-                sources: JSON.stringify(crawlEntries.map((e) => e.url)),
-              },
-            });
-          }
-
-          return NextResponse.json({
-            message: "Crawl and analysis completed (live)",
-            crawledSources: crawlEntries.length,
-            commentsAnalyzed: allComments.length,
-            incidentsDetected: detectedIncidents.length,
-          });
-        }
+        const payload = await runCrawlAndAnalyze(false);
+        return NextResponse.json(payload);
       } catch (err) {
-        console.warn("Live crawl failed, falling back to demo mode:", err);
+        console.warn("Live crawl failed, falling back to local detector:", err);
       }
+    }
+
+    try {
+      const payload = await runCrawlAndAnalyze(true);
+      return NextResponse.json(payload);
+    } catch (err) {
+      console.warn("Crawl failed, falling back to demo mode:", err);
     }
 
     const demoIncidents = DEMO_INCIDENTS.default;

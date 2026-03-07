@@ -23,6 +23,7 @@
       "homeTeam": "Fenerbahçe",
       "awayTeam": "Alanyaspor",
       "league": "Süper Lig 2025-26",
+      "note": "Ertelendi",
       "incidents": []
     },
     {
@@ -31,6 +32,7 @@
       "homeTeam": "Kayserispor",
       "awayTeam": "Beşiktaş",
       "league": "Süper Lig 2025-26",
+      "note": "Ertelendi",
       "incidents": []
     }
   ]

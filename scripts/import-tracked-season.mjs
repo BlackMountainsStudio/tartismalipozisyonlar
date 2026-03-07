@@ -23,6 +23,7 @@ function loadWeekFiles() {
 }
 
 async function upsertMatch(match) {
+  const note = match.note ?? null;
   const existingResult = await pool.query(
     `
       SELECT "id"
@@ -31,23 +32,30 @@ async function upsertMatch(match) {
         AND "awayTeam" = $2
         AND "week" = $3
         AND "league" = $4
-        AND "date" = $5::timestamp
       LIMIT 1
     `,
-    [match.homeTeam, match.awayTeam, match.week, match.league, match.date]
+    [match.homeTeam, match.awayTeam, match.week, match.league]
   );
 
   if (existingResult.rows[0]) {
+    await pool.query(
+      `
+      UPDATE "Match"
+      SET "date" = $2::timestamp, "note" = $3, "updatedAt" = NOW()
+      WHERE "id" = $1
+    `,
+      [existingResult.rows[0].id, match.date, note]
+    );
     return existingResult.rows[0];
   }
 
   const insertResult = await pool.query(
     `
-      INSERT INTO "Match" ("id", "homeTeam", "awayTeam", "league", "week", "date", "createdAt", "updatedAt")
-      VALUES (concat('season_', md5(random()::text || clock_timestamp()::text)), $1, $2, $3, $4, $5::timestamp, NOW(), NOW())
+      INSERT INTO "Match" ("id", "homeTeam", "awayTeam", "league", "week", "date", "note", "createdAt", "updatedAt")
+      VALUES (concat('season_', md5(random()::text || clock_timestamp()::text)), $1, $2, $3, $4, $5::timestamp, $6, NOW(), NOW())
       RETURNING "id"
     `,
-    [match.homeTeam, match.awayTeam, match.league, match.week, match.date]
+    [match.homeTeam, match.awayTeam, match.league, match.week, match.date, note]
   );
 
   return insertResult.rows[0];

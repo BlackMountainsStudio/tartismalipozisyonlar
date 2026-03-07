@@ -30,9 +30,11 @@
           "description": "Fenerbahce'nin korner sonrasi buldugu gol VAR incelemesiyle iptal edildi. Skriniar'in elle oynadigi ve hucum fazinda kural ihlali oldugu gerekcesiyle verilen iptal karari derbinin en cok konusulan anlarindan biri oldu.",
           "confidenceScore": 0.84,
           "sources": [
+            "https://beinsports.com.tr/lig/super-lig/pozisyonlar/2025-2026/14/fenerbahce-galatasaray/iste-fenerbahcenin-iptal-edilen-golu-38316",
             "https://hurriyet.com.tr/sporarena/fenerbahce-galatasaray-derbisinde-cok-konusulan-kararlar-iptal-edilen-gol-penalti-beklentisi-43039078",
             "https://www.tgrthaber.com/futbol/eski-hakemler-fenerbahce-galatasaray-macinin-tartismali-pozisyonlarini-yorumladi-penalti-kirmizi-kart-2973745"
           ],
+          "videoUrl": "https://beinsports.com.tr/lig/super-lig/pozisyonlar/2025-2026/14/fenerbahce-galatasaray/iste-fenerbahcenin-iptal-edilen-golu-38316",
           "status": "APPROVED"
         },
         {
@@ -41,9 +43,11 @@
           "description": "Baris Alper Yilmaz'in kaleciyle temas sonrasi yerde kaldigi pozisyonda Galatasaray penaltı bekledi. Mac sonu eski hakem yorumlarinda pozisyon net penaltı olarak degerlendirilmedi ancak karar uzun sure tartisildi.",
           "confidenceScore": 0.73,
           "sources": [
+            "https://beinsports.com.tr/lig/super-lig/pozisyonlar/2025-2026/14/fenerbahce-galatasaray/fenerbahce-asensio-ile-gole-yaklasti-38317",
             "https://hurriyet.com.tr/sporarena/fenerbahce-galatasaray-derbisinde-cok-konusulan-kararlar-iptal-edilen-gol-penalti-beklentisi-43039078",
             "https://www.milliyet.com.tr/skorer/fenerbahce-galatasaray-derbisinin-tartismali-pozisyonlari-trioda-degerlendirildi-7493806"
           ],
+          "videoUrl": "https://beinsports.com.tr/lig/super-lig/pozisyonlar/2025-2026/14/fenerbahce-galatasaray/fenerbahce-asensio-ile-gole-yaklasti-38317",
           "status": "APPROVED"
         }
       ]

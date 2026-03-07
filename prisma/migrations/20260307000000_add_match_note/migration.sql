@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Match" ADD COLUMN IF NOT EXISTS "note" TEXT;

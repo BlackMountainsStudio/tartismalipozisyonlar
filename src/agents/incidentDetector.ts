@@ -1,5 +1,6 @@
 import OpenAI from "openai";
 import { createLogger } from "@/utils/logger";
+import { CONTROVERSY_KEYWORDS_TR, CONTROVERSY_KEYWORDS_EN } from "@/utils/keywords";
 
 const logger = createLogger("IncidentDetector");
 
@@ -19,6 +20,122 @@ const INCIDENT_TYPE_MAP: Record<string, string> = {
 
 export function mapIncidentType(type: string): string {
   return INCIDENT_TYPE_MAP[type] ?? "VAR_CONTROVERSY";
+}
+
+// --- Local detector (no API key): keyword + regex ---
+const KEYWORD_TO_TYPE: Record<string, DetectedIncident["type"]> = {
+  penaltı: "Possible Penalty",
+  penalty: "Possible Penalty",
+  "net penaltı": "Possible Penalty",
+  "penaltı verilmedi": "Possible Penalty",
+  "clear penalty": "Possible Penalty",
+  "penalty not given": "Possible Penalty",
+  "penaltı pozisyonu": "Possible Penalty",
+  "el var": "Possible Penalty",
+  handball: "Possible Penalty",
+  ofsayt: "Possible Offside Goal",
+  offside: "Possible Offside Goal",
+  "ofsayt değil": "Possible Offside Goal",
+  "ofsayt gol": "Possible Offside Goal",
+  "gol iptali": "Possible Offside Goal",
+  "goal disallowed": "Possible Offside Goal",
+  "not offside": "Possible Offside Goal",
+  "offside goal": "Possible Offside Goal",
+  "kırmızı kart": "Missed Red Card",
+  "red card": "Missed Red Card",
+  "kırmızı kart verilmedi": "Missed Red Card",
+  "red card not given": "Missed Red Card",
+  "sarı kart": "Missed Red Card",
+  VAR: "VAR Controversy",
+  "VAR skandalı": "VAR Controversy",
+  "VAR scandal": "VAR Controversy",
+  "hakem hatası": "VAR Controversy",
+  "hakem skandalı": "VAR Controversy",
+  "referee mistake": "VAR Controversy",
+  "referee controversy": "VAR Controversy",
+  "yanlış karar": "VAR Controversy",
+  "wrong decision": "VAR Controversy",
+};
+
+const MINUTE_REGEX =
+  /(\d{1,3})\s*[\'\′]?\s*(?:dk|dakika|minute|min|')/gi;
+
+function extractMinute(text: string): number | null {
+  const m = MINUTE_REGEX.exec(text);
+  if (m) {
+    const num = parseInt(m[1], 10);
+    return num >= 1 && num <= 120 ? num : null;
+  }
+  const numOnly = text.match(/\b(\d{1,2})\s*(?:\.\s*yarı|half|\s*-\s*)/i);
+  if (numOnly) return parseInt(numOnly[1], 10);
+  return null;
+}
+
+export function detectIncidentsLocal(
+  comments: string[],
+  _matchContext: string
+): DetectedIncident[] {
+  const incidentsByKey = new Map<string, { count: number; minutes: number[]; snippets: string[] }>();
+
+  const allKeywords = [
+    ...CONTROVERSY_KEYWORDS_TR,
+    ...CONTROVERSY_KEYWORDS_EN,
+  ].filter((k) => k.length > 2);
+  const sortedKeywords = [...allKeywords].sort((a, b) => b.length - a.length);
+
+  for (const comment of comments) {
+    const lower = comment.toLowerCase().trim();
+    if (lower.length < 10) continue;
+
+    let matchedType: DetectedIncident["type"] | null = null;
+    for (const kw of sortedKeywords) {
+      if (lower.includes(kw.toLowerCase())) {
+        matchedType = KEYWORD_TO_TYPE[kw] ?? KEYWORD_TO_TYPE[kw.toLowerCase()] ?? "VAR Controversy";
+        break;
+      }
+    }
+    if (!matchedType) continue;
+
+    const minute = extractMinute(comment);
+    const key = `${matchedType}|${minute ?? "?"}`;
+    const existing = incidentsByKey.get(key);
+    const snippet = comment.slice(0, 180).trim() + (comment.length > 180 ? "…" : "");
+    if (existing) {
+      existing.count++;
+      if (minute != null) existing.minutes.push(minute);
+      if (existing.snippets.length < 2) existing.snippets.push(snippet);
+    } else {
+      incidentsByKey.set(key, {
+        count: 1,
+        minutes: minute != null ? [minute] : [],
+        snippets: [snippet],
+      });
+    }
+  }
+
+  const result: DetectedIncident[] = [];
+  for (const [key, data] of incidentsByKey) {
+    const [type] = key.split("|");
+    const avgMinute =
+      data.minutes.length > 0
+        ? Math.round(
+            data.minutes.reduce((a, b) => a + b, 0) / data.minutes.length
+          )
+        : null;
+    const confidence = Math.min(0.95, 0.5 + data.count * 0.08);
+    const description =
+      data.snippets[0]?.slice(0, 200) ??
+      `Taraftar yorumlarına göre ${type} tartışması.`;
+    result.push({
+      type: type as DetectedIncident["type"],
+      minute: avgMinute,
+      description,
+      confidence,
+    });
+  }
+
+  logger.info(`Local detector: ${result.length} incidents from ${comments.length} comments`);
+  return result;
 }
 
 function getOpenAIClient(): OpenAI {

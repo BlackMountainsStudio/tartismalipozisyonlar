@@ -36,7 +36,7 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { homeTeam, awayTeam, league, week, date } = body;
+    const { homeTeam, awayTeam, league, week, date, note } = body;
 
     if (!homeTeam || !awayTeam || !week || !date) {
       return NextResponse.json(
@@ -52,6 +52,7 @@ export async function POST(request: NextRequest) {
         league: league ?? "Süper Lig",
         week: parseInt(week),
         date: new Date(date),
+        note: note ?? undefined,
       },
     });
 
