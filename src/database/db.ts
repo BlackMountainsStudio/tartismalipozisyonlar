@@ -35,9 +35,19 @@ function createPrismaClient(): PrismaClient {
     }
   }
 
-  // Default: Prisma will use DATABASE_URL from environment
-  // If no adapter available, use default PrismaClient with empty config
-  return new PrismaClient({});
+  // If we have a PostgreSQL URL but no adapter, throw an error
+  if (databaseUrl && !databaseUrl.startsWith("file:")) {
+    throw new Error(
+      `DATABASE_URL is set but no adapter available. Please ensure @prisma/adapter-neon or @prisma/adapter-pg is installed.`
+    );
+  }
+
+  // This should never happen in production (PostgreSQL schema)
+  // But TypeScript needs a return statement
+  // In practice, this code path won't execute if DATABASE_URL is properly set
+  throw new Error(
+    "PrismaClient requires an adapter. DATABASE_URL must be set with a PostgreSQL connection string."
+  );
 }
 
 export const prisma = globalForPrisma.prisma ?? createPrismaClient();
