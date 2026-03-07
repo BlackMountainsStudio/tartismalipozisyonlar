@@ -7,7 +7,7 @@
       "homeTeam": "Trabzonspor",
       "awayTeam": "Fatih Karagümrük",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
+      "note": "Tarama tamamlandi; belirgin tartismali hakem karari tespit edilmedi",
       "incidents": []
     },
     {
@@ -16,8 +16,40 @@
       "homeTeam": "Galatasaray",
       "awayTeam": "Alanyaspor",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "incidents": [
+        {
+          "minute": 22,
+          "type": "GOAL_DISALLOWED",
+          "description": "Torreira'nin ara pasinda Bos kaleye giden Boey golu, VAR uyarisi sonrasi ofsayt gerekcesiyle iptal edildi. Pozisyon hafta sonunun en cok konusulan VAR kararlarindan biri oldu.",
+          "confidenceScore": 0.84,
+          "sources": [
+            "https://beinsports.com.tr/mac-ozetleri-goller/super-lig/pozisyonlar/2025-2026/24/galatasaray-corendon-alanyaspor/galatasarayin-golu-varda-iptal-edildi-39075"
+          ],
+          "videoUrl": "https://beinsports.com.tr/mac-ozetleri-goller/super-lig/pozisyonlar/2025-2026/24/galatasaray-corendon-alanyaspor/galatasarayin-golu-varda-iptal-edildi-39075",
+          "status": "APPROVED"
+        },
+        {
+          "minute": 52,
+          "type": "POSSIBLE_PENALTY",
+          "description": "Osimhen'in Aliti ile temas sonrasi yerde kaldigi pozisyonda Galatasaray penaltı bekledi. Trio yorumunda Deniz Coban penalti verilse daha dogru olurdu derken diger iki eski hakem devam kararini destekledi.",
+          "confidenceScore": 0.79,
+          "sources": [
+            "https://www.yenicaggazetesi.com/bein-trio-galatasaray-alanyaspor-macini-degerlendirdi-hakem-kararlari-dogru-mu-besiktas-derbisi-oncesi-ali-sansalanin-kart-ve-ceza-kararlari-1005091h.htm"
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 93,
+          "type": "MISSED_RED_CARD",
+          "description": "Singo'ya sari kartla gecilen gec ve kontrolsuz mudahale eski hakemlerce net kirmizi kart olarak yorumlandi. VAR'in mudahale etmemesi mac sonrasi en sert elestirilen karar oldu.",
+          "confidenceScore": 0.93,
+          "sources": [
+            "https://www.yenicaggazetesi.com/bein-trio-galatasaray-alanyaspor-macini-degerlendirdi-hakem-kararlari-dogru-mu-besiktas-derbisi-oncesi-ali-sansalanin-kart-ve-ceza-kararlari-1005091h.htm",
+            "https://www.yenicaggazetesi.com/eski-hakem-ahmet-cakar-galatasaray-alanyaspor-macinda-singonun-pozisyonuna-isyan-etti-besiktas-derbisi-oncesi-kart-ve-ceza-kararini-yorumladi-1004991h.htm"
+          ],
+          "status": "APPROVED"
+        }
+      ]
     },
     {
       "week": 24,
@@ -25,7 +57,7 @@
       "homeTeam": "Kocaelispor",
       "awayTeam": "Beşiktaş",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
+      "note": "Tarama tamamlandi; belirgin tartismali hakem karari tespit edilmedi",
       "incidents": []
     },
     {
@@ -34,8 +66,28 @@
       "homeTeam": "Antalyaspor",
       "awayTeam": "Fenerbahçe",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "incidents": [
+        {
+          "minute": null,
+          "type": "FOUL",
+          "description": "Ismail Yuksek'e yapilan mudahalede oyun devam etti. Trio ekibindeki uc eski hakem de pozisyonda net faul oldugu ve hakemin bu ihlali atladigi gorusunde birlesti.",
+          "confidenceScore": 0.78,
+          "sources": [
+            "https://www.hurriyet.com.tr/sporarena/fenerbahcenin-antalyaspor-macindaki-hakem-kararlarini-trio-tek-tek-inceledi-tartismasiz-acik-bariz-bir-penalti-43119496"
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": null,
+          "type": "PENALTY",
+          "description": "Mert Muldur'un ceza sahasinda ayagina basilan pozisyonda Fenerbahce lehine penalti verilmedi. Trio yorumlarinda bu mudahale tartismasiz, acik ve bariz bir penalti olarak degerlendirildi.",
+          "confidenceScore": 0.94,
+          "sources": [
+            "https://www.hurriyet.com.tr/sporarena/fenerbahcenin-antalyaspor-macindaki-hakem-kararlarini-trio-tek-tek-inceledi-tartismasiz-acik-bariz-bir-penalti-43119496"
+          ],
+          "status": "APPROVED"
+        }
+      ]
     }
   ]
 }

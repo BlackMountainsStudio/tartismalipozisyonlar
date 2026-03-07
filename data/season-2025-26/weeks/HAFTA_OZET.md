@@ -1,11 +1,11 @@
 # 24→1 Hafta: 4 Takım (FB, GS, BJK, TS) İçerik Özeti
 
-**Dolu** = en az 1 incident veya anlamlı note (Ertelendi vb.)  
-**Atlandı** = incidents: [], note yok
+**Dolu** = en az 1 incident veya ozel durum/tarama note'u  
+**Atlandi** = tartismali incident eklenmeyen maclar; bazilarinda placeholder ya da tarama note'u olabilir
 
 | Hafta | Dolu | Atlanan |
 |-------|------|---------|
-| 24 | — | TS–Fatih Karagümrük, GS–Alanyaspor, Kocaeli–BJK, Antalya–FB |
+| 24 | TS–Fatih Karagümrük (tarama, tartışma yok), GS–Alanyaspor (3 incident), Kocaeli–BJK (tarama, tartışma yok), Antalya–FB (2 incident) | — |
 | 23 | — | Konya–GS, BJK–Göztepe, Gaziantep–TS, FB–Kasımpaşa |
 | 22 | TS–FB (3 incident) | GS–Eyüpspor, Başakşehir–BJK |
 | 21 | — | Samsun–TS, BJK–Alanya, Rize–GS, FB–Gençlerbirliği |
@@ -30,4 +30,4 @@
 | 2 | — | GS–Karagümrük, Göztepe–FB, BJK–Eyüpspor, Kasımpaşa–TS |
 | 1 | 2 maç Ertelendi | Gaziantep–GS, TS–Kocaeli; FB–Alanya (Ertelendi), Kayseri–BJK (Ertelendi) |
 
-**Toplam:** İçerik dolu 6 maç (incident’lı) + 3 maç note’lu (Ertelendi). Atlanan: incident ve note olmayan tüm diğer maçlar; atlananlara `"note": "Tartışmalı pozisyon eklenmedi"` eklendi.
+**Not:** 24. hafta ayri taranip guncellendi. Bu dosyadaki "Atlandi" sutunu, tartismali incident eklenmeyen maclari gosterir.
