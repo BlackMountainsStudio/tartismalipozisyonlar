@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Shield, LayoutDashboard, MessageSquare, Send, Mail } from "lucide-react";
+import { Shield, LayoutDashboard, MessageSquare, Send, Mail, Scale } from "lucide-react";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -21,6 +21,10 @@ export default function Navbar() {
         <div className="flex items-center gap-1">
           <NavLink href="/" active={pathname === "/"}>
             Maçlar
+          </NavLink>
+          <NavLink href="/commentators" active={pathname.startsWith("/commentators")}>
+            <Scale className="h-4 w-4" />
+            Yorumcular
           </NavLink>
           <NavLink href="/oneri" active={pathname === "/oneri"}>
             <Send className="h-4 w-4" />

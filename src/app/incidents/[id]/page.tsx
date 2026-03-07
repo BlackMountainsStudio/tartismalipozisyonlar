@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, use } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import CommentSection from "@/components/CommentSection";
 import ConfidenceBadge from "@/components/ConfidenceBadge";
 import {
@@ -18,13 +19,23 @@ import {
   Newspaper,
   Scale,
   Video,
+  CheckCircle2,
+  XCircle,
+  MinusCircle,
+  ChevronRight,
 } from "lucide-react";
 
-interface RefereeComment {
-  name: string;
+interface ExpertOpinion {
+  id: string;
   comment: string;
-  url: string;
-  role: string;
+  stance: string;
+  sourceUrl: string | null;
+  commentator: {
+    id: string;
+    name: string;
+    slug: string;
+    role: string;
+  };
 }
 
 interface RelatedVideo {
@@ -48,8 +59,8 @@ interface Incident {
   sources: string[];
   videoUrl: string | null;
   relatedVideos: RelatedVideo[] | string;
-  refereeComments: RefereeComment[] | string;
   newsArticles: NewsArticle[] | string;
+  opinions: ExpertOpinion[];
   status: string;
   match: {
     id: string;
@@ -85,6 +96,27 @@ const STATUS_STYLES: Record<string, string> = {
   PENDING: "bg-amber-500/10 text-amber-400 ring-amber-500/30",
   APPROVED: "bg-emerald-500/10 text-emerald-400 ring-emerald-500/30",
   REJECTED: "bg-red-500/10 text-red-400 ring-red-500/30",
+};
+
+const STANCE_INFO: Record<string, { label: string; icon: React.ReactNode; style: string; bg: string }> = {
+  AGREE: {
+    label: "Karar Doğru",
+    icon: <CheckCircle2 className="h-4 w-4" />,
+    style: "text-emerald-400",
+    bg: "border-emerald-500/20 bg-emerald-500/5",
+  },
+  DISAGREE: {
+    label: "Karara İtiraz",
+    icon: <XCircle className="h-4 w-4" />,
+    style: "text-red-400",
+    bg: "border-red-500/20 bg-red-500/5",
+  },
+  NEUTRAL: {
+    label: "Kararsız",
+    icon: <MinusCircle className="h-4 w-4" />,
+    style: "text-zinc-400",
+    bg: "border-zinc-700 bg-zinc-800/30",
+  },
 };
 
 function parseJson<T>(raw: T | string, fallback: T): T {
@@ -149,15 +181,17 @@ export default function IncidentDetailPage({
     color: "text-zinc-400",
   };
 
-  const refereeComments = parseJson<RefereeComment[]>(incident.refereeComments, []);
   const relatedVideos = parseJson<RelatedVideo[]>(incident.relatedVideos, []);
   const newsArticles = parseJson<NewsArticle[]>(incident.newsArticles, []);
+  const opinions = incident.opinions ?? [];
 
   const activeYtId = activeVideo ? extractYouTubeId(activeVideo) : null;
 
+  const agreeCount = opinions.filter((o) => o.stance === "AGREE").length;
+  const disagreeCount = opinions.filter((o) => o.stance === "DISAGREE").length;
+
   return (
     <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
-      {/* Geri butonu */}
       <button
         onClick={() => router.push(`/matches/${incident.match.id}`)}
         className="mb-6 flex items-center gap-2 text-sm text-zinc-400 transition-colors hover:text-white"
@@ -196,7 +230,7 @@ export default function IncidentDetailPage({
         </div>
       </div>
 
-      {/* === GENEL YAZI / DETAY === */}
+      {/* === GENEL YAZI === */}
       <div className="mb-8 rounded-xl border border-zinc-800 bg-zinc-900/50 p-6">
         <h2 className="mb-4 text-lg font-bold text-white">Pozisyon Detayı</h2>
         <p className="whitespace-pre-line text-sm leading-7 text-zinc-300">{incident.description}</p>
@@ -210,7 +244,6 @@ export default function IncidentDetailPage({
             Videolar
           </h2>
 
-          {/* Ana video embed */}
           {activeYtId && (
             <div className="mb-5 aspect-video overflow-hidden rounded-xl border border-zinc-700">
               <iframe
@@ -222,7 +255,6 @@ export default function IncidentDetailPage({
             </div>
           )}
 
-          {/* Video thumbnail listesi */}
           {relatedVideos.length > 0 && (
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               {relatedVideos.map((vid, i) => {
@@ -233,32 +265,21 @@ export default function IncidentDetailPage({
                     key={i}
                     onClick={() => setActiveVideo(vid.url)}
                     className={`group flex gap-3 rounded-lg border p-3 text-left transition-all ${
-                      isActive
-                        ? "border-red-500/50 bg-red-500/5"
-                        : "border-zinc-800 bg-zinc-800/30 hover:border-zinc-700"
+                      isActive ? "border-red-500/50 bg-red-500/5" : "border-zinc-800 bg-zinc-800/30 hover:border-zinc-700"
                     }`}
                   >
-                    {/* Thumbnail */}
                     <div className="relative h-16 w-28 shrink-0 overflow-hidden rounded-md bg-zinc-800">
                       {ytId ? (
-                        <img
-                          src={`https://img.youtube.com/vi/${ytId}/mqdefault.jpg`}
-                          alt={vid.title}
-                          className="h-full w-full object-cover"
-                        />
+                        <img src={`https://img.youtube.com/vi/${ytId}/mqdefault.jpg`} alt={vid.title} className="h-full w-full object-cover" />
                       ) : (
-                        <div className="flex h-full w-full items-center justify-center">
-                          <Video className="h-5 w-5 text-zinc-600" />
-                        </div>
+                        <div className="flex h-full w-full items-center justify-center"><Video className="h-5 w-5 text-zinc-600" /></div>
                       )}
                       <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 transition-opacity group-hover:opacity-100">
                         <Play className="h-6 w-6 text-white" />
                       </div>
                     </div>
                     <div className="min-w-0 flex-1">
-                      <p className="text-sm font-medium leading-snug text-white line-clamp-2">
-                        {vid.title}
-                      </p>
+                      <p className="text-sm font-medium leading-snug text-white line-clamp-2">{vid.title}</p>
                       <p className="mt-1 text-xs text-zinc-500">YouTube</p>
                     </div>
                   </button>
@@ -269,47 +290,74 @@ export default function IncidentDetailPage({
         </div>
       )}
 
-      {/* === HAKEM / UZMAN YORUMLARI === */}
-      {refereeComments.length > 0 && (
+      {/* === UZMAN YORUMLARI (ExpertOpinion) === */}
+      {opinions.length > 0 && (
         <div className="mb-8 rounded-xl border border-zinc-800 bg-zinc-900/50 p-6">
-          <h2 className="mb-5 flex items-center gap-2 text-lg font-bold text-white">
-            <Scale className="h-5 w-5 text-red-400" />
-            Hakem ve Uzman Yorumları
-          </h2>
+          <div className="mb-5 flex items-center justify-between">
+            <h2 className="flex items-center gap-2 text-lg font-bold text-white">
+              <Scale className="h-5 w-5 text-red-400" />
+              Hakem ve Uzman Yorumları
+            </h2>
+            {opinions.length >= 2 && (
+              <div className="flex items-center gap-3 text-xs">
+                {disagreeCount > 0 && (
+                  <span className="flex items-center gap-1 text-red-400">
+                    <XCircle className="h-3.5 w-3.5" /> {disagreeCount} itiraz
+                  </span>
+                )}
+                {agreeCount > 0 && (
+                  <span className="flex items-center gap-1 text-emerald-400">
+                    <CheckCircle2 className="h-3.5 w-3.5" /> {agreeCount} onay
+                  </span>
+                )}
+              </div>
+            )}
+          </div>
+
           <div className="space-y-4">
-            {refereeComments.map((rc, i) => (
-              <div
-                key={i}
-                className="rounded-lg border border-zinc-800 bg-zinc-800/20 p-4"
-              >
-                <div className="mb-2 flex items-center justify-between gap-2">
-                  <div>
-                    <span className="font-semibold text-white">{rc.name}</span>
-                    {rc.role && (
-                      <span className="ml-2 text-xs text-zinc-500">{rc.role}</span>
-                    )}
+            {opinions.map((op) => {
+              const si = STANCE_INFO[op.stance] ?? STANCE_INFO.NEUTRAL;
+              return (
+                <div key={op.id} className={`rounded-lg border p-4 ${si.bg}`}>
+                  <div className="mb-2 flex items-center justify-between gap-2">
+                    <div className="flex items-center gap-2">
+                      <Link
+                        href={`/commentators/${op.commentator.slug}`}
+                        className="font-semibold text-white hover:text-red-400"
+                      >
+                        {op.commentator.name}
+                      </Link>
+                      <span className="text-xs text-zinc-500">{op.commentator.role}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className={`flex items-center gap-1 text-xs font-medium ${si.style}`}>
+                        {si.icon} {si.label}
+                      </span>
+                      <Link
+                        href={`/commentators/${op.commentator.slug}`}
+                        className="text-zinc-600 hover:text-red-400"
+                      >
+                        <ChevronRight className="h-4 w-4" />
+                      </Link>
+                    </div>
                   </div>
-                  {rc.url && (
-                    <a
-                      href={rc.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex shrink-0 items-center gap-1 text-xs text-red-400 transition-colors hover:text-red-300"
-                    >
+                  <p className="text-sm leading-relaxed text-zinc-300 italic">
+                    &ldquo;{op.comment}&rdquo;
+                  </p>
+                  {op.sourceUrl && (
+                    <a href={op.sourceUrl} target="_blank" rel="noopener noreferrer"
+                      className="mt-2 inline-flex items-center gap-1 text-xs text-red-400 hover:text-red-300">
                       Kaynak <ExternalLink className="h-3 w-3" />
                     </a>
                   )}
                 </div>
-                <p className="text-sm leading-relaxed text-zinc-300 italic">
-                  &ldquo;{rc.comment}&rdquo;
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       )}
 
-      {/* === BASIN VE HABER KAYNAKLARI === */}
+      {/* === BASIN VE HABERLER === */}
       {newsArticles.length > 0 && (
         <div className="mb-8 rounded-xl border border-zinc-800 bg-zinc-900/50 p-6">
           <h2 className="mb-5 flex items-center gap-2 text-lg font-bold text-white">
@@ -318,28 +366,16 @@ export default function IncidentDetailPage({
           </h2>
           <div className="space-y-3">
             {newsArticles.map((article, i) => (
-              <a
-                key={i}
-                href={article.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-start gap-3 rounded-lg border border-zinc-800 bg-zinc-800/20 p-4 transition-all hover:border-zinc-700 hover:bg-zinc-800/40"
-              >
+              <a key={i} href={article.url} target="_blank" rel="noopener noreferrer"
+                className="group flex items-start gap-3 rounded-lg border border-zinc-800 bg-zinc-800/20 p-4 transition-all hover:border-zinc-700 hover:bg-zinc-800/40">
                 <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-zinc-700/50">
                   <Newspaper className="h-4 w-4 text-zinc-400" />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="text-sm font-medium text-white group-hover:text-red-400 line-clamp-2">
-                    {article.title}
-                  </p>
+                  <p className="text-sm font-medium text-white group-hover:text-red-400 line-clamp-2">{article.title}</p>
                   <div className="mt-1 flex items-center gap-2 text-xs text-zinc-500">
                     <span className="font-medium text-zinc-400">{article.source}</span>
-                    {article.author && (
-                      <>
-                        <span>·</span>
-                        <span>{article.author}</span>
-                      </>
-                    )}
+                    {article.author && <><span>·</span><span>{article.author}</span></>}
                   </div>
                 </div>
                 <ExternalLink className="mt-1 h-3.5 w-3.5 shrink-0 text-zinc-600 group-hover:text-red-400" />
@@ -355,13 +391,8 @@ export default function IncidentDetailPage({
           <h2 className="mb-4 text-lg font-bold text-white">Kaynaklar</h2>
           <div className="flex flex-wrap gap-2">
             {incident.sources.map((source, i) => (
-              <a
-                key={i}
-                href={source.startsWith("http") ? source : "#"}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 rounded-lg bg-zinc-800 px-3 py-2 text-sm text-zinc-400 transition-colors hover:bg-zinc-700 hover:text-white"
-              >
+              <a key={i} href={source.startsWith("http") ? source : "#"} target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-1.5 rounded-lg bg-zinc-800 px-3 py-2 text-sm text-zinc-400 transition-colors hover:bg-zinc-700 hover:text-white">
                 <ExternalLink className="h-3.5 w-3.5" />
                 {source.startsWith("http") ? new URL(source).hostname : source}
               </a>

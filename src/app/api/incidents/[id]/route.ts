@@ -17,7 +17,15 @@ export async function GET(
     const { id } = await params;
     const incident = await prisma.incident.findUnique({
       where: { id },
-      include: { match: true },
+      include: {
+        match: true,
+        opinions: {
+          include: {
+            commentator: true,
+          },
+          orderBy: { createdAt: "asc" },
+        },
+      },
     });
 
     if (!incident) {

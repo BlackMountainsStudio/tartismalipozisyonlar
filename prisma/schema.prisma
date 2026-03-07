@@ -42,8 +42,9 @@ model Incident {
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 
-  match    Match     @relation(fields: [matchId], references: [id], onDelete: Cascade)
+  match    Match           @relation(fields: [matchId], references: [id], onDelete: Cascade)
   comments Comment[]
+  opinions ExpertOpinion[]
 
   @@index([matchId])
   @@index([status])
@@ -81,6 +82,44 @@ model Comment {
   @@index([matchId])
   @@index([incidentId])
   @@index([createdAt])
+}
+
+model Commentator {
+  id          String @id @default(cuid())
+  name        String @unique
+  slug        String @unique
+  role        String
+  bio         String
+  photoUrl    String?
+  birthDate   String?
+  birthPlace  String?
+  education   String?
+  career      String   @default("[]")
+  expertise   String   @default("[]")
+  socialLinks String   @default("[]")
+  createdAt   DateTime @default(now())
+
+  opinions ExpertOpinion[]
+
+  @@index([slug])
+}
+
+model ExpertOpinion {
+  id            String @id @default(cuid())
+  commentatorId String
+  incidentId    String
+  comment       String
+  stance        String @default("NEUTRAL")
+  sourceUrl     String?
+  createdAt     DateTime @default(now())
+
+  commentator Commentator @relation(fields: [commentatorId], references: [id], onDelete: Cascade)
+  incident    Incident    @relation(fields: [incidentId], references: [id], onDelete: Cascade)
+
+  @@unique([commentatorId, incidentId])
+  @@index([commentatorId])
+  @@index([incidentId])
+  @@index([stance])
 }
 
 model Suggestion {
