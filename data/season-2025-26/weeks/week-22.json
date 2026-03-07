@@ -1,0 +1,29 @@
+{
+  "week": 22,
+  "matches": [
+    {
+      "week": 22,
+      "date": "2026-02-13",
+      "homeTeam": "Galatasaray",
+      "awayTeam": "Eyüpspor",
+      "league": "Süper Lig 2025-26",
+      "incidents": []
+    },
+    {
+      "week": 22,
+      "date": "2026-02-14",
+      "homeTeam": "Trabzonspor",
+      "awayTeam": "Fenerbahçe",
+      "league": "Süper Lig 2025-26",
+      "incidents": []
+    },
+    {
+      "week": 22,
+      "date": "2026-02-15",
+      "homeTeam": "İstanbul Başakşehir",
+      "awayTeam": "Beşiktaş",
+      "league": "Süper Lig 2025-26",
+      "incidents": []
+    }
+  ]
+}
