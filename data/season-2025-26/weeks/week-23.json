@@ -1,0 +1,37 @@
+{
+  "week": 23,
+  "matches": [
+    {
+      "week": 23,
+      "date": "2026-02-21",
+      "homeTeam": "Konyaspor",
+      "awayTeam": "Galatasaray",
+      "league": "Süper Lig 2025-26",
+      "incidents": []
+    },
+    {
+      "week": 23,
+      "date": "2026-02-22",
+      "homeTeam": "Beşiktaş",
+      "awayTeam": "Göztepe",
+      "league": "Süper Lig 2025-26",
+      "incidents": []
+    },
+    {
+      "week": 23,
+      "date": "2026-02-22",
+      "homeTeam": "Gaziantep",
+      "awayTeam": "Trabzonspor",
+      "league": "Süper Lig 2025-26",
+      "incidents": []
+    },
+    {
+      "week": 23,
+      "date": "2026-02-23",
+      "homeTeam": "Fenerbahçe",
+      "awayTeam": "Kasımpaşa",
+      "league": "Süper Lig 2025-26",
+      "incidents": []
+    }
+  ]
+}
