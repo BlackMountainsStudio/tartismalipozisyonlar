@@ -75,7 +75,15 @@ export default function DashboardPage() {
 
       setRecentIncidents(
         incidentList
-          .filter((i: unknown) => i != null && typeof i === "object" && "id" in i)
+          .filter(
+            (i: unknown): i is { id: string; type: string; description: string; status: string; match?: { homeTeam: string; awayTeam: string } } =>
+              i != null &&
+              typeof i === "object" &&
+              "id" in i &&
+              "type" in i &&
+              "description" in i &&
+              "status" in i
+          )
           .slice(0, 5)
       );
     } catch (err) {

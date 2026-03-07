@@ -82,6 +82,10 @@ export default function HomePage() {
     .map(Number)
     .sort((a, b) => (weekSort === "asc" ? a - b : b - a));
 
+  const maxWeek = seasonMatches.length > 0
+    ? Math.max(...seasonMatches.map((m) => m.week))
+    : 34;
+
   const toggleTeam = (team: string) => {
     setSelectedTeams((prev) =>
       prev.includes(team) ? prev.filter((t) => t !== team) : [...prev, team]
@@ -172,7 +176,7 @@ export default function HomePage() {
                     : "text-zinc-400 active:bg-zinc-700 active:text-white"
                 }`}
               >
-                1 → 24
+                1 → {maxWeek}
               </button>
               <button
                 type="button"
@@ -183,7 +187,7 @@ export default function HomePage() {
                     : "text-zinc-400 active:bg-zinc-700 active:text-white"
                 }`}
               >
-                24 → 1
+                {maxWeek} → 1
               </button>
             </div>
           </div>

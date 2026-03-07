@@ -47,18 +47,23 @@ export default function DashboardVideosPage() {
       const res = await fetch("/api/incidents");
       const data = await res.json();
       const list = Array.isArray(data) ? data : [];
+      const filtered = list.filter(
+        (i: unknown): i is Record<string, unknown> & { id: string } =>
+          i != null && typeof i === "object" && "id" in i
+      );
       setIncidents(
-        list
-          .filter((i: unknown) => i != null && typeof i === "object" && "id" in i)
-          .map((i: Incident & { relatedVideos?: string | string[] }) => ({
-            ...i,
-            match: (i as { match?: Incident["match"] }).match ?? undefined,
-            relatedVideos: Array.isArray(i.relatedVideos)
-              ? i.relatedVideos
-              : typeof i.relatedVideos === "string"
-                ? (() => { try { return JSON.parse(i.relatedVideos); } catch { return []; } })()
+        filtered.map((i) => {
+          const inc = i as unknown as Incident & { relatedVideos?: string | string[] };
+          return {
+            ...inc,
+            match: inc.match ?? undefined,
+            relatedVideos: Array.isArray(inc.relatedVideos)
+              ? inc.relatedVideos
+              : typeof inc.relatedVideos === "string"
+                ? (() => { try { return JSON.parse(inc.relatedVideos) as string[]; } catch { return []; } })()
                 : [],
-          }))
+          };
+        })
       );
     } catch {
       setIncidents([]);

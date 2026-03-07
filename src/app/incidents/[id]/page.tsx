@@ -20,10 +20,10 @@ const TYPE_LABELS: Record<string, { label: string }> = {
   HANDBALL: { label: "El ile Temas" },
 };
 
-function parseJson<T>(raw: T | string, fallback: T): T {
+function parseJson<T>(raw: unknown, fallback: T): T {
   if (Array.isArray(raw)) return raw as T;
   if (typeof raw === "string") {
-    try { return JSON.parse(raw); } catch { return fallback; }
+    try { return JSON.parse(raw) as T; } catch { return fallback; }
   }
   return fallback;
 }
@@ -39,9 +39,9 @@ function toTemplateData(incident: unknown): IncidentDetailData | null {
     confidenceScore: Number(d.confidenceScore ?? 0),
     sources: Array.isArray(d.sources) ? d.sources.map(String) : [],
     videoUrl: d.videoUrl ? String(d.videoUrl) : null,
-    relatedVideos: parseJson<{ url: string; title: string }[]>(d.relatedVideos as string | unknown[], []),
-    newsArticles: parseJson<{ title: string; url: string; source: string; author: string }[]>(d.newsArticles as string | unknown[], []),
-    refereeComments: parseJson<{ author?: string; text: string; sourceUrl?: string }[]>(d.refereeComments as string | unknown[] ?? [], []),
+    relatedVideos: parseJson<{ url: string; title: string }[]>(d.relatedVideos, []),
+    newsArticles: parseJson<{ title: string; url: string; source: string; author: string }[]>(d.newsArticles, []),
+    refereeComments: parseJson<{ author?: string; text: string; sourceUrl?: string }[]>(d.refereeComments ?? [], []),
     opinions: Array.isArray(d.opinions) ? d.opinions as IncidentDetailData["opinions"] : [],
     status: String(d.status ?? "PENDING"),
     match: d.match && typeof d.match === "object" ? (d.match as IncidentDetailData["match"]) : null,

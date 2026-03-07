@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "postinstall": "prisma generate",
-    "import:season": "node scripts/import-tracked-season.mjs"
+    "import:season": "node scripts/import-tracked-season.mjs",
+    "crawl:match": "tsx scripts/crawl-match.ts"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.2",
@@ -44,6 +45,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
     "tailwindcss": "^4",
+    "tsx": "^4.19.0",
     "typescript": "^5"
   }
 }
