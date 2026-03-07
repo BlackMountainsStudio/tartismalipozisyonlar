@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Shield, LayoutDashboard, MessageSquare } from "lucide-react";
+import { Shield, LayoutDashboard, MessageSquare, Send, Mail } from "lucide-react";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -22,18 +22,31 @@ export default function Navbar() {
           <NavLink href="/" active={pathname === "/"}>
             Maçlar
           </NavLink>
+          <NavLink href="/oneri" active={pathname === "/oneri"}>
+            <Send className="h-4 w-4" />
+            Bize Yazın
+          </NavLink>
           <NavLink href="/dashboard" active={pathname === "/dashboard"}>
             <LayoutDashboard className="h-4 w-4" />
             Yönetim
           </NavLink>
           {isDashboard && (
-            <NavLink
-              href="/dashboard/chat"
-              active={pathname === "/dashboard/chat"}
-            >
-              <MessageSquare className="h-4 w-4" />
-              AI Chat
-            </NavLink>
+            <>
+              <NavLink
+                href="/dashboard/suggestions"
+                active={pathname === "/dashboard/suggestions"}
+              >
+                <Mail className="h-4 w-4" />
+                Mesajlar
+              </NavLink>
+              <NavLink
+                href="/dashboard/chat"
+                active={pathname === "/dashboard/chat"}
+              >
+                <MessageSquare className="h-4 w-4" />
+                AI Chat
+              </NavLink>
+            </>
           )}
         </div>
       </div>

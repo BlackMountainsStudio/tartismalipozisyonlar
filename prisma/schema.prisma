@@ -80,3 +80,19 @@ model Comment {
   @@index([incidentId])
   @@index([createdAt])
 }
+
+model Suggestion {
+  id        String   @id @default(cuid())
+  name      String
+  email     String?
+  category  String   @default("GENERAL")
+  subject   String
+  message   String
+  status    String   @default("NEW")
+  adminNote String?
+  createdAt DateTime @default(now())
+
+  @@index([status])
+  @@index([category])
+  @@index([createdAt])
+}
