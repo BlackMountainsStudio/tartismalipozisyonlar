@@ -318,38 +318,40 @@ export default function IncidentDetailPage({
             {opinions.map((op) => {
               const si = STANCE_INFO[op.stance] ?? STANCE_INFO.NEUTRAL;
               return (
-                <div key={op.id} className={`rounded-lg border p-4 ${si.bg}`}>
-                  <div className="mb-2 flex items-center justify-between gap-2">
-                    <div className="flex items-center gap-2">
-                      <Link
-                        href={`/commentators/${op.commentator.slug}`}
-                        className="font-semibold text-white hover:text-red-400"
-                      >
-                        {op.commentator.name}
-                      </Link>
-                      <span className="text-xs text-zinc-500">{op.commentator.role}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className={`flex items-center gap-1 text-xs font-medium ${si.style}`}>
-                        {si.icon} {si.label}
-                      </span>
-                      <Link
-                        href={`/commentators/${op.commentator.slug}`}
-                        className="text-zinc-600 hover:text-red-400"
-                      >
-                        <ChevronRight className="h-4 w-4" />
-                      </Link>
-                    </div>
-                  </div>
-                  <p className="text-sm leading-relaxed text-zinc-300 italic">
-                    &ldquo;{op.comment}&rdquo;
-                  </p>
+                <div key={op.id} className={`relative rounded-lg border p-4 ${si.bg}`}>
                   {op.sourceUrl && (
-                    <a href={op.sourceUrl} target="_blank" rel="noopener noreferrer"
-                      className="mt-2 inline-flex items-center gap-1 text-xs text-red-400 hover:text-red-300">
-                      Kaynak <ExternalLink className="h-3 w-3" />
+                    <a
+                      href={op.sourceUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="absolute right-3 top-3 flex items-center gap-1 rounded-md bg-zinc-800/60 px-2 py-1 text-[10px] font-medium text-red-400 transition-colors hover:bg-zinc-800 hover:text-red-300"
+                    >
+                      Kaynak <ExternalLink className="h-2.5 w-2.5" />
                     </a>
                   )}
+                  <div className="mb-2 flex items-center gap-2">
+                    <Link
+                      href={`/commentators/${op.commentator.slug}`}
+                      className="font-semibold text-white hover:text-red-400"
+                    >
+                      {op.commentator.name}
+                    </Link>
+                    <span className="text-xs text-zinc-500">{op.commentator.role}</span>
+                    <Link
+                      href={`/commentators/${op.commentator.slug}`}
+                      className="text-zinc-600 hover:text-red-400"
+                    >
+                      <ChevronRight className="h-3.5 w-3.5" />
+                    </Link>
+                  </div>
+                  <p className="pr-16 text-sm leading-relaxed text-zinc-300 italic">
+                    &ldquo;{op.comment}&rdquo;
+                  </p>
+                  <div className="mt-2 flex items-center justify-between">
+                    <span className={`flex items-center gap-1 text-xs font-medium ${si.style}`}>
+                      {si.icon} {si.label}
+                    </span>
+                  </div>
                 </div>
               );
             })}
