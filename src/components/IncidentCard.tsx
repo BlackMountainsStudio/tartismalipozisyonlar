@@ -111,7 +111,7 @@ export default function IncidentCard({
 
       {clickable && (
         <div className="mt-3 text-xs font-medium text-red-400">
-          Detayları gör →
+          Pozisyon detayı, video ve yorumlar →
         </div>
       )}
 

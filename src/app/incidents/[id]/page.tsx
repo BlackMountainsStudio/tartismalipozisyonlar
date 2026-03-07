@@ -23,6 +23,8 @@ import {
   XCircle,
   MinusCircle,
   ChevronRight,
+  Link2,
+  Copy,
 } from "lucide-react";
 
 interface ExpertOpinion {
@@ -153,6 +155,32 @@ function getVideoProviderLabel(url: string): string {
   }
 }
 
+/** Kaynak URL'sinden anlamlı etiket üretir (görünürlük ve anlaşılırlık için) */
+function getSourceLabel(url: string): string {
+  try {
+    const u = new URL(url);
+    const host = u.hostname.replace(/^www\./, "");
+    if (host.includes("beinsports.com.tr")) {
+      if (u.pathname.includes("pozisyonlar") || u.pathname.includes("ozet")) return "beIN Sports – Pozisyon / maç videosu";
+      return "beIN Sports";
+    }
+    if (host.includes("youtube.com")) {
+      if (u.pathname.includes("/shorts/")) return "YouTube Shorts – Pozisyon videosu";
+      if (u.pathname.includes("/results")) return "YouTube – Bu pozisyonu ara";
+      return "YouTube – Video";
+    }
+    if (host.includes("youtu.be")) return "YouTube – Video";
+    if (host.includes("hurriyet.com.tr")) return "Hürriyet – Haber / Trio yorumu";
+    if (host.includes("yenicaggazetesi.com")) return "Yeni Çağ – Haber / hakem yorumu";
+    if (host.includes("milliyet.com.tr")) return "Milliyet – Haber";
+    if (host.includes("fanatik.com.tr")) return "Fanatik – Haber";
+    if (host.includes("sporx.com")) return "Sporx – Haber";
+    return host;
+  } catch {
+    return "Kaynak";
+  }
+}
+
 export default function IncidentDetailPage({
   params,
 }: {
@@ -163,6 +191,8 @@ export default function IncidentDetailPage({
   const [incident, setIncident] = useState<Incident | null>(null);
   const [loading, setLoading] = useState(true);
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
+  const [copiedLink, setCopiedLink] = useState(false);
+  const [baseUrl, setBaseUrl] = useState("");
 
   const fetchData = useCallback(async () => {
     try {
@@ -179,6 +209,27 @@ export default function IncidentDetailPage({
   }, [incidentId]);
 
   useEffect(() => { fetchData(); }, [fetchData]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") setBaseUrl(window.location.origin);
+  }, []);
+
+  useEffect(() => {
+    if (!incident) return;
+    const summary = [
+      incident.match.homeTeam,
+      "vs",
+      incident.match.awayTeam,
+      incident.minute != null ? `${incident.minute}. dk` : "",
+      (TYPE_LABELS[incident.type] as { label: string } | undefined)?.label ?? incident.type,
+    ]
+      .filter(Boolean)
+      .join(" · ");
+    document.title = summary ? `${summary} | Tartışmalı Pozisyonlar` : "Tartışmalı Pozisyonlar";
+    return () => {
+      document.title = "Tartışmalı Pozisyonlar - Hakem Kararları Analiz Platformu";
+    };
+  }, [incident]);
 
   if (loading) {
     return (
@@ -212,6 +263,26 @@ export default function IncidentDetailPage({
 
   const agreeCount = opinions.filter((o) => o.stance === "AGREE").length;
   const disagreeCount = opinions.filter((o) => o.stance === "DISAGREE").length;
+
+  const positionLink = baseUrl ? `${baseUrl}/incidents/${incidentId}` : "";
+  const positionSummary = [
+    incident.match.homeTeam,
+    "vs",
+    incident.match.awayTeam,
+    incident.minute != null ? `${incident.minute}. dk` : "",
+    typeInfo.label,
+  ]
+    .filter(Boolean)
+    .join(", ");
+
+  const copyPositionLink = () => {
+    if (!positionLink) return;
+    navigator.clipboard.writeText(positionLink);
+    setCopiedLink(true);
+    setTimeout(() => setCopiedLink(false), 2000);
+  };
+
+  const sources = Array.isArray(incident.sources) ? incident.sources : [];
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
@@ -252,6 +323,66 @@ export default function IncidentDetailPage({
           {incident.match.homeTeam} vs {incident.match.awayTeam} — {incident.match.league}, Hafta {incident.match.week}
         </div>
       </div>
+
+      {/* === POZİSYON LİNKİ (paylaşılabilir, anlamlı URL) === */}
+      {positionLink && (
+        <div className="mb-8 rounded-xl border border-zinc-800 bg-zinc-900/50 p-6">
+          <h2 className="mb-3 flex items-center gap-2 text-lg font-bold text-white">
+            <Link2 className="h-5 w-5 text-red-400" />
+            Bu pozisyonun linki
+          </h2>
+          <p className="mb-2 text-xs text-zinc-500">
+            Paylaşmak veya yer imi eklemek için aşağıdaki linki kullanabilirsiniz. Maç, dakika ve pozisyon türü ile tanımlanır.
+          </p>
+          <p className="mb-2 text-sm font-medium text-amber-400/90">{positionSummary}</p>
+          <div className="flex flex-wrap items-center gap-2">
+            <code className="block flex-1 break-all rounded-lg bg-zinc-800 px-3 py-2 text-xs text-zinc-300">
+              {positionLink}
+            </code>
+            <button
+              type="button"
+              onClick={copyPositionLink}
+              className="flex shrink-0 items-center gap-1.5 rounded-lg border border-zinc-600 bg-zinc-800 px-3 py-2 text-xs font-medium text-zinc-300 transition-colors hover:bg-zinc-700 hover:text-white"
+            >
+              {copiedLink ? <CheckCircle2 className="h-4 w-4 text-emerald-400" /> : <Copy className="h-4 w-4" />}
+              {copiedLink ? "Kopyalandı" : "Kopyala"}
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* === KAYNAKLAR (anlamlı etiketlerle) === */}
+      {sources.length > 0 && (
+        <div className="mb-8 rounded-xl border border-zinc-800 bg-zinc-900/50 p-6">
+          <h2 className="mb-4 flex items-center gap-2 text-lg font-bold text-white">
+            <ExternalLink className="h-5 w-5 text-red-400" />
+            Kaynaklar
+          </h2>
+          <p className="mb-4 text-xs text-zinc-500">
+            Bu pozisyona dair haber, video ve analiz linkleri; etiketler içeriği özetler.
+          </p>
+          <ul className="space-y-3">
+            {sources.map((url, i) => (
+              <li key={i}>
+                <a
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-between gap-3 rounded-lg border border-zinc-700/50 bg-zinc-800/30 px-4 py-3 transition-colors hover:border-zinc-600 hover:bg-zinc-800/50"
+                >
+                  <span className="text-sm font-medium text-white group-hover:text-red-400">
+                    {getSourceLabel(url)}
+                  </span>
+                  <ExternalLink className="h-4 w-4 shrink-0 text-zinc-500 group-hover:text-red-400" />
+                </a>
+                <p className="mt-1 truncate pl-1 text-[10px] text-zinc-600" title={url}>
+                  {url}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       {/* === GENEL YAZI === */}
       <div className="mb-8 rounded-xl border border-zinc-800 bg-zinc-900/50 p-6">
