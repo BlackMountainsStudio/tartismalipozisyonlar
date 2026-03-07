@@ -115,12 +115,6 @@ export default function DashboardPage() {
 
   return (
     <div className="mx-auto max-w-7xl px-6 py-8">
-      <div className="mb-8">
-        <h1 className="text-2xl font-bold text-white">Yönetim Paneli</h1>
-        <p className="mt-1 text-sm text-zinc-400">
-          TartışmalıPozisyonlar platformunu yönetin
-        </p>
-      </div>
 
       <div className="mb-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
         {statCards.map((card) => (
