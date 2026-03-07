@@ -48,14 +48,17 @@ export default function DashboardVideosPage() {
       const data = await res.json();
       const list = Array.isArray(data) ? data : [];
       setIncidents(
-        list.map((i: Incident & { relatedVideos?: string | string[] }) => ({
-          ...i,
-          relatedVideos: Array.isArray(i.relatedVideos)
-            ? i.relatedVideos
-            : typeof i.relatedVideos === "string"
-              ? (() => { try { return JSON.parse(i.relatedVideos); } catch { return []; } })()
-              : [],
-        }))
+        list
+          .filter((i: unknown) => i != null && typeof i === "object" && "id" in i)
+          .map((i: Incident & { relatedVideos?: string | string[] }) => ({
+            ...i,
+            match: (i as { match?: Incident["match"] }).match ?? undefined,
+            relatedVideos: Array.isArray(i.relatedVideos)
+              ? i.relatedVideos
+              : typeof i.relatedVideos === "string"
+                ? (() => { try { return JSON.parse(i.relatedVideos); } catch { return []; } })()
+                : [],
+          }))
       );
     } catch {
       setIncidents([]);
@@ -123,6 +126,7 @@ export default function DashboardVideosPage() {
   }
 
   const filtered = incidents.filter((i) => {
+    if (i == null || typeof i !== "object" || !("id" in i)) return false;
     if (filter === "with") return !!i.videoUrl;
     if (filter === "without") return !i.videoUrl;
     return true;
@@ -240,9 +244,9 @@ export default function DashboardVideosPage() {
             className="rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-sm text-white outline-none focus:border-purple-500"
           >
             <option value="">Pozisyon seçin</option>
-            {incidents.map((inc) => (
+            {incidents.filter((i) => i != null).map((inc) => (
               <option key={inc.id} value={inc.id}>
-                {inc.match?.homeTeam} vs {inc.match?.awayTeam} - {inc.description.slice(0, 50)}
+                {inc.match ? `${inc.match.homeTeam} vs ${inc.match.awayTeam}` : `Pozisyon #${inc.id.slice(0, 8)}`} – {inc.description.slice(0, 50)}
               </option>
             ))}
           </select>
@@ -321,7 +325,7 @@ export default function DashboardVideosPage() {
                         {getVideoLinkLabel(inc.videoUrl)} ↗
                       </a>
                     )}
-                    {inc.relatedVideos.length > 0 && (
+                    {Array.isArray(inc.relatedVideos) && inc.relatedVideos.length > 0 && (
                       <span className="ml-2 text-zinc-600">
                         +{inc.relatedVideos.length} ilgili video
                       </span>
