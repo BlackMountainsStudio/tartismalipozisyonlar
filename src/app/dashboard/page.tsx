@@ -43,10 +43,10 @@ export default function DashboardPage() {
     try {
       const [matchesRes, incidentsRes, commentatorsRes, suggestionsRes] =
         await Promise.all([
-          fetch("/api/matches"),
-          fetch("/api/incidents"),
-          fetch("/api/commentators"),
-          fetch("/api/suggestions"),
+          fetch("/api/matches", { cache: "no-store" }),
+          fetch("/api/incidents", { cache: "no-store" }),
+          fetch("/api/commentators", { cache: "no-store" }),
+          fetch("/api/suggestions", { cache: "no-store" }),
         ]);
 
       const matches = await matchesRes.json();

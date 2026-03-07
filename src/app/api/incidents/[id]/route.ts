@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/database/db";
+import { NO_CACHE_HEADERS } from "@/lib/api-response";
 
 function parseJson<T>(raw: string, fallback: T): T {
   try {
@@ -74,14 +75,17 @@ export async function GET(
       return NextResponse.json({ error: "Incident not found" }, { status: 404 });
     }
 
-    return NextResponse.json({
-      ...incident,
-      sources: parseJson(incident.sources, []),
-      videoUrl: await getResolvedVideoUrl(incident),
-      refereeComments: parseJson(incident.refereeComments, []),
-      relatedVideos: parseJson(incident.relatedVideos, []),
-      newsArticles: parseJson(incident.newsArticles, []),
-    });
+    return NextResponse.json(
+      {
+        ...incident,
+        sources: parseJson(incident.sources, []),
+        videoUrl: await getResolvedVideoUrl(incident),
+        refereeComments: parseJson(incident.refereeComments, []),
+        relatedVideos: parseJson(incident.relatedVideos, []),
+        newsArticles: parseJson(incident.newsArticles, []),
+      },
+      { headers: NO_CACHE_HEADERS }
+    );
   } catch (err) {
     console.error("GET /api/incidents/[id] error:", err);
     return NextResponse.json(

@@ -72,8 +72,8 @@ export default function PozisyonlarPage() {
       if (selectedTypes.length > 0) params.set("type", selectedTypes.join(","));
 
       const [incRes, statsRes] = await Promise.all([
-        fetch(`/api/incidents?${params}`),
-        fetch(`/api/incidents/stats?${params}`),
+        fetch(`/api/incidents?${params}`, { cache: "no-store" }),
+        fetch(`/api/incidents/stats?${params}`, { cache: "no-store" }),
       ]);
       const incData = await incRes.json();
       const statsData = await statsRes.json();

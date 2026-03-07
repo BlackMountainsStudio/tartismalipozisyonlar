@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/database/db";
+import { NO_CACHE_HEADERS } from "@/lib/api-response";
 
 function parseSources(sources: string): string[] {
   try {
@@ -66,10 +67,10 @@ export async function GET(request: NextRequest) {
       })(),
     }));
 
-    return NextResponse.json(mapped);
+    return NextResponse.json(mapped, { headers: NO_CACHE_HEADERS });
   } catch (err) {
     console.error("GET /api/incidents error:", err);
-    return NextResponse.json([]);
+    return NextResponse.json([], { headers: NO_CACHE_HEADERS });
   }
 }
 

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/database/db";
+import { NO_CACHE_HEADERS } from "@/lib/api-response";
 
 export async function GET(request: NextRequest) {
   try {
@@ -23,10 +24,10 @@ export async function GET(request: NextRequest) {
       orderBy: { createdAt: "desc" },
     });
 
-    return NextResponse.json(comments);
+    return NextResponse.json(comments, { headers: NO_CACHE_HEADERS });
   } catch (err) {
     console.error("GET /api/comments error:", err);
-    return NextResponse.json([]);
+    return NextResponse.json([], { headers: NO_CACHE_HEADERS });
   }
 }
 

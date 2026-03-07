@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/database/db";
+import { NO_CACHE_HEADERS } from "@/lib/api-response";
 
 /** İstatistik ve filtre sayıları için: türe göre, takıma göre, haftaya göre sayılar */
 export async function GET(request: NextRequest) {
@@ -70,23 +71,27 @@ export async function GET(request: NextRequest) {
       }
     }
 
-    return NextResponse.json({
-      total,
-      byType: typeof byType === "object" && byType != null ? byType : {},
-      byCategory: typeof byCategory === "object" && byCategory != null ? byCategory : {},
-      byTeam: Object.fromEntries(
-        Object.entries(typeof byTeam === "object" && byTeam != null ? byTeam : {}).sort((a, b) => b[1] - a[1])
-      ),
-      byWeek: Object.fromEntries(
-        Object.entries(typeof byWeek === "object" && byWeek != null ? byWeek : {})
-          .map(([k, v]) => [Number(k), v] as const)
-          .sort((a, b) => a[0] - b[0])
-      ),
-    });
+    return NextResponse.json(
+      {
+        total,
+        byType: typeof byType === "object" && byType != null ? byType : {},
+        byCategory: typeof byCategory === "object" && byCategory != null ? byCategory : {},
+        byTeam: Object.fromEntries(
+          Object.entries(typeof byTeam === "object" && byTeam != null ? byTeam : {}).sort((a, b) => b[1] - a[1])
+        ),
+        byWeek: Object.fromEntries(
+          Object.entries(typeof byWeek === "object" && byWeek != null ? byWeek : {})
+            .map(([k, v]) => [Number(k), v] as const)
+            .sort((a, b) => a[0] - b[0])
+        ),
+      },
+      { headers: NO_CACHE_HEADERS }
+    );
   } catch (err) {
     console.error("GET /api/incidents/stats error:", err);
     return NextResponse.json(
-      { total: 0, byType: {}, byCategory: {}, byTeam: {}, byWeek: {} }
+      { total: 0, byType: {}, byCategory: {}, byTeam: {}, byWeek: {} },
+      { headers: NO_CACHE_HEADERS }
     );
   }
 }

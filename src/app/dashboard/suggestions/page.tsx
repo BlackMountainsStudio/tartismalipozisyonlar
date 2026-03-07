@@ -55,7 +55,7 @@ export default function DashboardSuggestionsPage() {
 
   async function fetchSuggestions() {
     try {
-      const res = await fetch("/api/suggestions");
+      const res = await fetch("/api/suggestions", { cache: "no-store" });
       const data = await res.json();
       setSuggestions(Array.isArray(data) ? data : []);
     } catch {

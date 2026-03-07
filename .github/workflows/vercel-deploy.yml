@@ -1,0 +1,21 @@
+# Push sonrası Vercel deploy tetikler (Git webhook çalışmıyorsa yedek)
+name: Trigger Vercel Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Vercel Deploy
+        env:
+          VERCEL_DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
+        run: |
+          if [ -n "$VERCEL_DEPLOY_HOOK" ]; then
+            echo "Deploy tetikleniyor..."
+            curl -sS -X POST "$VERCEL_DEPLOY_HOOK" && echo " OK" || echo " Hata"
+          else
+            echo "VERCEL_DEPLOY_HOOK secret tanımlı değil - Vercel Dashboard > Settings > Git > Deploy Hooks"
+          fi

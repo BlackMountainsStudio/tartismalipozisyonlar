@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/database/db";
+import { NO_CACHE_HEADERS } from "@/lib/api-response";
 
 function parseJson<T>(raw: string, fallback: T): T {
   try {
@@ -30,11 +31,12 @@ export async function GET() {
         career: parseJson(c.career, []),
         expertise: parseJson(c.expertise, []),
         socialLinks: parseJson(c.socialLinks, []),
-      }))
+      })),
+      { headers: NO_CACHE_HEADERS }
     );
   } catch (err) {
     console.error("GET /api/commentators error:", err);
-    return NextResponse.json([]);
+    return NextResponse.json([], { headers: NO_CACHE_HEADERS });
   }
 }
 

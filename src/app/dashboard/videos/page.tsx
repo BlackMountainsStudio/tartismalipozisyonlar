@@ -44,7 +44,7 @@ export default function DashboardVideosPage() {
 
   const fetchIncidents = useCallback(async () => {
     try {
-      const res = await fetch("/api/incidents");
+      const res = await fetch("/api/incidents", { cache: "no-store" });
       const data = await res.json();
       const list = Array.isArray(data) ? data : [];
       const filtered = list.filter(
@@ -81,7 +81,7 @@ export default function DashboardVideosPage() {
     if (!searchQuery.trim()) return;
     setSearching(true);
     try {
-      const res = await fetch(`/api/search/videos?q=${encodeURIComponent(searchQuery)}`);
+      const res = await fetch(`/api/search/videos?q=${encodeURIComponent(searchQuery)}`, { cache: "no-store" });
       const data = await res.json();
       setSearchResults(Array.isArray(data) ? data : []);
     } catch {

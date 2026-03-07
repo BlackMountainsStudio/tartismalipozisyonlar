@@ -29,7 +29,7 @@ export default function CommentatorsPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/api/commentators")
+    fetch("/api/commentators", { cache: "no-store" })
       .then((r) => r.json())
       .then((d) => setCommentators(Array.isArray(d) ? d : []))
       .catch(() => setCommentators([]))

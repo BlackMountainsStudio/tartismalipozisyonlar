@@ -48,7 +48,7 @@ export default function DashboardCommentatorsPage() {
 
   const fetchData = useCallback(async () => {
     try {
-      const res = await fetch("/api/commentators");
+      const res = await fetch("/api/commentators", { cache: "no-store" });
       const data = await res.json();
       setCommentators(Array.isArray(data) ? data : []);
     } catch {

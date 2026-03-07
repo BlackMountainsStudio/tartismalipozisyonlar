@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/database/db";
+import { NO_CACHE_HEADERS } from "@/lib/api-response";
 
 function parseJson<T>(raw: string, fallback: T): T {
   try {
@@ -33,12 +34,15 @@ export async function GET(
       return NextResponse.json({ error: "Yorumcu bulunamadı" }, { status: 404 });
     }
 
-    return NextResponse.json({
-      ...commentator,
-      career: parseJson(commentator.career, []),
-      expertise: parseJson(commentator.expertise, []),
-      socialLinks: parseJson(commentator.socialLinks, []),
-    });
+    return NextResponse.json(
+      {
+        ...commentator,
+        career: parseJson(commentator.career, []),
+        expertise: parseJson(commentator.expertise, []),
+        socialLinks: parseJson(commentator.socialLinks, []),
+      },
+      { headers: NO_CACHE_HEADERS }
+    );
   } catch (err) {
     console.error("GET /api/commentators/[slug] error:", err);
     return NextResponse.json({ error: "Yorumcu getirilemedi" }, { status: 500 });

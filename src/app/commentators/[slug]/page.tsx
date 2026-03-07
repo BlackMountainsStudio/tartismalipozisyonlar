@@ -101,7 +101,7 @@ export default function CommentatorProfilePage({
 
   const fetchData = useCallback(async () => {
     try {
-      const res = await fetch(`/api/commentators/${slug}`);
+      const res = await fetch(`/api/commentators/${slug}`, { cache: "no-store" });
       if (!res.ok) { setCommentator(null); return; }
       const data = await res.json();
       setCommentator(data);

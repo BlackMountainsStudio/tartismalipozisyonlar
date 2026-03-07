@@ -34,7 +34,7 @@ export default function DashboardCategoriesPage() {
 
   const fetchData = useCallback(async () => {
     try {
-      const res = await fetch("/api/incidents");
+      const res = await fetch("/api/incidents", { cache: "no-store" });
       const data = await res.json();
       const incidents = Array.isArray(data) ? data : [];
 

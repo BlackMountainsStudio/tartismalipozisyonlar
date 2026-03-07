@@ -34,7 +34,7 @@ export default function DashboardMatchesPage() {
 
   async function fetchMatches() {
     try {
-      const res = await fetch("/api/matches");
+      const res = await fetch("/api/matches", { cache: "no-store" });
       const data = await res.json();
       setMatches(Array.isArray(data) ? data : []);
     } catch (err) {

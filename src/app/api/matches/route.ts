@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/database/db";
+import { NO_CACHE_HEADERS } from "@/lib/api-response";
 
 export async function GET(request: NextRequest) {
   try {
@@ -26,10 +27,10 @@ export async function GET(request: NextRequest) {
       orderBy: { date: "desc" },
     });
 
-    return NextResponse.json(matches);
+    return NextResponse.json(matches, { headers: NO_CACHE_HEADERS });
   } catch (err) {
     console.error("GET /api/matches error:", err);
-    return NextResponse.json([]);
+    return NextResponse.json([], { headers: NO_CACHE_HEADERS });
   }
 }
 

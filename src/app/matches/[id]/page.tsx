@@ -41,8 +41,8 @@ export default function PublicMatchDetailPage({
   const fetchData = useCallback(async () => {
     try {
       const [matchRes, incidentsRes] = await Promise.all([
-        fetch(`/api/matches`),
-        fetch(`/api/incidents?matchId=${matchId}&status=approved`),
+        fetch(`/api/matches`, { cache: "no-store" }),
+        fetch(`/api/incidents?matchId=${matchId}&status=approved`, { cache: "no-store" }),
       ]);
       const matchData = await matchRes.json();
       const matchList = Array.isArray(matchData) ? matchData : [];

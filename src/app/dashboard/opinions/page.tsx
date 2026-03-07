@@ -71,9 +71,9 @@ export default function DashboardOpinionsPage() {
   const fetchData = useCallback(async () => {
     try {
       const [opRes, comRes, incRes] = await Promise.all([
-        fetch("/api/opinions"),
-        fetch("/api/commentators"),
-        fetch("/api/incidents"),
+        fetch("/api/opinions", { cache: "no-store" }),
+        fetch("/api/commentators", { cache: "no-store" }),
+        fetch("/api/incidents", { cache: "no-store" }),
       ]);
       const opData = await opRes.json();
       const comData = await comRes.json();

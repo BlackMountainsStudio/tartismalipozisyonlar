@@ -41,7 +41,7 @@ export default function CommentSection({ matchId, incidentId }: CommentSectionPr
 
   const fetchComments = useCallback(async () => {
     try {
-      const res = await fetch(`/api/comments?${queryParam}`);
+      const res = await fetch(`/api/comments?${queryParam}`, { cache: "no-store" });
       const data = await res.json();
       setComments(Array.isArray(data) ? data : []);
     } catch {

@@ -65,8 +65,8 @@ export default function DashboardIncidentsPage() {
   const fetchData = useCallback(async () => {
     try {
       const [incRes, matchRes] = await Promise.all([
-        fetch("/api/incidents"),
-        fetch("/api/matches"),
+        fetch("/api/incidents", { cache: "no-store" }),
+        fetch("/api/matches", { cache: "no-store" }),
       ]);
       const incData = await incRes.json();
       const matchData = await matchRes.json();

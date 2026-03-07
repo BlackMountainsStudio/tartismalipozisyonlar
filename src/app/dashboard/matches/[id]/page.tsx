@@ -49,8 +49,8 @@ export default function DashboardMatchDetailPage({
   const fetchData = useCallback(async () => {
     try {
       const [matchRes, incidentsRes] = await Promise.all([
-        fetch(`/api/matches`),
-        fetch(`/api/incidents?matchId=${matchId}`),
+        fetch(`/api/matches`, { cache: "no-store" }),
+        fetch(`/api/incidents?matchId=${matchId}`, { cache: "no-store" }),
       ]);
       const matchData = await matchRes.json();
       const matchList = Array.isArray(matchData) ? matchData : [];

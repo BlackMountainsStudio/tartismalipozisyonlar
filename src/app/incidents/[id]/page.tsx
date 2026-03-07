@@ -61,7 +61,7 @@ export default function IncidentDetailPage({
 
   const fetchData = useCallback(async () => {
     try {
-      const res = await fetch(`/api/incidents/${incidentId}`);
+      const res = await fetch(`/api/incidents/${incidentId}`, { cache: "no-store" });
       if (!res.ok) { setIncident(null); return; }
       const data = await res.json();
       const parsed = toTemplateData(data);
