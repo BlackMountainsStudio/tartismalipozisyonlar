@@ -15,7 +15,41 @@
       "homeTeam": "Trabzonspor",
       "awayTeam": "Fenerbahçe",
       "league": "Süper Lig 2025-26",
-      "incidents": []
+      "incidents": [
+        {
+          "minute": 15,
+          "type": "HANDBALL",
+          "description": "Fenerbahce'nin ilk golu oncesinde elle oynama olup olmadigi uzun sure tartisildi. Trio ve Fırat Aydınus yorumlarinda topun elde degil gogus ve izin verilen bolgede oldugu, golun dogru oldugu belirtildi.",
+          "confidenceScore": 0.76,
+          "sources": [
+            "https://www.fotomac.com.tr/fenerbahce/2026/02/15/trio-ekibi-trabzonspor-fenerbahce-macini-degerlendirdi",
+            "https://www.hurriyet.com.tr/sporarena/trabzonspor-fenerbahce-macinin-hakemi-halil-umut-melerin-kararlarini-firat-aydinus-degerlendirdi-golden-once-faul-vardi-43108484"
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 43,
+          "type": "FOUL",
+          "description": "Trabzonspor'un Onuachu ile buldugu gol oncesinde Kerem Akturkoglu'na yapilan mudahalede faul olup olmadigi tartisildi. Eski hakemlerin onemli bir bolumu gol oncesi faul verilmesi gerektigini savundu.",
+          "confidenceScore": 0.84,
+          "sources": [
+            "https://www.hurriyet.com.tr/sporarena/trabzonspor-fenerbahce-macinin-hakemi-halil-umut-melerin-kararlarini-firat-aydinus-degerlendirdi-golden-once-faul-vardi-43108484",
+            "https://www.milliyet.com.tr/skorer/trabzonspor-fenerbahce-macinin-tartismali-pozisyonlari-trioda-degerlendirildi-7538509"
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 71,
+          "type": "MISSED_RED_CARD",
+          "description": "Talisca'nin yuz bolgesine gelen kontrolsuz mudahalesinde ikinci sari karttan oyundan atilip atilmamasi tartisildi. Trio yorumlarinda oyuncunun ihraç edilmesi gerektigi gorusu one cikti.",
+          "confidenceScore": 0.88,
+          "sources": [
+            "https://www.mynet.com/amp/trio-dan-trabzonspor-fenerbahce-derbisine-flas-yorum-oyundan-ihrac-edilmeliydi-spor-478759",
+            "https://www.fotomac.com.tr/fenerbahce/2026/02/15/trio-ekibi-trabzonspor-fenerbahce-macini-degerlendirdi"
+          ],
+          "status": "APPROVED"
+        }
+      ]
     },
     {
       "week": 22,
