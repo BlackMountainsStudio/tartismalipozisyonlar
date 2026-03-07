@@ -20,18 +20,52 @@ const INCIDENT_TYPE_LABELS: Record<string, { label: string; icon: React.ReactNod
     label: "Penaltı Pozisyonu",
     icon: <Flag className="h-4 w-4" />,
   },
+  PENALTY: {
+    label: "Penaltı Kararı",
+    icon: <Flag className="h-4 w-4" />,
+  },
   POSSIBLE_OFFSIDE_GOAL: {
     label: "Ofsayt Tartışması",
+    icon: <Eye className="h-4 w-4" />,
+  },
+  OFFSIDE: {
+    label: "Ofsayt Kararı",
     icon: <Eye className="h-4 w-4" />,
   },
   MISSED_RED_CARD: {
     label: "Verilmeyen Kırmızı Kart",
     icon: <ShieldAlert className="h-4 w-4" />,
   },
+  RED_CARD: {
+    label: "Kırmızı Kart",
+    icon: <ShieldAlert className="h-4 w-4" />,
+  },
+  YELLOW_CARD: {
+    label: "Sarı Kart",
+    icon: <ShieldAlert className="h-4 w-4" />,
+  },
   VAR_CONTROVERSY: {
     label: "VAR Tartışması",
     icon: <AlertTriangle className="h-4 w-4" />,
   },
+  GOAL_DISALLOWED: {
+    label: "İptal Edilen Gol",
+    icon: <AlertTriangle className="h-4 w-4" />,
+  },
+  FOUL: {
+    label: "Faul Kararı",
+    icon: <Flag className="h-4 w-4" />,
+  },
+  HANDBALL: {
+    label: "El ile Temas",
+    icon: <Flag className="h-4 w-4" />,
+  },
+};
+
+const STATUS_LABELS: Record<string, string> = {
+  PENDING: "Beklemede",
+  APPROVED: "Onaylandı",
+  REJECTED: "Reddedildi",
 };
 
 const STATUS_STYLES: Record<string, string> = {
@@ -67,7 +101,7 @@ export default function IncidentCard({
           <span
             className={`rounded-full px-2 py-0.5 text-xs font-medium ring-1 ring-inset ${STATUS_STYLES[status] ?? STATUS_STYLES.PENDING}`}
           >
-            {status}
+            {STATUS_LABELS[status] ?? status}
           </span>
         </div>
       </div>
@@ -106,7 +140,7 @@ export default function IncidentCard({
             ))}
             {sources.length > 3 && (
               <span className="rounded-md bg-zinc-800 px-2 py-1 text-xs text-zinc-500">
-                +{sources.length - 3} more
+                +{sources.length - 3} daha
               </span>
             )}
           </div>

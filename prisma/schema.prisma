@@ -19,6 +19,7 @@ model Match {
 
   incidents      Incident[]
   crawledContent CrawledContent[]
+  comments       Comment[]
 
   @@index([homeTeam])
   @@index([awayTeam])
@@ -59,4 +60,17 @@ model CrawledContent {
   @@index([matchId])
   @@index([source])
   @@index([processed])
+}
+
+model Comment {
+  id         String   @id @default(cuid())
+  matchId    String
+  author     String
+  content    String
+  createdAt  DateTime @default(now())
+
+  match Match @relation(fields: [matchId], references: [id], onDelete: Cascade)
+
+  @@index([matchId])
+  @@index([createdAt])
 }

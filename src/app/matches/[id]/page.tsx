@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, use } from "react";
 import { useRouter } from "next/navigation";
 import IncidentCard from "@/components/IncidentCard";
+import CommentSection from "@/components/CommentSection";
 import { ArrowLeft, Loader2, Calendar, Trophy } from "lucide-react";
 
 interface Incident {
@@ -144,6 +145,8 @@ export default function PublicMatchDetailPage({
             ))}
         </div>
       )}
+
+      <CommentSection matchId={matchId} />
     </div>
   );
 }

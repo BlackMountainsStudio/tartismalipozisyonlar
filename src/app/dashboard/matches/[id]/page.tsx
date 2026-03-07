@@ -161,7 +161,7 @@ export default function DashboardMatchDetailPage({
   if (!match) {
     return (
       <div className="mx-auto max-w-7xl px-4 py-20 text-center sm:px-6">
-        <p className="text-lg text-zinc-400">Match not found</p>
+        <p className="text-lg text-zinc-400">Maç bulunamadı</p>
       </div>
     );
   }
@@ -173,7 +173,7 @@ export default function DashboardMatchDetailPage({
         className="mb-6 flex items-center gap-2 text-sm text-zinc-400 transition-colors hover:text-white"
       >
         <ArrowLeft className="h-4 w-4" />
-        Back to Dashboard
+        Panele Dön
       </button>
 
       <div className="mb-8 rounded-xl border border-zinc-800 bg-zinc-900/50 p-6">
@@ -181,7 +181,7 @@ export default function DashboardMatchDetailPage({
           <div>
             <div className="mb-2 flex items-center gap-2">
               <span className="rounded-md bg-emerald-500/10 px-2 py-0.5 text-xs font-medium text-emerald-400">
-                Week {match.week}
+                Hafta {match.week}
               </span>
               <span className="flex items-center gap-1 text-xs text-zinc-500">
                 <Calendar className="h-3.5 w-3.5" />
@@ -208,15 +208,17 @@ export default function DashboardMatchDetailPage({
             ) : (
               <Play className="h-4 w-4" />
             )}
-            {crawling ? "Crawling..." : "Run Crawler & AI"}
+            {crawling ? "Taranıyor..." : "Tarayıcı & AI Çalıştır"}
           </button>
         </div>
       </div>
 
       <div className="mb-6 flex items-center gap-2">
         <Filter className="h-4 w-4 text-zinc-500" />
-        <span className="text-sm text-zinc-400">Filter:</span>
-        {["all", "PENDING", "APPROVED", "REJECTED"].map((status) => (
+        <span className="text-sm text-zinc-400">Filtre:</span>
+        {["all", "PENDING", "APPROVED", "REJECTED"].map((status) => {
+          const filterLabels: Record<string, string> = { all: "Tümü", PENDING: "Beklemede", APPROVED: "Onaylı", REJECTED: "Reddedildi" };
+          return (
           <button
             key={status}
             onClick={() => setStatusFilter(status)}
@@ -226,20 +228,21 @@ export default function DashboardMatchDetailPage({
                 : "bg-zinc-800 text-zinc-400 hover:text-white"
             }`}
           >
-            {status === "all" ? "All" : status}
+            {filterLabels[status] ?? status}
             {status !== "all" && (
               <span className="ml-1 text-zinc-600">
                 ({incidents.filter((i) => i.status === status).length})
               </span>
             )}
           </button>
-        ))}
+          );
+        })}
       </div>
 
       {editingId && (
         <div className="mb-6 rounded-xl border border-emerald-500/30 bg-zinc-900 p-4">
           <h3 className="mb-2 text-sm font-medium text-white">
-            Edit Incident
+            Pozisyonu Düzenle
           </h3>
           <textarea
             value={editDescription}
@@ -252,13 +255,13 @@ export default function DashboardMatchDetailPage({
               onClick={saveEdit}
               className="rounded-lg bg-emerald-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-emerald-500"
             >
-              Save
+              Kaydet
             </button>
             <button
               onClick={() => setEditingId(null)}
               className="rounded-lg bg-zinc-800 px-3 py-1.5 text-xs font-medium text-zinc-300 hover:bg-zinc-700"
             >
-              Cancel
+              İptal
             </button>
           </div>
         </div>
@@ -266,9 +269,9 @@ export default function DashboardMatchDetailPage({
 
       {filteredIncidents.length === 0 ? (
         <div className="flex flex-col items-center justify-center py-20 text-center">
-          <p className="text-lg text-zinc-400">No incidents found</p>
+          <p className="text-lg text-zinc-400">Pozisyon bulunamadı</p>
           <p className="mt-1 text-sm text-zinc-500">
-            Run the crawler to detect controversial decisions
+            Tartışmalı kararları tespit etmek için tarayıcıyı çalıştırın
           </p>
         </div>
       ) : (
