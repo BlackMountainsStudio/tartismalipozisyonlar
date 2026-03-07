@@ -10,7 +10,12 @@ interface Comment {
   createdAt: string;
 }
 
-export default function CommentSection({ matchId }: { matchId: string }) {
+interface CommentSectionProps {
+  matchId?: string;
+  incidentId?: string;
+}
+
+export default function CommentSection({ matchId, incidentId }: CommentSectionProps) {
   const [comments, setComments] = useState<Comment[]>([]);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
@@ -18,9 +23,13 @@ export default function CommentSection({ matchId }: { matchId: string }) {
   const [content, setContent] = useState("");
   const [error, setError] = useState("");
 
+  const queryParam = incidentId
+    ? `incidentId=${incidentId}`
+    : `matchId=${matchId}`;
+
   const fetchComments = useCallback(async () => {
     try {
-      const res = await fetch(`/api/comments?matchId=${matchId}`);
+      const res = await fetch(`/api/comments?${queryParam}`);
       const data = await res.json();
       setComments(Array.isArray(data) ? data : []);
     } catch {
@@ -28,7 +37,7 @@ export default function CommentSection({ matchId }: { matchId: string }) {
     } finally {
       setLoading(false);
     }
-  }, [matchId]);
+  }, [queryParam]);
 
   useEffect(() => {
     fetchComments();
@@ -50,10 +59,17 @@ export default function CommentSection({ matchId }: { matchId: string }) {
 
     setSubmitting(true);
     try {
+      const body: Record<string, string> = {
+        author: author.trim(),
+        content: content.trim(),
+      };
+      if (incidentId) body.incidentId = incidentId;
+      if (matchId) body.matchId = matchId;
+
       const res = await fetch("/api/comments", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ matchId, author: author.trim(), content: content.trim() }),
+        body: JSON.stringify(body),
       });
 
       if (res.ok) {
@@ -91,7 +107,6 @@ export default function CommentSection({ matchId }: { matchId: string }) {
         </h2>
       </div>
 
-      {/* Yorum formu */}
       <form onSubmit={handleSubmit} className="mb-8 rounded-xl border border-zinc-800 bg-zinc-900/50 p-5">
         <div className="mb-4">
           <label htmlFor="author" className="mb-1.5 block text-sm font-medium text-zinc-400">
@@ -141,7 +156,6 @@ export default function CommentSection({ matchId }: { matchId: string }) {
         </button>
       </form>
 
-      {/* Yorumlar listesi */}
       {loading ? (
         <div className="flex items-center justify-center py-10">
           <Loader2 className="h-6 w-6 animate-spin text-red-500" />

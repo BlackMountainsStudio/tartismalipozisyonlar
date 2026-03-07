@@ -5,16 +5,21 @@ export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const matchId = searchParams.get("matchId");
+    const incidentId = searchParams.get("incidentId");
 
-    if (!matchId) {
+    if (!matchId && !incidentId) {
       return NextResponse.json(
-        { error: "matchId parametresi gerekli" },
+        { error: "matchId veya incidentId parametresi gerekli" },
         { status: 400 }
       );
     }
 
+    const where: Record<string, string> = {};
+    if (incidentId) where.incidentId = incidentId;
+    else if (matchId) where.matchId = matchId;
+
     const comments = await prisma.comment.findMany({
-      where: { matchId },
+      where,
       orderBy: { createdAt: "desc" },
     });
 
@@ -28,11 +33,11 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { matchId, author, content } = body;
+    const { matchId, incidentId, author, content } = body;
 
-    if (!matchId || !author?.trim() || !content?.trim()) {
+    if ((!matchId && !incidentId) || !author?.trim() || !content?.trim()) {
       return NextResponse.json(
-        { error: "matchId, author ve content alanları gerekli" },
+        { error: "matchId/incidentId, author ve content alanları gerekli" },
         { status: 400 }
       );
     }
@@ -44,13 +49,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const comment = await prisma.comment.create({
-      data: {
-        matchId,
-        author: author.trim(),
-        content: content.trim(),
-      },
-    });
+    const data: Record<string, string> = {
+      author: author.trim(),
+      content: content.trim(),
+    };
+    if (matchId) data.matchId = matchId;
+    if (incidentId) data.incidentId = incidentId;
+
+    const comment = await prisma.comment.create({ data });
 
     return NextResponse.json(comment, { status: 201 });
   } catch (err) {

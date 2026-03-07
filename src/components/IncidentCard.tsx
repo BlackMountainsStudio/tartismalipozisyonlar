@@ -1,6 +1,7 @@
 "use client";
 
-import { Clock, ExternalLink, AlertTriangle, ShieldAlert, Eye, Flag } from "lucide-react";
+import Link from "next/link";
+import { Clock, ExternalLink, AlertTriangle, ShieldAlert, Eye, Flag, ChevronRight } from "lucide-react";
 import ConfidenceBadge from "./ConfidenceBadge";
 
 interface IncidentCardProps {
@@ -13,6 +14,7 @@ interface IncidentCardProps {
   status: string;
   matchInfo?: string;
   actions?: React.ReactNode;
+  clickable?: boolean;
 }
 
 const INCIDENT_TYPE_LABELS: Record<string, { label: string; icon: React.ReactNode }> = {
@@ -75,6 +77,7 @@ const STATUS_STYLES: Record<string, string> = {
 };
 
 export default function IncidentCard({
+  id,
   type,
   minute,
   description,
@@ -83,14 +86,15 @@ export default function IncidentCard({
   status,
   matchInfo,
   actions,
+  clickable = false,
 }: IncidentCardProps) {
   const typeInfo = INCIDENT_TYPE_LABELS[type] ?? {
     label: type,
     icon: <AlertTriangle className="h-4 w-4" />,
   };
 
-  return (
-    <div className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-5 transition-all hover:border-zinc-700">
+  const cardContent = (
+    <>
       <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
         <div className="flex items-center gap-2">
           <span className="text-amber-400">{typeInfo.icon}</span>
@@ -103,6 +107,9 @@ export default function IncidentCard({
           >
             {STATUS_LABELS[status] ?? status}
           </span>
+          {clickable && (
+            <ChevronRight className="h-4 w-4 text-zinc-500" />
+          )}
         </div>
       </div>
 
@@ -118,11 +125,11 @@ export default function IncidentCard({
         </div>
       )}
 
-      <p className="mb-4 text-sm leading-relaxed text-zinc-300">
+      <p className="mb-4 text-sm leading-relaxed text-zinc-300 line-clamp-3">
         {description}
       </p>
 
-      {sources.length > 0 && (
+      {sources.length > 0 && !clickable && (
         <div className="mb-4">
           <p className="mb-1.5 text-xs font-medium text-zinc-500">Kaynaklar</p>
           <div className="flex flex-wrap gap-2">
@@ -133,6 +140,7 @@ export default function IncidentCard({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-1 rounded-md bg-zinc-800 px-2 py-1 text-xs text-zinc-400 transition-colors hover:bg-zinc-700 hover:text-white"
+                onClick={(e) => e.stopPropagation()}
               >
                 <ExternalLink className="h-3 w-3" />
                 Kaynak {i + 1}
@@ -147,7 +155,30 @@ export default function IncidentCard({
         </div>
       )}
 
+      {clickable && (
+        <div className="mt-2 text-xs font-medium text-red-400">
+          Detayları gör →
+        </div>
+      )}
+
       {actions && <div className="flex flex-wrap gap-2 border-t border-zinc-800 pt-4">{actions}</div>}
+    </>
+  );
+
+  if (clickable) {
+    return (
+      <Link
+        href={`/incidents/${id}`}
+        className="block rounded-xl border border-zinc-800 bg-zinc-900/50 p-5 transition-all hover:border-red-500/30 hover:bg-zinc-900"
+      >
+        {cardContent}
+      </Link>
+    );
+  }
+
+  return (
+    <div className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-5 transition-all hover:border-zinc-700">
+      {cardContent}
     </div>
   );
 }

@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/database/db";
 
-function parseSources(sources: string): string[] {
+function parseJson<T>(raw: string, fallback: T): T {
   try {
-    return JSON.parse(sources);
+    return JSON.parse(raw);
   } catch {
-    return [];
+    return fallback;
   }
 }
 
@@ -26,7 +26,8 @@ export async function GET(
 
     return NextResponse.json({
       ...incident,
-      sources: parseSources(incident.sources),
+      sources: parseJson(incident.sources, []),
+      refereeComments: parseJson(incident.refereeComments, []),
     });
   } catch (err) {
     console.error("GET /api/incidents/[id] error:", err);
@@ -67,8 +68,8 @@ export async function PATCH(
         );
       }
 
-      const targetSources = parseSources(targetIncident.sources);
-      const sourceSources = parseSources(sourceIncident.sources);
+      const targetSources = parseJson<string[]>(targetIncident.sources, []);
+      const sourceSources = parseJson<string[]>(sourceIncident.sources, []);
       const mergedSources = [...targetSources, ...sourceSources];
 
       const updated = await prisma.incident.update({
@@ -87,7 +88,8 @@ export async function PATCH(
 
       return NextResponse.json({
         ...updated,
-        sources: parseSources(updated.sources),
+        sources: parseJson(updated.sources, []),
+        refereeComments: parseJson(updated.refereeComments, []),
       });
     }
 
@@ -104,7 +106,8 @@ export async function PATCH(
 
     return NextResponse.json({
       ...incident,
-      sources: parseSources(incident.sources),
+      sources: parseJson(incident.sources, []),
+      refereeComments: parseJson(incident.refereeComments, []),
     });
   } catch (err) {
     console.error("PATCH /api/incidents/[id] error:", err);
