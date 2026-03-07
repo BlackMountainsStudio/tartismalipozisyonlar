@@ -15,7 +15,30 @@
       "homeTeam": "Galatasaray",
       "awayTeam": "Beşiktaş",
       "league": "Süper Lig 2025-26",
-      "incidents": []
+      "incidents": [
+        {
+          "minute": 34,
+          "type": "RED_CARD",
+          "description": "Davinson Sanchez'in bariz gol sansini engelledigi pozisyonda gordugu kirmizi kart macin en cok konusulan kararlarindan biri oldu. Eski hakemler kararin dogru oldugu gorusunde birlesti.",
+          "confidenceScore": 0.78,
+          "sources": [
+            "https://www.cumhuriyet.com.tr/spor/eski-hakemler-galatasaray-besiktas-macini-degerlendirdi-macin-kontrolunu-kaybetti-2440832",
+            "https://www.hurriyet.com.tr/sporarena/firat-aydinus-galatasaray-besiktas-derbisindeki-hakem-kararlarini-degerlendirdi-osimhenin-2-emirhanin-1-kirmizi-kartlik-eylemi-var-42972458"
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 39,
+          "type": "MISSED_RED_CARD",
+          "description": "Osimhen ile Emirhan arasindaki gerginlikte Osimhen'in bogaz tutma hareketinin kirmizi kart gerektirip gerektirmedigi sert sekilde tartisildi. Eski hakemlerin buyuk bolumu bu hareketin kirmizi kart sinirinda oldugunu belirtti.",
+          "confidenceScore": 0.85,
+          "sources": [
+            "https://www.hurriyet.com.tr/sporarena/firat-aydinus-galatasaray-besiktas-derbisindeki-hakem-kararlarini-degerlendirdi-osimhenin-2-emirhanin-1-kirmizi-kartlik-eylemi-var-42972458",
+            "https://www.milliyet.com.tr/skorer/galatasaray-besiktas-derbisinde-tartisma-yaratan-karar-eski-hakem-degerlendirdi-tff-tekrar-oynatabilir-7458191"
+          ],
+          "status": "APPROVED"
+        }
+      ]
     },
     {
       "week": 8,
