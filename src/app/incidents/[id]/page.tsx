@@ -302,20 +302,22 @@ export default function IncidentDetailPage({
           )}
 
           {activeVideo && !activeYtId && (
-            <a
-              href={activeVideo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mb-5 flex items-center justify-between gap-4 rounded-xl border border-zinc-700 bg-zinc-800/30 p-5 transition-colors hover:border-zinc-600 hover:bg-zinc-800/50"
-            >
-              <div>
-                <p className="text-sm font-semibold text-white">Pozisyon videosunu aç</p>
-                <p className="mt-1 text-xs text-zinc-400">
-                  Bu video {activeVideoProvider} üzerinde doğrudan pozisyon sayfasına gidiyor.
-                </p>
-              </div>
-              <ExternalLink className="h-5 w-5 shrink-0 text-red-400" />
-            </a>
+            <div className="mb-5 aspect-video overflow-hidden rounded-xl border border-zinc-700">
+              <iframe
+                src={activeVideo}
+                className="h-full w-full"
+                allowFullScreen
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                title={`Pozisyon videosu - ${activeVideoProvider}`}
+              />
+              <p className="mt-2 text-xs text-zinc-500">
+                Kaynak: {activeVideoProvider}
+                {" · "}
+                <a href={activeVideo} target="_blank" rel="noopener noreferrer" className="text-red-400 hover:underline">
+                  Videoyu yeni sekmede aç
+                </a>
+              </p>
+            </div>
           )}
 
           {relatedVideos.length > 0 && (
