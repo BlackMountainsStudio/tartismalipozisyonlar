@@ -1,0 +1,44 @@
+{
+  "week": 11,
+  "matches": [
+    {
+      "week": 11,
+      "date": "2025-11-01",
+      "homeTeam": "Galatasaray",
+      "awayTeam": "Trabzonspor",
+      "league": "Süper Lig 2025-26",
+      "incidents": []
+    },
+    {
+      "week": 11,
+      "date": "2025-11-02",
+      "homeTeam": "Beşiktaş",
+      "awayTeam": "Fenerbahçe",
+      "league": "Süper Lig 2025-26",
+      "incidents": [
+        {
+          "minute": 45,
+          "type": "PENALTY",
+          "description": "Kerem Aktürkoğlu'nun ceza sahasında Salih Uçan ile yaşadığı pozisyonda Fenerbahçe lehine penaltı beklendi. Trio ve eski hakem yorumlarında penaltı verilmemesi ciddi hata olarak değerlendirildi.",
+          "confidenceScore": 0.89,
+          "sources": [
+            "https://www.haberler.com/spor/derbinin-tartismali-pozisyonlarini-trio-yorumladi-19212658-haberi/",
+            "https://www.cumhuriyet.com.tr/spor/eski-hakemler-besiktas-fenerbahce-macini-yorumladi-hakem-sinifta-kaldi-2449272"
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 90,
+          "type": "PENALTY",
+          "description": "Uzatmada Beşiktaş lehine ceza sahası içindeki itme müdahalesinde penaltı beklendi. Maç sonu yorumlarında açık penaltı ve kırmızı kart ihtimali öne çıkarıldı.",
+          "confidenceScore": 0.83,
+          "sources": [
+            "https://www.haberler.com/spor/derbinin-tartismali-pozisyonlarini-trio-yorumladi-19212658-haberi/",
+            "http://www.hurriyet.com.tr/sporarena/besiktas-fenerbahce-derbisinin-hakem-kararlarini-firat-aydinus-tek-tek-inceledi-sergen-yalcin-ve-orkuna-cikan-kirmizi-kartlar-43005875"
+          ],
+          "status": "APPROVED"
+        }
+      ]
+    }
+  ]
+}
