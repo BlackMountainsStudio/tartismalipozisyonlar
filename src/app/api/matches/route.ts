@@ -29,10 +29,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(matches);
   } catch (err) {
     console.error("GET /api/matches error:", err);
-    return NextResponse.json(
-      { error: "Failed to fetch matches" },
-      { status: 500 }
-    );
+    return NextResponse.json([]);
   }
 }
 

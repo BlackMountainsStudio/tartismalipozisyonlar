@@ -53,13 +53,15 @@ export default function DashboardMatchDetailPage({
         fetch(`/api/incidents?matchId=${matchId}`),
       ]);
       const matchData = await matchRes.json();
-      const matchItem = (matchData as Match[]).find((m: Match) => m.id === matchId);
+      const matchList = Array.isArray(matchData) ? matchData : [];
+      const matchItem = matchList.find((m: Match) => m.id === matchId);
       setMatch(matchItem ?? null);
 
       const incidentsData = await incidentsRes.json();
-      setIncidents(incidentsData);
+      setIncidents(Array.isArray(incidentsData) ? incidentsData : []);
     } catch (err) {
       console.error("Failed to fetch data:", err);
+      setIncidents([]);
     } finally {
       setLoading(false);
     }

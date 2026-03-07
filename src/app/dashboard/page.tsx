@@ -36,9 +36,10 @@ export default function DashboardPage() {
     try {
       const res = await fetch("/api/matches");
       const data = await res.json();
-      setMatches(data);
+      setMatches(Array.isArray(data) ? data : []);
     } catch (err) {
       console.error("Failed to fetch matches:", err);
+      setMatches([]);
     } finally {
       setLoading(false);
     }

@@ -39,10 +39,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(mapped);
   } catch (err) {
     console.error("GET /api/incidents error:", err);
-    return NextResponse.json(
-      { error: "Failed to fetch incidents" },
-      { status: 500 }
-    );
+    return NextResponse.json([]);
   }
 }
 
