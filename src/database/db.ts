@@ -36,7 +36,8 @@ function createPrismaClient(): PrismaClient {
   }
 
   // Default: Prisma will use DATABASE_URL from environment
-  return new PrismaClient();
+  // If no adapter available, use default PrismaClient with empty config
+  return new PrismaClient({});
 }
 
 export const prisma = globalForPrisma.prisma ?? createPrismaClient();
