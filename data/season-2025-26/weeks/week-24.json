@@ -37,11 +37,22 @@
           "description": "Osimhen'in Aliti ile temas sonrasi yerde kaldigi pozisyonda Galatasaray penaltı bekledi. Trio yorumunda Deniz Coban penalti verilse daha dogru olurdu derken diger iki eski hakem devam kararini destekledi.",
           "confidenceScore": 0.79,
           "sources": [
-            "https://www.yenicaggazetesi.com/bein-trio-galatasaray-alanyaspor-macini-degerlendirdi-hakem-kararlari-dogru-mu-besiktas-derbisi-oncesi-ali-sansalanin-kart-ve-ceza-kararlari-1005091h.htm"
+            "https://www.yenicaggazetesi.com/bein-trio-galatasaray-alanyaspor-macini-degerlendirdi-hakem-kararlari-dogru-mu-besiktas-derbisi-oncesi-ali-sansalanin-kart-ve-ceza-kararlari-1005091h.htm",
+            "https://www.youtube.com/shorts/UidFoc2Jijo",
+            "https://www.youtube.com/shorts/yBQ_tsLDsLA",
+            "https://www.youtube.com/results?search_query=Galatasaray+vs+Alanyaspor+osimhen+penalt%C4%B1+pozisyonu+"
+          ],
+          "videoUrl": "https://www.youtube.com/shorts/UidFoc2Jijo",
+          "relatedVideos": [
+            { "url": "https://www.youtube.com/shorts/UidFoc2Jijo", "title": "Osimhen penaltı pozisyonu (YouTube Shorts)" },
+            { "url": "https://www.youtube.com/shorts/yBQ_tsLDsLA", "title": "Galatasaray Alanyaspor penaltı tartışması (YouTube Shorts)" },
+            { "url": "https://www.youtube.com/results?search_query=Galatasaray+vs+Alanyaspor+osimhen+penalt%C4%B1+pozisyonu+", "title": "YouTube'da Osimhen penaltı pozisyonu araması" }
           ],
           "refereeComments": [
-            { "author": "Deniz Çoban (Trio)", "text": "Penaltı verilse daha doğru olurdu." },
-            { "author": "Trio diğer eski hakemler", "text": "Devam kararını desteklediler." }
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Penaltı verilse daha doğru olurdu." },
+            { "author": "Trio diğer eski hakemler (Bülent Yıldırım, Bahattin Duran)", "text": "Devam kararını desteklediler; temasın penaltı gerektirmediği yönünde görüş bildirdiler." },
+            { "author": "Yeni Çağ / beIN Trio yorumu", "text": "Galatasaray-Alanyaspor maçındaki penaltı pozisyonu Trio'da tek tek incelendi; Deniz Çoban penaltı verilmeli derken diğer iki eski hakem saha kararını doğru buldu." },
+            { "author": "Video ve sosyal medya yorumları", "text": "Pozisyon YouTube ve sosyal medyada geniş yer buldu; taraftar ve yorumcular 'penaltı verilmeliydi' ile 'devam doğru' görüşleriyle ikiye ayrıldı." }
           ],
           "status": "APPROVED"
         },

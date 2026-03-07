@@ -134,7 +134,7 @@ function parseJson<T>(raw: T | string, fallback: T): T {
 }
 
 function extractYouTubeId(url: string): string | null {
-  const match = url.match(/(?:watch\?v=|youtu\.be\/|embed\/)([a-zA-Z0-9_-]{11})/);
+  const match = url.match(/(?:watch\?v=|youtu\.be\/|embed\/|shorts\/)([a-zA-Z0-9_-]{11})/);
   return match ? match[1] : null;
 }
 
