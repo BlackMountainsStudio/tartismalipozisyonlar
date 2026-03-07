@@ -1,0 +1,29 @@
+{
+  "week": 8,
+  "matches": [
+    {
+      "week": 8,
+      "date": "2025-10-03",
+      "homeTeam": "Trabzonspor",
+      "awayTeam": "Kayserispor",
+      "league": "Süper Lig 2025-26",
+      "incidents": []
+    },
+    {
+      "week": 8,
+      "date": "2025-10-04",
+      "homeTeam": "Galatasaray",
+      "awayTeam": "Beşiktaş",
+      "league": "Süper Lig 2025-26",
+      "incidents": []
+    },
+    {
+      "week": 8,
+      "date": "2025-10-05",
+      "homeTeam": "Samsunspor",
+      "awayTeam": "Fenerbahçe",
+      "league": "Süper Lig 2025-26",
+      "incidents": []
+    }
+  ]
+}
