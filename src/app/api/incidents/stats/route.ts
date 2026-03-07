@@ -72,13 +72,13 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({
       total,
-      byType,
-      byCategory,
+      byType: typeof byType === "object" && byType != null ? byType : {},
+      byCategory: typeof byCategory === "object" && byCategory != null ? byCategory : {},
       byTeam: Object.fromEntries(
-        Object.entries(byTeam).sort((a, b) => b[1] - a[1])
+        Object.entries(typeof byTeam === "object" && byTeam != null ? byTeam : {}).sort((a, b) => b[1] - a[1])
       ),
       byWeek: Object.fromEntries(
-        Object.entries(byWeek)
+        Object.entries(typeof byWeek === "object" && byWeek != null ? byWeek : {})
           .map(([k, v]) => [Number(k), v] as const)
           .sort((a, b) => a[0] - b[0])
       ),

@@ -78,8 +78,8 @@ export default function PozisyonlarPage() {
       const incData = await incRes.json();
       const statsData = await statsRes.json();
 
-      setIncidents(Array.isArray(incData) ? incData : []);
-      setStats(statsData);
+      setIncidents(Array.isArray(incData) ? incData.filter((i): i is Incident => i != null && typeof i === "object") : []);
+      setStats(statsData && typeof statsData === "object" ? statsData : null);
     } catch (err) {
       console.error("Failed to fetch pozisyonlar:", err);
       setIncidents([]);
@@ -93,13 +93,13 @@ export default function PozisyonlarPage() {
     fetchData();
   }, [fetchData]);
 
-  const teams = stats
+  const teams = stats && typeof stats.byTeam === "object" && stats.byTeam != null
     ? (Object.keys(stats.byTeam) as string[])
         .filter((t) => (BIG_FOUR_TEAMS as readonly string[]).includes(t))
         .sort((a, b) => (stats.byTeam[b] ?? 0) - (stats.byTeam[a] ?? 0))
     : [];
 
-  const sorted = [...incidents].sort(
+  const sorted = [...incidents].filter((i): i is Incident => i != null && typeof i === "object").sort(
     (a, b) => (a.minute ?? 999) - (b.minute ?? 999)
   );
   const byCategory = sorted.reduce<Record<string, Incident[]>>((acc, inc) => {
@@ -210,7 +210,7 @@ export default function PozisyonlarPage() {
           </p>
           <div className="flex flex-wrap gap-2">
             {CATEGORY_ORDER.map((key) => {
-              const count = stats?.byCategory[key] ?? 0;
+              const count = stats?.byCategory != null && typeof stats.byCategory === "object" ? (stats.byCategory[key] ?? 0) : 0;
               const typesInCategory = Object.entries(INCIDENT_CATEGORIES)
                 .filter(([, v]) => v.key === key)
                 .map(([t]) => t);
@@ -298,7 +298,9 @@ export default function PozisyonlarPage() {
                 </button>
                 {expanded && (
                   <div className="space-y-4 border-t border-zinc-800 p-5 pt-4">
-                    {list.map((incident) => (
+                    {list
+                      .filter((incident): incident is Incident => incident != null && typeof incident === "object")
+                      .map((incident) => (
                       <IncidentCard
                         key={incident.id}
                         id={incident.id}

@@ -50,7 +50,7 @@ export default function PublicMatchDetailPage({
       setMatch(matchItem ?? null);
 
       const incidentsData = await incidentsRes.json();
-      setIncidents(Array.isArray(incidentsData) ? incidentsData : []);
+      setIncidents(Array.isArray(incidentsData) ? incidentsData.filter((i): i is Incident => i != null && typeof i === "object" && "id" in i) : []);
     } catch (err) {
       console.error("Failed to fetch data:", err);
     } finally {
@@ -137,6 +137,7 @@ export default function PublicMatchDetailPage({
       ) : (
         <div className="space-y-4">
           {[...incidents]
+            .filter((i): i is Incident => i != null && typeof i === "object" && "id" in i)
             .sort((a, b) => (a.minute ?? 999) - (b.minute ?? 999))
             .map((incident) => (
               <IncidentCard
