@@ -1,0 +1,37 @@
+{
+  "week": 20,
+  "matches": [
+    {
+      "week": 20,
+      "date": "2026-01-30",
+      "homeTeam": "Antalyaspor",
+      "awayTeam": "Trabzonspor",
+      "league": "Süper Lig 2025-26",
+      "incidents": []
+    },
+    {
+      "week": 20,
+      "date": "2026-01-31",
+      "homeTeam": "Beşiktaş",
+      "awayTeam": "Konyaspor",
+      "league": "Süper Lig 2025-26",
+      "incidents": []
+    },
+    {
+      "week": 20,
+      "date": "2026-02-01",
+      "homeTeam": "Galatasaray",
+      "awayTeam": "Kayserispor",
+      "league": "Süper Lig 2025-26",
+      "incidents": []
+    },
+    {
+      "week": 20,
+      "date": "2026-02-02",
+      "homeTeam": "Kocaelispor",
+      "awayTeam": "Fenerbahçe",
+      "league": "Süper Lig 2025-26",
+      "incidents": []
+    }
+  ]
+}
