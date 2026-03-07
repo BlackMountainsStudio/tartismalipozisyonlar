@@ -7,6 +7,7 @@
       "homeTeam": "Antalyaspor",
       "awayTeam": "Beşiktaş",
       "league": "Süper Lig 2025-26",
+      "note": "Tartışmalı pozisyon eklenmedi",
       "incidents": []
     },
     {
@@ -15,6 +16,7 @@
       "homeTeam": "Trabzonspor",
       "awayTeam": "Alanyaspor",
       "league": "Süper Lig 2025-26",
+      "note": "Tartışmalı pozisyon eklenmedi",
       "incidents": []
     },
     {
@@ -23,6 +25,7 @@
       "homeTeam": "Fenerbahçe",
       "awayTeam": "Kayserispor",
       "league": "Süper Lig 2025-26",
+      "note": "Tartışmalı pozisyon eklenmedi",
       "incidents": []
     },
     {
@@ -31,6 +34,7 @@
       "homeTeam": "Kocaelispor",
       "awayTeam": "Galatasaray",
       "league": "Süper Lig 2025-26",
+      "note": "Tartışmalı pozisyon eklenmedi",
       "incidents": []
     }
   ]
