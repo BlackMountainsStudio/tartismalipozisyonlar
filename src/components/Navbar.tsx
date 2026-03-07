@@ -27,8 +27,7 @@ export default function Navbar() {
         <Link href="/" className="flex items-center gap-2">
           <Shield className="h-6 w-6 text-red-500 sm:h-7 sm:w-7" />
           <span className="text-base font-bold text-white sm:text-lg">
-            <span className="hidden sm:inline">Tartışmalı</span>
-            <span className="text-red-500">Pozisyonlar</span>
+            Var <span className="text-red-500">Odası</span>
           </span>
         </Link>
 
@@ -54,7 +53,7 @@ export default function Navbar() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="flex h-10 w-10 items-center justify-center rounded-lg text-zinc-400 transition-colors hover:bg-zinc-800 hover:text-white md:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-lg text-zinc-400 transition-colors active:bg-zinc-800 active:text-white md:hidden"
           aria-label="Menü"
         >
           {mobileMenuOpen ? (

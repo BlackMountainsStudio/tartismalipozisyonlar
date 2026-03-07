@@ -141,7 +141,7 @@ export default function PozisyonlarPage() {
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
       <div className="mb-10">
         <h1 className="text-3xl font-bold text-white sm:text-4xl">
-          Tartışmalı Pozisyonlar
+          Var <span className="text-red-500">Odası</span>
         </h1>
         <p className="mt-2 text-zinc-400">
           Türe ve takıma göre filtreleyip grupları açıp kapatabilirsiniz. İstatistik sayfası bir sonraki adımda eklenecek.

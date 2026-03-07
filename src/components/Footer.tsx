@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="flex items-center gap-2 text-zinc-400">
           <Shield className="h-5 w-5 text-red-500" />
           <span className="text-sm">
-            tartismalipozisyonlar.com
+            varodasi.com
           </span>
         </div>
         <p className="text-xs text-zinc-500">

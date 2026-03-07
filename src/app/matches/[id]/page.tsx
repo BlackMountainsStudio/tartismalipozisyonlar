@@ -121,7 +121,7 @@ export default function PublicMatchDetailPage({
       </div>
 
       <h2 className="mb-6 text-xl font-bold text-white">
-        Tartışmalı Pozisyonlar
+        Var <span className="text-red-500">Odası</span>
       </h2>
 
       {incidents.length === 0 ? (

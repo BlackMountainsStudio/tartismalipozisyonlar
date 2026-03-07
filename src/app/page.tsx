@@ -101,7 +101,7 @@ export default function HomePage() {
             </div>
           </div>
           <h1 className="mb-4 text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
-            Tartışmalı<span className="text-red-500">Pozisyonlar</span>
+            Var <span className="text-red-500">Odası</span>
           </h1>
           <p className="mx-auto max-w-2xl text-base text-zinc-400 sm:text-lg">
             Tartışmalı hakem kararlarını Reddit ve Ekşi Sözlük tartışmalarını

@@ -213,9 +213,9 @@ export default function IncidentDetailPage({
         ]
           .filter(Boolean)
           .join(" · ");
-    document.title = summary ? `${summary} | Tartışmalı Pozisyonlar` : "Tartışmalı Pozisyonlar";
+    document.title = summary ? `${summary} | Var Odası` : "Var Odası";
     return () => {
-      document.title = "Tartışmalı Pozisyonlar - Hakem Kararları Analiz Platformu";
+      document.title = "Var Odası - Hakem Kararları Analiz Platformu";
     };
   }, [incident]);
 
