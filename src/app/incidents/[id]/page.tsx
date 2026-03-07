@@ -9,20 +9,34 @@ import {
   Loader2,
   Calendar,
   Clock,
-  Video,
-  MessageSquare,
+  Play,
   ExternalLink,
   Flag,
   Eye,
   ShieldAlert,
   AlertTriangle,
-  User,
+  Newspaper,
+  Scale,
+  Video,
 } from "lucide-react";
 
 interface RefereeComment {
   name: string;
   comment: string;
   url: string;
+  role: string;
+}
+
+interface RelatedVideo {
+  url: string;
+  title: string;
+}
+
+interface NewsArticle {
+  title: string;
+  url: string;
+  source: string;
+  author: string;
 }
 
 interface Incident {
@@ -33,7 +47,9 @@ interface Incident {
   confidenceScore: number;
   sources: string[];
   videoUrl: string | null;
+  relatedVideos: RelatedVideo[] | string;
   refereeComments: RefereeComment[] | string;
+  newsArticles: NewsArticle[] | string;
   status: string;
   match: {
     id: string;
@@ -71,13 +87,17 @@ const STATUS_STYLES: Record<string, string> = {
   REJECTED: "bg-red-500/10 text-red-400 ring-red-500/30",
 };
 
-function parseRefereeComments(raw: RefereeComment[] | string): RefereeComment[] {
-  if (Array.isArray(raw)) return raw;
-  try {
-    return JSON.parse(raw);
-  } catch {
-    return [];
+function parseJson<T>(raw: T | string, fallback: T): T {
+  if (Array.isArray(raw)) return raw as T;
+  if (typeof raw === "string") {
+    try { return JSON.parse(raw); } catch { return fallback; }
   }
+  return fallback;
+}
+
+function extractYouTubeId(url: string): string | null {
+  const match = url.match(/(?:watch\?v=|youtu\.be\/|embed\/)([a-zA-Z0-9_-]{11})/);
+  return match ? match[1] : null;
 }
 
 export default function IncidentDetailPage({
@@ -89,16 +109,15 @@ export default function IncidentDetailPage({
   const router = useRouter();
   const [incident, setIncident] = useState<Incident | null>(null);
   const [loading, setLoading] = useState(true);
+  const [activeVideo, setActiveVideo] = useState<string | null>(null);
 
   const fetchData = useCallback(async () => {
     try {
       const res = await fetch(`/api/incidents/${incidentId}`);
-      if (!res.ok) {
-        setIncident(null);
-        return;
-      }
+      if (!res.ok) { setIncident(null); return; }
       const data = await res.json();
       setIncident(data);
+      if (data.videoUrl) setActiveVideo(data.videoUrl);
     } catch {
       setIncident(null);
     } finally {
@@ -106,9 +125,7 @@ export default function IncidentDetailPage({
     }
   }, [incidentId]);
 
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
+  useEffect(() => { fetchData(); }, [fetchData]);
 
   if (loading) {
     return (
@@ -132,7 +149,11 @@ export default function IncidentDetailPage({
     color: "text-zinc-400",
   };
 
-  const refereeComments = parseRefereeComments(incident.refereeComments);
+  const refereeComments = parseJson<RefereeComment[]>(incident.refereeComments, []);
+  const relatedVideos = parseJson<RelatedVideo[]>(incident.relatedVideos, []);
+  const newsArticles = parseJson<NewsArticle[]>(incident.newsArticles, []);
+
+  const activeYtId = activeVideo ? extractYouTubeId(activeVideo) : null;
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
@@ -145,8 +166,8 @@ export default function IncidentDetailPage({
         {incident.match.homeTeam} vs {incident.match.awayTeam} maçına dön
       </button>
 
-      {/* Pozisyon başlık kartı */}
-      <div className="mb-8 rounded-2xl border border-zinc-800 bg-gradient-to-br from-zinc-900 to-zinc-950 p-8">
+      {/* === BAŞLIK KARTI === */}
+      <div className="mb-8 rounded-2xl border border-zinc-800 bg-gradient-to-br from-zinc-900 to-zinc-950 p-6 sm:p-8">
         <div className="mb-4 flex flex-wrap items-center gap-3">
           <span className={typeInfo.color}>{typeInfo.icon}</span>
           <h1 className="text-2xl font-bold text-white sm:text-3xl">{typeInfo.label}</h1>
@@ -157,97 +178,129 @@ export default function IncidentDetailPage({
           </span>
         </div>
 
-        <div className="mb-6 flex flex-wrap items-center gap-4 text-sm text-zinc-400">
+        <div className="mb-4 flex flex-wrap items-center gap-4 text-sm text-zinc-400">
           {incident.minute && (
             <span className="flex items-center gap-1.5">
-              <Clock className="h-4 w-4" />
-              {incident.minute}. dakika
+              <Clock className="h-4 w-4" /> {incident.minute}. dakika
             </span>
           )}
           <span className="flex items-center gap-1.5">
             <Calendar className="h-4 w-4" />
-            {new Date(incident.match.date).toLocaleDateString("tr-TR", {
-              day: "numeric",
-              month: "long",
-              year: "numeric",
-            })}
+            {new Date(incident.match.date).toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric" })}
           </span>
           <ConfidenceBadge score={incident.confidenceScore} />
         </div>
 
-        <div className="mb-4 inline-block rounded-lg bg-zinc-800/50 px-3 py-1.5 text-sm text-zinc-300">
+        <div className="inline-block rounded-lg bg-zinc-800/50 px-3 py-1.5 text-sm text-zinc-300">
           {incident.match.homeTeam} vs {incident.match.awayTeam} — {incident.match.league}, Hafta {incident.match.week}
         </div>
       </div>
 
-      {/* Detaylı açıklama */}
+      {/* === GENEL YAZI / DETAY === */}
       <div className="mb-8 rounded-xl border border-zinc-800 bg-zinc-900/50 p-6">
-        <h2 className="mb-4 flex items-center gap-2 text-lg font-bold text-white">
-          <MessageSquare className="h-5 w-5 text-red-400" />
-          Pozisyon Detayı
-        </h2>
-        <p className="text-sm leading-7 text-zinc-300">{incident.description}</p>
+        <h2 className="mb-4 text-lg font-bold text-white">Pozisyon Detayı</h2>
+        <p className="whitespace-pre-line text-sm leading-7 text-zinc-300">{incident.description}</p>
       </div>
 
-      {/* Video */}
-      {incident.videoUrl && (
+      {/* === VİDEOLAR === */}
+      {(activeVideo || relatedVideos.length > 0) && (
         <div className="mb-8 rounded-xl border border-zinc-800 bg-zinc-900/50 p-6">
-          <h2 className="mb-4 flex items-center gap-2 text-lg font-bold text-white">
+          <h2 className="mb-5 flex items-center gap-2 text-lg font-bold text-white">
             <Video className="h-5 w-5 text-red-400" />
-            Video
+            Videolar
           </h2>
-          {incident.videoUrl.includes("youtube.com") || incident.videoUrl.includes("youtu.be") ? (
-            <div className="aspect-video overflow-hidden rounded-lg">
+
+          {/* Ana video embed */}
+          {activeYtId && (
+            <div className="mb-5 aspect-video overflow-hidden rounded-xl border border-zinc-700">
               <iframe
-                src={incident.videoUrl.replace("watch?v=", "embed/")}
+                src={`https://www.youtube.com/embed/${activeYtId}`}
                 className="h-full w-full"
                 allowFullScreen
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               />
             </div>
-          ) : (
-            <a
-              href={incident.videoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-lg bg-red-600/10 px-4 py-3 text-sm font-medium text-red-400 transition-colors hover:bg-red-600/20"
-            >
-              <Video className="h-4 w-4" />
-              Videoyu İzle
-              <ExternalLink className="h-3.5 w-3.5" />
-            </a>
+          )}
+
+          {/* Video thumbnail listesi */}
+          {relatedVideos.length > 0 && (
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              {relatedVideos.map((vid, i) => {
+                const ytId = extractYouTubeId(vid.url);
+                const isActive = activeVideo === vid.url;
+                return (
+                  <button
+                    key={i}
+                    onClick={() => setActiveVideo(vid.url)}
+                    className={`group flex gap-3 rounded-lg border p-3 text-left transition-all ${
+                      isActive
+                        ? "border-red-500/50 bg-red-500/5"
+                        : "border-zinc-800 bg-zinc-800/30 hover:border-zinc-700"
+                    }`}
+                  >
+                    {/* Thumbnail */}
+                    <div className="relative h-16 w-28 shrink-0 overflow-hidden rounded-md bg-zinc-800">
+                      {ytId ? (
+                        <img
+                          src={`https://img.youtube.com/vi/${ytId}/mqdefault.jpg`}
+                          alt={vid.title}
+                          className="h-full w-full object-cover"
+                        />
+                      ) : (
+                        <div className="flex h-full w-full items-center justify-center">
+                          <Video className="h-5 w-5 text-zinc-600" />
+                        </div>
+                      )}
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 transition-opacity group-hover:opacity-100">
+                        <Play className="h-6 w-6 text-white" />
+                      </div>
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-medium leading-snug text-white line-clamp-2">
+                        {vid.title}
+                      </p>
+                      <p className="mt-1 text-xs text-zinc-500">YouTube</p>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
           )}
         </div>
       )}
 
-      {/* Hakem / Uzman Yorumları */}
+      {/* === HAKEM / UZMAN YORUMLARI === */}
       {refereeComments.length > 0 && (
         <div className="mb-8 rounded-xl border border-zinc-800 bg-zinc-900/50 p-6">
-          <h2 className="mb-4 flex items-center gap-2 text-lg font-bold text-white">
-            <User className="h-5 w-5 text-red-400" />
-            Uzman Yorumları
+          <h2 className="mb-5 flex items-center gap-2 text-lg font-bold text-white">
+            <Scale className="h-5 w-5 text-red-400" />
+            Hakem ve Uzman Yorumları
           </h2>
           <div className="space-y-4">
             {refereeComments.map((rc, i) => (
               <div
                 key={i}
-                className="rounded-lg border border-zinc-800 bg-zinc-800/30 p-4"
+                className="rounded-lg border border-zinc-800 bg-zinc-800/20 p-4"
               >
-                <div className="mb-2 flex items-center justify-between">
-                  <span className="font-semibold text-white">{rc.name}</span>
+                <div className="mb-2 flex items-center justify-between gap-2">
+                  <div>
+                    <span className="font-semibold text-white">{rc.name}</span>
+                    {rc.role && (
+                      <span className="ml-2 text-xs text-zinc-500">{rc.role}</span>
+                    )}
+                  </div>
                   {rc.url && (
                     <a
                       href={rc.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1 text-xs text-red-400 transition-colors hover:text-red-300"
+                      className="flex shrink-0 items-center gap-1 text-xs text-red-400 transition-colors hover:text-red-300"
                     >
-                      Profil
-                      <ExternalLink className="h-3 w-3" />
+                      Kaynak <ExternalLink className="h-3 w-3" />
                     </a>
                   )}
                 </div>
-                <p className="text-sm leading-relaxed text-zinc-300">
+                <p className="text-sm leading-relaxed text-zinc-300 italic">
                   &ldquo;{rc.comment}&rdquo;
                 </p>
               </div>
@@ -256,7 +309,47 @@ export default function IncidentDetailPage({
         </div>
       )}
 
-      {/* Kaynaklar */}
+      {/* === BASIN VE HABER KAYNAKLARI === */}
+      {newsArticles.length > 0 && (
+        <div className="mb-8 rounded-xl border border-zinc-800 bg-zinc-900/50 p-6">
+          <h2 className="mb-5 flex items-center gap-2 text-lg font-bold text-white">
+            <Newspaper className="h-5 w-5 text-red-400" />
+            Basın ve Haberler
+          </h2>
+          <div className="space-y-3">
+            {newsArticles.map((article, i) => (
+              <a
+                key={i}
+                href={article.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-start gap-3 rounded-lg border border-zinc-800 bg-zinc-800/20 p-4 transition-all hover:border-zinc-700 hover:bg-zinc-800/40"
+              >
+                <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-zinc-700/50">
+                  <Newspaper className="h-4 w-4 text-zinc-400" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="text-sm font-medium text-white group-hover:text-red-400 line-clamp-2">
+                    {article.title}
+                  </p>
+                  <div className="mt-1 flex items-center gap-2 text-xs text-zinc-500">
+                    <span className="font-medium text-zinc-400">{article.source}</span>
+                    {article.author && (
+                      <>
+                        <span>·</span>
+                        <span>{article.author}</span>
+                      </>
+                    )}
+                  </div>
+                </div>
+                <ExternalLink className="mt-1 h-3.5 w-3.5 shrink-0 text-zinc-600 group-hover:text-red-400" />
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* === KAYNAKLAR === */}
       {incident.sources.length > 0 && (
         <div className="mb-8 rounded-xl border border-zinc-800 bg-zinc-900/50 p-6">
           <h2 className="mb-4 text-lg font-bold text-white">Kaynaklar</h2>
@@ -277,7 +370,7 @@ export default function IncidentDetailPage({
         </div>
       )}
 
-      {/* Yorumlar */}
+      {/* === YORUMLAR === */}
       <CommentSection incidentId={incidentId} />
     </div>
   );

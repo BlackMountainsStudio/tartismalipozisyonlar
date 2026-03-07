@@ -36,7 +36,9 @@ model Incident {
   sources         String  @default("[]")
   status          String  @default("PENDING")
   videoUrl        String?
+  relatedVideos   String  @default("[]")
   refereeComments String  @default("[]")
+  newsArticles    String  @default("[]")
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 

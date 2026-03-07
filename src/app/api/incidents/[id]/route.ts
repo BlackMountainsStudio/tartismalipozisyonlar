@@ -28,6 +28,8 @@ export async function GET(
       ...incident,
       sources: parseJson(incident.sources, []),
       refereeComments: parseJson(incident.refereeComments, []),
+      relatedVideos: parseJson(incident.relatedVideos, []),
+      newsArticles: parseJson(incident.newsArticles, []),
     });
   } catch (err) {
     console.error("GET /api/incidents/[id] error:", err);
@@ -90,6 +92,8 @@ export async function PATCH(
         ...updated,
         sources: parseJson(updated.sources, []),
         refereeComments: parseJson(updated.refereeComments, []),
+        relatedVideos: parseJson(updated.relatedVideos, []),
+        newsArticles: parseJson(updated.newsArticles, []),
       });
     }
 
@@ -108,6 +112,8 @@ export async function PATCH(
       ...incident,
       sources: parseJson(incident.sources, []),
       refereeComments: parseJson(incident.refereeComments, []),
+      relatedVideos: parseJson(incident.relatedVideos, []),
+      newsArticles: parseJson(incident.newsArticles, []),
     });
   } catch (err) {
     console.error("PATCH /api/incidents/[id] error:", err);

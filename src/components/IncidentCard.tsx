@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Clock, ExternalLink, AlertTriangle, ShieldAlert, Eye, Flag, ChevronRight } from "lucide-react";
+import { Clock, AlertTriangle, ShieldAlert, Eye, Flag, ChevronRight } from "lucide-react";
 import ConfidenceBadge from "./ConfidenceBadge";
 
 interface IncidentCardProps {
@@ -18,50 +18,17 @@ interface IncidentCardProps {
 }
 
 const INCIDENT_TYPE_LABELS: Record<string, { label: string; icon: React.ReactNode }> = {
-  POSSIBLE_PENALTY: {
-    label: "Penaltı Pozisyonu",
-    icon: <Flag className="h-4 w-4" />,
-  },
-  PENALTY: {
-    label: "Penaltı Kararı",
-    icon: <Flag className="h-4 w-4" />,
-  },
-  POSSIBLE_OFFSIDE_GOAL: {
-    label: "Ofsayt Tartışması",
-    icon: <Eye className="h-4 w-4" />,
-  },
-  OFFSIDE: {
-    label: "Ofsayt Kararı",
-    icon: <Eye className="h-4 w-4" />,
-  },
-  MISSED_RED_CARD: {
-    label: "Verilmeyen Kırmızı Kart",
-    icon: <ShieldAlert className="h-4 w-4" />,
-  },
-  RED_CARD: {
-    label: "Kırmızı Kart",
-    icon: <ShieldAlert className="h-4 w-4" />,
-  },
-  YELLOW_CARD: {
-    label: "Sarı Kart",
-    icon: <ShieldAlert className="h-4 w-4" />,
-  },
-  VAR_CONTROVERSY: {
-    label: "VAR Tartışması",
-    icon: <AlertTriangle className="h-4 w-4" />,
-  },
-  GOAL_DISALLOWED: {
-    label: "İptal Edilen Gol",
-    icon: <AlertTriangle className="h-4 w-4" />,
-  },
-  FOUL: {
-    label: "Faul Kararı",
-    icon: <Flag className="h-4 w-4" />,
-  },
-  HANDBALL: {
-    label: "El ile Temas",
-    icon: <Flag className="h-4 w-4" />,
-  },
+  POSSIBLE_PENALTY: { label: "Penaltı Pozisyonu", icon: <Flag className="h-4 w-4" /> },
+  PENALTY: { label: "Penaltı Kararı", icon: <Flag className="h-4 w-4" /> },
+  POSSIBLE_OFFSIDE_GOAL: { label: "Ofsayt Tartışması", icon: <Eye className="h-4 w-4" /> },
+  OFFSIDE: { label: "Ofsayt Kararı", icon: <Eye className="h-4 w-4" /> },
+  MISSED_RED_CARD: { label: "Verilmeyen Kırmızı Kart", icon: <ShieldAlert className="h-4 w-4" /> },
+  RED_CARD: { label: "Kırmızı Kart", icon: <ShieldAlert className="h-4 w-4" /> },
+  YELLOW_CARD: { label: "Sarı Kart", icon: <ShieldAlert className="h-4 w-4" /> },
+  VAR_CONTROVERSY: { label: "VAR Tartışması", icon: <AlertTriangle className="h-4 w-4" /> },
+  GOAL_DISALLOWED: { label: "İptal Edilen Gol", icon: <AlertTriangle className="h-4 w-4" /> },
+  FOUL: { label: "Faul Kararı", icon: <Flag className="h-4 w-4" /> },
+  HANDBALL: { label: "El ile Temas", icon: <Flag className="h-4 w-4" /> },
 };
 
 const STATUS_LABELS: Record<string, string> = {
@@ -82,7 +49,6 @@ export default function IncidentCard({
   minute,
   description,
   confidenceScore,
-  sources,
   status,
   matchInfo,
   actions,
@@ -107,9 +73,7 @@ export default function IncidentCard({
           >
             {STATUS_LABELS[status] ?? status}
           </span>
-          {clickable && (
-            <ChevronRight className="h-4 w-4 text-zinc-500" />
-          )}
+          {clickable && <ChevronRight className="h-4 w-4 text-zinc-500" />}
         </div>
       </div>
 
@@ -125,43 +89,17 @@ export default function IncidentCard({
         </div>
       )}
 
-      <p className="mb-4 text-sm leading-relaxed text-zinc-300 line-clamp-3">
+      <p className="text-sm leading-relaxed text-zinc-300 line-clamp-2">
         {description}
       </p>
 
-      {sources.length > 0 && !clickable && (
-        <div className="mb-4">
-          <p className="mb-1.5 text-xs font-medium text-zinc-500">Kaynaklar</p>
-          <div className="flex flex-wrap gap-2">
-            {(sources as string[]).slice(0, 3).map((source, i) => (
-              <a
-                key={i}
-                href={source}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1 rounded-md bg-zinc-800 px-2 py-1 text-xs text-zinc-400 transition-colors hover:bg-zinc-700 hover:text-white"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <ExternalLink className="h-3 w-3" />
-                Kaynak {i + 1}
-              </a>
-            ))}
-            {sources.length > 3 && (
-              <span className="rounded-md bg-zinc-800 px-2 py-1 text-xs text-zinc-500">
-                +{sources.length - 3} daha
-              </span>
-            )}
-          </div>
-        </div>
-      )}
-
       {clickable && (
-        <div className="mt-2 text-xs font-medium text-red-400">
+        <div className="mt-3 text-xs font-medium text-red-400">
           Detayları gör →
         </div>
       )}
 
-      {actions && <div className="flex flex-wrap gap-2 border-t border-zinc-800 pt-4">{actions}</div>}
+      {actions && <div className="mt-4 flex flex-wrap gap-2 border-t border-zinc-800 pt-4">{actions}</div>}
     </>
   );
 
