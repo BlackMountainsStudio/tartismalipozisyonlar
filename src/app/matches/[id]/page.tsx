@@ -14,8 +14,31 @@ interface Incident {
   confidenceScore: number;
   sources: string[];
   status: string;
+  videoUrl?: string | null;
 }
 
+/** Pozisyon tiplerine göre gruplama: penaltı, ofsayt/gol iptali, kart, faul/el, diğer */
+const INCIDENT_CATEGORIES: Record<string, { key: string; label: string }> = {
+  PENALTY: { key: "penalty", label: "Penaltı pozisyonları" },
+  POSSIBLE_PENALTY: { key: "penalty", label: "Penaltı pozisyonları" },
+  GOAL_DISALLOWED: { key: "offside_goal", label: "Ofsayt / Gol iptali" },
+  OFFSIDE: { key: "offside_goal", label: "Ofsayt / Gol iptali" },
+  POSSIBLE_OFFSIDE_GOAL: { key: "offside_goal", label: "Ofsayt / Gol iptali" },
+  RED_CARD: { key: "card", label: "Kart pozisyonları" },
+  YELLOW_CARD: { key: "card", label: "Kart pozisyonları" },
+  MISSED_RED_CARD: { key: "card", label: "Kart pozisyonları" },
+  FOUL: { key: "foul_handball", label: "Faul / El" },
+  HANDBALL: { key: "foul_handball", label: "Faul / El" },
+  VAR_CONTROVERSY: { key: "other", label: "Diğer" },
+};
+
+function getCategoryKey(type: string): string {
+  return INCIDENT_CATEGORIES[type]?.key ?? "other";
+}
+
+function getCategoryLabel(type: string): string {
+  return INCIDENT_CATEGORIES[type]?.label ?? "Diğer";
+}
 interface Match {
   id: string;
   homeTeam: string;
@@ -134,24 +157,49 @@ export default function PublicMatchDetailPage({
           </p>
         </div>
       ) : (
-        <div className="space-y-4">
-          {incidents
-            .sort((a, b) => (a.minute ?? 999) - (b.minute ?? 999))
-            .map((incident) => (
-              <IncidentCard
-                key={incident.id}
-                id={incident.id}
-                type={incident.type}
-                minute={incident.minute}
-                description={incident.description}
-                confidenceScore={incident.confidenceScore}
-                sources={incident.sources}
-                status={incident.status}
-                matchInfo={`${match.homeTeam} vs ${match.awayTeam}`}
-                clickable
-              />
-            ))}
-        </div>
+        (() => {
+          const sorted = [...incidents].sort((a, b) => (a.minute ?? 999) - (b.minute ?? 999));
+          const byCategory = sorted.reduce<Record<string, Incident[]>>((acc, inc) => {
+            const key = getCategoryKey(inc.type);
+            if (!acc[key]) acc[key] = [];
+            acc[key].push(inc);
+            return acc;
+          }, {});
+          const categoryOrder = ["penalty", "offside_goal", "card", "foul_handball", "other"];
+          return (
+            <div className="space-y-8">
+              {categoryOrder.map((key) => {
+                const list = byCategory[key];
+                if (!list?.length) return null;
+                const label = getCategoryLabel(list[0].type);
+                return (
+                  <section key={key}>
+                    <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-zinc-500">
+                      {label}
+                    </h3>
+                    <div className="space-y-4">
+                      {list.map((incident) => (
+                        <IncidentCard
+                          key={incident.id}
+                          id={incident.id}
+                          type={incident.type}
+                          minute={incident.minute}
+                          description={incident.description}
+                          confidenceScore={incident.confidenceScore}
+                          sources={incident.sources}
+                          status={incident.status}
+                          videoUrl={incident.videoUrl}
+                          matchInfo={`${match.homeTeam} vs ${match.awayTeam}`}
+                          clickable
+                        />
+                      ))}
+                    </div>
+                  </section>
+                );
+              })}
+            </div>
+          );
+        })()
       )}
 
       {/* Maç Hakkında Genel Yorumlar */}

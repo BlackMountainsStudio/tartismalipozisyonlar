@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Clock, AlertTriangle, ShieldAlert, Eye, Flag, ChevronRight } from "lucide-react";
+import { Clock, AlertTriangle, ShieldAlert, Eye, Flag, ChevronRight, Video } from "lucide-react";
 import ConfidenceBadge from "./ConfidenceBadge";
 
 interface IncidentCardProps {
@@ -13,6 +13,7 @@ interface IncidentCardProps {
   sources: string[];
   status: string;
   matchInfo?: string;
+  videoUrl?: string | null;
   actions?: React.ReactNode;
   clickable?: boolean;
 }
@@ -52,6 +53,7 @@ export default function IncidentCard({
   confidenceScore,
   status,
   matchInfo,
+  videoUrl,
   actions,
   clickable = false,
 }: IncidentCardProps) {
@@ -93,6 +95,19 @@ export default function IncidentCard({
       <p className="text-sm leading-relaxed text-zinc-300 line-clamp-2">
         {description}
       </p>
+
+      {videoUrl && (
+        <a
+          href={videoUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(e) => e.stopPropagation()}
+          className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-red-400 hover:text-red-300"
+        >
+          <Video className="h-3.5 w-3.5" />
+          Videoyu izle
+        </a>
+      )}
 
       {clickable && (
         <div className="mt-3 text-xs font-medium text-red-400">

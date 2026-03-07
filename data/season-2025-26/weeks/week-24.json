@@ -26,6 +26,9 @@
             "https://beinsports.com.tr/mac-ozetleri-goller/super-lig/pozisyonlar/2025-2026/24/galatasaray-corendon-alanyaspor/galatasarayin-golu-varda-iptal-edildi-39075"
           ],
           "videoUrl": "https://beinsports.com.tr/mac-ozetleri-goller/super-lig/pozisyonlar/2025-2026/24/galatasaray-corendon-alanyaspor/galatasarayin-golu-varda-iptal-edildi-39075",
+          "refereeComments": [
+            { "author": "beIN Trio / eski hakemler", "text": "VAR ofsayt cizgisi kontrolunde golun iptal karari verildi. Pozisyon medyada genis yankı buldu." }
+          ],
           "status": "APPROVED"
         },
         {
@@ -35,6 +38,10 @@
           "confidenceScore": 0.79,
           "sources": [
             "https://www.yenicaggazetesi.com/bein-trio-galatasaray-alanyaspor-macini-degerlendirdi-hakem-kararlari-dogru-mu-besiktas-derbisi-oncesi-ali-sansalanin-kart-ve-ceza-kararlari-1005091h.htm"
+          ],
+          "refereeComments": [
+            { "author": "Deniz Çoban (Trio)", "text": "Penaltı verilse daha doğru olurdu." },
+            { "author": "Trio diğer eski hakemler", "text": "Devam kararını desteklediler." }
           ],
           "status": "APPROVED"
         },
@@ -46,6 +53,10 @@
           "sources": [
             "https://www.yenicaggazetesi.com/bein-trio-galatasaray-alanyaspor-macini-degerlendirdi-hakem-kararlari-dogru-mu-besiktas-derbisi-oncesi-ali-sansalanin-kart-ve-ceza-kararlari-1005091h.htm",
             "https://www.yenicaggazetesi.com/eski-hakem-ahmet-cakar-galatasaray-alanyaspor-macinda-singonun-pozisyonuna-isyan-etti-besiktas-derbisi-oncesi-kart-ve-ceza-kararini-yorumladi-1004991h.htm"
+          ],
+          "refereeComments": [
+            { "author": "beIN Trio / eski hakemler", "text": "Net kırmızı kart pozisyonu olarak yorumlandı." },
+            { "author": "Ahmet Çakar", "text": "Singo'nun pozisyonuna isyan etti; kart ve ceza kararını eleştirdi." }
           ],
           "status": "APPROVED"
         }
@@ -75,6 +86,9 @@
           "sources": [
             "https://www.hurriyet.com.tr/sporarena/fenerbahcenin-antalyaspor-macindaki-hakem-kararlarini-trio-tek-tek-inceledi-tartismasiz-acik-bariz-bir-penalti-43119496"
           ],
+          "refereeComments": [
+            { "author": "beIN Trio (üç eski hakem)", "text": "Pozisyonda net faul olduğu ve hakemin bu ihlali atladığı görüşünde birleşti." }
+          ],
           "status": "APPROVED"
         },
         {
@@ -84,6 +98,9 @@
           "confidenceScore": 0.94,
           "sources": [
             "https://www.hurriyet.com.tr/sporarena/fenerbahcenin-antalyaspor-macindaki-hakem-kararlarini-trio-tek-tek-inceledi-tartismasiz-acik-bariz-bir-penalti-43119496"
+          ],
+          "refereeComments": [
+            { "author": "beIN Trio", "text": "Bu müdahale tartışmasız, açık ve bariz bir penaltı olarak değerlendirildi." }
           ],
           "status": "APPROVED"
         }

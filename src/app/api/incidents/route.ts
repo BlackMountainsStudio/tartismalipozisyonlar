@@ -34,6 +34,14 @@ export async function GET(request: NextRequest) {
     const mapped = incidents.map((inc) => ({
       ...inc,
       sources: parseSources(inc.sources),
+      videoUrl: inc.videoUrl ?? null,
+      refereeComments: (() => {
+        try {
+          return JSON.parse(inc.refereeComments);
+        } catch {
+          return [];
+        }
+      })(),
     }));
 
     return NextResponse.json(mapped);

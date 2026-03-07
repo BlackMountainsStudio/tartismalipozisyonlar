@@ -50,6 +50,11 @@ interface NewsArticle {
   author: string;
 }
 
+interface RefereeComment {
+  author?: string;
+  text: string;
+}
+
 interface Incident {
   id: string;
   type: string;
@@ -60,6 +65,7 @@ interface Incident {
   videoUrl: string | null;
   relatedVideos: RelatedVideo[] | string;
   newsArticles: NewsArticle[] | string;
+  refereeComments?: RefereeComment[] | string;
   opinions: ExpertOpinion[];
   status: string;
   match: {
@@ -198,6 +204,7 @@ export default function IncidentDetailPage({
 
   const relatedVideos = parseJson<RelatedVideo[]>(incident.relatedVideos, []);
   const newsArticles = parseJson<NewsArticle[]>(incident.newsArticles, []);
+  const refereeComments = parseJson<RefereeComment[]>(incident.refereeComments ?? [], []);
   const opinions = incident.opinions ?? [];
 
   const activeYtId = activeVideo ? extractYouTubeId(activeVideo) : null;
@@ -251,6 +258,29 @@ export default function IncidentDetailPage({
         <h2 className="mb-4 text-lg font-bold text-white">Pozisyon Detayı</h2>
         <p className="whitespace-pre-line text-sm leading-7 text-zinc-300">{incident.description}</p>
       </div>
+
+      {/* === HAKEM YORUMLARI (Trio / eski hakem) === */}
+      {refereeComments.length > 0 && (
+        <div className="mb-8 rounded-xl border border-zinc-800 bg-zinc-900/50 p-6">
+          <h2 className="mb-5 flex items-center gap-2 text-lg font-bold text-white">
+            <Scale className="h-5 w-5 text-amber-400" />
+            Hakem Yorumları
+          </h2>
+          <p className="mb-4 text-xs text-zinc-500">
+            beIN Trio ve eski hakemlerin bu pozisyona dair yorumları
+          </p>
+          <div className="space-y-4">
+            {refereeComments.map((rc, i) => (
+              <div key={i} className="rounded-lg border border-zinc-700/50 bg-zinc-800/30 p-4">
+                {rc.author && (
+                  <p className="mb-2 text-xs font-semibold text-amber-400/90">{rc.author}</p>
+                )}
+                <p className="text-sm leading-relaxed text-zinc-300 italic">&ldquo;{rc.text}&rdquo;</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* === VİDEOLAR === */}
       {(activeVideo || relatedVideos.length > 0) && (
