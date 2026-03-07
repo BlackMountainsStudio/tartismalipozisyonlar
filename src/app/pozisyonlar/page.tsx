@@ -51,6 +51,8 @@ const CATEGORY_LABELS: Record<string, string> = {
   other: "Diğer",
 };
 
+const BIG_FOUR_TEAMS = ["Fenerbahçe", "Galatasaray", "Beşiktaş", "Trabzonspor"] as const;
+
 export default function PozisyonlarPage() {
   const [incidents, setIncidents] = useState<Incident[]>([]);
   const [stats, setStats] = useState<Stats | null>(null);
@@ -92,7 +94,9 @@ export default function PozisyonlarPage() {
   }, [fetchData]);
 
   const teams = stats
-    ? Object.keys(stats.byTeam).sort((a, b) => (stats.byTeam[b] ?? 0) - (stats.byTeam[a] ?? 0))
+    ? Object.keys(stats.byTeam)
+        .filter((t) => BIG_FOUR_TEAMS.includes(t))
+        .sort((a, b) => (stats.byTeam[b] ?? 0) - (stats.byTeam[a] ?? 0))
     : [];
 
   const sorted = [...incidents].sort(
