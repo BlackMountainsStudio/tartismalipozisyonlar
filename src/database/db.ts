@@ -43,6 +43,6 @@ export const prisma = new Proxy({} as PrismaClient, {
       _prisma = globalForPrisma.prisma ?? createPrismaClient();
       if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = _prisma;
     }
-    return (_prisma as Record<string | symbol, unknown>)[prop];
+    return (_prisma as unknown as Record<string | symbol, unknown>)[prop];
   },
 });
