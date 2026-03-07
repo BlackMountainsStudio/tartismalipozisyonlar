@@ -49,14 +49,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const data: Record<string, string> = {
-      author: author.trim(),
-      content: content.trim(),
-    };
-    if (matchId) data.matchId = matchId;
-    if (incidentId) data.incidentId = incidentId;
-
-    const comment = await prisma.comment.create({ data });
+    const comment = await prisma.comment.create({
+      data: {
+        author: author.trim(),
+        content: content.trim(),
+        ...(matchId ? { matchId } : {}),
+        ...(incidentId ? { incidentId } : {}),
+      },
+    });
 
     return NextResponse.json(comment, { status: 201 });
   } catch (err) {
