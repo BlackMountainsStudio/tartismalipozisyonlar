@@ -1,4 +1,6 @@
 import { PrismaClient } from "@/generated/prisma/client";
+import { PrismaPg } from "@prisma/adapter-pg";
+import pg from "pg";
 
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined;
@@ -7,21 +9,8 @@ const globalForPrisma = globalThis as unknown as {
 function createPrismaClient(): PrismaClient {
   const databaseUrl = process.env.DATABASE_URL;
 
-  // Use Neon adapter for serverless PostgreSQL (Vercel/Neon)
-  if (databaseUrl && (databaseUrl.includes("neon.tech") || databaseUrl.includes("@neon"))) {
-    const { PrismaNeon } = require("@prisma/adapter-neon");
-    const { neonConfig, Pool } = require("@neondatabase/serverless");
-    neonConfig.fetchConnectionCache = true;
-    const pool = new Pool({ connectionString: databaseUrl });
-    const adapter = new PrismaNeon(pool);
-    return new PrismaClient({ adapter });
-  }
-
-  // Use pg adapter for regular PostgreSQL
   if (databaseUrl && (databaseUrl.startsWith("postgresql://") || databaseUrl.startsWith("postgres://"))) {
-    const { PrismaPg } = require("@prisma/adapter-pg");
-    const { Pool } = require("pg");
-    const pool = new Pool({ connectionString: databaseUrl });
+    const pool = new pg.Pool({ connectionString: databaseUrl });
     const adapter = new PrismaPg(pool);
     return new PrismaClient({ adapter });
   }
@@ -34,7 +23,7 @@ function createPrismaClient(): PrismaClient {
   return new PrismaClient({ adapter });
 }
 
-// Lazy initialization: only create client when first accessed
+// Lazy initialization
 let _prisma: PrismaClient | undefined;
 
 export const prisma = new Proxy({} as PrismaClient, {
