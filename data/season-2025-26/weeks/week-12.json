@@ -1,0 +1,37 @@
+{
+  "week": 12,
+  "matches": [
+    {
+      "week": 12,
+      "date": "2025-11-08",
+      "homeTeam": "Antalyaspor",
+      "awayTeam": "Beşiktaş",
+      "league": "Süper Lig 2025-26",
+      "incidents": []
+    },
+    {
+      "week": 12,
+      "date": "2025-11-08",
+      "homeTeam": "Trabzonspor",
+      "awayTeam": "Alanyaspor",
+      "league": "Süper Lig 2025-26",
+      "incidents": []
+    },
+    {
+      "week": 12,
+      "date": "2025-11-09",
+      "homeTeam": "Fenerbahçe",
+      "awayTeam": "Kayserispor",
+      "league": "Süper Lig 2025-26",
+      "incidents": []
+    },
+    {
+      "week": 12,
+      "date": "2025-11-09",
+      "homeTeam": "Kocaelispor",
+      "awayTeam": "Galatasaray",
+      "league": "Süper Lig 2025-26",
+      "incidents": []
+    }
+  ]
+}
