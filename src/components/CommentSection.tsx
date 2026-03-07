@@ -26,6 +26,18 @@ export default function CommentSection({ matchId, incidentId }: CommentSectionPr
   const queryParam = incidentId
     ? `incidentId=${incidentId}`
     : `matchId=${matchId}`;
+  const isMatchDiscussion = Boolean(matchId) && !incidentId;
+  const sectionTitle = isMatchDiscussion ? "Maç Yorumları" : "Yorumlar";
+  const textareaLabel = isMatchDiscussion ? "Maçla İlgili Yorumunuz" : "Yorumunuz";
+  const textareaPlaceholder = isMatchDiscussion
+    ? "Maçla ilgili genel yorumunuzu veya gözden kaçan pozisyonları yazın..."
+    : "Bu pozisyon hakkında ne düşünüyorsunuz?";
+  const emptyTitle = isMatchDiscussion
+    ? "Bu maç için henüz yorum yapılmamış"
+    : "Henüz yorum yapılmamış";
+  const emptySubtitle = isMatchDiscussion
+    ? "Maçla ilgili ilk yorumu siz bırakın!"
+    : "İlk yorumu siz yapın!";
 
   const fetchComments = useCallback(async () => {
     try {
@@ -103,7 +115,7 @@ export default function CommentSection({ matchId, incidentId }: CommentSectionPr
       <div className="mb-6 flex items-center gap-2">
         <MessageSquare className="h-5 w-5 text-red-400" />
         <h2 className="text-xl font-bold text-white">
-          Yorumlar {comments.length > 0 && <span className="text-zinc-500">({comments.length})</span>}
+          {sectionTitle} {comments.length > 0 && <span className="text-zinc-500">({comments.length})</span>}
         </h2>
       </div>
 
@@ -124,13 +136,13 @@ export default function CommentSection({ matchId, incidentId }: CommentSectionPr
         </div>
         <div className="mb-4">
           <label htmlFor="comment" className="mb-1.5 block text-sm font-medium text-zinc-400">
-            Yorumunuz
+            {textareaLabel}
           </label>
           <textarea
             id="comment"
             value={content}
             onChange={(e) => setContent(e.target.value)}
-            placeholder="Bu pozisyon hakkında ne düşünüyorsunuz?"
+            placeholder={textareaPlaceholder}
             rows={3}
             maxLength={1000}
             className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-sm text-white placeholder-zinc-500 outline-none focus:border-red-500"
@@ -163,8 +175,8 @@ export default function CommentSection({ matchId, incidentId }: CommentSectionPr
       ) : comments.length === 0 ? (
         <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-zinc-800 py-12 text-center">
           <MessageSquare className="mb-3 h-8 w-8 text-zinc-700" />
-          <p className="text-sm text-zinc-400">Henüz yorum yapılmamış</p>
-          <p className="mt-1 text-xs text-zinc-600">İlk yorumu siz yapın!</p>
+          <p className="text-sm text-zinc-400">{emptyTitle}</p>
+          <p className="mt-1 text-xs text-zinc-600">{emptySubtitle}</p>
         </div>
       ) : (
         <div className="space-y-4">

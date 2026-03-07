@@ -35,16 +35,14 @@ export default function HomePage() {
     fetchMatches();
   }, []);
 
-  const matchesWithApproved = matches.filter((m) =>
-    m.incidents.some((i) => i.status === "APPROVED")
-  );
+  const seasonMatches = matches.filter((m) => m.league === "Süper Lig 2025-26");
 
   const totalApproved = matches.reduce(
     (sum, m) => sum + m.incidents.filter((i) => i.status === "APPROVED").length,
     0
   );
 
-  const filteredMatches = matchesWithApproved.filter((m) => {
+  const filteredMatches = seasonMatches.filter((m) => {
     if (!search) return true;
     const q = search.toLowerCase();
     return (
@@ -75,7 +73,7 @@ export default function HomePage() {
             <StatCard
               icon={<TrendingUp className="h-5 w-5 text-emerald-400" />}
               label="Takip Edilen Maç"
-              value={matches.length}
+              value={seasonMatches.length}
             />
             <StatCard
               icon={<AlertTriangle className="h-5 w-5 text-amber-400" />}
@@ -87,7 +85,7 @@ export default function HomePage() {
               label="Takip Edilen Takım"
               value={
                 new Set(
-                  matches.flatMap((m) => [m.homeTeam, m.awayTeam])
+                  seasonMatches.flatMap((m) => [m.homeTeam, m.awayTeam])
                 ).size
               }
             />
@@ -100,10 +98,10 @@ export default function HomePage() {
         <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h2 className="text-2xl font-bold text-white">
-              Tartışmalı Maçlar
+              2025-26 Sezonu Maçları
             </h2>
             <p className="mt-1 text-sm text-zinc-400">
-              Onaylanmış tartışmalı hakem kararları bulunan maçlar
+              Fenerbahçe, Galatasaray, Beşiktaş ve Trabzonspor'un takip edilen lig maçları
             </p>
           </div>
           <div className="relative w-full sm:w-72">
@@ -125,11 +123,9 @@ export default function HomePage() {
         ) : filteredMatches.length === 0 ? (
           <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-zinc-800 py-20 text-center">
             <Shield className="mb-4 h-12 w-12 text-zinc-700" />
-            <p className="text-lg text-zinc-400">
-              Henüz onaylanmış tartışmalı pozisyon yok
-            </p>
+            <p className="text-lg text-zinc-400">Henüz sezon maçı yüklenmedi</p>
             <p className="mt-1 text-sm text-zinc-500">
-              Pozisyonlar yöneticiler tarafından onaylandıktan sonra burada görünecek
+              Takip edilen sezon verileri eklendikçe burada listelenecek
             </p>
           </div>
         ) : (
