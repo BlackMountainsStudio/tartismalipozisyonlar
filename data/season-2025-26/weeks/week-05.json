@@ -1,0 +1,52 @@
+{
+  "week": 5,
+  "matches": [
+    {
+      "week": 5,
+      "date": "2025-09-13",
+      "homeTeam": "Beşiktaş",
+      "awayTeam": "İstanbul Başakşehir",
+      "league": "Süper Lig 2025-26",
+      "incidents": []
+    },
+    {
+      "week": 5,
+      "date": "2025-09-13",
+      "homeTeam": "Eyüpspor",
+      "awayTeam": "Galatasaray",
+      "league": "Süper Lig 2025-26",
+      "incidents": []
+    },
+    {
+      "week": 5,
+      "date": "2025-09-14",
+      "homeTeam": "Fenerbahçe",
+      "awayTeam": "Trabzonspor",
+      "league": "Süper Lig 2025-26",
+      "incidents": [
+        {
+          "minute": 11,
+          "type": "GOAL_DISALLOWED",
+          "description": "Paul Onuachu'nun kafa golü VAR incelemesi sonrası faul gerekçesiyle iptal edildi. Trabzonspor cephesi kararın ağır olduğunu savundu.",
+          "confidenceScore": 0.87,
+          "sources": [
+            "https://www.nefes.com.tr/fenerbahce-trabzonspor-macinda-tartismali-an-onuachunun-golu-iptal-edildi-62474",
+            "https://www.sabah.com.tr/galeri/spor/son-dakika-haberi-fenerbahce-trabzonspor-macinin-var-kayitlari-aciklandi-iste-o-konusmalar"
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 20,
+          "type": "RED_CARD",
+          "description": "Okay Yokuşlu'nun müdahalesine önce sarı kart gösterildi, ardından VAR incelemesiyle karar kırmızı karta çevrildi. Pozisyon maçın ana kırılma anlarından biri oldu.",
+          "confidenceScore": 0.9,
+          "sources": [
+            "https://www.haberturk.com/fenerbahce-trabzonspor-macinda-kirmizi-kart-okay-yokuslu-3822338-spor",
+            "https://www.gzt.com/zpor/okay-yokusludan-fenerbahce--trabzonspor-maci-sonrasi-aciklama-spor-haberleri-3805404"
+          ],
+          "status": "APPROVED"
+        }
+      ]
+    }
+  ]
+}
