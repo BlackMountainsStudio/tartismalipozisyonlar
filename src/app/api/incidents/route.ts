@@ -15,20 +15,42 @@ export async function GET(request: NextRequest) {
     const matchId = searchParams.get("matchId");
     const status = searchParams.get("status");
     const minConfidence = searchParams.get("minConfidence");
+    const team = searchParams.get("team")?.trim() || undefined;
+    const typeParam = searchParams.get("type")?.trim() || undefined;
 
     const where: Record<string, unknown> = {};
     if (matchId) where.matchId = matchId;
     if (status) where.status = status.toUpperCase();
     if (minConfidence) where.confidenceScore = { gte: parseFloat(minConfidence) };
+    if (typeParam) {
+      const types = typeParam.split(",").map((t) => t.trim()).filter(Boolean);
+      if (types.length === 1) where.type = types[0];
+      else if (types.length > 1) where.type = { in: types };
+    }
+    if (team) {
+      const teams = team.split(",").map((t) => t.trim()).filter(Boolean);
+      if (teams.length === 1) {
+        where.match = {
+          OR: [{ homeTeam: teams[0] }, { awayTeam: teams[0] }],
+        };
+      } else if (teams.length > 1) {
+        where.match = {
+          OR: teams.flatMap((t) => [
+            { homeTeam: t },
+            { awayTeam: t },
+          ]),
+        };
+      }
+    }
 
     const incidents = await prisma.incident.findMany({
       where,
       include: {
         match: {
-          select: { homeTeam: true, awayTeam: true, week: true, date: true },
+          select: { id: true, homeTeam: true, awayTeam: true, week: true, date: true },
         },
       },
-      orderBy: { confidenceScore: "desc" },
+      orderBy: [{ minute: "asc" }, { confidenceScore: "desc" }],
     });
 
     const mapped = incidents.map((inc) => ({
