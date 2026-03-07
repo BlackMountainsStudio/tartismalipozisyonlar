@@ -15,7 +15,30 @@
       "homeTeam": "Trabzonspor",
       "awayTeam": "Beşiktaş",
       "league": "Süper Lig 2025-26",
-      "incidents": []
+      "incidents": [
+        {
+          "minute": 36,
+          "type": "RED_CARD",
+          "description": "El Bilal Toure'nin Ozan Tufan'a mudahalesinde VAR incelemesi sonrasi cikan kirmizi kart karari buyuk tartisma yaratti. Trio ekibindeki eski hakemler bu mudahalenin en fazla sari kart olabilecegini soyledi.",
+          "confidenceScore": 0.91,
+          "sources": [
+            "https://www.demokrathaber.org/trio-ekibi-trabzonspor-ve-besiktas-macinin-tartismali-pozisyonlarini-analiz-etti",
+            "https://www.cumhuriyet.com.tr/spor/eski-hakemler-trabzonspor-besiktas-macini-yorumladi-el-bilal-toure-ayagiyla-basti-ama-2461493"
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 45,
+          "type": "FOUL",
+          "description": "Milot Rashica'ya yapilan ve hakemin kacirdigi faul, mac sonu yorumlarinda sert sekilde elestirildi. Eski hakemler bu ihlalin asla kacirilmamasi gerektigini belirtti.",
+          "confidenceScore": 0.77,
+          "sources": [
+            "https://www.haberhergun.com/haber/trabzonspor-besiktas-derbisinde-tartismali-kararlar-kabul-etmiyorum-asla-dusunmezdim_48908/",
+            "https://spor.haber7.com/super-lig/haber/3587952-trabzonspor-besiktas-macinda-tartismali-kararlar-eski-hakemler-bile-anlasamadi"
+          ],
+          "status": "APPROVED"
+        }
+      ]
     },
     {
       "week": 16,
