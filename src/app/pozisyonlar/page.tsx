@@ -94,8 +94,8 @@ export default function PozisyonlarPage() {
   }, [fetchData]);
 
   const teams = stats
-    ? Object.keys(stats.byTeam)
-        .filter((t) => BIG_FOUR_TEAMS.includes(t))
+    ? (Object.keys(stats.byTeam) as string[])
+        .filter((t) => (BIG_FOUR_TEAMS as readonly string[]).includes(t))
         .sort((a, b) => (stats.byTeam[b] ?? 0) - (stats.byTeam[a] ?? 0))
     : [];
 
