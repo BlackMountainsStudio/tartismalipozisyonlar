@@ -241,8 +241,10 @@ export default function CommentatorProfilePage({
                       href={`/incidents/${op.incident.id}`}
                       className="text-sm font-medium text-white hover:text-red-400"
                     >
-                      {op.incident.match.homeTeam} vs {op.incident.match.awayTeam}
-                      {op.incident.minute && ` — ${op.incident.minute}'`}
+                      {op.incident?.match
+                        ? `${op.incident.match.homeTeam} vs ${op.incident.match.awayTeam}`
+                        : `Pozisyon #${op.incident?.id?.slice(0, 8) ?? "?"}`}
+                      {op.incident?.minute && ` — ${op.incident.minute}'`}
                       {" · "}
                       {TYPE_LABELS[op.incident.type] ?? op.incident.type}
                     </Link>

@@ -217,7 +217,7 @@ export default function DashboardOpinionsPage() {
                 <option value="">Pozisyon seçin</option>
                 {incidents.map((inc) => (
                   <option key={inc.id} value={inc.id}>
-                    {inc.match?.homeTeam} vs {inc.match?.awayTeam} - {inc.description.slice(0, 50)}
+                    {inc.match ? `${inc.match.homeTeam} vs ${inc.match.awayTeam}` : `Pozisyon #${(inc.id ?? "").slice(0, 8)}`} - {(inc.description ?? "").slice(0, 50)}
                   </option>
                 ))}
               </select>
@@ -337,7 +337,9 @@ export default function DashboardOpinionsPage() {
                     </div>
                     <p className="mb-2 text-sm text-zinc-300">{op.comment}</p>
                     <p className="text-xs text-zinc-500">
-                      {op.incident.match.homeTeam} vs {op.incident.match.awayTeam} · {op.incident.description.slice(0, 60)}
+                      {op.incident?.match
+                        ? `${op.incident.match.homeTeam} vs ${op.incident.match.awayTeam} · ${(op.incident.description ?? "").slice(0, 60)}`
+                        : `Pozisyon #${(op.incident?.id ?? "?").slice(0, 8)} · ${(op.incident?.description ?? "").slice(0, 60)}`}
                       {op.sourceUrl && (
                         <a href={op.sourceUrl} target="_blank" rel="noopener noreferrer" className="ml-2 text-cyan-400 hover:text-cyan-300" title={op.sourceUrl}>
                           {getOpinionSourceLabel(op.sourceUrl)} ↗

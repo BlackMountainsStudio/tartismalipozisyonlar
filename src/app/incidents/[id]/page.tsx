@@ -71,14 +71,14 @@ interface Incident {
   refereeComments?: RefereeComment[] | string;
   opinions: ExpertOpinion[];
   status: string;
-  match: {
+  match?: {
     id: string;
     homeTeam: string;
     awayTeam: string;
     league: string;
     week: number;
     date: string;
-  };
+  } | null;
 }
 
 const TYPE_LABELS: Record<string, { label: string; icon: React.ReactNode; color: string }> = {
@@ -196,15 +196,23 @@ export default function IncidentDetailPage({
 
   useEffect(() => {
     if (!incident) return;
-    const summary = [
-      incident.match.homeTeam,
-      "vs",
-      incident.match.awayTeam,
-      incident.minute != null ? `${incident.minute}. dk` : "",
-      (TYPE_LABELS[incident.type] as { label: string } | undefined)?.label ?? incident.type,
-    ]
-      .filter(Boolean)
-      .join(" · ");
+    const m = incident.match;
+    const summary = m
+      ? [
+          m.homeTeam,
+          "vs",
+          m.awayTeam,
+          incident.minute != null ? `${incident.minute}. dk` : "",
+          (TYPE_LABELS[incident.type] as { label: string } | undefined)?.label ?? incident.type,
+        ]
+          .filter(Boolean)
+          .join(" · ")
+      : [
+          incident.minute != null ? `${incident.minute}. dk` : "",
+          (TYPE_LABELS[incident.type] as { label: string } | undefined)?.label ?? incident.type,
+        ]
+          .filter(Boolean)
+          .join(" · ");
     document.title = summary ? `${summary} | Tartışmalı Pozisyonlar` : "Tartışmalı Pozisyonlar";
     return () => {
       document.title = "Tartışmalı Pozisyonlar - Hakem Kararları Analiz Platformu";
@@ -245,15 +253,17 @@ export default function IncidentDetailPage({
   const disagreeCount = opinions.filter((o) => o.stance === "DISAGREE").length;
 
   const positionLink = baseUrl ? `${baseUrl}/incidents/${incidentId}` : "";
-  const positionSummary = [
-    incident.match.homeTeam,
-    "vs",
-    incident.match.awayTeam,
-    incident.minute != null ? `${incident.minute}. dk` : "",
-    typeInfo.label,
-  ]
-    .filter(Boolean)
-    .join(", ");
+  const positionSummary = incident.match
+    ? [
+        incident.match.homeTeam,
+        "vs",
+        incident.match.awayTeam,
+        incident.minute != null ? `${incident.minute}. dk` : "",
+        typeInfo.label,
+      ]
+        .filter(Boolean)
+        .join(", ")
+    : [incident.minute != null ? `${incident.minute}. dk` : "", typeInfo.label].filter(Boolean).join(", ");
 
   const copyPositionLink = () => {
     if (!positionLink) return;
@@ -266,13 +276,15 @@ export default function IncidentDetailPage({
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
-      <button
-        onClick={() => router.push(`/matches/${incident.match.id}`)}
-        className="mb-6 flex items-center gap-2 text-sm text-zinc-400 transition-colors hover:text-white"
-      >
-        <ArrowLeft className="h-4 w-4" />
-        {incident.match.homeTeam} vs {incident.match.awayTeam} maçına dön
-      </button>
+      {incident.match && (
+        <button
+          onClick={() => router.push(`/matches/${incident.match!.id}`)}
+          className="mb-6 flex items-center gap-2 text-sm text-zinc-400 transition-colors hover:text-white"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          {incident.match.homeTeam} vs {incident.match.awayTeam} maçına dön
+        </button>
+      )}
 
       {/* === BAŞLIK KARTI === */}
       <div className="mb-8 rounded-2xl border border-zinc-800 bg-gradient-to-br from-zinc-900 to-zinc-950 p-6 sm:p-8">
@@ -292,16 +304,20 @@ export default function IncidentDetailPage({
               <Clock className="h-4 w-4" /> {incident.minute}. dakika
             </span>
           )}
-          <span className="flex items-center gap-1.5">
-            <Calendar className="h-4 w-4" />
-            {new Date(incident.match.date).toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric" })}
-          </span>
+          {incident.match && (
+            <span className="flex items-center gap-1.5">
+              <Calendar className="h-4 w-4" />
+              {new Date(incident.match.date).toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric" })}
+            </span>
+          )}
           <ConfidenceBadge score={incident.confidenceScore} />
         </div>
 
-        <div className="inline-block rounded-lg bg-zinc-800/50 px-3 py-1.5 text-sm text-zinc-300">
-          {incident.match.homeTeam} vs {incident.match.awayTeam} — {incident.match.league}, Hafta {incident.match.week}
-        </div>
+        {incident.match && (
+          <div className="inline-block rounded-lg bg-zinc-800/50 px-3 py-1.5 text-sm text-zinc-300">
+            {incident.match.homeTeam} vs {incident.match.awayTeam} — {incident.match.league}, Hafta {incident.match.week}
+          </div>
+        )}
       </div>
 
       {/* === POZİSYON LİNKİ (paylaşılabilir, anlamlı URL) === */}

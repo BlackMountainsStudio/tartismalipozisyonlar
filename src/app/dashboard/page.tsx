@@ -73,7 +73,11 @@ export default function DashboardPage() {
         newSuggestions: suggestionList.filter((s: { status: string }) => s.status === "NEW").length,
       });
 
-      setRecentIncidents(incidentList.slice(0, 5));
+      setRecentIncidents(
+        incidentList
+          .filter((i: unknown) => i != null && typeof i === "object" && "id" in i)
+          .slice(0, 5)
+      );
     } catch (err) {
       console.error("Failed to fetch stats:", err);
     } finally {
@@ -164,7 +168,9 @@ export default function DashboardPage() {
             Son Pozisyonlar
           </h2>
           <div className="space-y-2">
-            {recentIncidents.map((inc) => (
+            {recentIncidents
+              .filter((inc) => inc != null && typeof inc === "object")
+              .map((inc) => (
               <Link
                 key={inc.id}
                 href={`/dashboard/incidents`}
@@ -174,7 +180,7 @@ export default function DashboardPage() {
                 <div className="min-w-0 flex-1">
                   <p className="truncate text-sm text-white">{inc.description}</p>
                   <p className="text-xs text-zinc-500">
-                    {inc.match?.homeTeam} vs {inc.match?.awayTeam}
+                    {inc.match ? `${inc.match.homeTeam} vs ${inc.match.awayTeam}` : "—"}
                   </p>
                 </div>
                 <span
