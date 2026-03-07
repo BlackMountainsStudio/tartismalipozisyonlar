@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Clock, AlertTriangle, ShieldAlert, Eye, Flag, ChevronRight, Video } from "lucide-react";
 import ConfidenceBadge from "./ConfidenceBadge";
+import { getVideoLinkLabel } from "@/lib/linkLabels";
 
 interface IncidentCardProps {
   id: string;
@@ -103,9 +104,10 @@ export default function IncidentCard({
           rel="noopener noreferrer"
           onClick={(e) => e.stopPropagation()}
           className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-red-400 hover:text-red-300"
+          title={videoUrl}
         >
           <Video className="h-3.5 w-3.5" />
-          Videoyu izle
+          {getVideoLinkLabel(videoUrl)}
         </a>
       )}
 

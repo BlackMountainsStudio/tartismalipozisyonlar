@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import CommentSection from "@/components/CommentSection";
 import ConfidenceBadge from "@/components/ConfidenceBadge";
+import { getSourceLabel, getVideoProviderName, getOpenInNewTabLabel, getOpinionSourceLabel } from "@/lib/linkLabels";
 import {
   ArrowLeft,
   Loader2,
@@ -156,29 +157,8 @@ function getVideoProviderLabel(url: string): string {
 }
 
 /** Kaynak URL'sinden anlamlı etiket üretir (görünürlük ve anlaşılırlık için) */
-function getSourceLabel(url: string): string {
-  try {
-    const u = new URL(url);
-    const host = u.hostname.replace(/^www\./, "");
-    if (host.includes("beinsports.com.tr")) {
-      if (u.pathname.includes("pozisyonlar") || u.pathname.includes("ozet")) return "beIN Sports – Pozisyon / maç videosu";
-      return "beIN Sports";
-    }
-    if (host.includes("youtube.com")) {
-      if (u.pathname.includes("/shorts/")) return "YouTube Shorts – Pozisyon videosu";
-      if (u.pathname.includes("/results")) return "YouTube – Bu pozisyonu ara";
-      return "YouTube – Video";
-    }
-    if (host.includes("youtu.be")) return "YouTube – Video";
-    if (host.includes("hurriyet.com.tr")) return "Hürriyet – Haber / Trio yorumu";
-    if (host.includes("yenicaggazetesi.com")) return "Yeni Çağ – Haber / hakem yorumu";
-    if (host.includes("milliyet.com.tr")) return "Milliyet – Haber";
-    if (host.includes("fanatik.com.tr")) return "Fanatik – Haber";
-    if (host.includes("sporx.com")) return "Sporx – Haber";
-    return host;
-  } catch {
-    return "Kaynak";
-  }
+function getVideoProviderLabel(url: string): string {
+  return getVideoProviderName(url);
 }
 
 export default function IncidentDetailPage({
@@ -445,7 +425,7 @@ export default function IncidentDetailPage({
                 Kaynak: {activeVideoProvider}
                 {" · "}
                 <a href={activeVideo} target="_blank" rel="noopener noreferrer" className="text-red-400 hover:underline">
-                  Videoyu yeni sekmede aç
+                  {getOpenInNewTabLabel(activeVideo)}
                 </a>
               </p>
             </div>
@@ -543,8 +523,9 @@ export default function IncidentDetailPage({
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-1 rounded-md bg-zinc-800/60 px-2 py-1 text-[10px] font-medium text-red-400 transition-colors hover:bg-zinc-800 hover:text-red-300"
+                        title={op.sourceUrl}
                       >
-                        Bu yorumu nereden aldık? <ExternalLink className="h-2.5 w-2.5" />
+                        {getOpinionSourceLabel(op.sourceUrl)} <ExternalLink className="h-2.5 w-2.5" />
                       </a>
                     )}
                   </div>

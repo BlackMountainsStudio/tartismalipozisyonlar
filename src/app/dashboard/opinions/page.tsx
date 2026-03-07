@@ -15,6 +15,7 @@ import {
   ThumbsDown,
   Minus,
 } from "lucide-react";
+import { getOpinionSourceLabel } from "@/lib/linkLabels";
 
 interface ExpertOpinion {
   id: string;
@@ -338,8 +339,8 @@ export default function DashboardOpinionsPage() {
                     <p className="text-xs text-zinc-500">
                       {op.incident.match.homeTeam} vs {op.incident.match.awayTeam} · {op.incident.description.slice(0, 60)}
                       {op.sourceUrl && (
-                        <a href={op.sourceUrl} target="_blank" rel="noopener noreferrer" className="ml-2 text-cyan-400 hover:text-cyan-300">
-                          Kaynak ↗
+                        <a href={op.sourceUrl} target="_blank" rel="noopener noreferrer" className="ml-2 text-cyan-400 hover:text-cyan-300" title={op.sourceUrl}>
+                          {getOpinionSourceLabel(op.sourceUrl)} ↗
                         </a>
                       )}
                     </p>

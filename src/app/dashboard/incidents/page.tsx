@@ -15,6 +15,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { INCIDENT_TYPE_LABELS } from "@/lib/incidentCategories";
+import { getVideoLinkLabel } from "@/lib/linkLabels";
 
 interface Incident {
   id: string;
@@ -408,8 +409,8 @@ export default function DashboardIncidentsPage() {
                         {inc.status === "APPROVED" ? "Onaylı" : inc.status === "REJECTED" ? "Reddedildi" : "Beklemede"}
                       </span>
                       {inc.videoUrl && (
-                        <a href={inc.videoUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-xs text-blue-400 hover:text-blue-300">
-                          <Video className="h-3 w-3" /> Video
+                        <a href={inc.videoUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-xs text-blue-400 hover:text-blue-300" title={inc.videoUrl}>
+                          <Video className="h-3 w-3" /> {getVideoLinkLabel(inc.videoUrl)}
                           <ExternalLink className="h-2.5 w-2.5" />
                         </a>
                       )}

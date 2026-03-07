@@ -12,6 +12,7 @@ import {
   Trash2,
   X,
 } from "lucide-react";
+import { getOpinionSourceLabel } from "@/lib/linkLabels";
 
 interface Incident {
   id: string;
@@ -323,8 +324,8 @@ export default function DashboardRefereePage() {
                         <p className="mt-1 text-xs text-zinc-500">
                           {rc.author}
                           {rc.source && (
-                            <a href={rc.source} target="_blank" rel="noopener noreferrer" className="ml-2 text-amber-400 hover:text-amber-300">
-                              Kaynak ↗
+                            <a href={rc.source} target="_blank" rel="noopener noreferrer" className="ml-2 text-amber-400 hover:text-amber-300" title={rc.source}>
+                              {getOpinionSourceLabel(rc.source)} ↗
                             </a>
                           )}
                         </p>

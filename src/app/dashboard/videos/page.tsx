@@ -12,6 +12,7 @@ import {
   Globe,
   Crosshair,
 } from "lucide-react";
+import { getVideoLinkLabel, getSourceLabel } from "@/lib/linkLabels";
 
 interface Incident {
   id: string;
@@ -205,7 +206,7 @@ export default function DashboardVideosPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="rounded-lg bg-zinc-800 p-2 text-zinc-400 transition-colors hover:text-white"
-                    title="Aç"
+                    title={getSourceLabel(result.url)}
                   >
                     <ExternalLink className="h-4 w-4" />
                   </a>
@@ -315,8 +316,9 @@ export default function DashboardVideosPage() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="ml-2 text-purple-400 hover:text-purple-300"
+                        title={inc.videoUrl}
                       >
-                        Video izle ↗
+                        {getVideoLinkLabel(inc.videoUrl)} ↗
                       </a>
                     )}
                     {inc.relatedVideos.length > 0 && (

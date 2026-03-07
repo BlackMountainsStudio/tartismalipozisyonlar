@@ -17,6 +17,7 @@ import {
   ExternalLink,
   Award,
 } from "lucide-react";
+import { getOpinionSourceLabel } from "@/lib/linkLabels";
 
 interface Opinion {
   id: string;
@@ -261,8 +262,9 @@ export default function CommentatorProfilePage({
                       target="_blank"
                       rel="noopener noreferrer"
                       className="mt-3 inline-flex items-center gap-1 text-xs text-red-400 hover:text-red-300"
+                      title={op.sourceUrl}
                     >
-                      Kaynak <ExternalLink className="h-3 w-3" />
+                      {getOpinionSourceLabel(op.sourceUrl)} <ExternalLink className="h-3 w-3" />
                     </a>
                   )}
                 </div>
