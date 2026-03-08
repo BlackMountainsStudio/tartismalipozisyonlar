@@ -13,7 +13,7 @@ function GirisContent() {
   const callbackUrl = searchParams.get("callbackUrl") ?? "/";
   const errorParam = searchParams.get("error");
 
-  const [providers, setProviders] = useState({ google: false, facebook: false });
+  const [providers, setProviders] = useState({ google: false });
   const [mode, setMode] = useState<"login" | "signup">("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -203,25 +203,9 @@ function GirisContent() {
             </svg>
             Google ile giriş yap veya kayıt ol
           </button>
-          <button
-            type="button"
-            onClick={() => {
-              if (!providers.facebook) {
-                setError("Facebook OAuth yapılandırılmamış. .env dosyasına AUTH_FACEBOOK_ID ve AUTH_FACEBOOK_SECRET ekleyin.");
-                return;
-              }
-              signIn("facebook", { callbackUrl });
-            }}
-            className="flex w-full cursor-pointer items-center justify-center gap-3 rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-3 text-sm font-medium text-white transition-colors hover:bg-zinc-700"
-          >
-            <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-            </svg>
-            Facebook ile giriş yap veya kayıt ol
-          </button>
-          {!providers.google && !providers.facebook && (
+          {!providers.google && (
             <p className="text-center text-xs text-zinc-500">
-              Google ve Facebook için .env dosyasına AUTH_GOOGLE_ID, AUTH_GOOGLE_SECRET, AUTH_FACEBOOK_ID, AUTH_FACEBOOK_SECRET ekleyin
+              Google için .env dosyasına AUTH_GOOGLE_ID ve AUTH_GOOGLE_SECRET ekleyin
             </p>
           )}
         </div>

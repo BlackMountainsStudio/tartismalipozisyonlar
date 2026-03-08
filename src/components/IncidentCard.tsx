@@ -23,6 +23,8 @@ interface IncidentCardProps {
   videoUrl?: string | null;
   inFavorOf?: string | null;
   against?: string | null;
+  opinionSummary?: { agree: number; disagree: number; neutral: number } | null;
+  refereeLabel?: string;
   actions?: React.ReactNode;
   clickable?: boolean;
   matchSlug?: string;
@@ -67,6 +69,8 @@ export default function IncidentCard({
   videoUrl,
   inFavorOf,
   against,
+  opinionSummary,
+  refereeLabel,
   actions,
   clickable = false,
   matchSlug,
@@ -115,9 +119,30 @@ export default function IncidentCard({
         </div>
       </div>
 
-      {matchInfo && (
-        <div className="mb-3 flex flex-wrap items-center gap-2 text-sm text-zinc-400">
-          <span>{matchInfo}</span>
+      {(matchInfo || refereeLabel || opinionSummary) && (
+        <div className="mb-3 space-y-1.5">
+          {matchInfo && (
+            <div className="text-sm text-zinc-400">{matchInfo}</div>
+          )}
+          {refereeLabel && (
+            <div className="text-xs text-zinc-500">
+              Hakem kararı: <span className="text-zinc-400">{refereeLabel}</span>
+            </div>
+          )}
+          {opinionSummary && (opinionSummary.agree + opinionSummary.disagree + opinionSummary.neutral) > 0 && (
+            <div className="flex flex-wrap items-center gap-2 text-xs">
+              <span className="text-zinc-500">Yorumcular:</span>
+              {opinionSummary.agree > 0 && (
+                <span className="text-emerald-400">{opinionSummary.agree} doğru</span>
+              )}
+              {opinionSummary.disagree > 0 && (
+                <span className="text-red-400">{opinionSummary.disagree} yanlış</span>
+              )}
+              {opinionSummary.neutral > 0 && (
+                <span className="text-zinc-500">{opinionSummary.neutral} kararsız</span>
+              )}
+            </div>
+          )}
         </div>
       )}
 

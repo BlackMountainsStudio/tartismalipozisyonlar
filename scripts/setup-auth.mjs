@@ -60,18 +60,13 @@ async function main() {
 
   // 3. OAuth uyarıları
   const hasGoogle = process.env.AUTH_GOOGLE_ID && process.env.AUTH_GOOGLE_SECRET;
-  const hasFacebook = process.env.AUTH_FACEBOOK_ID && process.env.AUTH_FACEBOOK_SECRET;
 
   if (!hasGoogle) console.log("⚠️  AUTH_GOOGLE_ID / AUTH_GOOGLE_SECRET ekleyin (Google OAuth)");
   else console.log("✓ Google OAuth ayarlı");
 
-  if (!hasFacebook) console.log("⚠️  AUTH_FACEBOOK_ID / AUTH_FACEBOOK_SECRET ekleyin (Facebook OAuth)");
-  else console.log("✓ Facebook OAuth ayarlı");
-
   console.log("\n📌 OAuth callback URL'leri:");
-  console.log("   Google:   https://varodasi.com/api/auth/callback/google");
-  console.log("   Facebook: https://varodasi.com/api/auth/callback/facebook");
-  console.log("   Local:    http://localhost:3000/api/auth/callback/google");
+  console.log("   Google: https://varodasi.com/api/auth/callback/google");
+  console.log("   Local:  http://localhost:3000/api/auth/callback/google");
   console.log("\n✅ Kurulum tamamlandı.");
 }
 

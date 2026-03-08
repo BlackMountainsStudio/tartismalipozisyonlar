@@ -130,11 +130,17 @@ export async function GET(request: NextRequest) {
             varReferee: { select: { id: true, name: true, slug: true, role: true } },
           },
         },
+        opinions: { select: { stance: true } },
       },
       orderBy: [{ minute: "asc" }, { confidenceScore: "desc" }],
     });
 
     const mapped = incidents.map((inc) => {
+      const opinions = (inc as { opinions?: { stance: string }[] }).opinions ?? [];
+      const agreeCount = opinions.filter((o) => o.stance === "AGREE").length;
+      const disagreeCount = opinions.filter((o) => o.stance === "DISAGREE").length;
+      const neutralCount = opinions.filter((o) => o.stance === "NEUTRAL").length;
+      const opinionSummary = opinions.length > 0 ? { agree: agreeCount, disagree: disagreeCount, neutral: neutralCount } : null;
       const match = inc.match as { slug?: string | null; league: string; week: number; date: Date; homeTeam: string; awayTeam: string };
       const matchSlugComputed =
         match?.slug ??
@@ -142,14 +148,16 @@ export async function GET(request: NextRequest) {
       const incidentSlugComputed =
         inc.slug ??
         buildIncidentSlug({ id: inc.id, minute: inc.minute, description: inc.description });
+      const { opinions: _o, ...incRest } = inc as { opinions?: unknown };
       return {
-        ...inc,
+        ...incRest,
         slug: incidentSlugComputed,
         matchSlug: matchSlugComputed,
         sources: parseSources(inc.sources),
         videoUrl: inc.videoUrl ?? null,
         inFavorOf: inc.inFavorOf ?? null,
         against: inc.against ?? null,
+        opinionSummary,
         refereeComments: (() => {
           try {
             return JSON.parse(inc.refereeComments);

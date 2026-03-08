@@ -6,6 +6,7 @@ import {
   getCategoryKey,
   CATEGORY_ORDER,
   INCIDENT_CATEGORIES,
+  INCIDENT_TYPE_LABELS,
 } from "@/lib/incidentCategories";
 import {
   Shield,
@@ -38,6 +39,7 @@ interface Incident {
   matchSlug?: string;
   inFavorOf?: string | null;
   against?: string | null;
+  opinionSummary?: { agree: number; disagree: number; neutral: number } | null;
   match?: {
     id: string;
     homeTeam: string;
@@ -450,6 +452,8 @@ export default function PozisyonlarPage() {
                             ? `${incident.match.homeTeam} vs ${incident.match.awayTeam}`
                             : undefined
                         }
+                        refereeLabel={incident.type ? INCIDENT_TYPE_LABELS[incident.type] : undefined}
+                        opinionSummary={incident.opinionSummary ?? undefined}
                         matchSlug={incident.matchSlug}
                         incidentSlug={incident.slug}
                         clickable

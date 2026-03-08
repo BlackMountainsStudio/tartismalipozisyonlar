@@ -12,11 +12,10 @@ const nextConfig: NextConfig = {
     CUSTOM_KEY: process.env.CUSTOM_KEY,
   },
 
-  // OAuth profil resimleri (Google, Facebook)
+  // OAuth profil resimleri (Google)
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "lh3.googleusercontent.com", pathname: "/**" },
-      { protocol: "https", hostname: "platform-lookaside.fbsbx.com", pathname: "/**" },
     ],
   },
 };

@@ -1,13 +1,11 @@
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
-import Facebook from "next-auth/providers/facebook";
 import Credentials from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { prisma } from "@/database/db";
 import { compare } from "bcryptjs";
 
 const hasGoogle = !!(process.env.AUTH_GOOGLE_ID && process.env.AUTH_GOOGLE_SECRET);
-const hasFacebook = !!(process.env.AUTH_FACEBOOK_ID && process.env.AUTH_FACEBOOK_SECRET);
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(prisma),
@@ -18,14 +16,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           Google({
             clientId: process.env.AUTH_GOOGLE_ID!,
             clientSecret: process.env.AUTH_GOOGLE_SECRET!,
-          }),
-        ]
-      : []),
-    ...(hasFacebook
-      ? [
-          Facebook({
-            clientId: process.env.AUTH_FACEBOOK_ID!,
-            clientSecret: process.env.AUTH_FACEBOOK_SECRET!,
           }),
         ]
       : []),

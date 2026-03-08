@@ -12,6 +12,7 @@ import {
   Filter,
   UserRound,
 } from "lucide-react";
+import { INCIDENT_TYPE_LABELS } from "@/lib/incidentCategories";
 
 interface Incident {
   id: string;
@@ -23,6 +24,7 @@ interface Incident {
   status: string;
   inFavorOf?: string | null;
   against?: string | null;
+  opinionSummary?: { agree: number; disagree: number; neutral: number } | null;
 }
 
 interface Match {
@@ -468,6 +470,8 @@ export default function DashboardMatchDetailPage({
               status={incident.status}
               inFavorOf={incident.inFavorOf}
               against={incident.against}
+              refereeLabel={INCIDENT_TYPE_LABELS[incident.type]}
+              opinionSummary={incident.opinionSummary ?? undefined}
               matchInfo={match ? `${match.homeTeam} vs ${match.awayTeam}` : undefined}
               actions={
                 <ApprovalButtons

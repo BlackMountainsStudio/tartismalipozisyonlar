@@ -1,0 +1,311 @@
+{
+  "comment": "Maç-hakem eşleştirmesi. Incident açıklamalarından ve Transfermarkt'tan derlendi. referee: orta hakem, varReferee: VAR hakemi.",
+  "referees": [
+    {
+      "name": "Ali Şansalan",
+      "slug": "ali-sansalan",
+      "role": "REFEREE"
+    },
+    {
+      "name": "Çağdaş Altay",
+      "slug": "cagdas-altay",
+      "role": "REFEREE"
+    },
+    {
+      "name": "Halil Umut Meler",
+      "slug": "halil-umut-meler",
+      "role": "REFEREE"
+    },
+    {
+      "name": "Arda Kardeşler",
+      "slug": "arda-kardesler",
+      "role": "REFEREE"
+    },
+    {
+      "name": "Mehmet Türkmen",
+      "slug": "mehmet-turkmen",
+      "role": "REFEREE"
+    },
+    {
+      "name": "Atilla Karaoğlan",
+      "slug": "atilla-karaoglan",
+      "role": "REFEREE"
+    },
+    {
+      "name": "Yasin Kol",
+      "slug": "yasin-kol",
+      "role": "REFEREE"
+    },
+    {
+      "name": "Oğuzhan Çakır",
+      "slug": "oguzhan-cakir",
+      "role": "REFEREE"
+    },
+    {
+      "name": "Alper Akarsu",
+      "slug": "alper-akarsu",
+      "role": "REFEREE"
+    },
+    {
+      "name": "Ozan Ergün",
+      "slug": "ozan-ergun",
+      "role": "REFEREE"
+    },
+    {
+      "name": "Adnan Deniz Kayatepe",
+      "slug": "adnan-deniz-kayatepe",
+      "role": "REFEREE"
+    },
+    {
+      "name": "Abdullah Buğra Taşkınsoy",
+      "slug": "abdullah-bugra-taskinsoy",
+      "role": "REFEREE"
+    },
+    {
+      "name": "Ümit Öztürk",
+      "slug": "umit-ozturk",
+      "role": "REFEREE"
+    },
+    {
+      "name": "Cihan Aydın",
+      "slug": "cihan-aydin",
+      "role": "REFEREE"
+    },
+    {
+      "name": "Burak Pakkan",
+      "slug": "burak-pakkan",
+      "role": "REFEREE"
+    },
+    {
+      "name": "Zorbay Küçük",
+      "slug": "zorbay-kucuk",
+      "role": "REFEREE"
+    },
+    {
+      "name": "Volkan Bayarslan",
+      "slug": "volkan-bayarslan",
+      "role": "REFEREE"
+    },
+    {
+      "name": "Mert Güzenge",
+      "slug": "mert-guzenge",
+      "role": "REFEREE"
+    },
+    {
+      "name": "Turgut Doman",
+      "slug": "turgut-doman",
+      "role": "REFEREE"
+    },
+    {
+      "name": "Bülent Birincioğlu",
+      "slug": "bulent-birincioglu",
+      "role": "VAR"
+    },
+    {
+      "name": "Erkan Engin",
+      "slug": "erkan-engin",
+      "role": "VAR"
+    },
+    {
+      "name": "Mustafa İlker Coşkun",
+      "slug": "mustafa-ilker-coskun",
+      "role": "VAR"
+    },
+    {
+      "name": "Özgür Yankaya",
+      "slug": "ozgur-yankaya",
+      "role": "VAR"
+    },
+    {
+      "name": "Onur Özütoprak",
+      "slug": "onur-ozutoprak",
+      "role": "VAR"
+    },
+    {
+      "name": "Ali Yılmaz",
+      "slug": "ali-yilmaz",
+      "role": "REFEREE"
+    },
+    {
+      "name": "Batuhan Kolak",
+      "slug": "batuhan-kolak",
+      "role": "REFEREE"
+    }
+  ],
+  "matches": [
+    {
+      "homeTeam": "Gaziantep",
+      "awayTeam": "Galatasaray",
+      "week": 1,
+      "referee": "Ali Şansalan"
+    },
+    {
+      "homeTeam": "Trabzonspor",
+      "awayTeam": "Kocaelispor",
+      "week": 1,
+      "referee": "Çağdaş Altay"
+    },
+    {
+      "homeTeam": "Fenerbahçe",
+      "awayTeam": "Alanyaspor",
+      "week": 1,
+      "referee": "Cihan Aydın"
+    },
+    {
+      "homeTeam": "Kayserispor",
+      "awayTeam": "Beşiktaş",
+      "week": 1,
+      "referee": "Adnan Deniz Kayatepe"
+    },
+    {
+      "homeTeam": "Galatasaray",
+      "awayTeam": "Fatih Karagümrük",
+      "week": 2,
+      "referee": "Ozan Ergün"
+    },
+    {
+      "homeTeam": "Göztepe",
+      "awayTeam": "Fenerbahçe",
+      "week": 2,
+      "referee": "Yasin Kol"
+    },
+    {
+      "homeTeam": "Kasımpaşa",
+      "awayTeam": "Trabzonspor",
+      "week": 2,
+      "referee": "Cihan Aydın"
+    },
+    {
+      "homeTeam": "Galatasaray",
+      "awayTeam": "Çaykur Rizespor",
+      "week": 4,
+      "referee": "Abdullah Buğra Taşkınsoy"
+    },
+    {
+      "homeTeam": "Trabzonspor",
+      "awayTeam": "Samsunspor",
+      "week": 4,
+      "referee": "Adnan Deniz Kayatepe"
+    },
+    {
+      "homeTeam": "Göztepe",
+      "awayTeam": "Beşiktaş",
+      "week": 6,
+      "referee": "Mehmet Türkmen"
+    },
+    {
+      "homeTeam": "Trabzonspor",
+      "awayTeam": "Gaziantep",
+      "week": 6,
+      "referee": "Arda Kardeşler"
+    },
+    {
+      "homeTeam": "Galatasaray",
+      "awayTeam": "Konyaspor",
+      "week": 6,
+      "referee": "Yasin Kol"
+    },
+    {
+      "homeTeam": "Alanyaspor",
+      "awayTeam": "Galatasaray",
+      "week": 7,
+      "referee": "Ali Şansalan"
+    },
+    {
+      "homeTeam": "Fatih Karagümrük",
+      "awayTeam": "Trabzonspor",
+      "week": 7,
+      "referee": "Mehmet Türkmen"
+    },
+    {
+      "homeTeam": "Trabzonspor",
+      "awayTeam": "Kayserispor",
+      "week": 8,
+      "referee": "Cihan Aydın"
+    },
+    {
+      "homeTeam": "Galatasaray",
+      "awayTeam": "Beşiktaş",
+      "week": 8,
+      "referee": "Yasin Kol"
+    },
+    {
+      "homeTeam": "Çaykur Rizespor",
+      "awayTeam": "Trabzonspor",
+      "week": 9,
+      "referee": "Halil Umut Meler"
+    },
+    {
+      "homeTeam": "Gaziantep",
+      "awayTeam": "Fenerbahçe",
+      "week": 10,
+      "referee": "Atilla Karaoğlan"
+    },
+    {
+      "homeTeam": "Kocaelispor",
+      "awayTeam": "Galatasaray",
+      "week": 12,
+      "referee": "Çağdaş Altay"
+    },
+    {
+      "homeTeam": "Beşiktaş",
+      "awayTeam": "Samsunspor",
+      "week": 13,
+      "referee": "Atilla Karaoğlan"
+    },
+    {
+      "homeTeam": "İstanbul Başakşehir",
+      "awayTeam": "Trabzonspor",
+      "week": 13,
+      "referee": "Halil Umut Meler"
+    },
+    {
+      "homeTeam": "Fenerbahçe",
+      "awayTeam": "Konyaspor",
+      "week": 16,
+      "referee": "Ozan Ergün"
+    },
+    {
+      "homeTeam": "Beşiktaş",
+      "awayTeam": "Kayserispor",
+      "week": 18,
+      "referee": "Ozan Ergün"
+    },
+    {
+      "homeTeam": "Eyüpspor",
+      "awayTeam": "Beşiktaş",
+      "week": 19,
+      "referee": "Yasin Kol"
+    },
+    {
+      "homeTeam": "Antalyaspor",
+      "awayTeam": "Trabzonspor",
+      "week": 20,
+      "referee": "Oğuzhan Çakır"
+    },
+    {
+      "homeTeam": "Samsunspor",
+      "awayTeam": "Trabzonspor",
+      "week": 21,
+      "referee": "Alper Akarsu"
+    },
+    {
+      "homeTeam": "Beşiktaş",
+      "awayTeam": "Alanyaspor",
+      "week": 21,
+      "referee": "Oğuzhan Çakır"
+    },
+    {
+      "homeTeam": "Fenerbahçe",
+      "awayTeam": "Kasımpaşa",
+      "week": 23,
+      "referee": "Yasin Kol"
+    },
+    {
+      "homeTeam": "İstanbul Başakşehir",
+      "awayTeam": "Göztepe",
+      "week": 25,
+      "referee": "Yasin Kol"
+    }
+  ]
+}

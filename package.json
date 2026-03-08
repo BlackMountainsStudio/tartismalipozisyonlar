@@ -12,6 +12,7 @@
     "cleanup:duplicates": "node scripts/cleanup-duplicate-incidents.mjs",
     "reindex:matches": "node scripts/reindex-matches.mjs",
     "setup:auth": "node scripts/setup-auth.mjs",
+    "check:google-oauth": "node scripts/check-google-oauth.mjs",
     "generate:static-matches": "node scripts/generate-static-matches.mjs",
     "crawl:match": "tsx scripts/crawl-match.ts"
   },

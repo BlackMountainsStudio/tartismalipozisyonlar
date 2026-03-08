@@ -6,7 +6,8 @@ import Link from "next/link";
 import IncidentCard from "@/components/IncidentCard";
 import CommentSection from "@/components/CommentSection";
 import { matchUrl, refereeUrl } from "@/lib/links";
-import { ArrowLeft, Loader2, Calendar, Trophy, Shield, UserRound } from "lucide-react";
+import { INCIDENT_TYPE_LABELS } from "@/lib/incidentCategories";
+import { ArrowLeft, Loader2, Calendar, Trophy, Shield, UserRound, Scale } from "lucide-react";
 
 interface Incident {
   id: string;
@@ -19,6 +20,7 @@ interface Incident {
   videoUrl?: string | null;
   slug?: string;
   matchSlug?: string;
+  opinionSummary?: { agree: number; disagree: number; neutral: number } | null;
 }
 
 interface Match {
@@ -102,6 +104,14 @@ export default function MatchPage({
 
   const currentMatchSlug = match.slug ?? slugOrId;
 
+  const incidentsWithOpinions = incidents.filter(
+    (i) => i.opinionSummary && (i.opinionSummary.agree + i.opinionSummary.disagree + i.opinionSummary.neutral) > 0
+  );
+  const totalWithOpinions = incidentsWithOpinions.length;
+  const correctCount = incidentsWithOpinions.filter(
+    (i) => (i.opinionSummary?.agree ?? 0) > (i.opinionSummary?.disagree ?? 0)
+  ).length;
+
   return (
     <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
       <Link
@@ -131,6 +141,11 @@ export default function MatchPage({
               year: "numeric",
             })}
           </span>
+          {!match.referee && !match.varReferee && (
+            <span className="rounded-md bg-zinc-800/50 px-2 py-0.5 text-xs text-zinc-500">
+              Hakem bilgisi eklenmemiş
+            </span>
+          )}
           {match.referee && (
             <Link
               href={refereeUrl(match.referee.slug)}
@@ -160,6 +175,15 @@ export default function MatchPage({
           <span className="text-zinc-600">vs</span>{" "}
           {match.awayTeam}
         </h1>
+        {totalWithOpinions > 0 && (
+          <div className="mt-4 flex items-center justify-center gap-2 rounded-lg border border-zinc-800 bg-zinc-900/50 px-4 py-2">
+            <Scale className="h-4 w-4 text-amber-400" />
+            <span className="text-sm text-zinc-300">
+              <span className="font-semibold text-white">{correctCount}/{totalWithOpinions}</span>
+              {" "}tartışmalı kararı doğru vermiş
+            </span>
+          </div>
+        )}
       </div>
 
       <h2 className="mb-6 text-xl font-bold text-white">
@@ -193,6 +217,8 @@ export default function MatchPage({
                 status={incident.status}
                 videoUrl={incident.videoUrl}
                 matchInfo={`${match.homeTeam} vs ${match.awayTeam}`}
+                refereeLabel={INCIDENT_TYPE_LABELS[incident.type]}
+                opinionSummary={incident.opinionSummary ?? undefined}
                 matchSlug={currentMatchSlug}
                 incidentSlug={incident.slug ?? undefined}
                 clickable

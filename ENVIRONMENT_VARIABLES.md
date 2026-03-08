@@ -82,39 +82,46 @@ Value: üretilen-32-karakter-secret
 
 ---
 
-### 5. Google & Facebook OAuth (Giriş seçenekleri)
+### 5. Google OAuth (Giriş seçeneği)
 
-**Ne işe yarar:** Google ve Facebook ile giriş yapma
+**Ne işe yarar:** Google ile giriş yapma
 
-**Google OAuth kurulumu:**
-1. https://console.cloud.google.com → APIs & Services → Credentials
-2. "Create Credentials" → "OAuth client ID"
-3. Application type: Web application
-4. Authorized redirect URIs: `https://varodasi.com/api/auth/callback/google` (ve localhost:3000 için test)
-5. Client ID ve Client Secret'ı kopyalayın
+**Google OAuth kurulumu (adım adım):**
 
-**Facebook OAuth kurulumu:**
-1. https://developers.facebook.com → My Apps → Create App
-2. Use case: Consumer
-3. Facebook Login → Settings → Valid OAuth Redirect URIs: `https://varodasi.com/api/auth/callback/facebook`
-4. App ID ve App Secret'ı kopyalayın
+1. **Google Cloud Console:** https://console.cloud.google.com → Giriş yapın.
+2. **Proje:** Sol üstte "Select a project" → "New Project" → İsim verin (örn. Var Odası) → Create.
+3. **OAuth Consent Screen (zorunlu):** Sol menü **APIs & Services** → **OAuth consent screen** → **External** → Create.
+   - App name: Uygulama adı (örn. Var Odası)
+   - User support email & Developer contact: Kendi e-posta
+   - Save and Continue (Scopes / Test users şimdilik boş bırakılabilir).
+4. **Credentials:** **APIs & Services** → **Credentials** → **+ CREATE CREDENTIALS** → **OAuth client ID**.
+   - Application type: **Web application**
+   - Name: İstediğiniz isim (örn. Web Client)
+   - **Authorized redirect URIs** (birebir yazın):
+     - Yerel: `http://localhost:3000/api/auth/callback/google`
+     - Canlı: `https://varodasi.com/api/auth/callback/google` (veya kendi domain’iniz)
+   - Create → Açılan pencerede **Client ID** ve **Client Secret**’ı hemen kopyalayın (Secret bir daha gösterilmez).
+5. **.env dosyasına ekleyin:**
+   ```
+   AUTH_GOOGLE_ID="xxx.apps.googleusercontent.com"
+   AUTH_GOOGLE_SECRET="xxx"
+   ```
+6. Sunucuyu yeniden başlatın: `npm run dev`
 
-**Railway/Render'da ekle:**
+**Sık hatalar:**
+- **redirect_uri_mismatch:** Redirect URI, Google Console’daki ile birebir aynı olmalı (http/https, port, sondaki `/` yok).
+- **Test modu:** OAuth consent "Testing" modundaysa, giriş yapacağınız e-postayı "Test users" listesine ekleyin veya uygulamayı "Publish" edin.
+
+**Railway/Render/Vercel'da ekle:**
 ```
 Name: AUTH_GOOGLE_ID
 Value: xxx.apps.googleusercontent.com
 
 Name: AUTH_GOOGLE_SECRET
 Value: xxx
-
-Name: AUTH_FACEBOOK_ID
-Value: xxx
-
-Name: AUTH_FACEBOOK_SECRET
-Value: xxx
 ```
 
-**Not:** Bu değişkenler tanımlı değilse Google/Facebook butonları gizlenir. E-posta ile giriş her zaman çalışır.
+**Not:** Bu değişkenler tanımlı değilse Google butonu gizlenir. E-posta ile giriş her zaman çalışır.
 
 ---
 
@@ -207,7 +214,7 @@ En az şunlar eklenmeli:
 - ✅ `ADMIN_SECRET`
 - ✅ `AUTH_SECRET`
 
-Google/Facebook giriş için: `AUTH_GOOGLE_ID`, `AUTH_GOOGLE_SECRET`, `AUTH_FACEBOOK_ID`, `AUTH_FACEBOOK_SECRET`
+Google giriş için: `AUTH_GOOGLE_ID`, `AUTH_GOOGLE_SECRET`
 
 Diğerleri opsiyonel!
 

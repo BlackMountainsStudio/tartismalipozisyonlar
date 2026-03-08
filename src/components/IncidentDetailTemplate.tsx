@@ -166,6 +166,29 @@ export default function IncidentDetailTemplate({
                 )}
               </div>
             )}
+            <div className="mt-3 flex flex-wrap items-center gap-4 rounded-lg border border-zinc-800 bg-zinc-900/50 px-4 py-3">
+              <div className="flex items-center gap-2">
+                <Scale className="h-4 w-4 text-amber-400" />
+                <span className="text-sm text-zinc-400">Hakem kararı:</span>
+                <span className="text-sm font-medium text-white">{typeInfo.label}</span>
+              </div>
+              <div className="flex items-center gap-2 border-l border-zinc-700 pl-4">
+                <span className="text-sm text-zinc-500">Yorumcular:</span>
+                {opinions.length > 0 ? (
+                  <span className="text-sm">
+                    <span className="text-emerald-400">{agreeCount}/{opinions.length}</span>
+                    <span className="text-zinc-600 mx-1">·</span>
+                    <span className="text-red-400">{disagreeCount}/{opinions.length}</span>
+                    <span className="text-zinc-600 mx-1">·</span>
+                    <span className="text-zinc-500">
+                      {opinions.filter((o) => o.stance === "NEUTRAL").length}/{opinions.length}
+                    </span>
+                  </span>
+                ) : (
+                  <span className="text-sm text-zinc-500">–</span>
+                )}
+              </div>
+            </div>
             {(incident.match.referee || incident.match.varReferee) && (
               <div className="flex flex-wrap items-center gap-3 text-xs text-zinc-500">
                 {incident.match.referee && (
