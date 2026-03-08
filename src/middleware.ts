@@ -11,6 +11,7 @@ const ADMIN_API_PATHS = [
   "/api/incidents",
   "/api/suggestions",
   "/api/commentators",
+  "/api/referees",
   "/api/opinions",
 ];
 

@@ -22,12 +22,15 @@ type WeekSort = "asc" | "desc";
 
 interface Match {
   id: string;
+  slug?: string | null;
   homeTeam: string;
   awayTeam: string;
   league: string;
   week: number;
   date: string;
   incidents: { id: string; type: string; status: string; confidenceScore: number }[];
+  referee?: { id: string; name: string; slug: string; role?: string } | null;
+  varReferee?: { id: string; name: string; slug: string; role?: string } | null;
 }
 
 export default function HomePage() {
@@ -42,6 +45,18 @@ export default function HomePage() {
       try {
         const res = await fetch("/api/matches", { cache: "no-store" });
         const data = await res.json();
+        const list = Array.isArray(data) ? data : [];
+        if (list.length > 0) {
+          setMatches(list);
+          setLoading(false);
+          return;
+        }
+      } catch {
+        /* API yoksa veya hata varsa statik fallback dene */
+      }
+      try {
+        const fallback = await fetch("/matches.json", { cache: "no-store" });
+        const data = await fallback.json();
         setMatches(Array.isArray(data) ? data : []);
       } catch (err) {
         console.error("Failed to fetch matches:", err);
@@ -53,7 +68,10 @@ export default function HomePage() {
     fetchMatches();
   }, []);
 
-  const seasonMatches = matches.filter((m) => m.league === "Süper Lig 2025-26");
+  const seasonMatches =
+    matches.filter((m) => m.league === "Süper Lig 2025-26").length > 0
+      ? matches.filter((m) => m.league === "Süper Lig 2025-26")
+      : matches;
 
   const maxWeek = seasonMatches.length > 0
     ? Math.max(...seasonMatches.map((m) => m.week))
@@ -160,7 +178,7 @@ export default function HomePage() {
               2025-26 Sezonu Maçları
             </h2>
             <p className="mt-1 text-sm text-zinc-400">
-              Fenerbahçe, Galatasaray, Beşiktaş ve Trabzonspor'un takip edilen lig maçları
+              Fenerbahçe, Galatasaray, Beşiktaş ve Trabzonspor&apos;un takip edilen lig maçları
             </p>
           </div>
           <div className="relative w-full sm:w-72">
@@ -307,6 +325,7 @@ export default function HomePage() {
                       <MatchCard
                         key={match.id}
                         id={match.id}
+                        slug={match.slug}
                         homeTeam={match.homeTeam}
                         awayTeam={match.awayTeam}
                         week={match.week}
@@ -315,6 +334,8 @@ export default function HomePage() {
                           match.incidents.filter((i) => i.status === "APPROVED").length
                         }
                         linkPrefix="/matches"
+                        referee={match.referee}
+                        varReferee={match.varReferee}
                       />
                     ))}
                 </div>

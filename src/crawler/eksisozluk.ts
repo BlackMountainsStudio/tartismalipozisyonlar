@@ -48,14 +48,19 @@ export async function crawlEksiSozluk(
     `${homeTeam} ${awayTeam} penaltı`,
     `${homeTeam} ${awayTeam} VAR`,
     `${homeTeam} ${awayTeam}`,
+    `${homeTeam} ${awayTeam} derbi`,
+    `${homeTeam} ${awayTeam} tartışmalı`,
+    `${homeTeam} ${awayTeam} ofsayt`,
+    `${homeTeam} ${awayTeam} kırmızı kart`,
   ];
+  const uniqueTerms = [...new Set(searchTerms)];
 
   try {
     browser = await createBrowser();
     const page = await browser.newPage();
     await page.setExtraHTTPHeaders({ "Accept-Language": "tr-TR,tr;q=0.9" });
 
-    for (const term of searchTerms) {
+    for (const term of uniqueTerms) {
       try {
         await rateLimiter.waitForSlot();
         const searchUrl = `${BASE_URL}/?q=${encodeURIComponent(term)}`;
@@ -67,7 +72,7 @@ export async function crawlEksiSozluk(
         const topicLinks = await page.$$eval(
           "ul.topic-list li a",
           (links) =>
-            links.slice(0, 5).map((a) => ({
+            links.slice(0, 7).map((a) => ({
               href: a.getAttribute("href") ?? "",
               text: a.textContent?.trim() ?? "",
             }))

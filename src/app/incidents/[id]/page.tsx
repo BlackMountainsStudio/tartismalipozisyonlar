@@ -1,116 +1,81 @@
 "use client";
 
-import { useState, useEffect, useCallback, use } from "react";
+import { useEffect, use, useState } from "react";
 import { useRouter } from "next/navigation";
-import CommentSection from "@/components/CommentSection";
-import IncidentDetailTemplate, { type IncidentDetailData } from "@/components/IncidentDetailTemplate";
 import { Loader2 } from "lucide-react";
+import { incidentUrl } from "@/lib/links";
+import { buildMatchSlug, buildIncidentSlug } from "@/lib/slug";
 
-const TYPE_LABELS: Record<string, { label: string }> = {
-  POSSIBLE_PENALTY: { label: "Penaltı Pozisyonu" },
-  PENALTY: { label: "Penaltı Kararı" },
-  POSSIBLE_OFFSIDE_GOAL: { label: "Ofsayt Tartışması" },
-  OFFSIDE: { label: "Ofsayt Kararı" },
-  MISSED_RED_CARD: { label: "Verilmeyen Kırmızı Kart" },
-  RED_CARD: { label: "Kırmızı Kart" },
-  YELLOW_CARD: { label: "Sarı Kart" },
-  VAR_CONTROVERSY: { label: "VAR Tartışması" },
-  GOAL_DISALLOWED: { label: "İptal Edilen Gol" },
-  FOUL: { label: "Faul Kararı" },
-  HANDBALL: { label: "El ile Temas" },
-};
-
-function parseJson<T>(raw: unknown, fallback: T): T {
-  if (Array.isArray(raw)) return raw as T;
-  if (typeof raw === "string") {
-    try { return JSON.parse(raw) as T; } catch { return fallback; }
-  }
-  return fallback;
-}
-
-function toTemplateData(incident: unknown): IncidentDetailData | null {
-  if (!incident || typeof incident !== "object") return null;
-  const d = incident as Record<string, unknown>;
-  return {
-    id: String(d.id ?? ""),
-    type: String(d.type ?? ""),
-    minute: typeof d.minute === "number" ? d.minute : null,
-    description: String(d.description ?? ""),
-    confidenceScore: Number(d.confidenceScore ?? 0),
-    sources: Array.isArray(d.sources) ? d.sources.map(String) : [],
-    videoUrl: d.videoUrl ? String(d.videoUrl) : null,
-    relatedVideos: parseJson<{ url: string; title: string }[]>(d.relatedVideos, []),
-    newsArticles: parseJson<{ title: string; url: string; source: string; author: string }[]>(d.newsArticles, []),
-    refereeComments: parseJson<{ author?: string; text: string; sourceUrl?: string }[]>(d.refereeComments ?? [], []),
-    opinions: Array.isArray(d.opinions) ? d.opinions as IncidentDetailData["opinions"] : [],
-    status: String(d.status ?? "PENDING"),
-    match: d.match && typeof d.match === "object" ? (d.match as IncidentDetailData["match"]) : null,
-  };
-}
-
-export default function IncidentDetailPage({
+export default function LegacyIncidentRedirectPage({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
   const { id: incidentId } = use(params);
   const router = useRouter();
-  const [incident, setIncident] = useState<IncidentDetailData | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [activeVideo, setActiveVideo] = useState<string | null>(null);
-
-  const fetchData = useCallback(async () => {
-    try {
-      const res = await fetch(`/api/incidents/${incidentId}`, { cache: "no-store" });
-      if (!res.ok) { setIncident(null); return; }
-      const data = await res.json();
-      const parsed = toTemplateData(data);
-      setIncident(parsed);
-      if (parsed?.videoUrl) setActiveVideo(parsed.videoUrl);
-    } catch {
-      setIncident(null);
-    } finally {
-      setLoading(false);
-    }
-  }, [incidentId]);
-
-  useEffect(() => { fetchData(); }, [fetchData]);
+  const [status, setStatus] = useState<"loading" | "found" | "notfound">("loading");
 
   useEffect(() => {
-    if (!incident) return;
-    const m = incident.match;
-    const summary = m
-      ? [m.homeTeam, "vs", m.awayTeam, incident.minute != null ? `${incident.minute}. dk` : "", (TYPE_LABELS[incident.type] as { label: string } | undefined)?.label ?? incident.type].filter(Boolean).join(" · ")
-      : [incident.minute != null ? `${incident.minute}. dk` : "", (TYPE_LABELS[incident.type] as { label: string } | undefined)?.label ?? incident.type].filter(Boolean).join(" · ");
-    document.title = summary ? `${summary} | Var Odası` : "Var Odası";
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetch(`/api/incidents/${incidentId}`, { cache: "no-store" });
+        if (!res.ok) {
+          if (!cancelled) setStatus("notfound");
+          return;
+        }
+        const incident = await res.json();
+        if (cancelled) return;
+        const match = incident?.match;
+        if (!match) {
+          setStatus("notfound");
+          return;
+        }
+        const matchSlug =
+          match.slug ??
+          buildMatchSlug({
+            league: match.league,
+            week: match.week,
+            date: match.date,
+            homeTeam: match.homeTeam,
+            awayTeam: match.awayTeam,
+          });
+        const incidentSlug =
+          incident.slug ??
+          buildIncidentSlug({
+            id: incident.id,
+            minute: incident.minute ?? null,
+            description: incident.description ?? "",
+          });
+        setStatus("found");
+        router.replace(incidentUrl(matchSlug, incidentSlug));
+      } catch {
+        if (!cancelled) setStatus("notfound");
+      }
+    })();
     return () => {
-      document.title = "Var Odası - Hakem Kararları Analiz Platformu";
+      cancelled = true;
     };
-  }, [incident]);
+  }, [incidentId, router]);
 
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center py-20">
-        <Loader2 className="h-8 w-8 animate-spin text-red-500" />
-      </div>
-    );
-  }
-
-  if (!incident) {
+  if (status === "notfound") {
     return (
       <div className="mx-auto max-w-4xl px-4 py-20 text-center sm:px-6">
         <p className="text-lg text-zinc-400">Pozisyon bulunamadı</p>
+        <button
+          type="button"
+          onClick={() => router.push("/")}
+          className="mt-4 text-sm text-red-400 hover:text-red-300"
+        >
+          Ana sayfaya dön
+        </button>
       </div>
     );
   }
 
   return (
-    <IncidentDetailTemplate
-      incident={incident}
-      activeVideo={activeVideo}
-      onBack={incident.match ? () => router.push(`/matches/${incident.match!.id}`) : undefined}
-    >
-      <CommentSection incidentId={incidentId} />
-    </IncidentDetailTemplate>
+    <div className="flex items-center justify-center py-20">
+      <Loader2 className="h-8 w-8 animate-spin text-red-500" />
+    </div>
   );
 }

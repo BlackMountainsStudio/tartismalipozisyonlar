@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/database/db";
 import { NO_CACHE_HEADERS } from "@/lib/api-response";
+import { getResolvedVideoUrl } from "@/lib/incident-api";
+import { buildMatchSlug } from "@/lib/slug";
+import { buildIncidentSlug, getShortIdFromIncidentSlug } from "@/lib/slug";
 
 function parseSources(sources: string): string[] {
   try {
@@ -10,14 +13,77 @@ function parseSources(sources: string): string[] {
   }
 }
 
+function parseJson<T>(raw: string, fallback: T): T {
+  try {
+    return JSON.parse(raw);
+  } catch {
+    return fallback;
+  }
+}
+
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const matchId = searchParams.get("matchId");
+    const matchSlug = searchParams.get("matchSlug");
+    const incidentSlug = searchParams.get("incidentSlug");
     const status = searchParams.get("status");
     const minConfidence = searchParams.get("minConfidence");
     const team = searchParams.get("team")?.trim() || undefined;
     const typeParam = searchParams.get("type")?.trim() || undefined;
+
+    if (matchSlug && incidentSlug) {
+      const shortId = getShortIdFromIncidentSlug(incidentSlug);
+      const matchWithIncidents = await prisma.match.findFirst({
+        where: { slug: matchSlug },
+        include: { incidents: { select: { id: true, slug: true } } },
+      });
+      let match = matchWithIncidents;
+      if (!match) {
+        const allMatches = await prisma.match.findMany({
+          include: { incidents: { select: { id: true, slug: true } } },
+        });
+        match = allMatches.find(
+          (m) =>
+            buildMatchSlug({
+              league: m.league,
+              week: m.week,
+              date: m.date,
+              homeTeam: m.homeTeam,
+              awayTeam: m.awayTeam,
+            }) === matchSlug
+        ) ?? null;
+      }
+      if (!match) return NextResponse.json(null, { status: 404, headers: NO_CACHE_HEADERS });
+      const incidentRow = match.incidents.find(
+        (i) => i.slug === incidentSlug || (shortId && i.id.endsWith(shortId))
+      );
+      if (!incidentRow) return NextResponse.json(null, { status: 404, headers: NO_CACHE_HEADERS });
+      const incident = await prisma.incident.findUnique({
+        where: { id: incidentRow.id },
+        include: {
+          match: {
+            include: {
+              referee: { select: { id: true, name: true, slug: true, role: true } },
+              varReferee: { select: { id: true, name: true, slug: true, role: true } },
+            },
+          },
+          opinions: { include: { commentator: true }, orderBy: { createdAt: "asc" } },
+        },
+      });
+      if (!incident) return NextResponse.json(null, { status: 404, headers: NO_CACHE_HEADERS });
+      return NextResponse.json(
+        {
+          ...incident,
+          sources: parseJson(incident.sources, []),
+          videoUrl: await getResolvedVideoUrl(incident),
+          refereeComments: parseJson(incident.refereeComments, []),
+          relatedVideos: parseJson(incident.relatedVideos, []),
+          newsArticles: parseJson(incident.newsArticles, []),
+        },
+        { headers: NO_CACHE_HEADERS }
+      );
+    }
 
     const where: Record<string, unknown> = {};
     if (matchId) where.matchId = matchId;
@@ -48,24 +114,45 @@ export async function GET(request: NextRequest) {
       where,
       include: {
         match: {
-          select: { id: true, homeTeam: true, awayTeam: true, week: true, date: true },
+          select: {
+            id: true,
+            homeTeam: true,
+            awayTeam: true,
+            week: true,
+            date: true,
+            league: true,
+            slug: true,
+            referee: { select: { id: true, name: true, slug: true, role: true } },
+            varReferee: { select: { id: true, name: true, slug: true, role: true } },
+          },
         },
       },
       orderBy: [{ minute: "asc" }, { confidenceScore: "desc" }],
     });
 
-    const mapped = incidents.map((inc) => ({
-      ...inc,
-      sources: parseSources(inc.sources),
-      videoUrl: inc.videoUrl ?? null,
-      refereeComments: (() => {
-        try {
-          return JSON.parse(inc.refereeComments);
-        } catch {
-          return [];
-        }
-      })(),
-    }));
+    const mapped = incidents.map((inc) => {
+      const match = inc.match as { slug?: string | null; league: string; week: number; date: Date; homeTeam: string; awayTeam: string };
+      const matchSlugComputed =
+        match?.slug ??
+        (match ? buildMatchSlug({ league: match.league, week: match.week, date: match.date, homeTeam: match.homeTeam, awayTeam: match.awayTeam }) : "");
+      const incidentSlugComputed =
+        inc.slug ??
+        buildIncidentSlug({ id: inc.id, minute: inc.minute, description: inc.description });
+      return {
+        ...inc,
+        slug: incidentSlugComputed,
+        matchSlug: matchSlugComputed,
+        sources: parseSources(inc.sources),
+        videoUrl: inc.videoUrl ?? null,
+        refereeComments: (() => {
+          try {
+            return JSON.parse(inc.refereeComments);
+          } catch {
+            return [];
+          }
+        })(),
+      };
+    });
 
     return NextResponse.json(mapped, { headers: NO_CACHE_HEADERS });
   } catch (err) {

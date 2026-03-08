@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { incidentUrl } from "@/lib/links";
 import { Clock, AlertTriangle, ShieldAlert, Eye, Flag, ChevronRight, Video } from "lucide-react";
 import ConfidenceBadge from "./ConfidenceBadge";
 import { getVideoLinkLabel } from "@/lib/linkLabels";
@@ -22,6 +23,8 @@ interface IncidentCardProps {
   videoUrl?: string | null;
   actions?: React.ReactNode;
   clickable?: boolean;
+  matchSlug?: string;
+  incidentSlug?: string;
 }
 
 const INCIDENT_TYPE_LABELS: Record<string, { label: string; icon: React.ReactNode }> = {
@@ -62,6 +65,8 @@ export default function IncidentCard({
   videoUrl,
   actions,
   clickable = false,
+  matchSlug,
+  incidentSlug,
 }: IncidentCardProps) {
   const router = useRouter();
   const typeInfo = INCIDENT_TYPE_LABELS[type] ?? {
@@ -155,15 +160,19 @@ export default function IncidentCard({
   );
 
   if (clickable) {
+    const incidentHref =
+      matchSlug != null && incidentSlug != null
+        ? incidentUrl(matchSlug, incidentSlug)
+        : `/incidents/${id}`;
     return (
       <div
         role="link"
         tabIndex={0}
-        onClick={() => router.push(`/incidents/${id}`)}
+        onClick={() => router.push(incidentHref)}
         onKeyDown={(e) => {
           if (e.key === "Enter" || e.key === " ") {
             e.preventDefault();
-            router.push(`/incidents/${id}`);
+            router.push(incidentHref);
           }
         }}
         className="block cursor-pointer rounded-xl border border-zinc-800 bg-zinc-900/50 p-5 transition-all hover:border-red-500/30 hover:bg-zinc-900"

@@ -6,16 +6,20 @@ import { Plus, Loader2, Search, Trophy } from "lucide-react";
 
 interface Match {
   id: string;
+  slug?: string | null;
   homeTeam: string;
   awayTeam: string;
   league: string;
   week: number;
   date: string;
   incidents: { id: string; type: string; status: string; confidenceScore: number }[];
+  referee?: { id: string; name: string; slug: string; role?: string } | null;
+  varReferee?: { id: string; name: string; slug: string; role?: string } | null;
 }
 
 export default function DashboardMatchesPage() {
   const [matches, setMatches] = useState<Match[]>([]);
+  const [referees, setReferees] = useState<{ id: string; name: string; slug: string; role: string }[]>([]);
   const [loading, setLoading] = useState(true);
   const [showAddForm, setShowAddForm] = useState(false);
   const [search, setSearch] = useState("");
@@ -25,6 +29,8 @@ export default function DashboardMatchesPage() {
     week: "",
     date: "",
     league: "Süper Lig",
+    refereeId: "",
+    varRefereeId: "",
   });
   const [submitting, setSubmitting] = useState(false);
 
@@ -34,12 +40,18 @@ export default function DashboardMatchesPage() {
 
   async function fetchMatches() {
     try {
-      const res = await fetch("/api/matches", { cache: "no-store" });
-      const data = await res.json();
-      setMatches(Array.isArray(data) ? data : []);
+      const [matchesRes, refereesRes] = await Promise.all([
+        fetch("/api/matches", { cache: "no-store" }),
+        fetch("/api/referees", { cache: "no-store" }),
+      ]);
+      const matchData = await matchesRes.json();
+      const refereeData = await refereesRes.json();
+      setMatches(Array.isArray(matchData) ? matchData : []);
+      setReferees(Array.isArray(refereeData) ? refereeData : []);
     } catch (err) {
       console.error("Failed to fetch matches:", err);
       setMatches([]);
+      setReferees([]);
     } finally {
       setLoading(false);
     }
@@ -52,11 +64,15 @@ export default function DashboardMatchesPage() {
       const res = await fetch("/api/matches", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          refereeId: formData.refereeId || undefined,
+          varRefereeId: formData.varRefereeId || undefined,
+        }),
       });
       if (res.ok) {
         setShowAddForm(false);
-        setFormData({ homeTeam: "", awayTeam: "", week: "", date: "", league: "Süper Lig" });
+        setFormData({ homeTeam: "", awayTeam: "", week: "", date: "", league: "Süper Lig", refereeId: "", varRefereeId: "" });
         fetchMatches();
       }
     } catch (err) {
@@ -148,6 +164,38 @@ export default function DashboardMatchesPage() {
                 className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 outline-none focus:border-red-500"
               />
             </div>
+            <div>
+              <label className="mb-1.5 block text-xs font-medium text-zinc-400">Hakem</label>
+              <select
+                value={formData.refereeId}
+                onChange={(e) => setFormData({ ...formData, refereeId: e.target.value })}
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white outline-none focus:border-red-500"
+              >
+                <option value="">Seçiniz</option>
+                {referees.filter((r) => r.role === "REFEREE").map((r) => (
+                  <option key={r.id} value={r.id}>{r.name}</option>
+                ))}
+                {referees.filter((r) => r.role !== "REFEREE").map((r) => (
+                  <option key={r.id} value={r.id}>{r.name} ({r.role})</option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label className="mb-1.5 block text-xs font-medium text-zinc-400">VAR Hakemi</label>
+              <select
+                value={formData.varRefereeId}
+                onChange={(e) => setFormData({ ...formData, varRefereeId: e.target.value })}
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white outline-none focus:border-red-500"
+              >
+                <option value="">Seçiniz</option>
+                {referees.filter((r) => r.role === "VAR").map((r) => (
+                  <option key={r.id} value={r.id}>{r.name}</option>
+                ))}
+                {referees.filter((r) => r.role !== "VAR").map((r) => (
+                  <option key={r.id} value={r.id}>{r.name} ({r.role})</option>
+                ))}
+              </select>
+            </div>
             <div className="flex items-end">
               <button
                 type="submit"
@@ -190,6 +238,7 @@ export default function DashboardMatchesPage() {
             <MatchCard
               key={match.id}
               id={match.id}
+              slug={match.slug}
               homeTeam={match.homeTeam}
               awayTeam={match.awayTeam}
               week={match.week}
@@ -197,6 +246,8 @@ export default function DashboardMatchesPage() {
               incidentCount={match.incidents.length}
               pendingCount={match.incidents.filter((i) => i.status === "PENDING").length}
               linkPrefix="/dashboard/matches"
+              referee={match.referee}
+              varReferee={match.varReferee}
             />
           ))}
         </div>

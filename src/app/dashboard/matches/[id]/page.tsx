@@ -10,6 +10,7 @@ import {
   Play,
   Calendar,
   Filter,
+  UserRound,
 } from "lucide-react";
 
 interface Incident {
@@ -29,6 +30,8 @@ interface Match {
   league: string;
   week: number;
   date: string;
+  referee?: { id: string; name: string; slug: string } | null;
+  varReferee?: { id: string; name: string; slug: string } | null;
 }
 
 export default function DashboardMatchDetailPage({
@@ -45,20 +48,33 @@ export default function DashboardMatchDetailPage({
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editDescription, setEditDescription] = useState("");
+  const [referees, setReferees] = useState<{ id: string; name: string; slug: string; role: string }[]>([]);
+  const [editingMatch, setEditingMatch] = useState(false);
+  const [matchRefereeId, setMatchRefereeId] = useState("");
+  const [matchVarRefereeId, setMatchVarRefereeId] = useState("");
+  const [savingMatch, setSavingMatch] = useState(false);
 
   const fetchData = useCallback(async () => {
     try {
-      const [matchRes, incidentsRes] = await Promise.all([
+      const [matchRes, incidentsRes, refereesRes] = await Promise.all([
         fetch(`/api/matches`, { cache: "no-store" }),
         fetch(`/api/incidents?matchId=${matchId}`, { cache: "no-store" }),
+        fetch("/api/referees", { cache: "no-store" }),
       ]);
       const matchData = await matchRes.json();
       const matchList = Array.isArray(matchData) ? matchData : [];
       const matchItem = matchList.find((m: Match) => m.id === matchId);
       setMatch(matchItem ?? null);
+      if (matchItem) {
+        setMatchRefereeId(matchItem.referee?.id ?? "");
+        setMatchVarRefereeId(matchItem.varReferee?.id ?? "");
+      }
 
       const incidentsData = await incidentsRes.json();
       setIncidents(Array.isArray(incidentsData) ? incidentsData : []);
+
+      const refereeData = await refereesRes.json();
+      setReferees(Array.isArray(refereeData) ? refereeData : []);
     } catch (err) {
       console.error("Failed to fetch data:", err);
       setIncidents([]);
@@ -81,12 +97,12 @@ export default function DashboardMatchDetailPage({
       });
       const data = await res.json();
       alert(
-        `Crawl complete!\n${data.commentsAnalyzed ?? 0} comments analyzed\n${data.incidentsDetected ?? 0} incidents detected`
+        `Tarama tamamlandı.\n${data.commentsAnalyzed ?? 0} yorum incelendi, ${data.incidentsDetected ?? 0} tartışmalı pozisyon tespit edildi.`
       );
       fetchData();
     } catch (err) {
       console.error("Crawl failed:", err);
-      alert("Crawl failed. Check console for details.");
+      alert("Tarama başarısız. Konsolu kontrol edin.");
     } finally {
       setCrawling(false);
     }
@@ -145,6 +161,29 @@ export default function DashboardMatchDetailPage({
     }
   }
 
+  async function saveMatchReferees() {
+    setSavingMatch(true);
+    try {
+      const res = await fetch(`/api/matches/${matchId}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          refereeId: matchRefereeId || null,
+          varRefereeId: matchVarRefereeId || null,
+        }),
+      });
+      if (res.ok) {
+        const updated = await res.json();
+        setMatch((prev) => prev ? { ...prev, referee: updated.referee, varReferee: updated.varReferee } : null);
+        setEditingMatch(false);
+      }
+    } catch (err) {
+      console.error("Failed to update match:", err);
+    } finally {
+      setSavingMatch(false);
+    }
+  }
+
   const filteredIncidents =
     statusFilter === "all"
       ? incidents
@@ -196,6 +235,106 @@ export default function DashboardMatchDetailPage({
               {match.homeTeam} vs {match.awayTeam}
             </h1>
             <p className="mt-1 text-sm text-zinc-400">{match.league}</p>
+            {(match.referee || match.varReferee || editingMatch) && (
+              <div className="mt-3 space-y-2">
+                {!editingMatch ? (
+                  <div className="flex flex-wrap gap-3">
+                    {match.referee && (
+                      <a
+                        href={`/hakemler/${match.referee.slug}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 text-xs text-zinc-500 hover:text-red-400"
+                      >
+                        <UserRound className="h-3.5 w-3.5" />
+                        Hakem: {match.referee.name}
+                      </a>
+                    )}
+                    {match.varReferee && (
+                      <a
+                        href={`/hakemler/${match.varReferee.slug}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 text-xs text-zinc-500 hover:text-amber-400"
+                      >
+                        <UserRound className="h-3.5 w-3.5" />
+                        VAR: {match.varReferee.name}
+                      </a>
+                    )}
+                    <button
+                      type="button"
+                      onClick={() => setEditingMatch(true)}
+                      className="text-xs text-zinc-500 underline hover:text-white"
+                    >
+                      Düzenle
+                    </button>
+                  </div>
+                ) : (
+                  <div className="flex flex-wrap items-end gap-3">
+                    <div>
+                      <label className="mb-1 block text-xs text-zinc-500">Hakem</label>
+                      <select
+                        value={matchRefereeId}
+                        onChange={(e) => setMatchRefereeId(e.target.value)}
+                        className="rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-1.5 text-sm text-white outline-none focus:border-emerald-500"
+                      >
+                        <option value="">Seçiniz</option>
+                        {referees.filter((r) => r.role === "REFEREE").map((r) => (
+                          <option key={r.id} value={r.id}>{r.name}</option>
+                        ))}
+                        {referees.filter((r) => r.role !== "REFEREE").map((r) => (
+                          <option key={r.id} value={r.id}>{r.name} ({r.role})</option>
+                        ))}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="mb-1 block text-xs text-zinc-500">VAR Hakemi</label>
+                      <select
+                        value={matchVarRefereeId}
+                        onChange={(e) => setMatchVarRefereeId(e.target.value)}
+                        className="rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-1.5 text-sm text-white outline-none focus:border-emerald-500"
+                      >
+                        <option value="">Seçiniz</option>
+                        {referees.filter((r) => r.role === "VAR").map((r) => (
+                          <option key={r.id} value={r.id}>{r.name}</option>
+                        ))}
+                        {referees.filter((r) => r.role !== "VAR").map((r) => (
+                          <option key={r.id} value={r.id}>{r.name} ({r.role})</option>
+                        ))}
+                      </select>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={saveMatchReferees}
+                      disabled={savingMatch}
+                      className="rounded-lg bg-emerald-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-emerald-500 disabled:opacity-50"
+                    >
+                      {savingMatch ? "Kaydediliyor..." : "Kaydet"}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setEditingMatch(false);
+                        setMatchRefereeId(match.referee?.id ?? "");
+                        setMatchVarRefereeId(match.varReferee?.id ?? "");
+                      }}
+                      className="rounded-lg bg-zinc-800 px-3 py-1.5 text-xs font-medium text-zinc-300 hover:bg-zinc-700"
+                    >
+                      İptal
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
+            {!match.referee && !match.varReferee && !editingMatch && (
+              <button
+                type="button"
+                onClick={() => setEditingMatch(true)}
+                className="mt-3 text-xs text-zinc-500 underline hover:text-white"
+              >
+                Hakem ve VAR ekle
+              </button>
+            )}
           </div>
 
           <button
@@ -208,7 +347,7 @@ export default function DashboardMatchDetailPage({
             ) : (
               <Play className="h-4 w-4" />
             )}
-            {crawling ? "Taranıyor..." : "Tarayıcı & AI Çalıştır"}
+            {crawling ? "Taranıyor..." : "Tartışmalı daha fazla pozisyon ara"}
           </button>
         </div>
       </div>
@@ -271,7 +410,7 @@ export default function DashboardMatchDetailPage({
         <div className="flex flex-col items-center justify-center py-20 text-center">
           <p className="text-lg text-zinc-400">Pozisyon bulunamadı</p>
           <p className="mt-1 text-sm text-zinc-500">
-            Tartışmalı kararları tespit etmek için tarayıcıyı çalıştırın
+            Tartışmalı kararları tespit etmek için yukarıdaki &quot;Tartışmalı daha fazla pozisyon ara&quot; butonunu kullanın
           </p>
         </div>
       ) : (

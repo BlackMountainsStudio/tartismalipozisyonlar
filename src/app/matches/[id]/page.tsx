@@ -2,9 +2,11 @@
 
 import { useState, useEffect, useCallback, use } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import IncidentCard from "@/components/IncidentCard";
 import CommentSection from "@/components/CommentSection";
-import { ArrowLeft, Loader2, Calendar, Trophy, Shield } from "lucide-react";
+import { matchUrl, refereeUrl } from "@/lib/links";
+import { ArrowLeft, Loader2, Calendar, Trophy, Shield, UserRound } from "lucide-react";
 
 interface Incident {
   id: string;
@@ -15,24 +17,29 @@ interface Incident {
   sources: string[];
   status: string;
   videoUrl?: string | null;
+  slug?: string;
+  matchSlug?: string;
 }
 
 interface Match {
   id: string;
+  slug?: string;
   homeTeam: string;
   awayTeam: string;
   league: string;
   week: number;
   date: string;
   note?: string | null;
+  referee?: { id: string; name: string; slug: string; role: string } | null;
+  varReferee?: { id: string; name: string; slug: string; role: string } | null;
 }
 
-export default function PublicMatchDetailPage({
+export default function MatchPage({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
-  const { id: matchId } = use(params);
+  const { id: slugOrId } = use(params);
   const router = useRouter();
   const [match, setMatch] = useState<Match | null>(null);
   const [incidents, setIncidents] = useState<Incident[]>([]);
@@ -40,23 +47,35 @@ export default function PublicMatchDetailPage({
 
   const fetchData = useCallback(async () => {
     try {
-      const [matchRes, incidentsRes] = await Promise.all([
-        fetch(`/api/matches`, { cache: "no-store" }),
-        fetch(`/api/incidents?matchId=${matchId}&status=approved`, { cache: "no-store" }),
-      ]);
-      const matchData = await matchRes.json();
-      const matchList = Array.isArray(matchData) ? matchData : [];
-      const matchItem = matchList.find((m: Match) => m.id === matchId);
-      setMatch(matchItem ?? null);
-
-      const incidentsData = await incidentsRes.json();
-      setIncidents(Array.isArray(incidentsData) ? incidentsData.filter((i): i is Incident => i != null && typeof i === "object" && "id" in i) : []);
+      const slugRes = await fetch(`/api/matches?slug=${encodeURIComponent(slugOrId)}`, { cache: "no-store" });
+      let matchItem: Match | null = null;
+      if (slugRes.ok) {
+        const data = await slugRes.json();
+        if (data && typeof data === "object" && data.id) matchItem = data as Match;
+      }
+      if (!matchItem) {
+        const idRes = await fetch(`/api/matches?id=${encodeURIComponent(slugOrId)}`, { cache: "no-store" });
+        if (idRes.ok) {
+          const data = await idRes.json();
+          if (data && typeof data === "object" && data.id) matchItem = data as Match;
+        }
+      }
+      setMatch(matchItem);
+      if (matchItem) {
+        const incRes = await fetch(`/api/incidents?matchId=${matchItem.id}&status=approved`, { cache: "no-store" });
+        const incData = await incRes.json();
+        setIncidents(Array.isArray(incData) ? incData.filter((i: unknown): i is Incident => i != null && typeof i === "object" && "id" in i) : []);
+      } else {
+        setIncidents([]);
+      }
     } catch (err) {
       console.error("Failed to fetch data:", err);
+      setMatch(null);
+      setIncidents([]);
     } finally {
       setLoading(false);
     }
-  }, [matchId]);
+  }, [slugOrId]);
 
   useEffect(() => {
     fetchData();
@@ -74,19 +93,24 @@ export default function PublicMatchDetailPage({
     return (
       <div className="mx-auto max-w-4xl px-4 py-20 text-center sm:px-6">
         <p className="text-lg text-zinc-400">Maç bulunamadı</p>
+        <Link href="/" className="mt-4 inline-block text-sm text-red-400 hover:text-red-300">
+          Ana sayfaya dön
+        </Link>
       </div>
     );
   }
 
+  const currentMatchSlug = match.slug ?? slugOrId;
+
   return (
     <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
-      <button
-        onClick={() => router.push("/")}
-        className="mb-6 flex items-center gap-2 text-sm text-zinc-400 transition-colors hover:text-white"
+      <Link
+        href="/"
+        className="mb-6 inline-flex items-center gap-2 text-sm text-zinc-400 transition-colors hover:text-white"
       >
         <ArrowLeft className="h-4 w-4" />
         Maçlara Dön
-      </button>
+      </Link>
 
       <div className="mb-10 rounded-2xl border border-zinc-800 bg-gradient-to-br from-zinc-900 to-zinc-950 p-8 text-center">
         <div className="mb-4 flex items-center justify-center gap-2">
@@ -107,6 +131,24 @@ export default function PublicMatchDetailPage({
               year: "numeric",
             })}
           </span>
+          {match.referee && (
+            <Link
+              href={refereeUrl(match.referee.slug)}
+              className="flex items-center gap-1 rounded-md bg-zinc-800 px-2 py-0.5 text-xs font-medium text-zinc-400 transition-colors hover:bg-zinc-700 hover:text-white"
+            >
+              <UserRound className="h-3.5 w-3.5 text-red-400" />
+              Hakem: {match.referee.name}
+            </Link>
+          )}
+          {match.varReferee && (
+            <Link
+              href={refereeUrl(match.varReferee.slug)}
+              className="flex items-center gap-1 rounded-md bg-zinc-800 px-2 py-0.5 text-xs font-medium text-zinc-400 transition-colors hover:bg-zinc-700 hover:text-white"
+            >
+              <UserRound className="h-3.5 w-3.5 text-amber-400" />
+              VAR: {match.varReferee.name}
+            </Link>
+          )}
           {match.note && (
             <span className="rounded-md border border-amber-500/50 bg-amber-500/10 px-2 py-0.5 text-xs font-medium text-amber-400">
               {match.note}
@@ -151,15 +193,16 @@ export default function PublicMatchDetailPage({
                 status={incident.status}
                 videoUrl={incident.videoUrl}
                 matchInfo={`${match.homeTeam} vs ${match.awayTeam}`}
+                matchSlug={currentMatchSlug}
+                incidentSlug={incident.slug ?? undefined}
                 clickable
               />
             ))}
         </div>
       )}
 
-      {/* Maç Hakkında Genel Yorumlar */}
       <div className="mt-10">
-        <CommentSection matchId={matchId} />
+        <CommentSection matchId={match.id} />
       </div>
     </div>
   );

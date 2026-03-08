@@ -15,6 +15,7 @@ import {
   Clock,
   CheckCircle2,
   AlertTriangle,
+  UserRound,
 } from "lucide-react";
 
 interface Stats {
@@ -23,6 +24,7 @@ interface Stats {
   pendingIncidents: number;
   approvedIncidents: number;
   totalCommentators: number;
+  totalReferees: number;
   totalOpinions: number;
   totalSuggestions: number;
   newSuggestions: number;
@@ -41,22 +43,25 @@ export default function DashboardPage() {
 
   async function fetchStats() {
     try {
-      const [matchesRes, incidentsRes, commentatorsRes, suggestionsRes] =
+      const [matchesRes, incidentsRes, commentatorsRes, refereesRes, suggestionsRes] =
         await Promise.all([
           fetch("/api/matches", { cache: "no-store" }),
           fetch("/api/incidents", { cache: "no-store" }),
           fetch("/api/commentators", { cache: "no-store" }),
+          fetch("/api/referees", { cache: "no-store" }),
           fetch("/api/suggestions", { cache: "no-store" }),
         ]);
 
       const matches = await matchesRes.json();
       const incidents = await incidentsRes.json();
       const commentators = await commentatorsRes.json();
+      const referees = await refereesRes.json();
       const suggestions = await suggestionsRes.json();
 
       const matchList = Array.isArray(matches) ? matches : [];
       const incidentList = Array.isArray(incidents) ? incidents : [];
       const commentatorList = Array.isArray(commentators) ? commentators : [];
+      const refereeList = Array.isArray(referees) ? referees : [];
       const suggestionList = Array.isArray(suggestions) ? suggestions : [];
 
       setStats({
@@ -65,6 +70,7 @@ export default function DashboardPage() {
         pendingIncidents: incidentList.filter((i: { status: string }) => i.status === "PENDING").length,
         approvedIncidents: incidentList.filter((i: { status: string }) => i.status === "APPROVED").length,
         totalCommentators: commentatorList.length,
+        totalReferees: refereeList.length,
         totalOpinions: commentatorList.reduce(
           (acc: number, c: { opinions?: unknown[] }) => acc + (c.opinions?.length ?? 0),
           0
@@ -107,6 +113,7 @@ export default function DashboardPage() {
     { label: "Bekleyen", value: stats?.pendingIncidents ?? 0, icon: Clock, color: "text-amber-400", bg: "bg-amber-500/10", href: "/dashboard/incidents" },
     { label: "Onaylanan", value: stats?.approvedIncidents ?? 0, icon: CheckCircle2, color: "text-emerald-400", bg: "bg-emerald-500/10", href: "/dashboard/incidents" },
     { label: "Yorumcular", value: stats?.totalCommentators ?? 0, icon: Users, color: "text-purple-400", bg: "bg-purple-500/10", href: "/dashboard/commentators" },
+    { label: "Hakemler", value: stats?.totalReferees ?? 0, icon: UserRound, color: "text-amber-400", bg: "bg-amber-500/10", href: "/dashboard/referees" },
     { label: "Uzman Görüşleri", value: stats?.totalOpinions ?? 0, icon: MessageSquare, color: "text-cyan-400", bg: "bg-cyan-500/10", href: "/dashboard/opinions" },
     { label: "Mesajlar", value: stats?.totalSuggestions ?? 0, icon: Mail, color: "text-pink-400", bg: "bg-pink-500/10", href: "/dashboard/suggestions" },
     { label: "Yeni Mesaj", value: stats?.newSuggestions ?? 0, icon: AlertTriangle, color: "text-orange-400", bg: "bg-orange-500/10", href: "/dashboard/suggestions" },
@@ -118,6 +125,7 @@ export default function DashboardPage() {
     { label: "Video Ara", icon: Video, href: "/dashboard/videos", color: "bg-purple-600 hover:bg-purple-500" },
     { label: "Hakem Yorumu", icon: Gavel, href: "/dashboard/referee", color: "bg-amber-600 hover:bg-amber-500" },
     { label: "Yorumcu Ekle", icon: Users, href: "/dashboard/commentators", color: "bg-emerald-600 hover:bg-emerald-500" },
+    { label: "Hakem Ekle", icon: UserRound, href: "/dashboard/referees", color: "bg-amber-600 hover:bg-amber-500" },
     { label: "AI Chat", icon: MessageSquare, href: "/dashboard/chat", color: "bg-cyan-600 hover:bg-cyan-500" },
   ];
 

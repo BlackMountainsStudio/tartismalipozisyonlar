@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Shield, Send, Scale, ListFilter, Menu, X } from "lucide-react";
+import { Shield, Send, Scale, ListFilter, Menu, X, UserRound } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export default function Navbar() {
@@ -40,7 +40,11 @@ export default function Navbar() {
             <ListFilter className="h-4 w-4" />
             Pozisyonlar
           </NavLink>
-          <NavLink href="/commentators" active={pathname.startsWith("/commentators")}>
+          <NavLink href="/hakemler" active={pathname.startsWith("/hakemler")}>
+            <UserRound className="h-4 w-4" />
+            Hakemler
+          </NavLink>
+          <NavLink href="/yorumcular" active={pathname.startsWith("/yorumcular")}>
             <Scale className="h-4 w-4" />
             Yorumcular
           </NavLink>
@@ -84,8 +88,16 @@ export default function Navbar() {
               Pozisyonlar
             </MobileNavLink>
             <MobileNavLink
-              href="/commentators"
-              active={pathname.startsWith("/commentators")}
+              href="/hakemler"
+              active={pathname.startsWith("/hakemler")}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <UserRound className="h-4 w-4" />
+              Hakemler
+            </MobileNavLink>
+            <MobileNavLink
+              href="/yorumcular"
+              active={pathname.startsWith("/yorumcular")}
               onClick={() => setMobileMenuOpen(false)}
             >
               <Scale className="h-4 w-4" />

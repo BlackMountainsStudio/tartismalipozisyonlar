@@ -16,6 +16,7 @@ import {
   Trophy,
   Menu,
   X,
+  UserRound,
 } from "lucide-react";
 import { useState, useEffect } from "react";
 
@@ -25,6 +26,7 @@ const SIDEBAR_ITEMS = [
   { href: "/dashboard/incidents", icon: Crosshair, label: "Pozisyonlar" },
   { href: "/dashboard/videos", icon: Video, label: "Video Yönetimi" },
   { href: "/dashboard/referee", icon: Gavel, label: "Hakem Yorumları" },
+  { href: "/dashboard/referees", icon: UserRound, label: "Hakemler" },
   { href: "/dashboard/commentators", icon: Users, label: "Yorumcular" },
   { href: "/dashboard/opinions", icon: MessageSquare, label: "Uzman Görüşleri" },
   { href: "/dashboard/categories", icon: Tags, label: "Kategoriler" },

@@ -19,6 +19,7 @@ import {
   XCircle,
   MinusCircle,
   ChevronRight,
+  UserRound,
 } from "lucide-react";
 
 export interface IncidentDetailData {
@@ -40,7 +41,16 @@ export interface IncidentDetailData {
     commentator: { id: string; name: string; slug: string; role: string };
   }[];
   status: string;
-  match?: { id: string; homeTeam: string; awayTeam: string; league: string; week: number; date: string } | null;
+  match?: {
+    id: string;
+    homeTeam: string;
+    awayTeam: string;
+    league: string;
+    week: number;
+    date: string;
+    referee?: { id: string; name: string; slug: string; role: string } | null;
+    varReferee?: { id: string; name: string; slug: string; role: string } | null;
+  } | null;
 }
 
 const TYPE_LABELS: Record<string, { label: string; icon: React.ReactNode; color: string }> = {
@@ -136,8 +146,32 @@ export default function IncidentDetailTemplate({
           <ConfidenceBadge score={incident.confidenceScore} />
         </div>
         {incident.match && (
-          <div className="inline-block rounded-lg bg-zinc-800/50 px-3 py-1.5 text-sm text-zinc-300">
-            {incident.match.homeTeam} vs {incident.match.awayTeam} — {incident.match.league}, Hafta {incident.match.week}
+          <div className="space-y-2">
+            <div className="inline-block rounded-lg bg-zinc-800/50 px-3 py-1.5 text-sm text-zinc-300">
+              {incident.match.homeTeam} vs {incident.match.awayTeam} — {incident.match.league}, Hafta {incident.match.week}
+            </div>
+            {(incident.match.referee || incident.match.varReferee) && (
+              <div className="flex flex-wrap items-center gap-3 text-xs text-zinc-500">
+                {incident.match.referee && (
+                  <Link
+                    href={`/hakemler/${incident.match.referee.slug}`}
+                    className="flex items-center gap-1.5 rounded-md bg-zinc-800/50 px-2 py-1 text-zinc-400 transition-colors hover:bg-zinc-700 hover:text-white"
+                  >
+                    <UserRound className="h-3.5 w-3.5 text-red-400" />
+                    Hakem: {incident.match.referee.name}
+                  </Link>
+                )}
+                {incident.match.varReferee && (
+                  <Link
+                    href={`/hakemler/${incident.match.varReferee.slug}`}
+                    className="flex items-center gap-1.5 rounded-md bg-zinc-800/50 px-2 py-1 text-zinc-400 transition-colors hover:bg-zinc-700 hover:text-white"
+                  >
+                    <UserRound className="h-3.5 w-3.5 text-amber-400" />
+                    VAR: {incident.match.varReferee.name}
+                  </Link>
+                )}
+              </div>
+            )}
           </div>
         )}
       </div>
@@ -145,6 +179,29 @@ export default function IncidentDetailTemplate({
       {/* 2. POZİSYON DETAYI */}
       <div className="mb-8 rounded-xl border border-zinc-800 bg-zinc-900/50 p-6">
         <h2 className="mb-4 text-lg font-bold text-white">Pozisyon Detayı</h2>
+        {incident.match && (incident.match.referee || incident.match.varReferee) && (
+          <div className="mb-4 flex flex-wrap items-center gap-2 border-b border-zinc-800 pb-4">
+            <span className="text-xs font-medium uppercase tracking-wide text-zinc-500">Maç hakemleri</span>
+            {incident.match.referee && (
+              <Link
+                href={`/hakemler/${incident.match.referee.slug}`}
+                className="flex items-center gap-1.5 rounded-lg bg-zinc-800/80 px-2.5 py-1.5 text-sm text-zinc-300 transition-colors hover:bg-zinc-700 hover:text-white"
+              >
+                <UserRound className="h-3.5 w-3.5 text-red-400" />
+                {incident.match.referee.name} <span className="text-zinc-500">(Hakem)</span>
+              </Link>
+            )}
+            {incident.match.varReferee && (
+              <Link
+                href={`/hakemler/${incident.match.varReferee.slug}`}
+                className="flex items-center gap-1.5 rounded-lg bg-zinc-800/80 px-2.5 py-1.5 text-sm text-zinc-300 transition-colors hover:bg-zinc-700 hover:text-white"
+              >
+                <UserRound className="h-3.5 w-3.5 text-amber-400" />
+                {incident.match.varReferee.name} <span className="text-zinc-500">(VAR)</span>
+              </Link>
+            )}
+          </div>
+        )}
         <p className="whitespace-pre-line text-sm leading-7 text-zinc-300">{incident.description}</p>
       </div>
 
@@ -233,9 +290,9 @@ export default function IncidentDetailTemplate({
               return (
                 <div key={op.id} className={`rounded-lg border p-4 ${si.bg}`}>
                   <div className="mb-2 flex items-center gap-2">
-                    <Link href={`/commentators/${op.commentator.slug}`} className="font-semibold text-white hover:text-red-400">{op.commentator.name}</Link>
+                    <Link href={`/yorumcular/${op.commentator.slug}`} className="font-semibold text-white hover:text-red-400">{op.commentator.name}</Link>
                     <span className="text-xs text-zinc-500">{op.commentator.role}</span>
-                    <Link href={`/commentators/${op.commentator.slug}`} className="text-zinc-600 hover:text-red-400"><ChevronRight className="h-3.5 w-3.5" /></Link>
+                    <Link href={`/yorumcular/${op.commentator.slug}`} className="text-zinc-600 hover:text-red-400"><ChevronRight className="h-3.5 w-3.5" /></Link>
                   </div>
                   <p className="text-sm leading-relaxed text-zinc-300 italic">&ldquo;{op.comment}&rdquo;</p>
                   <div className="mt-2 flex items-center justify-between">

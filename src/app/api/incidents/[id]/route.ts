@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/database/db";
 import { NO_CACHE_HEADERS } from "@/lib/api-response";
+import { getResolvedVideoUrl } from "@/lib/incident-api";
 
 function parseJson<T>(raw: string, fallback: T): T {
   try {
@@ -8,48 +9,6 @@ function parseJson<T>(raw: string, fallback: T): T {
   } catch {
     return fallback;
   }
-}
-
-async function getResolvedVideoUrl(incident: {
-  id: string;
-  matchId: string;
-  videoUrl: string | null;
-  match: { date: Date };
-}) {
-  if (!incident.videoUrl) {
-    return null;
-  }
-
-  const sameVideoIncidents = await prisma.incident.findMany({
-    where: {
-      videoUrl: incident.videoUrl,
-      NOT: { id: incident.id },
-    },
-    select: {
-      matchId: true,
-      match: {
-        select: {
-          date: true,
-        },
-      },
-    },
-  });
-
-  const earliestConflictingMatchDate = sameVideoIncidents
-    .filter((item) => item.matchId !== incident.matchId)
-    .reduce<number | null>((earliest, item) => {
-      const matchTime = item.match.date.getTime();
-      return earliest === null ? matchTime : Math.min(earliest, matchTime);
-    }, null);
-
-  if (
-    earliestConflictingMatchDate !== null &&
-    incident.match.date.getTime() > earliestConflictingMatchDate
-  ) {
-    return null;
-  }
-
-  return incident.videoUrl;
 }
 
 export async function GET(
@@ -61,7 +20,12 @@ export async function GET(
     const incident = await prisma.incident.findUnique({
       where: { id },
       include: {
-        match: true,
+        match: {
+          include: {
+            referee: { select: { id: true, name: true, slug: true, role: true } },
+            varReferee: { select: { id: true, name: true, slug: true, role: true } },
+          },
+        },
         opinions: {
           include: {
             commentator: true,

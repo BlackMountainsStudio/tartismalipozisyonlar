@@ -1,7 +1,7 @@
 import Snoowrap from "snoowrap";
 import { createLogger } from "@/utils/logger";
 import { RateLimiter } from "@/utils/rateLimiter";
-import { CONTROVERSY_KEYWORDS_TR, CONTROVERSY_KEYWORDS_EN } from "@/utils/keywords";
+import { CONTROVERSY_KEYWORDS_TR, CONTROVERSY_KEYWORDS_EN, buildSearchQueries } from "@/utils/keywords";
 
 const logger = createLogger("RedditCrawler");
 
@@ -36,6 +36,7 @@ const FOOTBALL_SUBREDDITS = [
   "superlig",
   "FenseBahce",
   "galatasaray",
+  "besiktas",
   "soccer",
   "football",
 ];
@@ -63,10 +64,16 @@ export async function crawlReddit(
     `${homeTeam} vs ${awayTeam}`,
     `${homeTeam} referee`,
     `${homeTeam} hakem`,
+    `${awayTeam} ${homeTeam}`,
+    `${homeTeam} ${awayTeam} VAR`,
+    `${homeTeam} ${awayTeam} penaltı`,
+    `${homeTeam} ${awayTeam} derbi`,
+    ...buildSearchQueries(homeTeam, awayTeam).slice(0, 4),
   ];
+  const uniqueTerms = [...new Set(searchTerms)];
 
   for (const subreddit of FOOTBALL_SUBREDDITS) {
-    for (const query of searchTerms) {
+    for (const query of uniqueTerms) {
       try {
         await rateLimiter.waitForSlot();
         logger.info(`Searching r/${subreddit} for: ${query}`);
@@ -77,7 +84,7 @@ export async function crawlReddit(
           query,
           time: "week",
           sort: "relevance",
-          limit: 10,
+          limit: 15,
         });
 
         for (const post of posts.slice(0, maxResults)) {

@@ -34,6 +34,8 @@ interface Incident {
   sources: string[];
   status: string;
   videoUrl?: string | null;
+  slug?: string;
+  matchSlug?: string;
   match?: {
     id: string;
     homeTeam: string;
@@ -325,6 +327,8 @@ export default function PozisyonlarPage() {
                             ? `${incident.match.homeTeam} vs ${incident.match.awayTeam}`
                             : undefined
                         }
+                        matchSlug={incident.matchSlug}
+                        incidentSlug={incident.slug}
                         clickable
                       />
                     ))}

@@ -8,15 +8,21 @@ datasource db {
 }
 
 model Match {
-  id        String   @id @default(cuid())
-  homeTeam  String
-  awayTeam  String
-  league    String   @default("Süper Lig")
-  week      Int
-  date      DateTime
-  note      String?  // Örn: "Ertelendi", "Ertelenip sonra oynandı"
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id           String   @id @default(cuid())
+  slug         String?  @unique
+  homeTeam     String
+  awayTeam     String
+  league       String   @default("Süper Lig")
+  week         Int
+  date         DateTime
+  note         String?
+  refereeId    String?
+  varRefereeId String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  referee      Referee?  @relation("MatchReferee", fields: [refereeId], references: [id], onDelete: SetNull)
+  varReferee   Referee?  @relation("MatchVarReferee", fields: [varRefereeId], references: [id], onDelete: SetNull)
 
   incidents      Incident[]
   crawledContent CrawledContent[]
@@ -25,10 +31,31 @@ model Match {
   @@index([homeTeam])
   @@index([awayTeam])
   @@index([week])
+  @@index([slug])
+  @@index([refereeId])
+  @@index([varRefereeId])
+}
+
+model Referee {
+  id        String   @id @default(cuid())
+  name      String
+  slug      String   @unique
+  role      String   @default("REFEREE") // REFEREE | VAR
+  bio       String?
+  photoUrl  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  matchesAsReferee   Match[] @relation("MatchReferee")
+  matchesAsVarReferee Match[] @relation("MatchVarReferee")
+
+  @@index([slug])
+  @@index([role])
 }
 
 model Incident {
   id              String  @id @default(cuid())
+  slug            String?
   matchId         String
   minute          Int?
   type            String
@@ -50,6 +77,7 @@ model Incident {
   @@index([matchId])
   @@index([status])
   @@index([type])
+  @@index([slug])
 }
 
 model CrawledContent {

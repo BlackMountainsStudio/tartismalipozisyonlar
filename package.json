@@ -4,11 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && node scripts/migrate.js && next build",
+    "build": "prisma generate && node scripts/migrate.js && node scripts/generate-static-matches.mjs && next build",
     "start": "next start",
     "lint": "eslint",
     "postinstall": "prisma generate",
     "import:season": "node scripts/import-tracked-season.mjs",
+    "reindex:matches": "node scripts/reindex-matches.mjs",
+    "generate:static-matches": "node scripts/generate-static-matches.mjs",
     "crawl:match": "tsx scripts/crawl-match.ts"
   },
   "dependencies": {

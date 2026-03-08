@@ -34,11 +34,12 @@ export const CONTROVERSY_KEYWORDS_EN = [
   "referee controversy",
 ];
 
-export const TRACKED_TEAMS = ["Fenerbahçe", "Galatasaray"];
+export const TRACKED_TEAMS = ["Fenerbahçe", "Galatasaray", "Beşiktaş"];
 
 export const TEAM_ALIASES: Record<string, string[]> = {
   Fenerbahçe: ["fenerbahce", "fenerbahçe", "fener", "fb", "fenerbahce sk"],
   Galatasaray: ["galatasaray", "gs", "cim bom", "galatasaray sk", "aslan"],
+  Beşiktaş: ["besiktas", "beşiktaş", "bjk", "kartal", "besiktas jk"],
 };
 
 export function buildSearchQueries(
@@ -53,6 +54,8 @@ export function buildSearchQueries(
   queries.push(`${homeTeam} ${awayTeam} hakem`);
   queries.push(`${homeTeam} ${awayTeam} penaltı`);
   queries.push(`${homeTeam} ${awayTeam} VAR`);
+  queries.push(`${homeTeam} ${awayTeam} derbi`);
+  queries.push(`${homeTeam} ${awayTeam} tartışmalı`);
 
   for (const keyword of allKeywords.slice(0, 6)) {
     queries.push(`${homeTeam} ${awayTeam} ${keyword}`);
