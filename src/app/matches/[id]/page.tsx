@@ -166,11 +166,6 @@ export default function MatchPage({
               VAR: {match.varReferee.name}
             </Link>
           )}
-          {match.note && (
-            <span className="rounded-md border border-amber-500/50 bg-amber-500/10 px-2 py-0.5 text-xs font-medium text-amber-400">
-              {match.note}
-            </span>
-          )}
         </div>
         <h1 className="text-3xl font-bold text-white sm:text-4xl">
           {match.homeTeam}

@@ -100,33 +100,53 @@
       "note": null,
       "incidents": [
         {
-          "minute": 28,
-          "type": "POSSIBLE_PENALTY",
-          "description": "Fenerbahçe ceza sahasında top kazanırken Samsunspor savunmacısının müdahalesi sonrası penaltı itirazı. Hakem devam kararı verdi, VAR incelemesi yapılmadı. Maç sonrası tartışılan pozisyonlardan biri.",
-          "inFavorOf": "Fenerbahçe",
-          "against": "Samsunspor",
-          "confidenceScore": 0.76,
-          "sources": [],
+          "minute": 4,
+          "type": "FOUL",
+          "description": "Skriniar'a yapılan müdahale sonrası Marius Mouandilmadji'ye sarı kart gösterildi. Eski hakemler kararın hatalı olduğunu belirtti: Bahattin Duran 'Marius'un dizi ayak bileğine geldi, en fazla dikkatsiz faul. Sarı kart kesinlikle yanlış.' Bülent Yıldırım 'En fazla topuğa gelen diz darbesi var. Kart olmaz.' Deniz Çoban '40 saniye içinde 3 kararda hakem başarısız.'",
+          "inFavorOf": "Samsunspor",
+          "against": "Fenerbahçe",
+          "confidenceScore": 0.85,
+          "sources": [
+            "https://spor.haber7.com/super-lig/haber/3514041-fenerbahce-penalti-bekledi-vardan-uyari-gelmedi",
+            "https://www.f5haber.com/fenerbahce-samsunspor-macinda-penalti-karari-olay-oldu-hakem-gormezden-geldi-fotogaleri-6754122"
+          ],
+          "refereeComments": [
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Marius'un gördüğü sarı kart kesinlikle yanlış." },
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "En fazla topuğa gelen diz darbesi var. Kart olmaz." }
+          ],
           "status": "APPROVED"
         },
         {
-          "minute": 55,
+          "minute": 49,
           "type": "POSSIBLE_PENALTY",
-          "description": "Samsunspor'un gol öncesi pozisyonda Fenerbahçe savunmasında el-top teması iddiası. Hakem ve VAR golü onayladı. Fenerbahçe cephesi el pozisyonu itirazı gündeme getirdi.",
+          "description": "Kostic'in çektiği şut Samsunsporlu Zeki Yavru'nun kolundan geri döndü. Fenerbahçe elle oynama gerekçesiyle penaltı bekledi. Hakem Cihan Aydın VAR ile görüştükten sonra oyunu devam ettirdi. Deniz Ateş Bitnel: 'Zeki Yavru'nun dirseği genişleyip bariyer oluyor. Penaltı verilmeli, VAR müdahale etmeliydi.' Fırat Aydınus: 'Zeki kolları aşağıda değil yukarıda, dirsekleri dışarıda, vücudunu genişletiyor. Bu pozisyon penaltı.' Mark Clattenburg ise devam kararının doğru olduğunu söyledi.",
           "inFavorOf": "Fenerbahçe",
           "against": "Samsunspor",
-          "confidenceScore": 0.72,
-          "sources": [],
+          "confidenceScore": 0.82,
+          "sources": [
+            "https://spor.haber7.com/super-lig/haber/3514041-fenerbahce-penalti-bekledi-vardan-uyari-gelmedi"
+          ],
+          "refereeComments": [
+            { "author": "Deniz Ateş Bitnel", "text": "Zeki Yavru'nun dirseği genişleyip bariyer oluyor. Penaltı verilmeli, VAR müdahale etmeliydi." },
+            { "author": "Fırat Aydınus", "text": "Zeki kolları aşağıda değil yukarıda, dirsekleri dışarıda. Bu pozisyon penaltı." },
+            { "author": "Mark Clattenburg", "text": "Hakemin oyunu devam ettirme kararı doğru. Top, kolu hafifçe açılmış savunma oyuncusunun koluna çarpıyor." }
+          ],
           "status": "APPROVED"
         },
         {
-          "minute": 78,
-          "type": "MISSED_RED_CARD",
-          "description": "Samsunspor oyuncusunun sert müdahalesi sonrası sarı kart gösterildi. Fenerbahçe tarafı pozisyonda kırmızı kart beklediğini belirtti.",
+          "minute": 75,
+          "type": "RED_CARD",
+          "description": "Marius Mouandilmadji hakeme itiraz ederken temas ettiği gerekçesiyle ikinci sarı karttan kırmızı gördü, Samsunspor 10 kişi kaldı. Deniz Ateş Bitnel: 'Hakeme itiraz edip dokunma hakkı vermez. 2. sarıdan kırmızı %100 doğru.' Mark Clattenburg: 'İkinci sarı kart kararı bana göre yanlıştı. Oyuncu sadece jest yapar şekilde dokundu.' Fırat Aydınus: 'Oyuncu hakemin koluna temas edince ikinci sarı, saygı duyulur.'",
           "inFavorOf": "Fenerbahçe",
           "against": "Samsunspor",
-          "confidenceScore": 0.74,
-          "sources": [],
+          "confidenceScore": 0.80,
+          "sources": [
+            "https://spor.haber7.com/super-lig/haber/3514041-fenerbahce-penalti-bekledi-vardan-uyari-gelmedi"
+          ],
+          "refereeComments": [
+            { "author": "Deniz Ateş Bitnel", "text": "Samsunsporlu oyuncunun 2. sarı karttan kırmızı görmesi %100 doğru." },
+            { "author": "Mark Clattenburg", "text": "İkinci sarı kartı vermesi kararı bana göre yanlıştı. Oyuncu dikkatini çekmek için jest yapar şekilde dokundu." }
+          ],
           "status": "APPROVED"
         }
       ]
