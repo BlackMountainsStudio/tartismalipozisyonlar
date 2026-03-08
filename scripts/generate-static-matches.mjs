@@ -8,6 +8,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 const weeksDir = path.join(process.cwd(), "data", "season-2025-26", "weeks");
+const scoresPath = path.join(process.cwd(), "data", "season-2025-26", "match-scores.json");
 const outputPath = path.join(process.cwd(), "public", "matches.json");
 
 function slugify(text, maxLength = 80) {
@@ -48,6 +49,32 @@ function loadWeekFiles() {
 }
 
 const allMatches = loadWeekFiles();
+
+/** match-scores.json'dan (homeTeam, awayTeam, week) ile skor map'i */
+function loadScoreMap() {
+  const map = new Map();
+  if (!fs.existsSync(scoresPath)) return map;
+  let list;
+  try {
+    const raw = fs.readFileSync(scoresPath, "utf8");
+    list = JSON.parse(raw);
+  } catch {
+    return map;
+  }
+  if (!Array.isArray(list)) return map;
+  for (const row of list) {
+    const home = row.homeTeam;
+    const away = row.awayTeam;
+    const week = row.week != null ? parseInt(row.week, 10) : null;
+    if (home == null || away == null || week == null) continue;
+    const key = `${home}|${away}|${week}`;
+    map.set(key, { homeScore: row.homeScore ?? null, awayScore: row.awayScore ?? null });
+  }
+  return map;
+}
+
+const scoreMap = loadScoreMap();
+
 const matches = allMatches.map((m, i) => {
   const id = `season_${String(i).padStart(4, "0")}_${Date.now().toString(36)}`;
   const slug = buildMatchSlug(m);
@@ -60,6 +87,8 @@ const matches = allMatches.map((m, i) => {
     description: inc.description ?? "",
     slug: inc.slug ?? null,
   }));
+  const scoreKey = `${m.homeTeam}|${m.awayTeam}|${m.week}`;
+  const score = scoreMap.get(scoreKey);
   return {
     id,
     slug,
@@ -72,6 +101,7 @@ const matches = allMatches.map((m, i) => {
     incidents,
     referee: null,
     varReferee: null,
+    ...(score && { homeScore: score.homeScore, awayScore: score.awayScore }),
   };
 });
 
