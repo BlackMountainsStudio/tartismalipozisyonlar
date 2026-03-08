@@ -2,10 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Shield, Send, Scale, ListFilter, Menu, X, UserRound } from "lucide-react";
+import { useSession } from "next-auth/react";
+import { Shield, Send, Scale, ListFilter, Menu, X, UserRound, User, LogOut } from "lucide-react";
 import { useState, useEffect } from "react";
+import { signOut } from "next-auth/react";
 
 export default function Navbar() {
+  const { data: session, status } = useSession();
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -52,6 +55,41 @@ export default function Navbar() {
             <Send className="h-4 w-4" />
             Bize Yazın
           </NavLink>
+          {status === "authenticated" && session?.user ? (
+            <div className="flex items-center gap-2">
+              <Link
+                href="/profil"
+                className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-zinc-400 transition-colors hover:bg-zinc-800 hover:text-white"
+              >
+                <div className="flex h-7 w-7 overflow-hidden rounded-full bg-zinc-800">
+                  {session.user.image ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={session.user.image} alt="" width={28} height={28} className="h-7 w-7 object-cover" />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center">
+                      <User className="h-4 w-4 text-zinc-500" />
+                    </div>
+                  )}
+                </div>
+                <span className="hidden sm:inline">{session.user.nickname || session.user.name}</span>
+              </Link>
+              <button
+                onClick={() => signOut()}
+                className="rounded-lg p-2 text-zinc-500 transition-colors hover:bg-zinc-800 hover:text-white"
+                title="Çıkış yap"
+              >
+                <LogOut className="h-4 w-4" />
+              </button>
+            </div>
+          ) : (
+            <Link
+              href="/giris"
+              className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-zinc-400 transition-colors hover:bg-zinc-800 hover:text-white"
+            >
+              <User className="h-4 w-4" />
+              Giriş Yap
+            </Link>
+          )}
         </div>
 
         {/* Mobile Menu Button */}
@@ -111,6 +149,37 @@ export default function Navbar() {
               <Send className="h-4 w-4" />
               Bize Yazın
             </MobileNavLink>
+            {status === "authenticated" && session?.user ? (
+              <>
+                <MobileNavLink
+                  href="/profil"
+                  active={pathname === "/profil"}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <User className="h-4 w-4" />
+                  Profil
+                </MobileNavLink>
+                <button
+                  onClick={() => {
+                    signOut();
+                    setMobileMenuOpen(false);
+                  }}
+                  className="flex w-full items-center gap-3 rounded-lg px-4 py-3 text-base font-medium text-zinc-400 active:bg-zinc-800 active:text-white"
+                >
+                  <LogOut className="h-4 w-4" />
+                  Çıkış Yap
+                </button>
+              </>
+            ) : (
+              <MobileNavLink
+                href="/giris"
+                active={pathname === "/giris"}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <User className="h-4 w-4" />
+                Giriş Yap
+              </MobileNavLink>
+            )}
           </div>
         </div>
       )}

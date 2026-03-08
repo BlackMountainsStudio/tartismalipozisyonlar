@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
 import {
   Send,
   Loader2,
@@ -11,6 +12,7 @@ import {
   HelpCircle,
   AlertTriangle,
 } from "lucide-react";
+import AuthModal from "@/components/AuthModal";
 
 const CATEGORIES = [
   { value: "GENERAL", label: "Genel", icon: <MessageSquare className="h-4 w-4" /> },
@@ -21,6 +23,7 @@ const CATEGORIES = [
 ];
 
 export default function SuggestionPage() {
+  const { data: session, status } = useSession();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [category, setCategory] = useState("GENERAL");
@@ -29,13 +32,26 @@ export default function SuggestionPage() {
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
+  const [authModalOpen, setAuthModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (status === "authenticated" && session?.user) {
+      setName((prev) => prev || (session.user?.name ?? ""));
+      setEmail((prev) => prev || (session.user?.email ?? ""));
+    }
+  }, [status, session]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError("");
 
-    if (!name.trim() || !subject.trim() || !message.trim()) {
-      setError("İsim, konu ve mesaj alanları zorunludur");
+    if (!subject.trim() || !message.trim()) {
+      setError("Konu ve mesaj alanları zorunludur");
+      return;
+    }
+
+    if (status !== "authenticated" || !session?.user) {
+      setAuthModalOpen(true);
       return;
     }
 
@@ -44,9 +60,8 @@ export default function SuggestionPage() {
       const res = await fetch("/api/suggestions", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "same-origin",
         body: JSON.stringify({
-          name: name.trim(),
-          email: email.trim() || null,
           category,
           subject: subject.trim(),
           message: message.trim(),
@@ -55,8 +70,6 @@ export default function SuggestionPage() {
 
       if (res.ok) {
         setSuccess(true);
-        setName("");
-        setEmail("");
         setCategory("GENERAL");
         setSubject("");
         setMessage("");
@@ -142,14 +155,14 @@ export default function SuggestionPage() {
         <div className="mb-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
           <div>
             <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-zinc-400">
-              İsim <span className="text-red-400">*</span>
+              İsim {status === "authenticated" && session ? <span className="text-zinc-600">(profil)</span> : <span className="text-red-400">*</span>}
             </label>
             <input
               id="name"
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="Adınız"
+              placeholder={session ? (session.user?.nickname || session.user?.name) || "Adınız" : "Adınız"}
               maxLength={100}
               className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-sm text-white placeholder-zinc-500 outline-none focus:border-red-500"
             />
@@ -209,7 +222,7 @@ export default function SuggestionPage() {
 
         <button
           type="submit"
-          disabled={submitting || !name.trim() || !subject.trim() || !message.trim()}
+          disabled={submitting || !subject.trim() || !message.trim()}
           className="flex w-full items-center justify-center gap-2 rounded-lg bg-red-600 px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-red-500 disabled:cursor-not-allowed disabled:opacity-50"
         >
           {submitting ? (
@@ -220,6 +233,14 @@ export default function SuggestionPage() {
           {submitting ? "Gönderiliyor..." : "Gönder"}
         </button>
       </form>
+
+      <AuthModal
+        isOpen={authModalOpen}
+        onClose={() => setAuthModalOpen(false)}
+        callbackUrl={typeof window !== "undefined" ? window.location.href : undefined}
+        title="Öneri göndermek için giriş yapın"
+        subtitle="Mesajınız kaybolmayacak. Giriş yaptıktan sonra otomatik olarak bu sayfaya döneceksiniz."
+      />
     </div>
   );
 }

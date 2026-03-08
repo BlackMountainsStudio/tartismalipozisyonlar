@@ -7,6 +7,65 @@ datasource db {
   provider = "postgresql"
 }
 
+// --- Auth.js (NextAuth) modelleri ---
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  nickname      String?   // Görünen ad (OAuth'tan gelirse name, kullanıcı değiştirebilir)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts       Account[]
+  sessions       Session[]
+  comments       Comment[]
+  commentReports CommentReport[]
+
+  @@index([email])
+}
+
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// --- Uygulama modelleri ---
 model Match {
   id           String   @id @default(cuid())
   slug         String?  @unique
@@ -101,16 +160,40 @@ model Comment {
   id         String   @id @default(cuid())
   matchId    String?
   incidentId String?
+  parentId   String?
+  userId     String?
   author     String
   content    String
+  verdict    String   @default("UNSURE")
   createdAt  DateTime @default(now())
 
-  match    Match?    @relation(fields: [matchId], references: [id], onDelete: Cascade)
-  incident Incident? @relation(fields: [incidentId], references: [id], onDelete: Cascade)
+  user       User?     @relation(fields: [userId], references: [id], onDelete: SetNull)
+  match      Match?    @relation(fields: [matchId], references: [id], onDelete: Cascade)
+  incident   Incident? @relation(fields: [incidentId], references: [id], onDelete: Cascade)
+  parent     Comment?  @relation("CommentReplies", fields: [parentId], references: [id], onDelete: Cascade)
+  replies    Comment[] @relation("CommentReplies")
+  reports    CommentReport[]
 
   @@index([matchId])
   @@index([incidentId])
+  @@index([parentId])
+  @@index([userId])
   @@index([createdAt])
+}
+
+model CommentReport {
+  id        String   @id @default(cuid())
+  commentId String
+  userId    String
+  reason    String?  @db.Text
+  createdAt DateTime @default(now())
+
+  comment Comment @relation(fields: [commentId], references: [id], onDelete: Cascade)
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([commentId, userId])
+  @@index([commentId])
+  @@index([userId])
 }
 
 model Commentator {
@@ -153,6 +236,7 @@ model ExpertOpinion {
 
 model Suggestion {
   id        String   @id @default(cuid())
+  userId    String?
   name      String
   email     String?
   category  String   @default("GENERAL")
@@ -162,6 +246,7 @@ model Suggestion {
   adminNote String?
   createdAt DateTime @default(now())
 
+  @@index([userId])
   @@index([status])
   @@index([category])
   @@index([createdAt])

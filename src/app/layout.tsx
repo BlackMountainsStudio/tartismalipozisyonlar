@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SessionProvider from "@/components/SessionProvider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -36,9 +37,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-background font-sans text-foreground antialiased`}
       >
-        <Navbar />
-        <main className="min-h-[calc(100vh-4rem-6rem)]">{children}</main>
-        <Footer />
+        <SessionProvider>
+          <Navbar />
+          <main className="min-h-[calc(100vh-4rem-6rem)]">{children}</main>
+          <Footer />
+        </SessionProvider>
       </body>
     </html>
   );

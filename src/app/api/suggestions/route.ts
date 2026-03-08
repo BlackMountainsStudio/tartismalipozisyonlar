@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { auth } from "@/auth";
 import { prisma } from "@/database/db";
 import { NO_CACHE_HEADERS } from "@/lib/api-response";
 
@@ -24,12 +25,20 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
-    const { name, email, category, subject, message } = body;
-
-    if (!name?.trim() || !subject?.trim() || !message?.trim()) {
+    const session = await auth();
+    if (!session?.user?.id) {
       return NextResponse.json(
-        { error: "İsim, konu ve mesaj alanları zorunludur" },
+        { error: "Öneri göndermek için giriş yapmanız gerekiyor" },
+        { status: 401 }
+      );
+    }
+
+    const body = await request.json();
+    const { category, subject, message } = body;
+
+    if (!subject?.trim() || !message?.trim()) {
+      return NextResponse.json(
+        { error: "Konu ve mesaj alanları zorunludur" },
         { status: 400 }
       );
     }
@@ -41,10 +50,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    const name = session.user.nickname || session.user.name || "Kullanıcı";
+    const email = session.user.email ?? null;
+
     const suggestion = await prisma.suggestion.create({
       data: {
-        name: name.trim(),
-        email: email?.trim() || null,
+        userId: session.user.id,
+        name,
+        email,
         category: category || "GENERAL",
         subject: subject.trim(),
         message: message.trim(),
