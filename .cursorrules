@@ -15,3 +15,8 @@
 - Site adı: "Var Odası"
 - Domain: "varodasi.com"
 - Marka renkleri: Kırmızı (#ef4444) ve zinc tonları
+
+## Veri / Pozisyon Kuralları (sadece bu proje)
+- Her pozisyonda dakika mutlaka yazılmalıdır (minute alanı null olmamalı)
+- Yeni pozisyon eklerken veya mevcut pozisyonları güncellerken dakika bilgisi eksik bırakılmamalıdır
+- Dakika bilgisi açıkça belirtilmeyen pozisyonlarda dakika uydurulmamalıdır; internetten araştırılmalı, bulunamazsa kullanıcıya bildirilmelidir

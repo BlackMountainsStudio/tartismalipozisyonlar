@@ -7,8 +7,44 @@
       "homeTeam": "Gaziantep",
       "awayTeam": "Galatasaray",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 10,
+          "type": "PENALTY",
+          "description": "Sezonun ilk VAR incelemesinde Kevin Rodrigues'in Roland Sallai'yi çekmesi tespit edildi, hakem Ali Şansalan penaltı verdi. Barış Alper Yılmaz golü attı. Ahmet Çakar kararı yanlış buldu: 'Sallai oraya geçebilmek için önce Rodrigues'in formasından çekti, sonra çekildi.' Fırat Aydınus: 'Önce Sallai Rodrigues'i çekiyor; top oyunda değilken. Rodrigues çekerken top oyunda. VAR bu yüzden çağırdı.'",
+          "confidenceScore": 0.78,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/super-ligde-yeni-sezonun-ilk-var-incelemesinde-karar-penalti-7423265",
+            "https://www.hurriyet.com.tr/sporarena/firat-aydinus-gaziantep-fk-galatasaray-macindaki-hakem-kararlarini-ve-cok-tartisilan-pozisyonlari-degerlendirdi-penalti-42908072"
+          ],
+          "refereeComments": [
+            { "author": "Ahmet Çakar", "text": "Galatasaray VAR yardımıyla penaltı kazandı ama karar yanlış. Sallai önce Rodrigues'in formasından çekti sonra çekildi." },
+            { "author": "Fırat Aydınus (Hürriyet)", "text": "Sallai rakibini çekerken top oyunda değil, Rodrigues çekerken top oyunda. VAR bu yüzden çağırdı." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 45,
+          "type": "PENALTY",
+          "description": "45+1. dakikada Galatasaray'a ikinci penaltı verildi. Gaziantepli futbolcu Barış Alper'in rakibinin ayağına bastı. Fırat Aydınus: 'Ali Şansalan pozisyona o kadar uzaktı ki neredeyse orta sahada.' Kaleci Burak'ın 63. dakikada ceza sahası dışında elle müdahalesi VAR ile kırmızı karta çevrildi.",
+          "confidenceScore": 0.85,
+          "sources": [
+            "https://www.hurriyet.com.tr/sporarena/firat-aydinus-gaziantep-fk-galatasaray-macindaki-hakem-kararlarini-ve-cok-tartisilan-pozisyonlari-degerlendirdi-penalti-42908072"
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 63,
+          "type": "RED_CARD",
+          "description": "Gaziantep kalecisi Burak Bozan ceza sahası dışında topa elle müdahale etti. VAR uyarısıyla hakem monitöre gidip kırmızı kart verdi. Sezonun ilk kırmızı kartı. Fırat Aydınus VAR müdahalesini doğru buldu.",
+          "confidenceScore": 0.92,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/super-ligde-yeni-sezonun-ilk-var-incelemesinde-karar-penalti-7423265"
+          ],
+          "status": "APPROVED"
+        }
+      ]
     },
     {
       "week": 1,
@@ -16,8 +52,29 @@
       "homeTeam": "Trabzonspor",
       "awayTeam": "Kocaelispor",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 72,
+          "type": "POSSIBLE_PENALTY",
+          "description": "Trabzonspor'un verilmesi gerektiği iddia edilen penaltı pozisyonu. Hakem Çağdaş Altay'ın kararları Trabzonspor camiası tarafından eleştirildi.",
+          "confidenceScore": 0.72,
+          "sources": [
+            "https://www.gunaydintrabzon.com.tr/haber/25935778/trabzonspor-kocaelispor-macinin-ardindan-hakemden-tepki"
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 41,
+          "type": "MISSED_RED_CARD",
+          "description": "Paul Onuachu'nun aşil tendonuna basılması pozisyonunda hakem kırmızı kart göstermedi. Oyuncu sakatlandı. Spor yazarı Ulaş Özdemir: 'Hakemlik etiğini katleden bu yönetimin arkasında kimler var?'",
+          "confidenceScore": 0.82,
+          "sources": [
+            "https://www.gunaydintrabzon.com.tr/haber/25935778/trabzonspor-kocaelispor-macinin-ardindan-hakemden-tepki"
+          ],
+          "status": "APPROVED"
+        }
+      ]
     },
     {
       "week": 1,

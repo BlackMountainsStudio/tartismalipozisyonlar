@@ -96,23 +96,40 @@ async function upsertIncidents(matchId, incidents) {
       );
     }
 
+    // Dakika değiştiğinde (örn. null -> 35) mevcut kaydı bul: tür + açıklama ile eşleştir
+    if (!existing.rows[0]) {
+      existing = await pool.query(
+        `
+          SELECT "id"
+          FROM "Incident"
+          WHERE "matchId" = $1
+            AND "type" = $2
+            AND "description" = $3
+          LIMIT 1
+        `,
+        [matchId, incident.type, incident.description]
+      );
+    }
+
     if (existing.rows[0]) {
       await pool.query(
         `
           UPDATE "Incident"
           SET
-            "description" = $2,
-            "sources" = $3,
-            "status" = $4,
-            "videoUrl" = CASE WHEN $5::boolean THEN $6 ELSE "videoUrl" END,
-            "relatedVideos" = CASE WHEN $7::boolean THEN $8 ELSE "relatedVideos" END,
-            "refereeComments" = CASE WHEN $9::boolean THEN $10 ELSE "refereeComments" END,
-            "newsArticles" = CASE WHEN $11::boolean THEN $12 ELSE "newsArticles" END,
+            "minute" = $2,
+            "description" = $3,
+            "sources" = $4,
+            "status" = $5,
+            "videoUrl" = CASE WHEN $6::boolean THEN $7 ELSE "videoUrl" END,
+            "relatedVideos" = CASE WHEN $8::boolean THEN $9 ELSE "relatedVideos" END,
+            "refereeComments" = CASE WHEN $10::boolean THEN $11 ELSE "refereeComments" END,
+            "newsArticles" = CASE WHEN $12::boolean THEN $13 ELSE "newsArticles" END,
             "updatedAt" = NOW()
           WHERE "id" = $1
         `,
         [
           existing.rows[0].id,
+          incident.minute ?? null,
           incident.description,
           JSON.stringify(incident.sources ?? []),
           incident.status ?? "APPROVED",

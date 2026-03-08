@@ -11,6 +11,7 @@ const hasFacebook = !!(process.env.AUTH_FACEBOOK_ID && process.env.AUTH_FACEBOOK
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(prisma),
+  trustHost: true,
   providers: [
     ...(hasGoogle
       ? [
@@ -35,18 +36,23 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         password: { label: "Şifre", type: "password" },
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) return null;
-        const email = String(credentials.email).trim().toLowerCase();
-        const password = String(credentials.password);
-        const user = await prisma.user.findUnique({ where: { email } });
-        if (!user?.password) return null;
-        const ok = await compare(password, user.password);
-        if (!ok) return null;
-        return {
-          id: user.id,
-          email: user.email,
-          name: user.nickname ?? user.name,
-        };
+        try {
+          if (!credentials?.email || !credentials?.password) return null;
+          const email = String(credentials.email).trim().toLowerCase();
+          const password = String(credentials.password);
+          const user = await prisma.user.findUnique({ where: { email } });
+          if (!user?.password) return null;
+          const ok = await compare(password, user.password);
+          if (!ok) return null;
+          return {
+            id: user.id,
+            email: user.email ?? undefined,
+            name: user.nickname ?? user.name ?? undefined,
+            nickname: user.nickname ?? user.name ?? undefined,
+          };
+        } catch {
+          return null;
+        }
       },
     }),
   ],
@@ -55,27 +61,38 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       if (!user.email && account?.provider !== "credentials") return false;
       return true;
     },
-    async session({ session, user }) {
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+        token.nickname = (user as { nickname?: string }).nickname ?? user.name ?? undefined;
+      }
+      return token;
+    },
+    async session({ session, token }) {
       if (session.user) {
-        session.user.id = user.id;
-        session.user.nickname = (user as { nickname?: string }).nickname ?? user.name ?? undefined;
+        session.user.id = token.id as string;
+        session.user.nickname = (token.nickname as string) ?? undefined;
       }
       return session;
     },
   },
   events: {
     async createUser({ user }) {
-      // OAuth ile gelen kullanıcı: nickname = name (kullanıcı panelden değiştirebilir)
       if (user.name) {
-        await prisma.user.update({
-          where: { id: user.id },
-          data: { nickname: user.name },
-        });
+        try {
+          await prisma.user.update({
+            where: { id: user.id },
+            data: { nickname: user.name },
+          });
+        } catch {
+          // OAuth user might not exist yet in DB
+        }
       }
     },
   },
   pages: {
     signIn: "/giris",
   },
-  session: { strategy: "database", maxAge: 30 * 24 * 60 * 60 },
+  // Credentials provider JWT gerektirir; database session ile uyumsuz
+  session: { strategy: "jwt", maxAge: 30 * 24 * 60 * 60 },
 });

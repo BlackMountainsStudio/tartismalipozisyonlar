@@ -7,7 +7,7 @@
       "homeTeam": "Beşiktaş",
       "awayTeam": "Gençlerbirliği",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
+      "note": "Tarama tamamlandı; belirgin tartışmalı hakem kararı tespit edilmedi",
       "incidents": []
     },
     {
@@ -16,8 +16,19 @@
       "homeTeam": "Çaykur Rizespor",
       "awayTeam": "Trabzonspor",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 31,
+          "type": "POSSIBLE_PENALTY",
+          "description": "Stefan Savic ile Casper Hoejer Nielsen arasındaki ceza sahası içindeki mücadelede Rizespor penaltı bekledi. VAR incelemesi yapıldı, hakem Halil Umut Meler penaltı vermedi ve oyun devam etti.",
+          "confidenceScore": 0.82,
+          "sources": [
+            "https://m.sporx.com/caykur-rizespor-trabzonspor-maci-anlatim-4842395"
+          ],
+          "status": "APPROVED"
+        }
+      ]
     },
     {
       "week": 9,
@@ -25,8 +36,23 @@
       "homeTeam": "İstanbul Başakşehir",
       "awayTeam": "Galatasaray",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 47,
+          "type": "GOAL_DISALLOWED",
+          "description": "Eldor Shomurodov'un attığı gol yaklaşık 4 dakika VAR ile incelendi ve ofsayt gerekçesiyle iptal edildi. Eski hakem Deniz Ateş Bitnel kararı eleştirdi: 'Net teknoloji olmadan çıplak gözle bile ofsayt. Ne incelendi bu kadar anlamadım?'",
+          "confidenceScore": 0.88,
+          "sources": [
+            "https://spor.haber7.com/super-lig/haber/3572542-basaksehir-galatasaray-macinda-tartismali-pozisyon-gol-4-dakika-incelenip-iptal-edildi",
+            "https://www.yenisafak.com/foto-galeri/spor/basaksehirin-golu-ofsayt-miydi-eski-hakem-galatasaray-macindaki-pozisyonu-degerlendirdi-4759823"
+          ],
+          "refereeComments": [
+            { "author": "Deniz Ateş Bitnel (Eski Süper Lig hakemi)", "text": "Net teknoloji olmadan çıplak gözle bile ofsayt. Ne incelendi bu kadar anlamadım?" }
+          ],
+          "status": "APPROVED"
+        }
+      ]
     },
     {
       "week": 9,
@@ -34,8 +60,51 @@
       "homeTeam": "Fenerbahçe",
       "awayTeam": "Fatih Karagümrük",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 16,
+          "type": "POSSIBLE_PENALTY",
+          "description": "Anderson Talisca'nın penaltı iddiası. beIN Trio ekibi devam kararının doğru olduğunu belirtti. Deniz Çoban: 'Böyle penaltı olmaz. Karşılıklı ikili mücadele var.' Bülent Yıldırım: 'Fiziksel mücadele var, ekstra ihlal söz konusu değil.'",
+          "confidenceScore": 0.9,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/fenerbahce-karagumruk-macinda-tartisma-yaratan-kararlar-penalti-karari-dogru-mu-7467285"
+          ],
+          "refereeComments": [
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Böyle penaltı olmaz. Karşılıklı ikili mücadele var." },
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Devam kararı doğru. Fiziksel mücadele var, ekstra ihlal söz konusu değil." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 19,
+          "type": "PENALTY",
+          "description": "Dorgeles Nene'ye Jure Balkovec'in müdahalesinde hakem devam dedi, VAR çağrısı sonrası penaltı verildi. Trio ekibi kararı doğru buldu. Deniz Çoban: 'Net penaltı. Nene dribling esnasında dengesi bozuluyor.' Bülent Yıldırım: 'Balkovec topa temas etmiyor, kontrolsüz kayma. Penaltı doğruydu.'",
+          "confidenceScore": 0.92,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/fenerbahce-karagumruk-macinda-tartisma-yaratan-kararlar-penalti-karari-dogru-mu-7467285"
+          ],
+          "refereeComments": [
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Net penaltı. Nene dribling esnasında dengesi bozuluyor." },
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Penaltı doğruydu. Balkovec topa temas etmiyor, riski almış." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 82,
+          "type": "RED_CARD",
+          "description": "Jure Balkovec ikinci sarı kartı görerek kırmızı kartla oyundan atıldı. Trio ekibi kararı doğru buldu. Bülent Yıldırım: 'Hakem uzak olduğu için yanıldı. Çok kuvvetli bir basma, bilek döndü. Görse kırmızı verse itiraz edecek kişi yok.' Bahattin Duran: 'Balkovec'in gördüğü her iki sarı kart da doğru.'",
+          "confidenceScore": 0.9,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/fenerbahce-karagumruk-macinda-tartisma-yaratan-kararlar-penalti-karari-dogru-mu-7467285"
+          ],
+          "refereeComments": [
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "İkinci sarı kart tartışılmaz. Hakem çok uzak olduğu için yanıldı, kuvvetli basma." },
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Balkovec'in maçta gördüğü her iki sarı kart da doğru." }
+          ],
+          "status": "APPROVED"
+        }
+      ]
     }
   ]
 }

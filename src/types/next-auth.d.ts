@@ -6,6 +6,11 @@ declare module "next-auth" {
     nickname?: string;
   }
 
+  interface JWT {
+    id?: string;
+    nickname?: string;
+  }
+
   interface Session {
     user: {
       id: string;

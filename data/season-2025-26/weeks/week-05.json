@@ -7,8 +7,37 @@
       "homeTeam": "Beşiktaş",
       "awayTeam": "İstanbul Başakşehir",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 89,
+          "type": "RED_CARD",
+          "description": "Başakşehirli Ba, zaman geçirme iddiasıyla ikinci sarıdan kırmızı kart gördü. Trio ekibi kararı tartışmalı buldu. Bülent Yıldırım: 'Sahada 2 top vardı. Ba'nın bundan haberi var mı? Bu kararın tam oturmadığını düşünüyorum, yanlış.' Bahattin Duran: 'Reklam panolarına çarpıp içeri giren top. Ba'nın zaman geçirmek gibi derdi olsa oraya gitmez. 2. sarı kartı doğru bulmuyorum.'",
+          "confidenceScore": 0.78,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/besiktas-basaksehir-macinda-tartisma-yaratan-kirmizi-kart-karari-eski-hakemler-degerlendirdi-var-mudahalesi-7445431"
+          ],
+          "refereeComments": [
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Bu kararın tam oturmadığını düşünüyorum ve yanlış bir karar." },
+            { "author": "Bahattin Duran (beIN Trio)", "text": "2. sarı kartı doğru bulmuyorum." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 90,
+          "type": "RED_CARD",
+          "description": "90+8. dakikada kenarda yaşanan gerilim sonrası Orkun Kökçü VAR müdahalesiyle kırmızı kart gördü. Trio ekibi VAR müdahalesini yanlış buldu. Bülent Yıldırım: 'VAR müdahalesi tamamen yanlış. Yoruma açıkken VAR'ın karışmaması gerekiyordu.' Bahattin Duran: 'VAR müdahalesi yanlış. Bana göre saha içinde sarı kart derim. Hata tamamen VAR müdahalesi.'",
+          "confidenceScore": 0.85,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/besiktas-basaksehir-macinda-tartisma-yaratan-kirmizi-kart-karari-eski-hakemler-degerlendirdi-var-mudahalesi-7445431"
+          ],
+          "refereeComments": [
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "VAR müdahalesi tamamen yanlış. Yoruma açıkken VAR'ın karışmaması gerekiyordu." },
+            { "author": "Bahattin Duran (beIN Trio)", "text": "VAR müdahalesi yanlış. Hata tamamen VAR müdahalesi." }
+          ],
+          "status": "APPROVED"
+        }
+      ]
     },
     {
       "week": 5,
@@ -16,8 +45,37 @@
       "homeTeam": "Eyüpspor",
       "awayTeam": "Galatasaray",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 53,
+          "type": "MISSED_YELLOW",
+          "description": "Davinson'un Dragus'a yaptığı müdahalede hakem faul vermedi. Trio ekibi net faul ve sarı kart gerektiğini söyledi. Bülent Yıldırım: 'Asla doğru değil. Çok net bir ayağa basma. Faul ve sarı kart. Kırmızı kart verse VAR karışamaz.' Bahattin Duran: 'Çok net bir faul ve sarı kart.' Deniz Çoban: 'Topun yönüne hakem aldanıyor. Çok net bir sarı kart.'",
+          "confidenceScore": 0.9,
+          "sources": [
+            "https://www.fanatik.com.tr/galatasaray/galeri-eyupspor-galatasaray-macinda-tartismali-pozisyonlari-trioda-konusuldu-kirmizi-kart-verse-var-karisamaz-2594325"
+          ],
+          "refereeComments": [
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Çok net bir ayağa basma. Faul ve sarı kart. Kırmızı kart verse VAR karışamaz." },
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Çok net bir faul ve sarı kart." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 56,
+          "type": "GOAL_DISALLOWED",
+          "description": "Robin Yalçın'ın golü ofsayt gerekçesiyle iptal edildi. Trio ekibinde VAR kontrolü ve topun kimden geldiği konusunda tartışma yaşandı. Deniz Çoban: '8 saniye sonra maç başladı. VAR kontrolü olduğunu sanmıyorum.' Bahattin Duran: 'Önemli olan topun kimden geldiği. Umut Meraş'tan da gelmiş olabilir.'",
+          "confidenceScore": 0.72,
+          "sources": [
+            "https://www.fanatik.com.tr/galatasaray/galeri-eyupspor-galatasaray-macinda-tartismali-pozisyonlari-trioda-konusuldu-kirmizi-kart-verse-var-karisamaz-2594325"
+          ],
+          "refereeComments": [
+            { "author": "Deniz Çoban (beIN Trio)", "text": "VAR kontrolü olduğunu sanmıyorum. Hakem bu pozisyonda hiç şüphelenmedi." },
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Kesin bir kanıt ortaya koyamıyorum. Kararın doğru olduğunu düşünüyorum." }
+          ],
+          "status": "APPROVED"
+        }
+      ]
     },
     {
       "week": 5,

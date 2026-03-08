@@ -7,7 +7,7 @@
       "homeTeam": "Fenerbahçe",
       "awayTeam": "Kocaelispor",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
+      "note": "Tarama tamamlandı; belirgin tartışmalı hakem kararı tespit edilmedi",
       "incidents": []
     },
     {
@@ -16,7 +16,7 @@
       "homeTeam": "Kayserispor",
       "awayTeam": "Galatasaray",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
+      "note": "Tarama tamamlandı; belirgin tartışmalı hakem kararı tespit edilmedi",
       "incidents": []
     },
     {
@@ -25,8 +25,25 @@
       "homeTeam": "Trabzonspor",
       "awayTeam": "Antalyaspor",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 40,
+          "type": "GOAL_DISALLOWED",
+          "description": "Augusto'nun golü VAR uyarısıyla Onuachu'nun ofsaytta olduğu gerekçesiyle iptal edildi. Onuachu topa müdahale etmedi; kaleci Abdullah'ın elinden seken top Augusto'nun önüne düştü. Trio ekibi kararı 'ilk 3 haftadaki en önemli VAR hatası' olarak nitelendirdi. Bülent Yıldırım: 'Video hakem müdahalesi baştan sona yanlış. Subjektif alanda VAR'ın karışmaması gerekirdi. Bu gol verilmeliydi.' Deniz Çoban: 'VAR'ın müdahale etmesi çok büyük bir hata. Kale arkası açısından Veysel o topu hiçbir şekilde çıkartamaz.'",
+          "confidenceScore": 0.92,
+          "sources": [
+            "https://www.cumhuriyet.com.tr/spor/eski-hakemler-trabzonspor-antalyaspor-macini-degerlendirdi-ilk-3-haftadaki-en-onemli-var-hatasi-2429205",
+            "https://www.takagazete.com.tr/trabzonspor-antalyaspor-macinda-hakem-skandali-augustonun-golu-tartismali-sekilde-iptal-edildi"
+          ],
+          "refereeComments": [
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Video hakem müdahalesi baştan sona yanlış. Bu gol verilmeliydi." },
+            { "author": "Deniz Çoban (beIN Trio)", "text": "İlk 3 haftadaki en önemli VAR hatası. VAR'ın müdahale etmesi çok büyük bir hata." },
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Pozisyon ofsayt değil. VAR tekniği açısından tek açıdan vermek çok yanlış." }
+          ],
+          "status": "APPROVED"
+        }
+      ]
     },
     {
       "week": 3,

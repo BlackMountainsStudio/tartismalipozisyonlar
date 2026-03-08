@@ -9,6 +9,7 @@
     "lint": "eslint",
     "postinstall": "prisma generate",
     "import:season": "node scripts/import-tracked-season.mjs",
+    "cleanup:duplicates": "node scripts/cleanup-duplicate-incidents.mjs",
     "reindex:matches": "node scripts/reindex-matches.mjs",
     "setup:auth": "node scripts/setup-auth.mjs",
     "generate:static-matches": "node scripts/generate-static-matches.mjs",

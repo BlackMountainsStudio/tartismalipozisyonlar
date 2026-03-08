@@ -7,7 +7,7 @@
       "homeTeam": "Galatasaray",
       "awayTeam": "Gaziantep",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
+      "note": "Tarama tamamlandi; belirgin tartismali hakem karari tespit edilmedi",
       "incidents": []
     },
     {
@@ -16,8 +16,51 @@
       "homeTeam": "Alanyaspor",
       "awayTeam": "Fenerbahçe",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 25,
+          "type": "FOUL",
+          "description": "Talisca'nın yerde kaldığı pozisyonda açık faul atlandı. Deniz Çoban: 'Maçtaki kritik hatalardan biri. Açık bir faul atlandı.' Bülent Yıldırım: 'Çok net bir faul. Hakem ekibi sınıfta kaldı.'",
+          "confidenceScore": 0.88,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/fenerbahce-alanyaspor-macinin-tartismali-pozisyonlari-trioda-degerlendirildi-hakem-ekibi-sinifa-kaldi-7523387"
+          ],
+          "refereeComments": [
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Maçtaki kritik hatalardan biri. Açık bir faul atlandı." },
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Çok net bir faul. Hakem ekibi sınıfta kaldı." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 70,
+          "type": "MISSED_RED_CARD",
+          "description": "Tedesco'nun itirazı sonrası sarı kart gördü. Eski hakemler ikinci sarı kartla ihraç edilmesi gerektiğini söyledi. Bülent Yıldırım: 'Kendisini ihraç etmeyen hakem ekibi sınıfta kaldı.' Bahattin Duran: 'Tedesco ikinci sarı karttan ihraç edilmeliydi. Bu kabul edilemez.'",
+          "confidenceScore": 0.85,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/fenerbahce-alanyaspor-macinin-tartismali-pozisyonlari-trioda-degerlendirildi-hakem-ekibi-sinifa-kaldi-7523387"
+          ],
+          "refereeComments": [
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Tedesco'da her türlü ısrar var. Kendisini ihraç etmeyen hakem ekibi sınıfta kaldı." },
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Tedesco ikinci sarı karttan ihraç edilmeliydi. Bunun savunması yok. İkinci sarının çıkmaması kabul edilemez." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 88,
+          "type": "POSSIBLE_PENALTY",
+          "description": "Son dakikalarda Fenerbahçe penaltı bekledi. Köşe vuruşundan önce Jhon Duran'ın hamleleri tartışıldı. Bülent Yıldırım: 'Penaltı ve sarı kart verilmeliydi.' Bahattin Duran: 'Penaltı olduğunu düşünüyorum.' Deniz Çoban hakemin kararını eleştiremedi.",
+          "confidenceScore": 0.72,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/fenerbahce-alanyaspor-macinin-tartismali-pozisyonlari-trioda-degerlendirildi-hakem-ekibi-sinifa-kaldi-7523387"
+          ],
+          "refereeComments": [
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Duran iki hamlede bulunuyor. Penaltı ve sarı kart verilmeliydi." },
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Jhon Duran'ın hareketi köşe vuruşundan önce. Sonrasında penaltı olduğunu düşünüyorum." }
+          ],
+          "status": "APPROVED"
+        }
+      ]
     },
     {
       "week": 18,
@@ -25,7 +68,7 @@
       "homeTeam": "Kocaelispor",
       "awayTeam": "Trabzonspor",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
+      "note": "Tarama tamamlandi; belirgin tartismali hakem karari tespit edilmedi",
       "incidents": []
     },
     {
@@ -34,8 +77,26 @@
       "homeTeam": "Beşiktaş",
       "awayTeam": "Kayserispor",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 70,
+          "type": "PENALTY",
+          "description": "Orkun Kökçü'nün ceza sahasındaki şutunda Kayserisporlu Youssef Bennasser topu kale çizgisinden çıkardı. Beşiktaş el ile müdahale iddiasıyla penaltı talep etti. Hakem Ozan Ergün VAR incelemesi sonrası taç atışı kararı verdi. Mustafa Çulcu: 'Bariz gol, elle engellenmiştir. Kırmızı kart ve penaltı olmalıydı.' Bahattin Duran: 'Net penaltı. VAR müdahale etmeliydi.' Bülent Yıldırım: 'Top kafaya değmeden ele geliyor, penaltı.' Deniz Çoban topun önce kafaya değdiğini düşünerek hakemin doğru karar verdiğini söyledi. Beşiktaş 'Geceyi, şaşırmadığımız malum görüntülerle kapatıyoruz!' paylaşımı yaptı.",
+          "confidenceScore": 0.82,
+          "sources": [
+            "https://spor.haber7.com/besiktas/haber/3597372-besiktas-kayserispor-macina-damga-vuran-pozisyon",
+            "https://www.fanatik.com.tr/besiktas/dolmabahcede-cok-konusulacak-pozisyon-besiktastan-yogun-penalti-itirazi-2609034"
+          ],
+          "refereeComments": [
+            { "author": "Mustafa Çulcu", "text": "Bariz bir gol, elle engellenmiştir. Bu pozisyon hem kırmızı kart hem de penaltı olmalıydı." },
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Top Bennasser'in doğal konumda olmayan eline geliyor. Pozisyon net penaltı. VAR müdahale etmeliydi." },
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Top kafaya değmeden doğal konumda olmayan ele geliyor, penaltı." },
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Yüzde 100 emin olamıyorum. Oyuncunun önce kafayla dokunduğunu düşünüyorum. Hakemin doğru karar verdiği fikrindeyim." }
+          ],
+          "status": "APPROVED"
+        }
+      ]
     }
   ]
 }

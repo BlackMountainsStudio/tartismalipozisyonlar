@@ -7,8 +7,32 @@
       "homeTeam": "Antalyaspor",
       "awayTeam": "Trabzonspor",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 51,
+          "type": "POSSIBLE_PENALTY",
+          "description": "Onuachu ceza sahasına girişinde Hüseyin Türkmen'in müdahalesiyle yerde kaldı. Hakem Oğuzhan Çakır Trabzonspor lehine penaltı verdi, Onuachu gole çevirdi. Antalyaspor teknik direktörü Sami Uğurlu itiraz nedeniyle 54. dakikada kırmızı kart gördü.",
+          "confidenceScore": 0.75,
+          "sources": [
+            "https://www.aspor.com.tr/trabzonspor/2026/01/30/trabzonspor-penalti-kazandi-iste-o-pozisyon",
+            "https://gazetevatan.com/galeri/antalyaspor-trabzonspor-macinda-penalti-kacti-puanlar-paylasildi-2346440"
+          ],
+          "refereeComments": [],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 80,
+          "type": "PENALTY",
+          "description": "Trabzonspor'un duran topunda Hüseyin Türkmen'in ceza sahasında topa elle müdahalesi VAR incelemesi sonrası tespit edildi. Hakem ikinci penaltıyı verdi, Onuachu vuruşu kaçırdı.",
+          "confidenceScore": 0.92,
+          "sources": [
+            "https://www.aspor.com.tr/trabzonspor/2026/01/30/trabzonspor-penalti-kazandi-iste-o-pozisyon"
+          ],
+          "refereeComments": [],
+          "status": "APPROVED"
+        }
+      ]
     },
     {
       "week": 20,
@@ -16,8 +40,23 @@
       "homeTeam": "Beşiktaş",
       "awayTeam": "Konyaspor",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 82,
+          "type": "RED_CARD",
+          "description": "Beşiktaş'ın yeni transferi Kristjan Asllani, Deniz Türüç'e yaptığı müdahalede VAR uyarısıyla doğrudan kırmızı kart gördü. Hakem Batuhan Kolak tarak kemiğine sert basma tespitiyle kararı verdi. Sergen Yalçın maç sonrası 'Bize olunca kırmızı, rakibe olunca sarı' diyerek tutarsızlık eleştirdi ve Konyaspor stoperlerinin ilk yarıda atılması gerektiğini söyledi.",
+          "confidenceScore": 0.82,
+          "sources": [
+            "https://www.aspor.com.tr/besiktas/2026/01/31/besiktas-teknik-direktoru-sergen-yalcindan-mac-sonu-hakem-elestirisi-bize-olunca-kirmizi-kart",
+            "https://www.sabah.com.tr/spor/futbol/2026/01/31/canli-super-ligde-besiktas-konyaspor-maci"
+          ],
+          "refereeComments": [
+            { "author": "Sergen Yalçın", "text": "Bize olunca kırmızı, rakibe olunca sarı. Konyaspor stoperleri ilk yarıda atılmalıydı." }
+          ],
+          "status": "APPROVED"
+        }
+      ]
     },
     {
       "week": 20,
@@ -25,8 +64,35 @@
       "homeTeam": "Galatasaray",
       "awayTeam": "Kayserispor",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 34,
+          "type": "FOUL",
+          "description": "Mario Lemina'ya verilen sarı kart Fırat Aydınus tarafından yanlış değerlendirme olarak yorumlandı.",
+          "confidenceScore": 0.72,
+          "sources": [
+            "https://hurriyet.com.tr/sporarena/galatasarayin-kayserispor-macindaki-hakem-kararlarini-firat-aydinus-degerlendirdi-penaltilar-dogruydu-43097980"
+          ],
+          "refereeComments": [
+            { "author": "Fırat Aydınus (Hürriyet)", "text": "34. dakikada Lemina'ya çıkan sarı kart yanlış." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 46,
+          "type": "MISSED_RED_CARD",
+          "description": "45+1. dakikada Lemina'nın müdahalesinde ikinci sarı kart bekleniyordu. Fırat Aydınus: 'Gelen görüntüler müdahalenin olup olmadığını göstermiyor. Farklı bir açı gelip temas olduğu gözükse 2. sarı kartı gerektirir.'",
+          "confidenceScore": 0.68,
+          "sources": [
+            "https://hurriyet.com.tr/sporarena/galatasarayin-kayserispor-macindaki-hakem-kararlarini-firat-aydinus-degerlendirdi-penaltilar-dogruydu-43097980"
+          ],
+          "refereeComments": [
+            { "author": "Fırat Aydınus (Hürriyet)", "text": "45+1'de 2. sarı beklenen pozisyon için görüntüler müdahalenin olup olmadığını göstermiyor. Temas gözükse 2. sarı kart gerekirdi." }
+          ],
+          "status": "APPROVED"
+        }
+      ]
     },
     {
       "week": 20,
@@ -34,7 +100,7 @@
       "homeTeam": "Kocaelispor",
       "awayTeam": "Fenerbahçe",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
+      "note": "Tarama tamamlandi; belirgin tartismali hakem karari tespit edilmedi",
       "incidents": []
     }
   ]

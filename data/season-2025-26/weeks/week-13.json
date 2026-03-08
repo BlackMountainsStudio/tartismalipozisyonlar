@@ -7,8 +7,54 @@
       "homeTeam": "Galatasaray",
       "awayTeam": "Gençlerbirliği",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 15,
+          "type": "MISSED_RED_CARD",
+          "description": "Gökhan'ın Sallai'ye kaval kemiğine yaptığı sert müdahalede Galatasaray kırmızı kart bekledi. Hakem kart çıkarmadı. Eski hakemler net kırmızı kart olması gerektiğini söyledi. Bahattin Duran: 'Bu pozisyon net kırmızı kart. İki ayağı birden havada. Sallai'nin ayağı esnedi.' Deniz Çoban: 'Çok net kırmızı kart. Uçarak gidip vurdu.' Bülent Yıldırım: 'Rakibin sağlığı için ciddi bir tehdit yarattığın an kırmızı kart görürsün.'",
+          "confidenceScore": 0.95,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/galatasaray-genclerbirligi-macinin-tartismali-pozisyonlari-trioda-degerlendirildi-hicbir-seyin-7488303"
+          ],
+          "refereeComments": [
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Bu pozisyon net kırmızı kart. Sallai'yi gördükten sonra daha kontrollü olmalıydı. İki ayağı birden havada. VAR için de yeterli kanıt mevcut." },
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Sonuçları düşünerek hareket etmelisiniz. Çok net kırmızı kart. Uçarak gidip vurdu." },
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Rakibin sağlığı için ciddi bir tehdit yarattığın an kırmızı kart görürsün." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 45,
+          "type": "POSSIBLE_PENALTY",
+          "description": "Barış Alper'in ilk yarının son dakikalarında Thalisson'un topuğuyla yerde kaldığı pozisyonda Galatasaray penaltı bekledi. Görüşler bölündü. Bülent Yıldırım: 'Ben bunun penaltı olduğunu düşünüyorum. Top gittikten sonra Thalisson ayağı görüp basıyor.' Bahattin Duran: 'Benim için penaltı ancak gerçekten zor pozisyon.' Deniz Çoban: 'Bu haliyle VAR konusu değil, bana penaltı gibi gelmedi. Hakemin kararına saygı duyuyorum.'",
+          "confidenceScore": 0.72,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/galatasaray-genclerbirligi-macinin-tartismali-pozisyonlari-trioda-degerlendirildi-hicbir-seyin-7488303"
+          ],
+          "refereeComments": [
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Ben bunun penaltı olduğunu düşünüyorum. Top gittikten sonra Thalisson ayağı görüp basıyor." },
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Benim için penaltı ancak gerçekten zor pozisyon. VAR'ın karışacağı pozisyon değil." },
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Bu haliyle VAR konusu değil, bana penaltı gibi gelmedi. Hakemin kararına saygı duyuyorum." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 94,
+          "type": "RED_CARD",
+          "description": "Sallai'nin Zuzek'e yaptığı müdahale sonrası VAR kontrolüyle kırmızı kart gördü. Fenerbahçe derbisinde cezalı duruma düştü. Eski hakemler kırmızı kart kararını doğru buldu. Bülent Yıldırım: 'Sallai top için yaptı ama rakibin kafasına tabanıyla müdahale yaptı. Kırmızı kart.' Deniz Çoban: 'Tartışma yok. Kırmızı kart.' Bahattin Duran: 'Kırmızı kart kararı doğru.'",
+          "confidenceScore": 0.9,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/galatasaray-genclerbirligi-macinin-tartismali-pozisyonlari-trioda-degerlendirildi-hicbir-seyin-7488303"
+          ],
+          "refereeComments": [
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Sallai top için yaptı ama rakibin kafasına tabanıyla müdahale yaptı. Sallai rakibin sağlığını ciddi şekilde riske attı." },
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Tartışma yok. Kırmızı kart." },
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Top kafayla oynama mesafesinde. Kırmızı kart kararı doğru." }
+          ],
+          "status": "APPROVED"
+        }
+      ]
     },
     {
       "week": 13,
@@ -16,8 +62,25 @@
       "homeTeam": "Beşiktaş",
       "awayTeam": "Samsunspor",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 40,
+          "type": "POSSIBLE_PENALTY",
+          "description": "Tammy Abraham ile Toni Borevkovic arasındaki mücadelede Beşiktaş penaltı talep etti. VAR hakemi inceleme sonrası hakemi uyardı ancak Atilla Karaoğlan kararını değiştirmedi, topun ayaktan sekerek ele geldiğini belirterek penaltı vermedi. beIN Trio devam kararını doğru buldu. Deniz Çoban: 'Eller kollar doğal konumda. Penaltı olmadığını düşünüyorum, Atilla Karaoğlan'ı tebrik ediyorum.' Bahattin Duran: 'VAR müdahalesinin yanlış olduğunu ve pozisyonun penaltı olmadığını düşünüyorum.' Bülent Yıldırım: 'Neyse ki hakem bunu sağduyuyla çözdü.'",
+          "confidenceScore": 0.85,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/besiktas-samsunspor-macinin-tartismali-pozisyonlari-trioda-degerlendirildi-hakemi-tebrik-ediyorum-7488859",
+            "https://www.sozcu.com.tr/besiktas-samsunspor-macinda-var-cagirdi-atilla-karaoglan-kararini-degistirmedi-p261847"
+          ],
+          "refereeComments": [
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Eller kollar doğal konumda. Penaltı olmadığını düşünüyorum, Atilla Karaoğlan'ı tebrik ediyorum." },
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Atilla Karaoğlan ile aynı fikirdeyim. VAR müdahalesinin yanlış olduğunu ve pozisyonun penaltı olmadığını düşünüyorum." },
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Enteresan bir VAR müdahalesi, neyse ki hakem bunu sağduyuyla çözdü." }
+          ],
+          "status": "APPROVED"
+        }
+      ]
     },
     {
       "week": 13,
@@ -25,8 +88,54 @@
       "homeTeam": "Çaykur Rizespor",
       "awayTeam": "Fenerbahçe",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 25,
+          "type": "FOUL",
+          "description": "Rizespor'un ilk golünden önce Fred'in yerde kaldığı pozisyonda hakem devam kararı verdi. Eski hakemler faul verilmesi gerektiğini söyledi. Bahattin Duran: 'Bu faul. Kesinlikle faul.' Deniz Çoban: 'Fred'in rakibiyle adil şekilde mücadele etmediği görülüyor. Faul verilse çok daha doğru olurdu.' Bülent Yıldırım: 'Kol engel olarak kullanılıyor. Faul.'",
+          "confidenceScore": 0.9,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/rizespor-fenerbahce-macinin-tartismali-pozisyonlari-trioda-degerlendirildi-elle-oynamak-nasil-olmaza-ornek-7488853"
+          ],
+          "refereeComments": [
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Bu faul. Kesinlikle faul." },
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Fred'in rakibiyle adil şekilde mücadele etmediği görülüyor. Faul verilse çok daha doğru olurdu." },
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Kol engel olarak kullanılıyor. Faul." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 55,
+          "type": "VAR_CONTROVERSY",
+          "description": "Rizespor'un 2. golü öncesi hakemin verdiği elle oynama kararı. Eski hakemler yanlış karar olarak değerlendirdi. Deniz Çoban: 'Elle oynama nasıl olmaza bir örnek. Hakem de önce çalmak istemiyor, sonra alakasız bir beden diliyle düdüğü çalıyor.' Bahattin Duran: 'Bu pozisyonda bir ihlal yok. Hatalı karar.' Bülent Yıldırım: 'Yanlış tespit. Oyun devam etmeliydi.'",
+          "confidenceScore": 0.92,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/rizespor-fenerbahce-macinin-tartismali-pozisyonlari-trioda-degerlendirildi-elle-oynamak-nasil-olmaza-ornek-7488853"
+          ],
+          "refereeComments": [
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Elle oynama nasıl olmaza bir örnek. Hatalı karar." },
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Bu pozisyonda bir ihlal yok. Hatalı karar." },
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Yanlış tespit. Oyun devam etmeliydi." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 70,
+          "type": "VAR_CONTROVERSY",
+          "description": "Laci'nin ikinci sarı karttan ihraç edilmesi. Eski hakemler kararı yanlış buldu. Deniz Çoban: 'Umut vaat eden ataktan söz edemeyiz. Niye sarı kart bu? Ben bu sarı karta asla katılmıyorum.' Bahattin Duran: 'Ben Laci'nin bu maçta atılmasını kabul edemiyorum. Umut vaat eden atak asla değil. Laci'nin ikinci sarı kartı kesinlikle yanlış.' Bülent Yıldırım: 'Taktik faul yok. Umut vaat eden atak zaten yok. Karar yanlıştı.'",
+          "confidenceScore": 0.88,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/rizespor-fenerbahce-macinin-tartismali-pozisyonlari-trioda-degerlendirildi-elle-oynamak-nasil-olmaza-ornek-7488853"
+          ],
+          "refereeComments": [
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Umut vaat eden ataktan söz edemeyiz. Ben bu sarı karta asla katılmıyorum." },
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Ben Laci'nin bu maçta atılmasını kabul edemiyorum. Laci'nin ikinci sarı kartı kesinlikle yanlış." },
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Taktik faul yok. Umut vaat eden atak zaten yok. Karar yanlıştı." }
+          ],
+          "status": "APPROVED"
+        }
+      ]
     },
     {
       "week": 13,
@@ -34,8 +143,21 @@
       "homeTeam": "İstanbul Başakşehir",
       "awayTeam": "Trabzonspor",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 7,
+          "type": "RED_CARD",
+          "description": "7. dakikada Festy Ebosele'nin Edin Vişça'ya yaptığı müdahalede önce sarı kart gördü. VAR uyarısı sonrası hakem Halil Umut Meler monitöre giderek kararını değiştirdi ve 10. dakikada Ebosele'ye bariz gol şansını engelleme gerekçesiyle direkt kırmızı kart gösterdi. Vişça müdahale sonrası sakatlanarak oyundan çıktı. Başakşehir 83 dakika 10 kişi oynadı, maç 4-3 Trabzonspor galibiyetiyle sonuçlandı.",
+          "confidenceScore": 0.88,
+          "sources": [
+            "https://www.fotomac.com.tr/basaksehir/2025/11/24/rams-basaksehir-trabzonspor-macinda-kirmizi-kart-karari-iste-o-pozisyon",
+            "https://www.haberts.com/trabzonspor-basaksehir-macinda-erken-kirmizi-kart-ve-sakatlik-soku"
+          ],
+          "refereeComments": [],
+          "status": "APPROVED"
+        }
+      ]
     }
   ]
 }

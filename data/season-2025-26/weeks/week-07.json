@@ -7,8 +7,66 @@
       "homeTeam": "Alanyaspor",
       "awayTeam": "Galatasaray",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 52,
+          "type": "POSSIBLE_PENALTY",
+          "description": "Osimhen'in penaltı beklediği pozisyonda hakem Ali Şansalan devam kararı verdi. Trio ekibinde görüş ayrılığı yaşandı. Deniz Çoban: 'Penaltı verilse daha doğru olurdu. Hakemin kararı yanlış.' Bülent Yıldırım: 'Çok zor pozisyon, hücum faul verirdim.' Bahattin Duran: 'Osimhen ayağını koyuyor, faulü Osimhen yapıyor. Penaltı değil.'",
+          "confidenceScore": 0.75,
+          "sources": [
+            "https://www.yenicaggazetesi.com/bein-trio-galatasaray-alanyaspor-macini-degerlendirdi-hakem-kararlari-dogru-mu-besiktas-derbisi-oncesi-ali-sansalanin-kart-ve-ceza-kararlari-1005091h.htm"
+          ],
+          "refereeComments": [
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Penaltı verilse daha doğru olurdu. Hakemin kararı yanlış." },
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Çok zor pozisyon, hücum faul verirdim." },
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Faulü Osimhen yapıyor. Penaltı değil." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 55,
+          "type": "FOUL",
+          "description": "Aliti'nin Osimhen'a faulü nedeniyle gördüğü sarı kart Trio tarafından yanlış bulundu. Deniz Çoban: 'Sarı kart yok. Osimhen'in ayağıyla Aliti'nin ayağı arasında 30 santim fark var.' Bülent Yıldırım: 'Aliti'nin teması yok, faul ve sarı kart kararı yanlış.'",
+          "confidenceScore": 0.88,
+          "sources": [
+            "https://www.yenicaggazetesi.com/bein-trio-galatasaray-alanyaspor-macini-degerlendirdi-hakem-kararlari-dogru-mu-besiktas-derbisi-oncesi-ali-sansalanin-kart-ve-ceza-kararlari-1005091h.htm"
+          ],
+          "refereeComments": [
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Sarı kart kararı yanlış, faul de yok." },
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Aliti'nin teması yok, faul ve sarı kart kararı yanlış." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 64,
+          "type": "MISSED_RED_CARD",
+          "description": "Mounie'nin Davinson'a yaptığı müdahalede hakem faul bile vermedi. Trio minimum sarı kart, bazıları kırmızı kart gerektiğini söyledi. Deniz Çoban: 'Minimum sarı kart. Hakem topu işaret etti, faul bile verilmedi.' Bahattin Duran: 'Sahada kırmızı kartı daha çok desteklerdim.'",
+          "confidenceScore": 0.82,
+          "sources": [
+            "https://www.yenicaggazetesi.com/bein-trio-galatasaray-alanyaspor-macini-degerlendirdi-hakem-kararlari-dogru-mu-besiktas-derbisi-oncesi-ali-sansalanin-kart-ve-ceza-kararlari-1005091h.htm"
+          ],
+          "refereeComments": [
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Minimum sarı kart. Faul bile verilmedi." },
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Kırmızı kartı daha çok desteklerdim, sarı kartı kabul ederdim." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 90,
+          "type": "MISSED_RED_CARD",
+          "description": "90+3. dakikada Singo'ya sarı kart çıkan pozisyonda Trio ekibi net kırmızı kart gerektiğini söyledi. Deniz Çoban: 'Amasız, fakatsız kırmızı kart. VAR neden karışmadı?' Bülent Yıldırım: 'Sabahtan akşama kırmızı kart. Her yerde kırmızı kart bu.' Bahattin Duran: 'Bu çok net kırmızı kart. VAR müdahalesi de gerekirdi.'",
+          "confidenceScore": 0.92,
+          "sources": [
+            "https://www.yenicaggazetesi.com/bein-trio-galatasaray-alanyaspor-macini-degerlendirdi-hakem-kararlari-dogru-mu-besiktas-derbisi-oncesi-ali-sansalanin-kart-ve-ceza-kararlari-1005091h.htm"
+          ],
+          "refereeComments": [
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Amasız, fakatsız kırmızı kart. VAR neden karışmadı?" },
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Her yerde kırmızı kart bu. Tartışmam." }
+          ],
+          "status": "APPROVED"
+        }
+      ]
     },
     {
       "week": 7,
@@ -16,8 +74,23 @@
       "homeTeam": "Fatih Karagümrük",
       "awayTeam": "Trabzonspor",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 45,
+          "type": "VAR_CONTROVERSY",
+          "description": "45+3. dakikada Atakan Çankaya'nın Paul Onuachu'yu ceza sahasında formasından çekmesiyle hakem Mehmet Türkmen penaltı verdi. VAR, Onuachu'nun el oynaması nedeniyle pozisyonu incelemeye çağırdı. Hakem Türkmen elin doğal konumda olduğunu belirterek penaltı kararında ısrar etti. Deniz Çoban: 'Penaltı kararı doğru. Ancak VAR müdahalesi gereksiz ve hatalıydı. Elle oynama penaltıya sebep olan çekmeden sonraydı.'",
+          "confidenceScore": 0.85,
+          "sources": [
+            "https://www.trabzonx.com/onuachu-nun-penalti-pozisyonu-icin-flas-yorum/26430/",
+            "https://www.sporx.com/trabzonspor-a-var-uyarisindan-sonra-da-penalti-SXHBQ1133973SXQ"
+          ],
+          "refereeComments": [
+            { "author": "Deniz Çoban", "text": "Penaltı kararı doğru. VAR müdahalesi gereksiz ve hatalıydı. Elle oynama çekme eyleminden sonraydı." }
+          ],
+          "status": "APPROVED"
+        }
+      ]
     },
     {
       "week": 7,
@@ -25,7 +98,7 @@
       "homeTeam": "Fenerbahçe",
       "awayTeam": "Antalyaspor",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
+      "note": "Tarama tamamlandı; belirgin tartışmalı hakem kararı tespit edilmedi",
       "incidents": []
     },
     {
@@ -34,7 +107,7 @@
       "homeTeam": "Beşiktaş",
       "awayTeam": "Kocaelispor",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
+      "note": "Tarama tamamlandı; belirgin tartışmalı hakem kararı tespit edilmedi",
       "incidents": []
     }
   ]

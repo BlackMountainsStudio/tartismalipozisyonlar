@@ -7,8 +7,32 @@
       "homeTeam": "Beşiktaş",
       "awayTeam": "Çaykur Rizespor",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 87,
+          "type": "POSSIBLE_PENALTY",
+          "description": "Maçın sonlarında Çaykur Rizespor penaltı bekledi. Hakem VAR'ı dinlediğini işaret ederek oyuna devam etti, penaltı verilmedi.",
+          "confidenceScore": 0.75,
+          "sources": [
+            "https://m.sporx.com/besiktas-caykur-rizespor-maci-anlatim-4842461"
+          ],
+          "refereeComments": [],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 93,
+          "type": "POSSIBLE_OFFSIDE_GOAL",
+          "description": "90+3. dakikada Vaclav Jurecka'nın attığı gol VAR tarafından ofsayt gerekçesiyle iptal edildi. Maç 1-0 Beşiktaş lehine sonuçlandı. Rizespor, yarı otomatik VAR sisteminin analiz görselini 'Saç tıraşı var' ifadeleriyle sosyal medyada paylaştı. Jurecka'yı maçtan bir gün önce tıraş eden kuaför 'Gol benim yüzümden iptal oldu' yorumu yaptı.",
+          "confidenceScore": 0.78,
+          "sources": [
+            "https://beinsports.com.tr/haber/iste-903-dakikada-caykur-rizesporun-iptal-edilen-golu",
+            "https://www.hurriyet.com.tr/sporarena/jureckanin-berberi-vara-gidecek-gol-benim-yuzumden-iptal-oldu-42648647"
+          ],
+          "refereeComments": [],
+          "status": "APPROVED"
+        }
+      ]
     },
     {
       "week": 17,
@@ -16,8 +40,38 @@
       "homeTeam": "Eyüpspor",
       "awayTeam": "Fenerbahçe",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 35,
+          "type": "FOUL",
+          "description": "Marco Asensio ile Serdar arasındaki pozisyonda hakem faul verdi. Eski hakemler faul kararının yanlış olduğunu söyledi. Bülent Yıldırım: 'Devam asla faul yok.' Bahattin Duran: 'Çok yanlış bir faul kararı. Asensio'nun rüzgarıyla burgu atmış. Böyle faul verilmez.'",
+          "confidenceScore": 0.88,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/eski-hakemler-fenerbahce-eyupspor-macinin-tartismali-pozisyonlarini-degerlendirdi-hakem-bunu-nasil-7506134"
+          ],
+          "refereeComments": [
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Devam asla faul yok." },
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Çok yanlış bir faul kararı. Asensio'nun rüzgarıyla burgu atmış. Böyle faul verilmez. Çok önemli bir yer burası." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 60,
+          "type": "PENALTY",
+          "description": "Thiam'ın yerde kaldığı pozisyonda eski hakemler tartışmasız penaltı ve sarı kart olması gerektiğini söyledi. VAR müdahalesi gerekir denildi. Bülent Yıldırım: 'Tartışmasız bir penaltı ve sarı kart. VAR müdahalesi gerekir.' Bahattin Duran: 'Kurtulmuş giden bir oyuncuyu çekmek çok net bir penaltıdır.' Deniz Çoban: 'VAR kritik bir hataya imza atmış görünüyor.'",
+          "confidenceScore": 0.92,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/eski-hakemler-fenerbahce-eyupspor-macinin-tartismali-pozisyonlarini-degerlendirdi-hakem-bunu-nasil-7506134"
+          ],
+          "refereeComments": [
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Tartışmasız bir penaltı ve sarı kart. VAR müdahalesi gerekir. Hakemin bunu görmesine rağmen nasıl değerlendirmediğini bilmiyorum." },
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Kurtulmuş giden bir oyuncuyu çekmek çok net bir penaltıdır. Hakem buna penaltı verir, vermezse VAR müdahale eder." },
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Formadan tutma var, topun olduğu bölge, oyuncunun sonraki hamlesi etkileniyor. VAR kritik bir hataya imza atmış görünüyor." }
+          ],
+          "status": "APPROVED"
+        }
+      ]
     },
     {
       "week": 17,
@@ -25,8 +79,54 @@
       "homeTeam": "Galatasaray",
       "awayTeam": "Kasımpaşa",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 25,
+          "type": "VAR_CONTROVERSY",
+          "description": "Lucas Torreira'ya verilen ilk sarı kart gecenin en tartışmalı pozisyonu oldu. Eski hakemler sarı kart kararının yanlış olduğunu belirtti. Bülent Yıldırım: 'Rakibe kapsayıcı bir basma yok, ayak zemine basıyor. Asla sarı kart değil.' Bahattin Duran: 'Pozisyon faul ama umut vadeden atak olmadığı için sarı kart yanlış.' Deniz Çoban: 'Bence de sarı kart yanlış karar.'",
+          "confidenceScore": 0.9,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/eski-hakemler-galatasaray-kasimpasa-macinin-tartismali-pozisyonlarini-degerlendirdi-sari-kart-olmasi-7506760"
+          ],
+          "refereeComments": [
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Rakibe kapsayıcı bir basma yok, ayak zemine basıyor. Asla sarı kart değil." },
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Pozisyon faul ama umut vaadeden atak olmadığı için sarı kart yanlış." },
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Bence de sarı kart yanlış karar." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 28,
+          "type": "HANDBALL",
+          "description": "Davinson Sanchez'in ceza sahası dışındaki pozisyonda topa eliyle müdahale ettiği iddia edildi. Eski hakemler elle oynama kararı verilmesi ve Kasımpaşa'ya serbest vuruş verilmesi gerektiğini söyledi. Bülent Yıldırım: 'Gelişi doğal, kol topun olduğu yere doğru genişledi' diyerek hakemin kararını yanlış buldu. Bahattin Duran ve Deniz Çoban: 'Elle oynama kararı verilmesi gerekiyordu.'",
+          "confidenceScore": 0.85,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/eski-hakemler-galatasaray-kasimpasa-macinin-tartismali-pozisyonlarini-degerlendirdi-sari-kart-olmasi-7506760"
+          ],
+          "refereeComments": [
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Gelişi doğal, kol topun olduğu yere doğru genişledi hakemin kararı yanlış." },
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Davinson'un pozisyonda elle oynama kararı verilmesi gerekiyordu. Vücudu genişlediği için elle oynamadır. Kasımpaşa serbest vuruş kullanmalıydı." },
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Bence de elle oynama." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 32,
+          "type": "MISSED_RED_CARD",
+          "description": "Davinson el pozisyonundan hemen sonra Torreira'nın yaptığı müdahalede eski hakemler ikinci sarı kart verilip ihraç edilmesi gerektiğini söyledi. Bahattin Duran: 'Bu hareket çok net kontrolsüz bir basma. Çok net sarı kart olmalıydı. 2. sarı karttan ihraç olmalıydı Torreira.' Bülent Yıldırım: 'Bunun yüzde 100 ikinci sarı kart olduğunu söylememiz lazım.' Deniz Çoban: 'Bu hata önemli bir hata olarak kayıtlara geçti.'",
+          "confidenceScore": 0.9,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/eski-hakemler-galatasaray-kasimpasa-macinin-tartismali-pozisyonlarini-degerlendirdi-sari-kart-olmasi-7506760"
+          ],
+          "refereeComments": [
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Torreira ilk sarı kartı yanlış görmüştü ama bu hareket çok net kontrolsüz bir basma. Bu hareket çok net bir sarı kart olmalıydı. Dolayısıyla 2. sarı karttan ihraç olmalıydı Torreira." },
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Bunun yüzde 100 ikinci sarı kart olduğunu söylememiz lazım." },
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Hakem aslında bunun haricinde kabul edilebilir hatalarla maçı götürdü. Bu hata önemli bir hata olarak kayıtlara geçti." }
+          ],
+          "status": "APPROVED"
+        }
+      ]
     },
     {
       "week": 17,
@@ -34,8 +134,20 @@
       "homeTeam": "Gençlerbirliği",
       "awayTeam": "Trabzonspor",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 72,
+          "type": "GOAL_DISALLOWED",
+          "description": "Göktan Gürpüz'ün köşe vuruşundan sonra Metehan Mimaroğlu'nun kafayla indirdiği topu Franco Tongya ağlara gönderdi. Gol VAR tarafından ofsayt gerekçesiyle iptal edildi. Maç 4-3 Gençlerbirliği galibiyetiyle sonuçlandı.",
+          "confidenceScore": 0.8,
+          "sources": [
+            "https://www.sabah.com.tr/spor/futbol/2025/12/22/trabzonspor-deplasmanda-takildi-7-gollu-maci-genclerbirligi-kazandi"
+          ],
+          "refereeComments": [],
+          "status": "APPROVED"
+        }
+      ]
     }
   ]
 }

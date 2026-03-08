@@ -7,7 +7,7 @@
       "homeTeam": "Galatasaray",
       "awayTeam": "Eyüpspor",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
+      "note": "Tarama tamamlandi; belirgin tartismali hakem karari tespit edilmedi",
       "incidents": []
     },
     {
@@ -62,8 +62,22 @@
       "homeTeam": "İstanbul Başakşehir",
       "awayTeam": "Beşiktaş",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 74,
+          "type": "POSSIBLE_PENALTY",
+          "description": "Başakşehir oyuncusu Duarte ceza sahasında Salih Uçan'ın müdahalesiyle yerde kaldı. Başakşehir penaltı bekledi. Deniz Çoban (Fanatik hakem analizi) pozisyonu sınırda değerlendirdi: 'Salih'in rakibinin ayağına kazara bastığını düşünüyorum. Hakemin devam kararına hatalı diyemem.'",
+          "confidenceScore": 0.65,
+          "sources": [
+            "https://www.fanatik.com.tr/futbol/galeri-ikinci-sari-kart-ve-ihrac-gerekiyordu-22-haftanin-hakem-raporu-aciklandi-varin-mudahalesi-beklenmez-2612604"
+          ],
+          "refereeComments": [
+            { "author": "Deniz Çoban (Fanatik)", "text": "Sınırda bir pozisyondu. Salih'in rakibinin ayağına kazara bastığını düşünüyorum. Hakemin devam kararına hatalı diyemem." }
+          ],
+          "status": "APPROVED"
+        }
+      ]
     }
   ]
 }

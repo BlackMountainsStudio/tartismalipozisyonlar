@@ -7,8 +7,23 @@
       "homeTeam": "Galatasaray",
       "awayTeam": "Fatih Karagümrük",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 10,
+          "type": "FOUL",
+          "description": "Barış Alper Yılmaz'ın golü öncesi savunmacıya yaptığı elle itme müdahalesi Trio ekibi tarafından faul olarak değerlendirildi. Bülent Yıldırım: 'Temiz bir gol olduğunu söyleyemem. Barış Alper'in elle itme müdahalesi faul.' Bahattin Duran: 'Barış Alper Karagümrüklü oyuncuyu eliyle itti, faul.' Deniz Çoban: 'Benim açımdan bu pozisyon net bir faul.'",
+          "confidenceScore": 0.88,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/galatasaray-karagumruk-macinda-tartisma-yaratan-pozisyon-eski-hakemler-degerlendirdi-temiz-bir-gol-degil-7427735"
+          ],
+          "refereeComments": [
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Temiz bir gol olduğunu söyleyemem. Elle itme müdahalesi faul." },
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Bu pozisyon net bir faul." }
+          ],
+          "status": "APPROVED"
+        }
+      ]
     },
     {
       "week": 2,
@@ -16,7 +31,7 @@
       "homeTeam": "Göztepe",
       "awayTeam": "Fenerbahçe",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
+      "note": "Tarama tamamlandı; belirgin tartışmalı hakem kararı tespit edilmedi",
       "incidents": []
     },
     {
@@ -25,7 +40,7 @@
       "homeTeam": "Beşiktaş",
       "awayTeam": "Eyüpspor",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
+      "note": "Tarama tamamlandı; belirgin tartışmalı hakem kararı tespit edilmedi",
       "incidents": []
     },
     {
@@ -34,8 +49,20 @@
       "homeTeam": "Kasımpaşa",
       "awayTeam": "Trabzonspor",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 64,
+          "type": "MISSED_RED_CARD",
+          "description": "Paul Onuachu dengesini kaybederek yere düştüğü esnada Kasımpaşalı Opoku, Nijeryalı futbolcunun aşil tendonuna bastı. Hakem Cihan Aydın kart çıkarmadı. Sosyal medyada ve camiada tartışmalara sebep oldu. Maçta ayrıca Kasımpaşa oyuncularının sert müdahalelerine kart verilmemesi, Trabzonspor atağının kesilmesi eleştirildi.",
+          "confidenceScore": 0.85,
+          "sources": [
+            "https://www.yenisafak.com/foto-galeri/spor/kasimpasa-trabzonspor-macinda-tartisma-cikaran-pozisyon-4740736",
+            "https://www.takagazete.com.tr/kasimpasa-trabzonspor-macinda-hakem-skandali-cihan-aydin-kararlariyla-tepki-cekti"
+          ],
+          "status": "APPROVED"
+        }
+      ]
     }
   ]
 }

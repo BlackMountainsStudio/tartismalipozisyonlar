@@ -7,8 +7,38 @@
       "homeTeam": "Antalyaspor",
       "awayTeam": "Galatasaray",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 55,
+          "type": "POSSIBLE_PENALTY",
+          "description": "İkinci yarıda Jakobs'un eline çarpan topta Antalyaspor penaltı bekledi. Hakem devam kararı verdi. beIN Trio'da eski hakemler kararı doğru buldu. Bülent Yıldırım: 'Jakobs doğal konumda, karar doğru.' Deniz Çoban: 'Farklı bir skor olsa çok tartışılacak bir pozisyondu. Oyuncunun ayağından sekiyor ve doğal konumda eli.' Bahattin Duran: 'Vücudu doğal, eli en doğal pozisyonda, devam kararı doğru.'",
+          "confidenceScore": 0.85,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/antalyaspor-galatasaray-macinin-ardindan-trioda-penalti-degerlendirmesi-farkli-skor-olsa-cok-tartisilirdi-7501575"
+          ],
+          "refereeComments": [
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Jakobs doğal konumda, bence karar doğru." },
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Farklı bir skor olsa çok tartışılacak bir pozisyondu. Oyuncunun ayağından sekiyor ve doğal konumda eli, elle oynama düşünülemez." },
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Vücudu doğal, eli olabilecek en doğal konumda, devam kararı doğru." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 75,
+          "type": "POSSIBLE_PENALTY",
+          "description": "Kazımcan'ın eline dokunan topta Galatasaray penaltı bekledi. Hakem devam kararı verdi. Trio ekibi kararı doğru buldu. Bahattin Duran: 'Kazımcan kolay bir şekilde eli düşmüş, bir ihlal yok.' Bülent Yıldırım: 'Daha kuvvetli bir darbe olsa penaltı derdim. Bu haliyle devam.'",
+          "confidenceScore": 0.88,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/antalyaspor-galatasaray-macinin-ardindan-trioda-penalti-degerlendirmesi-farkli-skor-olsa-cok-tartisilirdi-7501575"
+          ],
+          "refereeComments": [
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Hissedince eli Kazımcan burada kolay bir şekilde düşmüş. Bir ihlal görmüyorum. Devam kararı doğru." },
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Eğer el çok kuvvetli ve şiddet içererek itmiş olsaydı penaltı derdim. Bu haliyle devam." }
+          ],
+          "status": "APPROVED"
+        }
+      ]
     },
     {
       "week": 16,
@@ -16,6 +46,7 @@
       "homeTeam": "Trabzonspor",
       "awayTeam": "Beşiktaş",
       "league": "Süper Lig 2025-26",
+      "note": null,
       "incidents": [
         {
           "minute": 36,
@@ -49,8 +80,25 @@
       "homeTeam": "Fenerbahçe",
       "awayTeam": "Konyaspor",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 23,
+          "type": "PENALTY",
+          "description": "Jhon Duran ceza sahasında Uğurcan Yazgılı'nın müdahalesiyle yerde kaldı. Hakem Ozan Ergün başlangıçta devam kararı verdi, VAR uyarısı sonrası monitöre giderek penaltı kararı verdi. Anderson Talisca penaltıyı 28. dakikada gole çevirdi. beIN Trio penaltı kararının doğru olduğunda hemfikirdi. Bahattin Duran: 'Bu pozisyon penaltı. VAR müdahalesi de doğru.' Deniz Çoban: 'Bu pozisyon kaçabilecek bir pozisyon değil.' Bülent Yıldırım: 'Çok net bir penaltı.'",
+          "confidenceScore": 0.9,
+          "sources": [
+            "https://www.ntvspor.net/foto-galeri/trio-ekibi-fenerbahce-konyaspor-macini-yorumladi-penalti-karari-dogru-mu-414520",
+            "https://www.fotomac.com.tr/fenerbahce/2025/12/15/fenerbahce-tumosan-konyaspor-macinda-penalti-karari-iste-o-pozisyon"
+          ],
+          "refereeComments": [
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Bu pozisyon penaltı. VAR müdahalesi de doğru." },
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Bu pozisyon kaçabilecek bir pozisyon değil." },
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Çok net bir penaltı." }
+          ],
+          "status": "APPROVED"
+        }
+      ]
     }
   ]
 }

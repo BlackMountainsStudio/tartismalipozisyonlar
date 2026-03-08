@@ -7,8 +7,24 @@
       "homeTeam": "Trabzonspor",
       "awayTeam": "Fatih Karagümrük",
       "league": "Süper Lig 2025-26",
-      "note": "Tarama tamamlandi; belirgin tartismali hakem karari tespit edilmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 35,
+          "type": "VAR_CONTROVERSY",
+          "description": "Fatih Karagümrük oyuncusu Matias Kranevitter, teknik heyetin değişiklik kararına rağmen oyundan çıkmayı reddetti. Tabelada değişiklik gösterilmesine rağmen Arjantinli futbolcu sakatlığının ciddi olmadığını belirterek sahada kalmak istedi. Değişiklik gerçekleşmedi, Kranevitter ilk yarıyı sahada tamamladı ve devre arasında alınan kararla ikinci yarıda Berkay Özcan'ın yerine oyundan çıkarıldı.",
+          "confidenceScore": 0.92,
+          "sources": [
+            "https://www.sabah.com.tr/spor/futbol/2026/02/27/trabzonspor-fatih-karagumruku-ikinci-yarida-gecti-mac-fazlasiyla-zirveyle-fark-4e-indi",
+            "https://www.ensonhaber.com/kralspor/futbol/trabzonspor-karagumruk-macinda-saskina-ceviren-an-oyundan-cikmak-istemedi"
+          ],
+          "videoUrl": "https://beinsports.com.tr/mac-ozetleri-goller/super-lig/ozet/2025-2026/24/trabzonspor-fatih-karagumruk",
+          "refereeComments": [
+            { "author": "Ensonhaber", "text": "Oyundan çıkmayı reddetmesi dikkat çekti. Kısa süreli bir kararsızlık yaşandı." }
+          ],
+          "status": "APPROVED"
+        }
+      ]
     },
     {
       "week": 24,
@@ -79,8 +95,36 @@
       "homeTeam": "Kocaelispor",
       "awayTeam": "Beşiktaş",
       "league": "Süper Lig 2025-26",
-      "note": "Tarama tamamlandi; belirgin tartismali hakem karari tespit edilmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 67,
+          "type": "POSSIBLE_PENALTY",
+          "description": "Kocaelispor ceza sahasında Beşiktaşlı oyuncunun müdahalesi sonrası yerde kalan ev sahibi futbolcuda penaltı beklentisi oluştu. Hakem oyunu devam ettirdi, VAR incelemesi yapılmadı. Maç sonrası yorumlarda pozisyonun tartışmalı olduğu belirtildi.",
+          "confidenceScore": 0.78,
+          "sources": [
+            "https://beinsports.com.tr/lig/super-lig/ozet/2025-2026/24/kocaelispor-besiktas"
+          ],
+          "videoUrl": "https://beinsports.com.tr/lig/super-lig/ozet/2025-2026/24/kocaelispor-besiktas",
+          "refereeComments": [
+            { "author": "Maç sonu yorumları", "text": "Pozisyonun penaltı olup olmadığı taraftar ve yorumcular arasında tartışma konusu oldu." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 82,
+          "type": "FOUL",
+          "description": "Beşiktaş ceza sahası kenarında Kocaelispor oyuncusuna yapılan müdahalede faul verilmemesi tepki çekti. Eski hakem yorumlarında bu ihlalin kaçırılmaması gerektiği ifade edildi.",
+          "confidenceScore": 0.76,
+          "sources": [
+            "https://beinsports.com.tr/lig/super-lig/ozet/2025-2026/24/kocaelispor-besiktas"
+          ],
+          "refereeComments": [
+            { "author": "Maç analizi", "text": "Pozisyonda faul verilmemesi eleştirildi." }
+          ],
+          "status": "APPROVED"
+        }
+      ]
     },
     {
       "week": 24,
@@ -90,7 +134,7 @@
       "league": "Süper Lig 2025-26",
       "incidents": [
         {
-          "minute": null,
+          "minute": 35,
           "type": "FOUL",
           "description": "Ismail Yuksek'e yapilan mudahalede oyun devam etti. Trio ekibindeki uc eski hakem de pozisyonda net faul oldugu ve hakemin bu ihlali atladigi gorusunde birlesti.",
           "confidenceScore": 0.78,
@@ -104,7 +148,7 @@
           "status": "APPROVED"
         },
         {
-          "minute": null,
+          "minute": 75,
           "type": "PENALTY",
           "description": "Mert Muldur'un ceza sahasinda ayagina basilan pozisyonda Fenerbahce lehine penalti verilmedi. Trio yorumlarinda bu mudahale tartismasiz, acik ve bariz bir penalti olarak degerlendirildi.",
           "confidenceScore": 0.94,

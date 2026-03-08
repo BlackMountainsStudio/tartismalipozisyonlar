@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { incidentUrl } from "@/lib/links";
-import { Clock, AlertTriangle, ShieldAlert, Eye, Flag, ChevronRight, Video } from "lucide-react";
+import { AlertTriangle, ShieldAlert, Eye, Flag, ChevronRight, Video } from "lucide-react";
 import ConfidenceBadge from "./ConfidenceBadge";
 import { getVideoLinkLabel } from "@/lib/linkLabels";
 
@@ -79,6 +79,11 @@ export default function IncidentCard({
       <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
         <div className="flex items-center gap-2">
           <span className="text-amber-400">{typeInfo.icon}</span>
+          {minute != null && (
+            <span className="rounded bg-zinc-800 px-1.5 py-0.5 text-xs font-medium text-zinc-300">
+              {minute}&apos;
+            </span>
+          )}
           <span className="font-semibold text-white">{typeInfo.label}</span>
         </div>
         <div className="flex items-center gap-2">
@@ -92,15 +97,9 @@ export default function IncidentCard({
         </div>
       </div>
 
-      {(minute || matchInfo) && (
+      {matchInfo && (
         <div className="mb-3 flex items-center gap-3 text-sm text-zinc-400">
-          {minute && (
-            <span className="flex items-center gap-1">
-              <Clock className="h-3.5 w-3.5" />
-              {minute}&apos;
-            </span>
-          )}
-          {matchInfo && <span>{matchInfo}</span>}
+          <span>{matchInfo}</span>
         </div>
       )}
 

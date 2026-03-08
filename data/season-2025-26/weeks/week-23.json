@@ -7,8 +7,39 @@
       "homeTeam": "Konyaspor",
       "awayTeam": "Galatasaray",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 50,
+          "type": "GOAL_DISALLOWED",
+          "description": "Leroy Sane'nin attığı gol VAR incelemesi sonrası ofsayt gerekçesiyle iptal edildi. VAR hakemi Davut Dakul Çelik müdahale etti. beIN Trio'daki üç eski hakem kararı doğru bulmadı: Bülent Yıldırım 'subjektif ofsayt, VAR karışmamalıydı', Deniz Çoban 'ofsayt olduğunu düşünmüyorum, VAR devreye girmemeliydi', Bahattin Duran 'UEFA standartlarında bu pozisyona müdahale edilmez' dedi. Galatasaray kulübü kararı skandal olarak nitelendirdi.",
+          "confidenceScore": 0.88,
+          "sources": [
+            "https://www.haber3.com/spor/futbol/trendyol-super-lig/konyaspor-galatasaray-macindaki-ofsayt-karari-dogru-mu-haberi-6248824",
+            "https://uye.turkiyegazetesi.com.tr/spor/iptal-edilen-gol-tartismasi-hakemler-penalti-faul-ve-ofsayti-degerlendirdi-1772555"
+          ],
+          "refereeComments": [
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Bu subjektif bir ofsayt yorumu. Hakem golü vermişken VAR'ın karışmaması gerekiyordu. İptal kararı doğru değil." },
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Ofsayt olduğunu düşünmüyorum. VAR protokolü gereği devreye girmemeliydi." },
+            { "author": "Bahattin Duran (beIN Trio)", "text": "UEFA standartlarında bu pozisyona müdahale edilmez. Sahadaki karar geçerli kalmalıydı." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 50,
+          "type": "FOUL",
+          "description": "Gol öncesi sekansta Sacha Boey'in Olaigbe'ye orta sahadaki müdahalesinde faul tartışması yaşandı. Bahattin Duran 'Boey istemeden de olsa faul yapıyor, devam kararı yanlıştı' derken Deniz Çoban 'hakemin devam kararını doğru buluyorum, yoruma açık bir pozisyon' dedi.",
+          "confidenceScore": 0.72,
+          "sources": [
+            "https://www.haber3.com/spor/futbol/trendyol-super-lig/konyaspor-galatasaray-macindaki-ofsayt-karari-dogru-mu-haberi-6248824"
+          ],
+          "refereeComments": [
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Boey istemeden de olsa faul yapıyor, devam kararı yanlıştı." },
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Hakemin devam kararını doğru buluyorum, yoruma açık bir pozisyon." }
+          ],
+          "status": "APPROVED"
+        }
+      ]
     },
     {
       "week": 23,
@@ -34,8 +65,39 @@
       "homeTeam": "Fenerbahçe",
       "awayTeam": "Kasımpaşa",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 58,
+          "type": "VAR_CONTROVERSY",
+          "description": "Marco Asensio topun taç çizgisinden çıktığını düşünerek bırakınca top saha içinde kaldı, Kamil Ahmet ana topla pas verince saha içinde iki top belirdi. Hakem Yasin Kol oyunu durdurmadı ve oyun devam etti. Aynı pozisyonda Fenerbahçe Levent Mercan'ın yerde kalmasıyla penaltı bekledi, hakem devam dedi. beIN Trio: Bahattin Duran 'hakemin en büyük hatası, maçın devam etmesi kabul edilemez', Bülent Yıldırım 'maçın kontrolünün olmadığı anlardan biri, amatör kümede bile görmediğim kare' dedi.",
+          "confidenceScore": 0.94,
+          "sources": [
+            "https://www.ensonhaber.com/kralspor/futbol/fenerbahce-kasimpasa-macinin-tartismali-pozisyonlarini-eski-hakemler-yorumladi",
+            "https://www.hurriyet.com.tr/sporarena/fenerbahce-kasimpasa-macinda-sahalarda-ender-rastlanacak-anlar-kimse-anlayamadi-iki-topla-oynanirken-penalti-beklediler-43114918"
+          ],
+          "refereeComments": [
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Hakemin maçın yönetimi ile ilgili yaptığı en büyük hata. Sahada 2 top var. Maçın devam etmesi kabul edilemez." },
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Maçın kontrolünün olmadığı anlardan birisiydi. Oyunun devam etmesini kabul etmek mümkün değil. Amatör kümede bile uzun süredir görmediğim bir kare." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 62,
+          "type": "POSSIBLE_PENALTY",
+          "description": "Nene'nin ceza sahasında yerde kaldığı pozisyonda Fenerbahçe penaltı talep etti. Deniz Çoban 'ayağa yapılan temasın sonraki hamleyi etkilediğini düşünüyorum, penaltı verilse daha doğru olurdu' derken Bülent Yıldırım ve Bahattin Duran devam kararını doğru buldu.",
+          "confidenceScore": 0.68,
+          "sources": [
+            "https://www.ensonhaber.com/kralspor/futbol/fenerbahce-kasimpasa-macinin-tartismali-pozisyonlarini-eski-hakemler-yorumladi"
+          ],
+          "refereeComments": [
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Yere destek olacak ayağına yapılan temasın sonraki hamleyi etkilediğini düşünüyorum. Penaltı verilse çok daha doğru olurdu." },
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Doğal aksiyon içinde iki ayak arasında temas. Devam kararını doğru buluyorum." },
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Yoruma açık pozisyon. Ben penaltı için yeterli olmadığını düşünüyorum." }
+          ],
+          "status": "APPROVED"
+        }
+      ]
     }
   ]
 }

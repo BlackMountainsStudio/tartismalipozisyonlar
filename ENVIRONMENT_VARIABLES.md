@@ -65,9 +65,62 @@ Value: güçlü-şifre-buraya
 
 ---
 
+### 4. AUTH_SECRET
+
+**Ne işe yarar:** NextAuth oturum şifrelemesi (zorunlu)
+
+**Nasıl oluşturulur:**
+```bash
+openssl rand -base64 32
+```
+
+**Railway/Render'da ekle:**
+```
+Name: AUTH_SECRET
+Value: üretilen-32-karakter-secret
+```
+
+---
+
+### 5. Google & Facebook OAuth (Giriş seçenekleri)
+
+**Ne işe yarar:** Google ve Facebook ile giriş yapma
+
+**Google OAuth kurulumu:**
+1. https://console.cloud.google.com → APIs & Services → Credentials
+2. "Create Credentials" → "OAuth client ID"
+3. Application type: Web application
+4. Authorized redirect URIs: `https://varodasi.com/api/auth/callback/google` (ve localhost:3000 için test)
+5. Client ID ve Client Secret'ı kopyalayın
+
+**Facebook OAuth kurulumu:**
+1. https://developers.facebook.com → My Apps → Create App
+2. Use case: Consumer
+3. Facebook Login → Settings → Valid OAuth Redirect URIs: `https://varodasi.com/api/auth/callback/facebook`
+4. App ID ve App Secret'ı kopyalayın
+
+**Railway/Render'da ekle:**
+```
+Name: AUTH_GOOGLE_ID
+Value: xxx.apps.googleusercontent.com
+
+Name: AUTH_GOOGLE_SECRET
+Value: xxx
+
+Name: AUTH_FACEBOOK_ID
+Value: xxx
+
+Name: AUTH_FACEBOOK_SECRET
+Value: xxx
+```
+
+**Not:** Bu değişkenler tanımlı değilse Google/Facebook butonları gizlenir. E-posta ile giriş her zaman çalışır.
+
+---
+
 ## 📋 Opsiyonel Değişkenler
 
-### 4. QDRANT_URL
+### 6. QDRANT_URL
 
 **Ne işe yarar:** Vector database (AI clustering için)
 
@@ -81,7 +134,7 @@ Value: http://localhost:6333
 
 ---
 
-### 5. REDDIT_CLIENT_ID, REDDIT_CLIENT_SECRET, etc.
+### 7. REDDIT_CLIENT_ID, REDDIT_CLIENT_SECRET, etc.
 
 **Ne işe yarar:** Reddit crawler için
 
@@ -102,7 +155,7 @@ Value: xxx
 
 ---
 
-### 6. NODE_ENV
+### 8. NODE_ENV
 
 **Ne işe yarar:** Production modu
 
@@ -114,7 +167,7 @@ Value: production
 
 ---
 
-### 7. LOG_LEVEL
+### 9. LOG_LEVEL
 
 **Ne işe yarar:** Log seviyesi
 
@@ -152,6 +205,9 @@ En az şunlar eklenmeli:
 - ✅ `DATABASE_URL`
 - ✅ `OPENAI_API_KEY`
 - ✅ `ADMIN_SECRET`
+- ✅ `AUTH_SECRET`
+
+Google/Facebook giriş için: `AUTH_GOOGLE_ID`, `AUTH_GOOGLE_SECRET`, `AUTH_FACEBOOK_ID`, `AUTH_FACEBOOK_SECRET`
 
 Diğerleri opsiyonel!
 

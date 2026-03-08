@@ -7,8 +7,52 @@
       "homeTeam": "Galatasaray",
       "awayTeam": "Trabzonspor",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 25,
+          "type": "VAR_CONTROVERSY",
+          "description": "Osimhen'in penaltı beklediği pozisyonda hakem kale vuruşu verdi. Eski hakemler köşe vuruşu olması gerektiğini söyledi. Bülent Yıldırım: 'Hakem köşe vuruşu mu kale vuruşu mu diye odaklanırken penaltı beklentisini düşünemeden hemen kale vuruşunu gösterdi, yanlış. Zaten pozisyon da korner.' Bahattin Duran: 'Penaltıdan bahsedilemez. Köşe vuruşu olmalıydı. Hakemin vücut dili çok yanlış.' Deniz Çoban: 'İlk başta penaltı çaldı zannettim. Ama bu pozisyon korner.'",
+          "confidenceScore": 0.88,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/galatasaray-trabzonspor-macinda-penalti-beklenen-pozisyonlarda-kararlar-dogru-mu-eski-hakemler-degerlendirdi-7475412"
+          ],
+          "refereeComments": [
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Hakem köşe vuruşu mu kale vuruşu mu diye odaklanırken penaltı beklentisini düşünemeden kale vuruşunu gösterdi. Zaten pozisyon korner." },
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Penaltıdan bahsedilemez. Köşe vuruşu olmalıydı. Hakemin vücut dili çok yanlış." },
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Bu pozisyon korner." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 55,
+          "type": "POSSIBLE_PENALTY",
+          "description": "Gabriel Sara'nın eline gelen topta Trabzonspor penaltı bekledi. Hakem devam kararı verdi. Eski hakemler kararı doğru buldu. Bülent Yıldırım: 'Yakın mesafeden gelen top koluyla bedeni arasına sıkışmış, net devam.' Bahattin Duran: 'Sağ eli doğal konumunda değil ama oraya değse penaltı diyebilirdik. Devam kararı doğru.'",
+          "confidenceScore": 0.85,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/galatasaray-trabzonspor-macinda-penalti-beklenen-pozisyonlarda-kararlar-dogru-mu-eski-hakemler-degerlendirdi-7475412"
+          ],
+          "refereeComments": [
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Devam kararı doğru. Yakın mesafeden gelen top koluyla bedeni arasına sıkışmış." },
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Benim için de devam kararı doğru." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 70,
+          "type": "RED_CARD",
+          "description": "Bouchouari'nin kontrolsüz müdahalesi sonrası kırmızı kart gördü. Eski hakemler kararı doğru buldu. Bülent Yıldırım: 'Kesinlikle kırmızı kart. O ayağın orada hiçbir işi yok.' Bahattin Duran: 'Hareket kırmızı kart. Yardımcı hakem sarıdan kırmızıya çevirtiyorsa alkışlamak lazım.'",
+          "confidenceScore": 0.92,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/galatasaray-trabzonspor-macinda-penalti-beklenen-pozisyonlarda-kararlar-dogru-mu-eski-hakemler-degerlendirdi-7475412"
+          ],
+          "refereeComments": [
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Kesinlikle kırmızı kart. O ayağın orada hiçbir işi yok." },
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Hareket kırmızı kart." }
+          ],
+          "status": "APPROVED"
+        }
+      ]
     },
     {
       "week": 11,
@@ -16,26 +60,46 @@
       "homeTeam": "Beşiktaş",
       "awayTeam": "Fenerbahçe",
       "league": "Süper Lig 2025-26",
+      "note": null,
       "incidents": [
         {
-          "minute": 45,
-          "type": "PENALTY",
-          "description": "Kerem Aktürkoğlu'nun ceza sahasında Salih Uçan ile yaşadığı pozisyonda Fenerbahçe lehine penaltı beklendi. Trio ve eski hakem yorumlarında penaltı verilmemesi ciddi hata olarak değerlendirildi.",
-          "confidenceScore": 0.89,
+          "minute": 13,
+          "type": "FOUL",
+          "description": "Oosterwolde'nin Rafa Silva'ya yaptığı sert faulde sarı kart verilmedi. Eski hakemler dünyanın her yerinde net sarı kart olduğunu söyledi.",
+          "confidenceScore": 0.9,
           "sources": [
-            "https://www.haberler.com/spor/derbinin-tartismali-pozisyonlarini-trio-yorumladi-19212658-haberi/",
             "https://www.cumhuriyet.com.tr/spor/eski-hakemler-besiktas-fenerbahce-macini-yorumladi-hakem-sinifta-kaldi-2449272"
+          ],
+          "refereeComments": [],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 41,
+          "type": "PENALTY",
+          "description": "Kerem Aktürkoğlu'nun ceza sahasında Salih Uçan ile yaşadığı pozisyonda Fenerbahçe penaltı bekledi. Salih ayağını vuruş yoluna koydu. Eski hakemler net penaltı olması gerektiğini söyledi. Bahattin Duran: 'Pozisyon benim için net penaltı. Salih ayağını önüne koydu, vuruşunu etkiledi.' Bülent Yıldırım: 'Bu pozisyon penaltı. Hakem sınıfta kaldı. VAR'ın müdahale edebileceği bir pozisyon.' Deniz Çoban: 'Şüphe götürmeyecek kadar penaltı. Savrulan ayağın önüne ayağınızı koyamazsınız.'",
+          "confidenceScore": 0.92,
+          "sources": [
+            "https://www.cumhuriyet.com.tr/spor/eski-hakemler-besiktas-fenerbahce-macini-yorumladi-hakem-sinifta-kaldi-2449272"
+          ],
+          "refereeComments": [
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Pozisyon benim için net penaltı. Salih ayağını önüne koydu, vuruşunu etkiledi." },
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Bu pozisyon penaltı. Hakem sınıfta kaldı. VAR'ın müdahale edebileceği bir pozisyon." },
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Şüphe götürmeyecek kadar penaltı. Savrulan ayağın önüne ayağınızı koyamazsınız." }
           ],
           "status": "APPROVED"
         },
         {
-          "minute": 90,
+          "minute": 94,
           "type": "PENALTY",
-          "description": "Uzatmada Beşiktaş lehine ceza sahası içindeki itme müdahalesinde penaltı beklendi. Maç sonu yorumlarında açık penaltı ve kırmızı kart ihtimali öne çıkarıldı.",
-          "confidenceScore": 0.83,
+          "description": "90+4. dakikada Gökhan Güleryüz'ün Jhon Duran'ı ceza sahasında itmesi. Fenerbahçe penaltı bekledi. Eski hakemler penaltı ve kırmızı kart olması gerektiğini söyledi. Bahattin Duran: 'Ceza sahasında itmenin karşılığı penaltı. En doğru karar penaltı olması gerektiğini düşünüyorum.' Bülent Yıldırım: 'Tam vuruşu hazırlanırken bir el geldi ve bozdu. Sarı kart ve penaltı.' Deniz Çoban: 'Buna net penaltı diyorum. Penaltıyı verse kırmızı da çıkabilir.'",
+          "confidenceScore": 0.9,
           "sources": [
-            "https://www.haberler.com/spor/derbinin-tartismali-pozisyonlarini-trio-yorumladi-19212658-haberi/",
-            "http://www.hurriyet.com.tr/sporarena/besiktas-fenerbahce-derbisinin-hakem-kararlarini-firat-aydinus-tek-tek-inceledi-sergen-yalcin-ve-orkuna-cikan-kirmizi-kartlar-43005875"
+            "https://www.cumhuriyet.com.tr/spor/eski-hakemler-besiktas-fenerbahce-macini-yorumladi-hakem-sinifta-kaldi-2449272"
+          ],
+          "refereeComments": [
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Ceza sahasında itmenin karşılığı penaltı. En doğru karar penaltı olması gerektiğini düşünüyorum." },
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Tam vuruşu hazırlanırken bir el geldi ve bozdu. Sarı kart ve penaltı." },
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Buna net penaltı diyorum. Penaltıyı verse kırmızı da çıkabilir." }
           ],
           "status": "APPROVED"
         }

@@ -7,7 +7,7 @@
       "homeTeam": "Trabzonspor",
       "awayTeam": "Eyüpspor",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
+      "note": "Tarama tamamlandi; belirgin tartismali hakem karari tespit edilmedi",
       "incidents": []
     },
     {
@@ -16,8 +16,52 @@
       "homeTeam": "Galatasaray",
       "awayTeam": "Göztepe",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 25,
+          "type": "VAR_CONTROVERSY",
+          "description": "Osimhen'in attığı golde VAR incelemesi yapıldı. Eski hakemler ofsayt olmadığını, Göztepe oyuncusunun geri pas yaptığını söyledi. Deniz Çoban: 'Çizgi çizilecek bir ofsayt bile yok. VAR incelemesi neden yapıldı? İş birliği olacak iş değil.' Bahattin Duran: 'Göztepeli oyuncu geri pas yapıyor. İş birliği açısından skandal.'",
+          "confidenceScore": 0.92,
+          "sources": [
+            "https://www.ntvspor.net/foto-galeri/trio-ekibi-skandal-dedi-galatasaray-goztepe-macinin-tartismali-pozisyonlarini-yorumladi-411752",
+            "https://www.milliyet.com.tr/skorer/galatasaray-goztepe-macinda-tartisma-yaratan-karar-kirmizi-kart-dogru-mu-7471721"
+          ],
+          "refereeComments": [
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Çizgi çizilecek bir ofsayt bile yok. VAR incelemesi neden yapıldı? İş birliği olacak iş değil." },
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Göztepeli oyuncu geri pas yapıyor. İş birliği açısından skandal." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 50,
+          "type": "POSSIBLE_PENALTY",
+          "description": "Osimhen'in penaltı beklediği pozisyonda hakem devam kararı verdi. Eski hakemler penaltı olmadığını, Osimhen'in hakemi aldatmaya yönelik hareket yaptığını söyledi. Bahattin Duran: 'Bir ihlal yok. Hakemi aldatmaya yönelik hareket. Osimhen'in sarı kart görmesi gerekiyordu.' Bülent Yıldırım: 'Temas var da teması yapan Osimhen. Penaltı kesinlikle söz konusu değil.'",
+          "confidenceScore": 0.88,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/galatasaray-goztepe-macinda-tartisma-yaratan-karar-kirmizi-kart-dogru-mu-7471721"
+          ],
+          "refereeComments": [
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Bir ihlal yok. Hakemi aldatmaya yönelik hareket. Osimhen'in sarı kart görmesi gerekiyordu." },
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Temas var da teması yapan Osimhen. Penaltı kesinlikle söz konusu değil." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 75,
+          "type": "RED_CARD",
+          "description": "Bokele'nin Osimhen ile mücadelede kontrolsüz kol hareketi sonrası ikinci sarı karttan kırmızı gördü. Eski hakemler önce Osimhen'in faul yaptığını ancak Bokele'nin kontrolsüz hareketinin sarı kart gerektirdiğini söyledi. Deniz Çoban: 'Kolu kaldırıyor ve kontrolsüz şekilde götürüyor. En doğru karar Göztepe lehine faul, Bokele 2. sarı kırmızı. Tek sorun faul ters tarafa veriliyor.' Bülent Yıldırım: 'İlk faulü Osimhen yapıyor. Bokele'nin 2. sarı kartında şüphe yok.'",
+          "confidenceScore": 0.85,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/galatasaray-goztepe-macinda-tartisma-yaratan-karar-kirmizi-kart-dogru-mu-7471721"
+          ],
+          "refereeComments": [
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Kontrolsüz şekilde kolu götürüyor. Net sarı kart. Öncesinde Osimhen faul yapıyor. En doğru karar Göztepe lehine faul, Bokele 2. sarı kırmızı." },
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "İlk faulü Osimhen yapıyor. Bokele'nin 2. sarı kartında şüphe yok." }
+          ],
+          "status": "APPROVED"
+        }
+      ]
     },
     {
       "week": 10,
@@ -25,8 +69,53 @@
       "homeTeam": "Kasımpaşa",
       "awayTeam": "Beşiktaş",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 55,
+          "type": "VAR_CONTROVERSY",
+          "description": "El Bilal Toure'nin hakemden izin almadan oyun alanından çıkması. Eski hakemler sarı kart görmesi gerektiğini söyledi. Deniz Çoban: 'Hakemden izin almadan gidiyor. Sarı kart görmesi gerekiyor.' Bahattin Duran: 'El Bilal Toure işaret ediyor, hakem tamamen baraj ile ilgileniyor.' Bülent Yıldırım: 'Sarı kartı görmesi gerekirdi.'",
+          "confidenceScore": 0.88,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/galatasaray-goztepe-macinda-tartisma-yaratan-karar-kirmizi-kart-dogru-mu-7471721"
+          ],
+          "refereeComments": [
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Hakemden izin almadan gidiyor. Sarı kart görmesi gerekiyor." },
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Sarı kartı görmesi gerekirdi." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 31,
+          "type": "PENALTY",
+          "description": "Tammy Abraham'ın Opoku'nun müdahalesiyle yerde kaldığı pozisyonda Beşiktaş penaltı kazandı. Abraham penaltıyı kaçırdı. Eski hakemler penaltı kararını doğru buldu ancak Opoku'ya sarı kart verilmediğini eleştirdi. Bahattin Duran: 'Net penaltı. Opoku'nun kart görmesi gerekiyor.' Bülent Yıldırım: 'Sarı kart %100. Penaltı ile sarı kart gerekirdi. Hakem ciddi hata yaptı.'",
+          "confidenceScore": 0.9,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/galatasaray-goztepe-macinda-tartisma-yaratan-karar-kirmizi-kart-dogru-mu-7471721",
+            "https://www.hurriyet.com.tr/sporarena/kasimpasa-besiktas-macina-damga-vuran-sekans-4-dakikada-her-sey-oldu-kacan-penalti-gol-ve-var-42997557"
+          ],
+          "refereeComments": [
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Net penaltı. Opoku'nun kart görmesi gerekiyor." },
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Sarı kart %100. Penaltı ile sarı kart gerekirdi. Hakem ciddi hata yaptı." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 35,
+          "type": "POSSIBLE_PENALTY",
+          "description": "Rıdvan'ın müdahalesiyle Cafu'nun yerde kaldığı pozisyonda Kasımpaşa penaltı kazandı. VAR incelemesi sonrası hakem penaltıyı iptal etti. Eski hakemler iptal kararını doğru buldu, Cafu'nun penaltı almak için atladığını söyledi. Ancak Cafu'ya sarı kart verilmediğini eleştirdiler. Deniz Çoban: 'Oyuncunun kendini penaltı almak için atladığı belli. Cafu'ya cezasını neden vermiyorsunuz?' Bülent Yıldırım: 'VAR maçı kurtardı ancak Cafu'nun da sarı kart görmesi gerekirdi.'",
+          "confidenceScore": 0.9,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/galatasaray-goztepe-macinda-tartisma-yaratan-karar-kirmizi-kart-dogru-mu-7471721",
+            "https://www.hurriyet.com.tr/sporarena/kasimpasa-besiktas-macina-damga-vuran-sekans-4-dakikada-her-sey-oldu-kacan-penalti-gol-ve-var-42997557"
+          ],
+          "refereeComments": [
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Oyuncunun kendini penaltı almak için atladığı belli. Cafu'ya cezasını neden vermiyorsunuz?" },
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "VAR maçı kurtardı ancak Cafu'nun da sarı kart görmesi gerekirdi." }
+          ],
+          "status": "APPROVED"
+        }
+      ]
     },
     {
       "week": 10,
@@ -34,8 +123,20 @@
       "homeTeam": "Gaziantep",
       "awayTeam": "Fenerbahçe",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 86,
+          "type": "RED_CARD",
+          "description": "Myenty Abena'nın Anderson Talisca'ya yaptığı müdahale sonrası önce sarı kart gördü. VAR uyarısıyla hakem Atilla Karaoğlan monitöre giderek kararını değiştirdi ve Abena'ya direkt kırmızı kart gösterdi. Maç 4-0 Fenerbahçe galibiyetiyle sonuçlandı.",
+          "confidenceScore": 0.88,
+          "sources": [
+            "https://www.fotomac.com.tr/fenerbahce/2025/10/27/gaziantep-fk-fenerbahce-macinda-kirmizi-kart-karari-iste-o-pozisyon"
+          ],
+          "refereeComments": [],
+          "status": "APPROVED"
+        }
+      ]
     }
   ]
 }

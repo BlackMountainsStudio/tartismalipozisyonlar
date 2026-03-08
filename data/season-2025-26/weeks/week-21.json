@@ -7,8 +7,22 @@
       "homeTeam": "Samsunspor",
       "awayTeam": "Trabzonspor",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 65,
+          "type": "GOAL_DISALLOWED",
+          "description": "Trabzonspor'un golü VAR incelemesi sonrası faul gerekçesiyle iptal edildi. VAR hakemi mavili (Trabzonspor) oyuncunun rakibe ayağa bastığını tespit etti. Hakem Alper Akarsu sahaya incelemeye gidip golü iptal etti. TFF VAR kayıtlarında diyalog yayınlandı.",
+          "confidenceScore": 0.85,
+          "sources": [
+            "https://www.mynet.com/super-ligde-21-haftanin-var-kayitlari-aciklandi-tartismali-pozisyonlara-bakis-subjektif-bir-karar-477150-myspor"
+          ],
+          "refereeComments": [
+            { "author": "TFF VAR kayıtları", "text": "Potansiyel gol iptali için sahada inceleme önerildi. Mavili oyuncunun ayağa bastığı tespit edildi." }
+          ],
+          "status": "APPROVED"
+        }
+      ]
     },
     {
       "week": 21,
@@ -16,8 +30,38 @@
       "homeTeam": "Beşiktaş",
       "awayTeam": "Alanyaspor",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 76,
+          "type": "PENALTY",
+          "description": "Gökhan Sazdağı ceza sahasında Alanyasporlu Ruan'ın müdahalesiyle yerde kaldı. Hakem Oğuzhan Çakır oyunu devam ettirdi, VAR müdahale etmedi. beIN Trio: Deniz Çoban 'Pozisyon çok net. Penaltı ve sarı kart', Bahattin Duran 'Hem sahada hem VAR'da ciddi hata', Bülent Yıldırım 'Havada karada penaltı ve sarı kart. VAR neden müdahale etmedi anlamak zor' dedi. Beşiktaş 'Değişmeyen tek şey, verilmeyen penaltılarımız!' açıklaması yaptı.",
+          "confidenceScore": 0.92,
+          "sources": [
+            "https://medyasiyahbeyaz.com/bein-triodan-besiktasalanyaspor-macindaki-penalti-pozisyonuna-sert-tepki",
+            "https://spor.haber7.com/besiktas/haber/3602790-besiktas-alanyaspor-macina-damga-vuran-pozisyon-penalti-verilmedi"
+          ],
+          "refereeComments": [
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Pozisyon çok net. Penaltı ve sarı kart. Hakemin devam kararı doğru değil." },
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Bu pozisyon penaltı. Sarı kart da tartışmasız. Hem sahada hem VAR'da ciddi bir hata yapılmış." },
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Bu pozisyona neden VAR müdahale etmedi, gerçekten anlamak zor. Havada, karada penaltı ve sarı kart." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 54,
+          "type": "POSSIBLE_OFFSIDE_GOAL",
+          "description": "Oh Hyeon-Gyu'nun attığı golde yardımcı hakem ofsayt bayrağı kaldırdı. VAR incelemesi yaklaşık 5 dakika sürdü. Hakem Oğuzhan Çakır monitöre gidip 53 numaralı oyuncunun rakibini etkilemediği değerlendirmesiyle golü geçerli saydı. TFF VAR kayıtlarında 'sübjektif bir karar' olarak nitelendirildi.",
+          "confidenceScore": 0.78,
+          "sources": [
+            "https://www.mynet.com/super-ligde-21-haftanin-var-kayitlari-aciklandi-tartismali-pozisyonlara-bakis-subjektif-bir-karar-477150-myspor"
+          ],
+          "refereeComments": [
+            { "author": "TFF VAR kayıtları", "text": "Sübjektif bir karar. 53 numaralı oyuncunun rakibine top oyuna girdiği andan itibaren müdahalesi olmadığı değerlendirildi." }
+          ],
+          "status": "APPROVED"
+        }
+      ]
     },
     {
       "week": 21,
@@ -25,7 +69,7 @@
       "homeTeam": "Çaykur Rizespor",
       "awayTeam": "Galatasaray",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
+      "note": "Tarama tamamlandi; belirgin tartismali hakem karari tespit edilmedi",
       "incidents": []
     },
     {
@@ -34,7 +78,7 @@
       "homeTeam": "Fenerbahçe",
       "awayTeam": "Gençlerbirliği",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
+      "note": "Tarama tamamlandi; belirgin tartismali hakem karari tespit edilmedi",
       "incidents": []
     }
   ]

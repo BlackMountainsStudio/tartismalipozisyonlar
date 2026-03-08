@@ -7,8 +7,35 @@
       "homeTeam": "Antalyaspor",
       "awayTeam": "Beşiktaş",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 35,
+          "type": "PENALTY",
+          "description": "Gedson'un Antalyaspor oyuncusunun formasını çekmesi nedeniyle VAR müdahalesiyle verilen penaltı. beIN Trio penaltı kararında farklı görüşler belirtti. Bahattin Duran: 'Pozisyonun penaltı olduğunu ancak VAR müdahalesine soru işareti koydu. Forma çekiminin açık olmasına rağmen VAR'ı harekete geçirmesi tartışmalı.' Deniz Çoban: 'Penaltı kararına olumlu baksa da VAR standartlarının belirsiz olduğu konusunda kafası karışık.' Bülent Yıldırım: 'VAR müdahalesi tartışmalı ve gereksiz. Hakem görüp verse daha iyi olurdu.'",
+          "confidenceScore": 0.82,
+          "sources": [
+            "https://www.sporx.com/futbol/ekstra/trio-ekibinden-besiktas-antalyaspor-yorumlari-SXGLQ70185SXQ"
+          ],
+          "refereeComments": [
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Pozisyonun penaltı olduğunu ancak VAR müdahalesine soru işareti koydu." },
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Penaltı kararına olumlu baksa da VAR standartlarının belirsiz olduğu konusunda kafası karışık." },
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "VAR müdahalesi tartışmalı ve gereksiz. Hakem görüp verse daha iyi olurdu." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 95,
+          "type": "PENALTY",
+          "description": "90+5. dakikada Naldo'nun topu ele oynadığı pozisyonda Beşiktaş penaltı kazandı. beIN Trio oy birliğiyle kararın doğru olduğunu belirtti.",
+          "confidenceScore": 0.9,
+          "sources": [
+            "https://www.sporx.com/futbol/ekstra/trio-ekibinden-besiktas-antalyaspor-yorumlari-SXGLQ70185SXQ"
+          ],
+          "refereeComments": [],
+          "status": "APPROVED"
+        }
+      ]
     },
     {
       "week": 12,
@@ -16,8 +43,42 @@
       "homeTeam": "Trabzonspor",
       "awayTeam": "Alanyaspor",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 15,
+          "type": "POSSIBLE_PENALTY",
+          "description": "Onuachu'nun golünden önce Alanyaspor faul ve elle oynama iddiasında bulundu. beIN Trio'da pozisyon değerlendirildi.",
+          "confidenceScore": 0.7,
+          "sources": [
+            "https://www.beinsports.com.tr/video-liste/trabzonspor-corendon-alanyaspor-macinin-tartismali-pozisyonlari-trioda-degerlendirildi"
+          ],
+          "refereeComments": [],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 50,
+          "type": "POSSIBLE_PENALTY",
+          "description": "Alanyaspor'un penaltı beklediği pozisyonda hakem devam kararı verdi. beIN Trio'da pozisyon değerlendirildi.",
+          "confidenceScore": 0.7,
+          "sources": [
+            "https://www.beinsports.com.tr/video-liste/trabzonspor-corendon-alanyaspor-macinin-tartismali-pozisyonlari-trioda-degerlendirildi"
+          ],
+          "refereeComments": [],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 75,
+          "type": "POSSIBLE_PENALTY",
+          "description": "Oulai'nin ceza sahası içinde yerde kaldığı pozisyonda Trabzonspor penaltı bekledi. Hakem devam kararı verdi. beIN Trio'da pozisyon değerlendirildi.",
+          "confidenceScore": 0.7,
+          "sources": [
+            "https://www.beinsports.com.tr/video-liste/trabzonspor-corendon-alanyaspor-macinin-tartismali-pozisyonlari-trioda-degerlendirildi"
+          ],
+          "refereeComments": [],
+          "status": "APPROVED"
+        }
+      ]
     },
     {
       "week": 12,
@@ -25,8 +86,40 @@
       "homeTeam": "Fenerbahçe",
       "awayTeam": "Kayserispor",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 17,
+          "type": "FOUL",
+          "description": "Marco Asensio'nun Kayserisporlu Carole'e kafa seviyesinde yaptığı müdahale. Hakem faul çalmadı. Eski hakemler en az sarı kart, bazıları kırmızı kart gerektiğini söyledi. Deniz Çoban: 'Kramponunun vidalarıyla rakibinin kafasına temas ediyor. Ciddi risk alıyor. Kırmızı kart verilmeliydi.' Bülent Yıldırım: 'Kontrolsüz hareket, hücum faul. Sarı kart gerektirirdi.' Bahattin Duran: 'Faul olması gerekiyordu, sarı kart en doğru karar olurdu. Hakemin faulü fark etmemiş olması önemli bir hata.'",
+          "confidenceScore": 0.9,
+          "sources": [
+            "https://www.demokrathaber.org/fenerbahce-kayserispor-macinda-tartismali-pozisyonlari-eski-hakemler-degerlendirdi",
+            "https://www.gzt.com/foto-galeri/zpor/asensiodan-tartismaya-sebep-olan-hareket-hakemin-devam-karari-dogru-mu-trio-hakemlerin-yorumladi-2050282"
+          ],
+          "refereeComments": [
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Kramponunun vidalarıyla rakibinin kafasına temas ediyor. Ciddi risk alıyor. Kırmızı kart verilmeliydi." },
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Kontrolsüz hareket, hücum faul. Sarı kart gerektirirdi." },
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Faul olması gerekiyordu, sarı kart en doğru karar olurdu. Hakemin faulü fark etmemiş olması önemli bir hata." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 55,
+          "type": "FOUL",
+          "description": "Kerem Aktürkoğlu'nun Denswil'in müdahalesi sonucu yerde kaldığı pozisyonda hakem faul çalmadı. Eski hakemler yüzde yüz sarı kart gerektiğini söyledi. Bülent Yıldırım: 'Denswil yüzde yüz sarı kart görmeliydi.' Deniz Çoban: 'Denswil rakibe saygısızlık yaptı. Bu tür hareketler cezalandırılmalı.' Bahattin Duran: 'Pozisyon sarı kartlık, hakem bu pozisyonu atladı.'",
+          "confidenceScore": 0.92,
+          "sources": [
+            "https://www.demokrathaber.org/fenerbahce-kayserispor-macinda-tartismali-pozisyonlari-eski-hakemler-degerlendirdi"
+          ],
+          "refereeComments": [
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Denswil yüzde yüz sarı kart görmeliydi." },
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Denswil rakibe saygısızlık yaptı. Bu tür hareketler cezalandırılmalı." },
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Pozisyon sarı kartlık, hakem bu pozisyonu atladı." }
+          ],
+          "status": "APPROVED"
+        }
+      ]
     },
     {
       "week": 12,
@@ -34,8 +127,21 @@
       "homeTeam": "Kocaelispor",
       "awayTeam": "Galatasaray",
       "league": "Süper Lig 2025-26",
-      "note": "Tartışmalı pozisyon eklenmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 83,
+          "type": "GOAL_DISALLOWED",
+          "description": "Victor Osimhen'in attığı beraberlik golü VAR incelemesi sonucu iptal edildi. Hakem Çağdaş Altay, Gabriel Sara'nın ofsayt pozisyonunda olduğunu tespit ederek golü geçersiz saydı. Galatasaray cephesi kararın milimetrik olduğunu ifade etti. Yorumcular Sara'nın hem kaleci hem savunma oyuncusunu etkilediğini ve ofsayt kararının doğru olduğunu belirtti. Maç 1-0 Kocaelispor galibiyetiyle sonuçlandı, Galatasaray'ın 19 maçlık yenilmezlik serisi sona erdi.",
+          "confidenceScore": 0.85,
+          "sources": [
+            "https://hurriyet.com.tr/sporarena/kocaelispor-galatasaray-macinda-cok-konusulan-karar-osimhenin-iptal-edilen-golu-ve-var-incelemesi-43013785",
+            "https://spor.haber7.com/super-lig/haber/3578412-ofsayt-kararlari-gundem-oldu-kocaelispor-galatasaray-macina-damga-vuran-pozisyonlar"
+          ],
+          "refereeComments": [],
+          "status": "APPROVED"
+        }
+      ]
     }
   ]
 }
