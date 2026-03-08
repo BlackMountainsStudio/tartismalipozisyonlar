@@ -15,6 +15,12 @@ function GirisContent() {
 
   const [providers, setProviders] = useState({ google: false, facebook: false });
   const [mode, setMode] = useState<"login" | "signup">("login");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const errorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     fetch("/api/auth/providers")
@@ -28,12 +34,6 @@ function GirisContent() {
       errorRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   }, [error]);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-  const errorRef = useRef<HTMLDivElement>(null);
 
   const displayError = error || (errorParam === "OAuthAccountNotLinked"
     ? "Bu e-posta adresi başka bir giriş yöntemiyle kayıtlı. Aynı yöntemi kullanın."
