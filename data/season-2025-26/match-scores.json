@@ -1,0 +1,1197 @@
+[
+  {"homeTeam":"Gaziantep","awayTeam":"Galatasaray","week":1,"homeScore":0,"awayScore":3},
+  {"homeTeam":"Samsunspor","awayTeam":"Gençlerbirliği","week":1,"homeScore":2,"awayScore":1},
+  {"homeTeam":"Antalyaspor","awayTeam":"Kasımpaşa","week":1,"homeScore":2,"awayScore":1},
+  {"homeTeam":"Çaykur Rizespor","awayTeam":"Göztepe","week":1,"homeScore":0,"awayScore":3},
+  {"homeTeam":"Eyüpspor","awayTeam":"Konyaspor","week":1,"homeScore":1,"awayScore":4},
+  {"homeTeam":"Trabzonspor","awayTeam":"Kocaelispor","week":1,"homeScore":1,"awayScore":0},
+  {"homeTeam":"Fatih Karagümrük","awayTeam":"İstanbul Başakşehir","week":1,"homeScore":0,"awayScore":2},
+  {"homeTeam":"Fenerbahçe","awayTeam":"Alanyaspor","week":1,"homeScore":2,"awayScore":2},
+  {"homeTeam":"Kayserispor","awayTeam":"Beşiktaş","week":1,"homeScore":0,"awayScore":4},
+  {"homeTeam":"Galatasaray","awayTeam":"Fatih Karagümrük","week":2,"homeScore":3,"awayScore":0},
+  {"homeTeam":"Kocaelispor","awayTeam":"Samsunspor","week":2,"homeScore":0,"awayScore":1},
+  {"homeTeam":"Alanyaspor","awayTeam":"Çaykur Rizespor","week":2,"homeScore":0,"awayScore":0},
+  {"homeTeam":"Göztepe","awayTeam":"Fenerbahçe","week":2,"homeScore":0,"awayScore":0},
+  {"homeTeam":"Beşiktaş","awayTeam":"Eyüpspor","week":2,"homeScore":2,"awayScore":0},
+  {"homeTeam":"Kasımpaşa","awayTeam":"Trabzonspor","week":2,"homeScore":1,"awayScore":2},
+  {"homeTeam":"Konyaspor","awayTeam":"Gaziantep","week":2,"homeScore":1,"awayScore":0},
+  {"homeTeam":"Gençlerbirliği","awayTeam":"Antalyaspor","week":2,"homeScore":0,"awayScore":1},
+  {"homeTeam":"İstanbul Başakşehir","awayTeam":"Kayserispor","week":2,"homeScore":1,"awayScore":1},
+  {"homeTeam":"Fatih Karagümrük","awayTeam":"Göztepe","week":3,"homeScore":0,"awayScore":2},
+  {"homeTeam":"Gaziantep","awayTeam":"Gençlerbirliği","week":3,"homeScore":2,"awayScore":1},
+  {"homeTeam":"Fenerbahçe","awayTeam":"Kocaelispor","week":3,"homeScore":3,"awayScore":1},
+  {"homeTeam":"Kayserispor","awayTeam":"Galatasaray","week":3,"homeScore":0,"awayScore":2},
+  {"homeTeam":"Trabzonspor","awayTeam":"Antalyaspor","week":3,"homeScore":2,"awayScore":0},
+  {"homeTeam":"Konyaspor","awayTeam":"Beşiktaş","week":3,"homeScore":0,"awayScore":1},
+  {"homeTeam":"Samsunspor","awayTeam":"Kasımpaşa","week":3,"homeScore":2,"awayScore":0},
+  {"homeTeam":"Alanyaspor","awayTeam":"Eyüpspor","week":3,"homeScore":1,"awayScore":0},
+  {"homeTeam":"Çaykur Rizespor","awayTeam":"İstanbul Başakşehir","week":3,"homeScore":0,"awayScore":0},
+  {"homeTeam":"Göztepe","awayTeam":"Konyaspor","week":4,"homeScore":1,"awayScore":1},
+  {"homeTeam":"Kasımpaşa","awayTeam":"Gaziantep","week":4,"homeScore":2,"awayScore":3},
+  {"homeTeam":"Kocaelispor","awayTeam":"Kayserispor","week":4,"homeScore":1,"awayScore":1},
+  {"homeTeam":"Antalyaspor","awayTeam":"Fatih Karagümrük","week":4,"homeScore":1,"awayScore":2},
+  {"homeTeam":"Galatasaray","awayTeam":"Çaykur Rizespor","week":4,"homeScore":3,"awayScore":0},
+  {"homeTeam":"Alanyaspor","awayTeam":"Beşiktaş","week":4,"homeScore":0,"awayScore":2},
+  {"homeTeam":"Gençlerbirliği","awayTeam":"Fenerbahçe","week":4,"homeScore":0,"awayScore":2},
+  {"homeTeam":"Trabzonspor","awayTeam":"Samsunspor","week":4,"homeScore":2,"awayScore":0},
+  {"homeTeam":"Eyüpspor","awayTeam":"Galatasaray","week":5,"homeScore":0,"awayScore":2},
+  {"homeTeam":"Samsunspor","awayTeam":"Antalyaspor","week":5,"homeScore":1,"awayScore":2},
+  {"homeTeam":"Fatih Karagümrük","awayTeam":"Kasımpaşa","week":5,"homeScore":0,"awayScore":1},
+  {"homeTeam":"Konyaspor","awayTeam":"Alanyaspor","week":5,"homeScore":1,"awayScore":2},
+  {"homeTeam":"Beşiktaş","awayTeam":"İstanbul Başakşehir","week":5,"homeScore":2,"awayScore":1},
+  {"homeTeam":"Kayserispor","awayTeam":"Göztepe","week":5,"homeScore":1,"awayScore":1},
+  {"homeTeam":"Gaziantep","awayTeam":"Kocaelispor","week":5,"homeScore":2,"awayScore":0},
+  {"homeTeam":"Fenerbahçe","awayTeam":"Trabzonspor","week":5,"homeScore":2,"awayScore":0},
+  {"homeTeam":"Gençlerbirliği","awayTeam":"Çaykur Rizespor","week":5,"homeScore":1,"awayScore":0},
+  {"homeTeam":"İstanbul Başakşehir","awayTeam":"Konyaspor","week":24,"homeScore":2,"awayScore":0},
+  {"homeTeam":"Trabzonspor","awayTeam":"Fatih Karagümrük","week":24,"homeScore":3,"awayScore":1},
+  {"homeTeam":"Kasımpaşa","awayTeam":"Çaykur Rizespor","week":24,"homeScore":0,"awayScore":3},
+  {"homeTeam":"Kocaelispor","awayTeam":"Beşiktaş","week":24,"homeScore":0,"awayScore":1},
+  {"homeTeam":"Göztepe","awayTeam":"Eyüpspor","week":24,"homeScore":0,"awayScore":0},
+  {"homeTeam":"Galatasaray","awayTeam":"Alanyaspor","week":24,"homeScore":3,"awayScore":1},
+  {"homeTeam":"Gençlerbirliği","awayTeam":"Kayserispor","week":24,"homeScore":0,"awayScore":0},
+  {"homeTeam":"Samsunspor","awayTeam":"Gaziantep","week":24,"homeScore":0,"awayScore":0},
+  {"homeTeam":"Antalyaspor","awayTeam":"Fenerbahçe","week":24,"homeScore":2,"awayScore":2},
+  {"homeTeam":"İstanbul Başakşehir","awayTeam":"Göztepe","week":25,"homeScore":2,"awayScore":1},
+  {"homeTeam":"Beşiktaş","awayTeam":"Galatasaray","week":25,"homeScore":0,"awayScore":1},
+  {"homeTeam":"Çaykur Rizespor","awayTeam":"Antalyaspor","week":25,"homeScore":1,"awayScore":0},
+  {"homeTeam":"Gaziantep","awayTeam":"Fatih Karagümrük","week":25,"homeScore":1,"awayScore":1},
+  {"homeTeam":"Konyaspor","awayTeam":"Kasımpaşa","week":25,"homeScore":1,"awayScore":1},
+  {"homeTeam":"Fenerbahçe","awayTeam":"Samsunspor","week":25,"homeScore":1,"awayScore":2},
+  {
+    "homeTeam": "Göztepe",
+    "awayTeam": "Beşiktaş",
+    "week": 6,
+    "homeScore": 3,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Gençlerbirliği",
+    "awayTeam": "Eyüpspor",
+    "week": 6,
+    "homeScore": 1,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Antalyaspor",
+    "awayTeam": "Kayserispor",
+    "week": 6,
+    "homeScore": 1,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Trabzonspor",
+    "awayTeam": "Gaziantep",
+    "week": 6,
+    "homeScore": 1,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "İstanbul Başakşehir",
+    "awayTeam": "Alanyaspor",
+    "week": 6,
+    "homeScore": 1,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Kocaelispor",
+    "awayTeam": "Çaykur Rizespor",
+    "week": 6,
+    "homeScore": 1,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Kasımpaşa",
+    "awayTeam": "Fenerbahçe",
+    "week": 6,
+    "homeScore": 1,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Samsunspor",
+    "awayTeam": "Fatih Karagümrük",
+    "week": 6,
+    "homeScore": 3,
+    "awayScore": 2
+  },
+  {
+    "homeTeam": "Galatasaray",
+    "awayTeam": "Konyaspor",
+    "week": 6,
+    "homeScore": 3,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Alanyaspor",
+    "awayTeam": "Galatasaray",
+    "week": 7,
+    "homeScore": 0,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Eyüpspor",
+    "awayTeam": "Göztepe",
+    "week": 7,
+    "homeScore": 0,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Gaziantep",
+    "awayTeam": "Samsunspor",
+    "week": 7,
+    "homeScore": 2,
+    "awayScore": 2
+  },
+  {
+    "homeTeam": "Fatih Karagümrük",
+    "awayTeam": "Trabzonspor",
+    "week": 7,
+    "homeScore": 3,
+    "awayScore": 4
+  },
+  {
+    "homeTeam": "Konyaspor",
+    "awayTeam": "İstanbul Başakşehir",
+    "week": 7,
+    "homeScore": 2,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Çaykur Rizespor",
+    "awayTeam": "Kasımpaşa",
+    "week": 7,
+    "homeScore": 1,
+    "awayScore": 2
+  },
+  {
+    "homeTeam": "Fenerbahçe",
+    "awayTeam": "Antalyaspor",
+    "week": 7,
+    "homeScore": 2,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Kayserispor",
+    "awayTeam": "Gençlerbirliği",
+    "week": 7,
+    "homeScore": 1,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Beşiktaş",
+    "awayTeam": "Kocaelispor",
+    "week": 7,
+    "homeScore": 3,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Antalyaspor",
+    "awayTeam": "Çaykur Rizespor",
+    "week": 8,
+    "homeScore": 2,
+    "awayScore": 5
+  },
+  {
+    "homeTeam": "Trabzonspor",
+    "awayTeam": "Kayserispor",
+    "week": 8,
+    "homeScore": 4,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Gençlerbirliği",
+    "awayTeam": "Alanyaspor",
+    "week": 8,
+    "homeScore": 2,
+    "awayScore": 2
+  },
+  {
+    "homeTeam": "Kocaelispor",
+    "awayTeam": "Eyüpspor",
+    "week": 8,
+    "homeScore": 1,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Galatasaray",
+    "awayTeam": "Beşiktaş",
+    "week": 8,
+    "homeScore": 1,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Kasımpaşa",
+    "awayTeam": "Konyaspor",
+    "week": 8,
+    "homeScore": 1,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Fatih Karagümrük",
+    "awayTeam": "Gaziantep",
+    "week": 8,
+    "homeScore": 0,
+    "awayScore": 2
+  },
+  {
+    "homeTeam": "Samsunspor",
+    "awayTeam": "Fenerbahçe",
+    "week": 8,
+    "homeScore": 0,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Göztepe",
+    "awayTeam": "İstanbul Başakşehir",
+    "week": 8,
+    "homeScore": 1,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Konyaspor",
+    "awayTeam": "Kocaelispor",
+    "week": 9,
+    "homeScore": 2,
+    "awayScore": 3
+  },
+  {
+    "homeTeam": "Beşiktaş",
+    "awayTeam": "Gençlerbirliği",
+    "week": 9,
+    "homeScore": 1,
+    "awayScore": 2
+  },
+  {
+    "homeTeam": "Çaykur Rizespor",
+    "awayTeam": "Trabzonspor",
+    "week": 9,
+    "homeScore": 1,
+    "awayScore": 2
+  },
+  {
+    "homeTeam": "İstanbul Başakşehir",
+    "awayTeam": "Galatasaray",
+    "week": 9,
+    "homeScore": 1,
+    "awayScore": 2
+  },
+  {
+    "homeTeam": "Kayserispor",
+    "awayTeam": "Samsunspor",
+    "week": 9,
+    "homeScore": 1,
+    "awayScore": 3
+  },
+  {
+    "homeTeam": "Alanyaspor",
+    "awayTeam": "Göztepe",
+    "week": 9,
+    "homeScore": 1,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Gaziantep",
+    "awayTeam": "Antalyaspor",
+    "week": 9,
+    "homeScore": 3,
+    "awayScore": 2
+  },
+  {
+    "homeTeam": "Fenerbahçe",
+    "awayTeam": "Fatih Karagümrük",
+    "week": 9,
+    "homeScore": 2,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Eyüpspor",
+    "awayTeam": "Kasımpaşa",
+    "week": 9,
+    "homeScore": 2,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Fatih Karagümrük",
+    "awayTeam": "Kayserispor",
+    "week": 10,
+    "homeScore": 2,
+    "awayScore": 2
+  },
+  {
+    "homeTeam": "Kocaelispor",
+    "awayTeam": "Alanyaspor",
+    "week": 10,
+    "homeScore": 2,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Trabzonspor",
+    "awayTeam": "Eyüpspor",
+    "week": 10,
+    "homeScore": 2,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Antalyaspor",
+    "awayTeam": "İstanbul Başakşehir",
+    "week": 10,
+    "homeScore": 0,
+    "awayScore": 4
+  },
+  {
+    "homeTeam": "Galatasaray",
+    "awayTeam": "Göztepe",
+    "week": 10,
+    "homeScore": 3,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Gençlerbirliği",
+    "awayTeam": "Konyaspor",
+    "week": 10,
+    "homeScore": 1,
+    "awayScore": 2
+  },
+  {
+    "homeTeam": "Kasımpaşa",
+    "awayTeam": "Beşiktaş",
+    "week": 10,
+    "homeScore": 1,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Samsunspor",
+    "awayTeam": "Çaykur Rizespor",
+    "week": 10,
+    "homeScore": 1,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Gaziantep",
+    "awayTeam": "Fenerbahçe",
+    "week": 10,
+    "homeScore": 0,
+    "awayScore": 4
+  },
+  {
+    "homeTeam": "İstanbul Başakşehir",
+    "awayTeam": "Kocaelispor",
+    "week": 11,
+    "homeScore": 1,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Göztepe",
+    "awayTeam": "Gençlerbirliği",
+    "week": 11,
+    "homeScore": 1,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Galatasaray",
+    "awayTeam": "Trabzonspor",
+    "week": 11,
+    "homeScore": 0,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Konyaspor",
+    "awayTeam": "Samsunspor",
+    "week": 11,
+    "homeScore": 1,
+    "awayScore": 3
+  },
+  {
+    "homeTeam": "Kayserispor",
+    "awayTeam": "Kasımpaşa",
+    "week": 11,
+    "homeScore": 3,
+    "awayScore": 2
+  },
+  {
+    "homeTeam": "Beşiktaş",
+    "awayTeam": "Fenerbahçe",
+    "week": 11,
+    "homeScore": 2,
+    "awayScore": 3
+  },
+  {
+    "homeTeam": "Eyüpspor",
+    "awayTeam": "Antalyaspor",
+    "week": 11,
+    "homeScore": 0,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Alanyaspor",
+    "awayTeam": "Gaziantep",
+    "week": 11,
+    "homeScore": 0,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Çaykur Rizespor",
+    "awayTeam": "Fatih Karagümrük",
+    "week": 11,
+    "homeScore": 1,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Gençlerbirliği",
+    "awayTeam": "İstanbul Başakşehir",
+    "week": 12,
+    "homeScore": 2,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Gaziantep",
+    "awayTeam": "Çaykur Rizespor",
+    "week": 12,
+    "homeScore": 2,
+    "awayScore": 2
+  },
+  {
+    "homeTeam": "Trabzonspor",
+    "awayTeam": "Alanyaspor",
+    "week": 12,
+    "homeScore": 1,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Kasımpaşa",
+    "awayTeam": "Göztepe",
+    "week": 12,
+    "homeScore": 0,
+    "awayScore": 2
+  },
+  {
+    "homeTeam": "Antalyaspor",
+    "awayTeam": "Beşiktaş",
+    "week": 12,
+    "homeScore": 1,
+    "awayScore": 3
+  },
+  {
+    "homeTeam": "Fatih Karagümrük",
+    "awayTeam": "Konyaspor",
+    "week": 12,
+    "homeScore": 2,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Kocaelispor",
+    "awayTeam": "Galatasaray",
+    "week": 12,
+    "homeScore": 1,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Samsunspor",
+    "awayTeam": "Eyüpspor",
+    "week": 12,
+    "homeScore": 1,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Fenerbahçe",
+    "awayTeam": "Kayserispor",
+    "week": 12,
+    "homeScore": 4,
+    "awayScore": 2
+  },
+  {
+    "homeTeam": "Kayserispor",
+    "awayTeam": "Gaziantep",
+    "week": 13,
+    "homeScore": 0,
+    "awayScore": 3
+  },
+  {
+    "homeTeam": "Eyüpspor",
+    "awayTeam": "Fatih Karagümrük",
+    "week": 13,
+    "homeScore": 1,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Galatasaray",
+    "awayTeam": "Gençlerbirliği",
+    "week": 13,
+    "homeScore": 3,
+    "awayScore": 2
+  },
+  {
+    "homeTeam": "Göztepe",
+    "awayTeam": "Kocaelispor",
+    "week": 13,
+    "homeScore": 0,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Beşiktaş",
+    "awayTeam": "Samsunspor",
+    "week": 13,
+    "homeScore": 1,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Alanyaspor",
+    "awayTeam": "Kasımpaşa",
+    "week": 13,
+    "homeScore": 1,
+    "awayScore": 2
+  },
+  {
+    "homeTeam": "Çaykur Rizespor",
+    "awayTeam": "Fenerbahçe",
+    "week": 13,
+    "homeScore": 2,
+    "awayScore": 5
+  },
+  {
+    "homeTeam": "Konyaspor",
+    "awayTeam": "Antalyaspor",
+    "week": 13,
+    "homeScore": 0,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "İstanbul Başakşehir",
+    "awayTeam": "Trabzonspor",
+    "week": 13,
+    "homeScore": 3,
+    "awayScore": 4
+  },
+  {
+    "homeTeam": "Kocaelispor",
+    "awayTeam": "Gençlerbirliği",
+    "week": 14,
+    "homeScore": 1,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Çaykur Rizespor",
+    "awayTeam": "Kayserispor",
+    "week": 14,
+    "homeScore": 0,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Gaziantep",
+    "awayTeam": "Eyüpspor",
+    "week": 14,
+    "homeScore": 1,
+    "awayScore": 2
+  },
+  {
+    "homeTeam": "Kasımpaşa",
+    "awayTeam": "İstanbul Başakşehir",
+    "week": 14,
+    "homeScore": 1,
+    "awayScore": 3
+  },
+  {
+    "homeTeam": "Trabzonspor",
+    "awayTeam": "Konyaspor",
+    "week": 14,
+    "homeScore": 3,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Antalyaspor",
+    "awayTeam": "Göztepe",
+    "week": 14,
+    "homeScore": 1,
+    "awayScore": 2
+  },
+  {
+    "homeTeam": "Fatih Karagümrük",
+    "awayTeam": "Beşiktaş",
+    "week": 14,
+    "homeScore": 0,
+    "awayScore": 2
+  },
+  {
+    "homeTeam": "Samsunspor",
+    "awayTeam": "Alanyaspor",
+    "week": 14,
+    "homeScore": 1,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Fenerbahçe",
+    "awayTeam": "Galatasaray",
+    "week": 14,
+    "homeScore": 1,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Galatasaray",
+    "awayTeam": "Samsunspor",
+    "week": 15,
+    "homeScore": 3,
+    "awayScore": 2
+  },
+  {
+    "homeTeam": "Eyüpspor",
+    "awayTeam": "Kayserispor",
+    "week": 15,
+    "homeScore": 1,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Konyaspor",
+    "awayTeam": "Çaykur Rizespor",
+    "week": 15,
+    "homeScore": 1,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "İstanbul Başakşehir",
+    "awayTeam": "Fenerbahçe",
+    "week": 15,
+    "homeScore": 1,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Gençlerbirliği",
+    "awayTeam": "Fatih Karagümrük",
+    "week": 15,
+    "homeScore": 3,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Kocaelispor",
+    "awayTeam": "Kasımpaşa",
+    "week": 15,
+    "homeScore": 0,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Göztepe",
+    "awayTeam": "Trabzonspor",
+    "week": 15,
+    "homeScore": 1,
+    "awayScore": 2
+  },
+  {
+    "homeTeam": "Beşiktaş",
+    "awayTeam": "Gaziantep",
+    "week": 15,
+    "homeScore": 2,
+    "awayScore": 2
+  },
+  {
+    "homeTeam": "Alanyaspor",
+    "awayTeam": "Antalyaspor",
+    "week": 15,
+    "homeScore": 0,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Kasımpaşa",
+    "awayTeam": "Gençlerbirliği",
+    "week": 16,
+    "homeScore": 0,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Çaykur Rizespor",
+    "awayTeam": "Eyüpspor",
+    "week": 16,
+    "homeScore": 3,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Kayserispor",
+    "awayTeam": "Alanyaspor",
+    "week": 16,
+    "homeScore": 0,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Antalyaspor",
+    "awayTeam": "Galatasaray",
+    "week": 16,
+    "homeScore": 1,
+    "awayScore": 4
+  },
+  {
+    "homeTeam": "Gaziantep",
+    "awayTeam": "Göztepe",
+    "week": 16,
+    "homeScore": 0,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Fatih Karagümrük",
+    "awayTeam": "Kocaelispor",
+    "week": 16,
+    "homeScore": 1,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Trabzonspor",
+    "awayTeam": "Beşiktaş",
+    "week": 16,
+    "homeScore": 3,
+    "awayScore": 3
+  },
+  {
+    "homeTeam": "Samsunspor",
+    "awayTeam": "İstanbul Başakşehir",
+    "week": 16,
+    "homeScore": 0,
+    "awayScore": 2
+  },
+  {
+    "homeTeam": "Fenerbahçe",
+    "awayTeam": "Konyaspor",
+    "week": 16,
+    "homeScore": 4,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Kocaelispor",
+    "awayTeam": "Antalyaspor",
+    "week": 17,
+    "homeScore": 2,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Konyaspor",
+    "awayTeam": "Kayserispor",
+    "week": 17,
+    "homeScore": 1,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Eyüpspor",
+    "awayTeam": "Fenerbahçe",
+    "week": 17,
+    "homeScore": 0,
+    "awayScore": 3
+  },
+  {
+    "homeTeam": "Beşiktaş",
+    "awayTeam": "Çaykur Rizespor",
+    "week": 17,
+    "homeScore": 1,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Alanyaspor",
+    "awayTeam": "Fatih Karagümrük",
+    "week": 17,
+    "homeScore": 2,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Göztepe",
+    "awayTeam": "Samsunspor",
+    "week": 17,
+    "homeScore": 2,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Galatasaray",
+    "awayTeam": "Kasımpaşa",
+    "week": 17,
+    "homeScore": 3,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "İstanbul Başakşehir",
+    "awayTeam": "Gaziantep",
+    "week": 17,
+    "homeScore": 5,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Gençlerbirliği",
+    "awayTeam": "Trabzonspor",
+    "week": 17,
+    "homeScore": 4,
+    "awayScore": 3
+  },
+  {
+    "homeTeam": "İstanbul Başakşehir",
+    "awayTeam": "Fatih Karagümrük",
+    "week": 18,
+    "homeScore": 2,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Galatasaray",
+    "awayTeam": "Gaziantep",
+    "week": 18,
+    "homeScore": 1,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Kasımpaşa",
+    "awayTeam": "Antalyaspor",
+    "week": 18,
+    "homeScore": 0,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Kocaelispor",
+    "awayTeam": "Trabzonspor",
+    "week": 18,
+    "homeScore": 1,
+    "awayScore": 2
+  },
+  {
+    "homeTeam": "Gençlerbirliği",
+    "awayTeam": "Samsunspor",
+    "week": 18,
+    "homeScore": 1,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Alanyaspor",
+    "awayTeam": "Fenerbahçe",
+    "week": 18,
+    "homeScore": 2,
+    "awayScore": 3
+  },
+  {
+    "homeTeam": "Konyaspor",
+    "awayTeam": "Eyüpspor",
+    "week": 18,
+    "homeScore": 1,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Göztepe",
+    "awayTeam": "Çaykur Rizespor",
+    "week": 18,
+    "homeScore": 3,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Beşiktaş",
+    "awayTeam": "Kayserispor",
+    "week": 18,
+    "homeScore": 1,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Trabzonspor",
+    "awayTeam": "Kasımpaşa",
+    "week": 19,
+    "homeScore": 2,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Kayserispor",
+    "awayTeam": "İstanbul Başakşehir",
+    "week": 19,
+    "homeScore": 0,
+    "awayScore": 3
+  },
+  {
+    "homeTeam": "Samsunspor",
+    "awayTeam": "Kocaelispor",
+    "week": 19,
+    "homeScore": 0,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Fatih Karagümrük",
+    "awayTeam": "Galatasaray",
+    "week": 19,
+    "homeScore": 1,
+    "awayScore": 3
+  },
+  {
+    "homeTeam": "Gaziantep",
+    "awayTeam": "Konyaspor",
+    "week": 19,
+    "homeScore": 1,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Çaykur Rizespor",
+    "awayTeam": "Alanyaspor",
+    "week": 19,
+    "homeScore": 1,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Antalyaspor",
+    "awayTeam": "Gençlerbirliği",
+    "week": 19,
+    "homeScore": 2,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Fenerbahçe",
+    "awayTeam": "Göztepe",
+    "week": 19,
+    "homeScore": 1,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Eyüpspor",
+    "awayTeam": "Beşiktaş",
+    "week": 19,
+    "homeScore": 2,
+    "awayScore": 2
+  },
+  {
+    "homeTeam": "Antalyaspor",
+    "awayTeam": "Trabzonspor",
+    "week": 20,
+    "homeScore": 1,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Kasımpaşa",
+    "awayTeam": "Samsunspor",
+    "week": 20,
+    "homeScore": 0,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Alanyaspor",
+    "awayTeam": "Eyüpspor",
+    "week": 20,
+    "homeScore": 1,
+    "awayScore": 3
+  },
+  {
+    "homeTeam": "İstanbul Başakşehir",
+    "awayTeam": "Çaykur Rizespor",
+    "week": 20,
+    "homeScore": 2,
+    "awayScore": 2
+  },
+  {
+    "homeTeam": "Beşiktaş",
+    "awayTeam": "Konyaspor",
+    "week": 20,
+    "homeScore": 2,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Göztepe",
+    "awayTeam": "Fatih Karagümrük",
+    "week": 20,
+    "homeScore": 2,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Gençlerbirliği",
+    "awayTeam": "Gaziantep",
+    "week": 20,
+    "homeScore": 2,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Galatasaray",
+    "awayTeam": "Kayserispor",
+    "week": 20,
+    "homeScore": 4,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Kocaelispor",
+    "awayTeam": "Fenerbahçe",
+    "week": 20,
+    "homeScore": 0,
+    "awayScore": 2
+  },
+  {
+    "homeTeam": "Fatih Karagümrük",
+    "awayTeam": "Antalyaspor",
+    "week": 21,
+    "homeScore": 1,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Samsunspor",
+    "awayTeam": "Trabzonspor",
+    "week": 21,
+    "homeScore": 0,
+    "awayScore": 3
+  },
+  {
+    "homeTeam": "Eyüpspor",
+    "awayTeam": "İstanbul Başakşehir",
+    "week": 21,
+    "homeScore": 1,
+    "awayScore": 2
+  },
+  {
+    "homeTeam": "Konyaspor",
+    "awayTeam": "Göztepe",
+    "week": 21,
+    "homeScore": 0,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Çaykur Rizespor",
+    "awayTeam": "Galatasaray",
+    "week": 21,
+    "homeScore": 0,
+    "awayScore": 3
+  },
+  {
+    "homeTeam": "Beşiktaş",
+    "awayTeam": "Alanyaspor",
+    "week": 21,
+    "homeScore": 2,
+    "awayScore": 2
+  },
+  {
+    "homeTeam": "Kayserispor",
+    "awayTeam": "Kocaelispor",
+    "week": 21,
+    "homeScore": 1,
+    "awayScore": 2
+  },
+  {
+    "homeTeam": "Gaziantep",
+    "awayTeam": "Kasımpaşa",
+    "week": 21,
+    "homeScore": 2,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Fenerbahçe",
+    "awayTeam": "Gençlerbirliği",
+    "week": 21,
+    "homeScore": 3,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Galatasaray",
+    "awayTeam": "Eyüpspor",
+    "week": 22,
+    "homeScore": 5,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Antalyaspor",
+    "awayTeam": "Samsunspor",
+    "week": 22,
+    "homeScore": 3,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Gençlerbirliği",
+    "awayTeam": "Çaykur Rizespor",
+    "week": 22,
+    "homeScore": 2,
+    "awayScore": 2
+  },
+  {
+    "homeTeam": "Alanyaspor",
+    "awayTeam": "Konyaspor",
+    "week": 22,
+    "homeScore": 2,
+    "awayScore": 1
+  },
+  {
+    "homeTeam": "Trabzonspor",
+    "awayTeam": "Fenerbahçe",
+    "week": 22,
+    "homeScore": 2,
+    "awayScore": 3
+  },
+  {
+    "homeTeam": "Kocaelispor",
+    "awayTeam": "Gaziantep",
+    "week": 22,
+    "homeScore": 3,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Göztepe",
+    "awayTeam": "Kayserispor",
+    "week": 22,
+    "homeScore": 0,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "İstanbul Başakşehir",
+    "awayTeam": "Beşiktaş",
+    "week": 22,
+    "homeScore": 2,
+    "awayScore": 3
+  },
+  {
+    "homeTeam": "Kasımpaşa",
+    "awayTeam": "Fatih Karagümrük",
+    "week": 22,
+    "homeScore": 3,
+    "awayScore": 2
+  },
+  {
+    "homeTeam": "Çaykur Rizespor",
+    "awayTeam": "Kocaelispor",
+    "week": 23,
+    "homeScore": 2,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Eyüpspor",
+    "awayTeam": "Gençlerbirliği",
+    "week": 23,
+    "homeScore": 1,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Alanyaspor",
+    "awayTeam": "İstanbul Başakşehir",
+    "week": 23,
+    "homeScore": 1,
+    "awayScore": 2
+  },
+  {
+    "homeTeam": "Konyaspor",
+    "awayTeam": "Galatasaray",
+    "week": 23,
+    "homeScore": 2,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Kayserispor",
+    "awayTeam": "Antalyaspor",
+    "week": 23,
+    "homeScore": 1,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Gaziantep",
+    "awayTeam": "Trabzonspor",
+    "week": 23,
+    "homeScore": 1,
+    "awayScore": 2
+  },
+  {
+    "homeTeam": "Fatih Karagümrük",
+    "awayTeam": "Samsunspor",
+    "week": 23,
+    "homeScore": 0,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Beşiktaş",
+    "awayTeam": "Göztepe",
+    "week": 23,
+    "homeScore": 4,
+    "awayScore": 0
+  },
+  {
+    "homeTeam": "Fenerbahçe",
+    "awayTeam": "Kasımpaşa",
+    "week": 23,
+    "homeScore": 1,
+    "awayScore": 1
+  },
+  {"homeTeam":"Kayserispor","awayTeam":"Konyaspor","week":23,"homeScore":3,"awayScore":2},
+  {"homeTeam":"Kayserispor","awayTeam":"Trabzonspor","week":25,"homeScore":0,"awayScore":0}
+]

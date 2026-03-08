@@ -12,6 +12,8 @@ interface Match {
   league: string;
   week: number;
   date: string;
+  homeScore?: number | null;
+  awayScore?: number | null;
   incidents: { id: string; type: string; status: string; confidenceScore: number }[];
   referee?: { id: string; name: string; slug: string; role?: string } | null;
   varReferee?: { id: string; name: string; slug: string; role?: string } | null;
@@ -243,6 +245,8 @@ export default function DashboardMatchesPage() {
               awayTeam={match.awayTeam}
               week={match.week}
               date={match.date}
+              homeScore={match.homeScore}
+              awayScore={match.awayScore}
               incidentCount={match.incidents.length}
               pendingCount={match.incidents.filter((i) => i.status === "PENDING").length}
               linkPrefix="/dashboard/matches"

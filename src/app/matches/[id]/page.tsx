@@ -32,6 +32,8 @@ interface Match {
   week: number;
   date: string;
   note?: string | null;
+  homeScore?: number | null;
+  awayScore?: number | null;
   referee?: { id: string; name: string; slug: string; role: string } | null;
   varReferee?: { id: string; name: string; slug: string; role: string } | null;
 }
@@ -171,8 +173,20 @@ export default function MatchPage({
           )}
         </div>
         <h1 className="text-3xl font-bold text-white sm:text-4xl">
-          {match.homeTeam}{" "}
-          <span className="text-zinc-600">vs</span>{" "}
+          {match.homeTeam}
+          {match.homeScore != null && match.awayScore != null ? (
+            <>
+              {" "}
+              <span className="text-red-400">{match.homeScore} - {match.awayScore}</span>
+              {" "}
+            </>
+          ) : (
+            <>
+              {" "}
+              <span className="text-zinc-600">vs</span>
+              {" "}
+            </>
+          )}
           {match.awayTeam}
         </h1>
         {totalWithOpinions > 0 && (

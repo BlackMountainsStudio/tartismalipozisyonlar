@@ -34,6 +34,8 @@ interface Match {
   league: string;
   week: number;
   date: string;
+  homeScore?: number | null;
+  awayScore?: number | null;
   referee?: { id: string; name: string; slug: string } | null;
   varReferee?: { id: string; name: string; slug: string } | null;
 }
@@ -58,6 +60,8 @@ export default function DashboardMatchDetailPage({
   const [editingMatch, setEditingMatch] = useState(false);
   const [matchRefereeId, setMatchRefereeId] = useState("");
   const [matchVarRefereeId, setMatchVarRefereeId] = useState("");
+  const [matchHomeScore, setMatchHomeScore] = useState<string>("");
+  const [matchAwayScore, setMatchAwayScore] = useState<string>("");
   const [savingMatch, setSavingMatch] = useState(false);
 
   const fetchData = useCallback(async () => {
@@ -74,6 +78,8 @@ export default function DashboardMatchDetailPage({
       if (matchItem) {
         setMatchRefereeId(matchItem.referee?.id ?? "");
         setMatchVarRefereeId(matchItem.varReferee?.id ?? "");
+        setMatchHomeScore(matchItem.homeScore != null ? String(matchItem.homeScore) : "");
+        setMatchAwayScore(matchItem.awayScore != null ? String(matchItem.awayScore) : "");
       }
 
       const incidentsData = await incidentsRes.json();
@@ -181,17 +187,21 @@ export default function DashboardMatchDetailPage({
   async function saveMatchReferees() {
     setSavingMatch(true);
     try {
+      const homeScoreVal = matchHomeScore.trim() === "" ? null : parseInt(matchHomeScore, 10);
+      const awayScoreVal = matchAwayScore.trim() === "" ? null : parseInt(matchAwayScore, 10);
       const res = await fetch(`/api/matches/${matchId}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           refereeId: matchRefereeId || null,
           varRefereeId: matchVarRefereeId || null,
+          homeScore: homeScoreVal,
+          awayScore: awayScoreVal,
         }),
       });
       if (res.ok) {
         const updated = await res.json();
-        setMatch((prev) => prev ? { ...prev, referee: updated.referee, varReferee: updated.varReferee } : null);
+        setMatch((prev) => prev ? { ...prev, referee: updated.referee, varReferee: updated.varReferee, homeScore: updated.homeScore, awayScore: updated.awayScore } : null);
         setEditingMatch(false);
       }
     } catch (err) {
@@ -249,10 +259,16 @@ export default function DashboardMatchDetailPage({
               </span>
             </div>
             <h1 className="text-2xl font-bold text-white">
-              {match.homeTeam} vs {match.awayTeam}
+              {match.homeTeam}
+              {match.homeScore != null && match.awayScore != null ? (
+                <> <span className="text-emerald-400">{match.homeScore} - {match.awayScore}</span> </>
+              ) : (
+                <> vs </>
+              )}
+              {match.awayTeam}
             </h1>
             <p className="mt-1 text-sm text-zinc-400">{match.league}</p>
-            {(match.referee || match.varReferee || editingMatch) && (
+            {(match.referee || match.varReferee || match.homeScore != null || editingMatch) && (
               <div className="mt-3 space-y-2">
                 {!editingMatch ? (
                   <div className="flex flex-wrap gap-3">
@@ -288,6 +304,28 @@ export default function DashboardMatchDetailPage({
                   </div>
                 ) : (
                   <div className="flex flex-wrap items-end gap-3">
+                    <div>
+                      <label className="mb-1 block text-xs text-zinc-500">Skor (Ev)</label>
+                      <input
+                        type="number"
+                        min={0}
+                        value={matchHomeScore}
+                        onChange={(e) => setMatchHomeScore(e.target.value)}
+                        placeholder="–"
+                        className="w-14 rounded-lg border border-zinc-700 bg-zinc-800 px-2 py-1.5 text-sm text-white outline-none focus:border-emerald-500"
+                      />
+                    </div>
+                    <div>
+                      <label className="mb-1 block text-xs text-zinc-500">Skor (Deplasman)</label>
+                      <input
+                        type="number"
+                        min={0}
+                        value={matchAwayScore}
+                        onChange={(e) => setMatchAwayScore(e.target.value)}
+                        placeholder="–"
+                        className="w-14 rounded-lg border border-zinc-700 bg-zinc-800 px-2 py-1.5 text-sm text-white outline-none focus:border-emerald-500"
+                      />
+                    </div>
                     <div>
                       <label className="mb-1 block text-xs text-zinc-500">Hakem</label>
                       <select
@@ -334,6 +372,8 @@ export default function DashboardMatchDetailPage({
                         setEditingMatch(false);
                         setMatchRefereeId(match.referee?.id ?? "");
                         setMatchVarRefereeId(match.varReferee?.id ?? "");
+                        setMatchHomeScore(match.homeScore != null ? String(match.homeScore) : "");
+                        setMatchAwayScore(match.awayScore != null ? String(match.awayScore) : "");
                       }}
                       className="rounded-lg bg-zinc-800 px-3 py-1.5 text-xs font-medium text-zinc-300 hover:bg-zinc-700"
                     >

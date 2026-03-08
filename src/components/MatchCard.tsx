@@ -16,6 +16,8 @@ interface MatchCardProps {
   awayTeam: string;
   week: number;
   date: string;
+  homeScore?: number | null;
+  awayScore?: number | null;
   incidentCount?: number;
   pendingCount?: number;
   linkPrefix?: string;
@@ -30,6 +32,8 @@ export default function MatchCard({
   awayTeam,
   week,
   date,
+  homeScore,
+  awayScore,
   incidentCount = 0,
   pendingCount = 0,
   linkPrefix = "/matches",
@@ -62,9 +66,15 @@ export default function MatchCard({
 
         <div className="mb-4 flex items-center justify-center gap-3">
           <span className="text-lg font-bold text-white">{homeTeam}</span>
-          <span className="rounded bg-zinc-800 px-2 py-0.5 text-xs font-medium text-zinc-400">
-            vs
-          </span>
+          {homeScore != null && awayScore != null ? (
+            <span className="rounded bg-zinc-800 px-2 py-0.5 text-sm font-medium text-red-400">
+              {homeScore} - {awayScore}
+            </span>
+          ) : (
+            <span className="rounded bg-zinc-800 px-2 py-0.5 text-xs font-medium text-zinc-400">
+              vs
+            </span>
+          )}
           <span className="text-lg font-bold text-white">{awayTeam}</span>
         </div>
 

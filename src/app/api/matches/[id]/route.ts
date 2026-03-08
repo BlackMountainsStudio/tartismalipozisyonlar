@@ -8,11 +8,18 @@ export async function PATCH(
   try {
     const { id } = await params;
     const body = await request.json();
-    const { refereeId, varRefereeId } = body;
+    const { refereeId, varRefereeId, homeScore, awayScore } = body;
 
-    const updateData: { refereeId?: string | null; varRefereeId?: string | null } = {};
+    const updateData: {
+      refereeId?: string | null;
+      varRefereeId?: string | null;
+      homeScore?: number | null;
+      awayScore?: number | null;
+    } = {};
     if (refereeId !== undefined) updateData.refereeId = refereeId || null;
     if (varRefereeId !== undefined) updateData.varRefereeId = varRefereeId || null;
+    if (homeScore !== undefined) updateData.homeScore = homeScore == null ? null : parseInt(String(homeScore), 10);
+    if (awayScore !== undefined) updateData.awayScore = awayScore == null ? null : parseInt(String(awayScore), 10);
 
     const match = await prisma.match.update({
       where: { id },

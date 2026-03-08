@@ -76,6 +76,8 @@ model Match {
   week         Int
   date         DateTime
   note         String?
+  homeScore    Int?
+  awayScore    Int?
   refereeId    String?
   varRefereeId String?
   createdAt    DateTime @default(now())
