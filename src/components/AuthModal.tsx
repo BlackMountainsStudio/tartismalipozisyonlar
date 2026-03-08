@@ -21,9 +21,11 @@ export default function AuthModal({
   subtitle = "Yorumunuz kaybolmayacak. Giriş/kayıt sonrası otomatik olarak bu sayfaya döneceksiniz.",
 }: AuthModalProps) {
   const [providers, setProviders] = useState({ google: false, facebook: false });
+  const [error, setError] = useState("");
 
   useEffect(() => {
     if (isOpen) {
+      setError("");
       fetch("/api/auth/providers")
         .then((r) => r.json())
         .then(setProviders)
@@ -34,6 +36,15 @@ export default function AuthModal({
   if (!isOpen) return null;
 
   const handleSignIn = (provider: string) => {
+    if (provider === "google" && !providers.google) {
+      setError("Google OAuth yapılandırılmamış. .env dosyasına AUTH_GOOGLE_ID ve AUTH_GOOGLE_SECRET ekleyin.");
+      return;
+    }
+    if (provider === "facebook" && !providers.facebook) {
+      setError("Facebook OAuth yapılandırılmamış. .env dosyasına AUTH_FACEBOOK_ID ve AUTH_FACEBOOK_SECRET ekleyin.");
+      return;
+    }
+    setError("");
     signIn(provider, {
       callbackUrl: callbackUrl ?? (typeof window !== "undefined" ? window.location.href : "/"),
     });
@@ -42,12 +53,13 @@ export default function AuthModal({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div
-        className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+        className="absolute inset-0 z-0 bg-black/70 backdrop-blur-sm"
         onClick={onClose}
         aria-hidden
       />
       <div
-        className="relative w-full max-w-md rounded-2xl border border-zinc-800 bg-zinc-900 p-6 shadow-xl"
+        className="relative z-10 w-full max-w-md rounded-2xl border border-zinc-800 bg-zinc-900 p-6 shadow-xl"
+        onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
         aria-labelledby="auth-modal-title"
@@ -74,12 +86,17 @@ export default function AuthModal({
           {subtitle}
         </p>
 
+        {error && (
+          <div className="mb-4 rounded-lg border border-red-500/30 bg-red-500/10 p-3 text-sm text-red-400">
+            {error}
+          </div>
+        )}
+
         <div className="mb-6 space-y-3">
           <button
             type="button"
-            onClick={() => providers.google && handleSignIn("google")}
-            disabled={!providers.google}
-            className="flex w-full items-center justify-center gap-3 rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-3 text-sm font-medium text-white transition-colors hover:bg-zinc-700 disabled:cursor-not-allowed disabled:opacity-50"
+            onClick={() => handleSignIn("google")}
+            className="flex w-full cursor-pointer items-center justify-center gap-3 rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-3 text-sm font-medium text-white transition-colors hover:bg-zinc-700"
           >
             <svg className="h-5 w-5" viewBox="0 0 24 24">
               <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -91,9 +108,8 @@ export default function AuthModal({
           </button>
           <button
             type="button"
-            onClick={() => providers.facebook && handleSignIn("facebook")}
-            disabled={!providers.facebook}
-            className="flex w-full items-center justify-center gap-3 rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-3 text-sm font-medium text-white transition-colors hover:bg-zinc-700 disabled:cursor-not-allowed disabled:opacity-50"
+            onClick={() => handleSignIn("facebook")}
+            className="flex w-full cursor-pointer items-center justify-center gap-3 rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-3 text-sm font-medium text-white transition-colors hover:bg-zinc-700"
           >
             <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />

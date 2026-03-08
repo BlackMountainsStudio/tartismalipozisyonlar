@@ -81,7 +81,7 @@ export default function IncidentCard({
   const cardContent = (
     <>
       <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <span className="text-amber-400">{typeInfo.icon}</span>
           {minute != null && (
             <span className="rounded bg-zinc-800 px-1.5 py-0.5 text-xs font-medium text-zinc-300">
@@ -89,6 +89,20 @@ export default function IncidentCard({
             </span>
           )}
           <span className="font-semibold text-white">{typeInfo.label}</span>
+          {(inFavorOf || against) && (
+            <span className="flex items-center gap-1.5">
+              {inFavorOf && (
+                <span className="rounded bg-emerald-500/20 px-2 py-0.5 text-xs font-medium text-emerald-400 ring-1 ring-emerald-500/30">
+                  {inFavorOf} lehine
+                </span>
+              )}
+              {against && (
+                <span className="rounded bg-red-500/20 px-2 py-0.5 text-xs font-medium text-red-400 ring-1 ring-red-500/30">
+                  {against} aleyhine
+                </span>
+              )}
+            </span>
+          )}
         </div>
         <div className="flex items-center gap-2">
           <ConfidenceBadge score={confidenceScore} />
@@ -101,23 +115,9 @@ export default function IncidentCard({
         </div>
       </div>
 
-      {(matchInfo || inFavorOf || against) && (
+      {matchInfo && (
         <div className="mb-3 flex flex-wrap items-center gap-2 text-sm text-zinc-400">
-          {matchInfo && <span>{matchInfo}</span>}
-          {(inFavorOf || against) && (
-            <span className="flex items-center gap-2">
-              {inFavorOf && (
-                <span className="rounded bg-emerald-500/15 px-2 py-0.5 text-xs font-medium text-emerald-400">
-                  {inFavorOf} lehine
-                </span>
-              )}
-              {against && (
-                <span className="rounded bg-red-500/15 px-2 py-0.5 text-xs font-medium text-red-400">
-                  {against} aleyhine
-                </span>
-              )}
-            </span>
-          )}
+          <span>{matchInfo}</span>
         </div>
       )}
 
