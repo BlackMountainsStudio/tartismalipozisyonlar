@@ -126,10 +126,10 @@ export default function SuggestionPage() {
                 key={cat.value}
                 type="button"
                 onClick={() => setCategory(cat.value)}
-                className={`flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition-all ${
+                className={`flex min-h-[44px] items-center gap-1.5 rounded-xl border px-4 py-2.5 text-sm font-medium transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] ${
                   category === cat.value
-                    ? "bg-red-600 text-white"
-                    : "bg-zinc-800 text-zinc-400 hover:bg-zinc-700 hover:text-white"
+                    ? "border-transparent bg-red-500/15 text-red-400 ring-2 ring-red-500/50 shadow-lg"
+                    : "border-zinc-700 bg-zinc-800/80 text-zinc-400 hover:border-zinc-600 hover:bg-zinc-800 hover:text-white"
                 }`}
               >
                 {cat.icon}

@@ -17,6 +17,14 @@ import {
   X,
 } from "lucide-react";
 
+const TEAM_PILL_STYLES: Record<string, { accent: string; ring: string }> = {
+  Fenerbahçe: { accent: "bg-amber-500/15 text-amber-400 ring-amber-500/40", ring: "ring-2 ring-amber-500/50" },
+  Galatasaray: { accent: "bg-yellow-500/15 text-yellow-400 ring-yellow-500/40", ring: "ring-2 ring-yellow-500/50" },
+  Beşiktaş: { accent: "bg-white/15 text-zinc-200 ring-zinc-400/40", ring: "ring-2 ring-zinc-400/50" },
+  Trabzonspor: { accent: "bg-blue-600/15 text-blue-400 ring-blue-500/40", ring: "ring-2 ring-blue-500/50" },
+};
+const CATEGORY_PILL_ACTIVE = "border-transparent bg-red-500/15 text-red-400 ring-2 ring-red-500/50 shadow-lg";
+
 interface Incident {
   id: string;
   type: string;
@@ -161,7 +169,7 @@ export default function PozisyonlarPage() {
             <button
               type="button"
               onClick={clearFilters}
-              className="ml-auto flex items-center gap-1 rounded-md px-2 py-1 text-xs font-medium text-zinc-500 hover:bg-zinc-800 hover:text-white"
+              className="ml-auto flex items-center gap-1 rounded-xl border border-zinc-700 bg-zinc-800/80 px-3 py-1.5 text-xs font-medium text-zinc-500 transition-colors hover:border-zinc-600 hover:text-white"
             >
               <X className="h-3.5 w-3.5" />
               Filtreleri temizle
@@ -185,15 +193,16 @@ export default function PozisyonlarPage() {
             {teams.map((team) => {
               const count = stats?.byTeam[team] ?? 0;
               const active = selectedTeams.includes(team);
+              const style = TEAM_PILL_STYLES[team];
               return (
                 <button
                   key={team}
                   type="button"
                   onClick={() => toggleTeam(team)}
-                  className={`rounded-lg border px-3 py-1.5 text-sm font-medium transition-colors ${
-                    active
-                      ? "border-red-500/50 bg-red-500/20 text-red-400"
-                      : "border-zinc-700 bg-zinc-800 text-zinc-300 hover:border-zinc-600 hover:bg-zinc-700"
+                  className={`min-h-[44px] rounded-xl border px-4 py-2.5 text-sm font-medium transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] ${
+                    active && style
+                      ? `${style.accent} ${style.ring} border-transparent shadow-lg`
+                      : "border-zinc-700 bg-zinc-800/80 text-zinc-300 hover:border-zinc-600 hover:bg-zinc-800 hover:text-zinc-200"
                   }`}
                 >
                   {team}
@@ -236,10 +245,10 @@ export default function PozisyonlarPage() {
                   key={key}
                   type="button"
                   onClick={toggleCategoryFilter}
-                  className={`rounded-lg border px-3 py-1.5 text-sm font-medium transition-colors ${
+                  className={`min-h-[44px] rounded-xl border px-4 py-2.5 text-sm font-medium transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] ${
                     active
-                      ? "border-red-500/50 bg-red-500/20 text-red-400"
-                      : "border-zinc-700 bg-zinc-800 text-zinc-300 hover:border-zinc-600 hover:bg-zinc-700"
+                      ? CATEGORY_PILL_ACTIVE
+                      : "border-zinc-700 bg-zinc-800/80 text-zinc-300 hover:border-zinc-600 hover:bg-zinc-800 hover:text-zinc-200"
                   }`}
                 >
                   {CATEGORY_LABELS[key] ?? key}
@@ -262,7 +271,7 @@ export default function PozisyonlarPage() {
           <button
             type="button"
             onClick={clearFilters}
-            className="mt-4 rounded-lg bg-zinc-800 px-4 py-2 text-sm font-medium text-zinc-300 hover:bg-zinc-700"
+            className="mt-4 rounded-xl border border-zinc-700 bg-zinc-800/80 px-4 py-2.5 text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-600 hover:bg-zinc-800 hover:text-white"
           >
             Filtreleri temizle
           </button>

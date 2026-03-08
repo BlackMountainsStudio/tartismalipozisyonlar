@@ -289,10 +289,10 @@ export default function DashboardVideosPage() {
               <button
                 key={f.key}
                 onClick={() => setFilter(f.key)}
-                className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
+                className={`min-h-[44px] rounded-xl border px-4 py-2.5 text-sm font-medium transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] ${
                   filter === f.key
-                    ? "bg-purple-500/10 text-purple-400"
-                    : "bg-zinc-800 text-zinc-400 hover:text-white"
+                    ? "border-transparent bg-purple-500/15 text-purple-400 ring-2 ring-purple-500/50 shadow-lg"
+                    : "border-zinc-700 bg-zinc-800/80 text-zinc-400 hover:border-zinc-600 hover:bg-zinc-800 hover:text-white"
                 }`}
               >
                 {f.label}

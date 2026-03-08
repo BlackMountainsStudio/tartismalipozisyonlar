@@ -127,10 +127,10 @@ export default function DashboardSuggestionsPage() {
           <button
             key={f.key}
             onClick={() => setFilter(f.key)}
-            className={`rounded-lg px-3 py-1.5 text-sm font-medium transition-colors ${
+            className={`min-h-[44px] rounded-xl border px-4 py-2.5 text-sm font-medium transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] ${
               filter === f.key
-                ? "bg-red-600 text-white"
-                : "bg-zinc-800 text-zinc-400 hover:bg-zinc-700 hover:text-white"
+                ? "border-transparent bg-red-500/15 text-red-400 ring-2 ring-red-500/50 shadow-lg"
+                : "border-zinc-700 bg-zinc-800/80 text-zinc-400 hover:border-zinc-600 hover:bg-zinc-800 hover:text-white"
             }`}
           >
             {f.label}
@@ -215,35 +215,35 @@ export default function DashboardSuggestionsPage() {
                     <div className="flex flex-wrap gap-2">
                       <button
                         onClick={() => updateStatus(s.id, "READ")}
-                        className="flex items-center gap-1.5 rounded-lg bg-zinc-800 px-3 py-1.5 text-xs font-medium text-zinc-400 transition-colors hover:bg-zinc-700 hover:text-white"
+                        className="flex items-center gap-1.5 rounded-xl border border-zinc-700 bg-zinc-800/80 px-3 py-2 text-xs font-medium text-zinc-400 transition-all hover:scale-[1.02] hover:border-zinc-600 hover:text-white active:scale-[0.98]"
                       >
                         <Eye className="h-3.5 w-3.5" />
                         Okundu
                       </button>
                       <button
                         onClick={() => updateStatus(s.id, "RESOLVED")}
-                        className="flex items-center gap-1.5 rounded-lg bg-emerald-500/10 px-3 py-1.5 text-xs font-medium text-emerald-400 transition-colors hover:bg-emerald-500/20"
+                        className="flex items-center gap-1.5 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-3 py-2 text-xs font-medium text-emerald-400 transition-all hover:scale-[1.02] hover:ring-2 hover:ring-emerald-500/50 active:scale-[0.98]"
                       >
                         <CheckCircle2 className="h-3.5 w-3.5" />
                         Çözüldü
                       </button>
                       <button
                         onClick={() => updateStatus(s.id, "ARCHIVED")}
-                        className="flex items-center gap-1.5 rounded-lg bg-amber-500/10 px-3 py-1.5 text-xs font-medium text-amber-400 transition-colors hover:bg-amber-500/20"
+                        className="flex items-center gap-1.5 rounded-xl border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-xs font-medium text-amber-400 transition-all hover:scale-[1.02] hover:ring-2 hover:ring-amber-500/50 active:scale-[0.98]"
                       >
                         <Archive className="h-3.5 w-3.5" />
                         Arşivle
                       </button>
                       <button
                         onClick={() => deleteSuggestion(s.id)}
-                        className="flex items-center gap-1.5 rounded-lg bg-red-500/10 px-3 py-1.5 text-xs font-medium text-red-400 transition-colors hover:bg-red-500/20"
+                        className="flex items-center gap-1.5 rounded-xl border border-red-500/30 bg-red-500/10 px-3 py-2 text-xs font-medium text-red-400 transition-all hover:scale-[1.02] hover:ring-2 hover:ring-red-500/50 active:scale-[0.98]"
                       >
                         <Trash2 className="h-3.5 w-3.5" />
                         Sil
                       </button>
                       <button
                         onClick={() => setExpanded(null)}
-                        className="ml-auto flex items-center gap-1 rounded-lg px-2 py-1.5 text-xs text-zinc-500 hover:text-white"
+                        className="ml-auto flex items-center gap-1 rounded-xl border border-zinc-700 bg-zinc-800/80 px-2.5 py-2 text-xs text-zinc-500 transition-all hover:border-zinc-600 hover:text-white"
                       >
                         <X className="h-3.5 w-3.5" />
                       </button>

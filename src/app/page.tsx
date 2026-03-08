@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import MatchCard from "@/components/MatchCard";
-import { Shield, Loader2, TrendingUp, AlertTriangle, Search, ArrowUpDown, Users } from "lucide-react";
+import { Shield, Loader2, TrendingUp, AlertTriangle, Search, ArrowUpDown, Users, Check } from "lucide-react";
 
 const TRACKED_TEAMS = [
   "Fenerbahçe",
@@ -10,6 +10,13 @@ const TRACKED_TEAMS = [
   "Beşiktaş",
   "Trabzonspor",
 ] as const;
+
+const TEAM_STYLES: Record<(typeof TRACKED_TEAMS)[number], { accent: string; ring: string }> = {
+  Fenerbahçe: { accent: "bg-amber-500/15 text-amber-400 ring-amber-500/40", ring: "ring-amber-500/50" },
+  Galatasaray: { accent: "bg-yellow-500/15 text-yellow-400 ring-yellow-500/40", ring: "ring-yellow-500/50" },
+  Beşiktaş: { accent: "bg-white/15 text-zinc-200 ring-zinc-400/40", ring: "ring-zinc-400/50" },
+  Trabzonspor: { accent: "bg-blue-600/15 text-blue-400 ring-blue-500/40", ring: "ring-blue-500/50" },
+};
 
 type WeekSort = "asc" | "desc";
 
@@ -27,7 +34,7 @@ export default function HomePage() {
   const [matches, setMatches] = useState<Match[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
-  const [weekSort, setWeekSort] = useState<WeekSort>("desc");
+  const [weekSort, setWeekSort] = useState<WeekSort | null>(null);
   const [selectedTeams, setSelectedTeams] = useState<string[]>([]);
 
   useEffect(() => {
@@ -47,6 +54,19 @@ export default function HomePage() {
   }, []);
 
   const seasonMatches = matches.filter((m) => m.league === "Süper Lig 2025-26");
+
+  const maxWeek = seasonMatches.length > 0
+    ? Math.max(...seasonMatches.map((m) => m.week))
+    : 34;
+
+  // Veri yüklendiğinde en son eklenen haftayı öne al (desc = en güncel hafta önce)
+  useEffect(() => {
+    if (!loading && seasonMatches.length > 0 && weekSort === null) {
+      setWeekSort("desc");
+    }
+  }, [loading, seasonMatches.length, weekSort]);
+
+  const effectiveWeekSort: WeekSort = weekSort ?? "desc";
 
   const totalApproved = matches.reduce(
     (sum, m) => sum + m.incidents.filter((i) => i.status === "APPROVED").length,
@@ -80,11 +100,7 @@ export default function HomePage() {
 
   const sortedWeeks = Object.keys(groupedMatches)
     .map(Number)
-    .sort((a, b) => (weekSort === "asc" ? a - b : b - a));
-
-  const maxWeek = seasonMatches.length > 0
-    ? Math.max(...seasonMatches.map((m) => m.week))
-    : 34;
+    .sort((a, b) => (effectiveWeekSort === "asc" ? a - b : b - a));
 
   const toggleTeam = (team: string) => {
     setSelectedTeams((prev) =>
@@ -166,28 +182,38 @@ export default function HomePage() {
               <ArrowUpDown className="h-4 w-4 text-zinc-500" />
               <span className="text-sm font-medium text-zinc-400">Hafta sırası</span>
             </div>
-            <div className="flex rounded-lg border border-zinc-700 bg-zinc-800 p-0.5">
+            <div className="flex rounded-xl border border-zinc-700 bg-zinc-800 p-0.5">
               <button
                 type="button"
                 onClick={() => setWeekSort("asc")}
+                title="Sezon başından sona"
                 className={`min-h-[44px] rounded-md px-4 py-2 text-sm font-medium transition-colors touch-manipulation ${
-                  weekSort === "asc"
+                  effectiveWeekSort === "asc"
                     ? "bg-red-500/20 text-red-400 ring-1 ring-red-500/50"
                     : "text-zinc-400 active:bg-zinc-700 active:text-white"
                 }`}
               >
-                1 → {maxWeek}
+                <span className="inline-flex items-center gap-1 tabular-nums">
+                  <span className="opacity-70">1</span>
+                  <span className="text-zinc-600">·</span>
+                  <span>{maxWeek}</span>
+                </span>
               </button>
               <button
                 type="button"
                 onClick={() => setWeekSort("desc")}
+                title="En güncel haftadan"
                 className={`min-h-[44px] rounded-md px-4 py-2 text-sm font-medium transition-colors touch-manipulation ${
-                  weekSort === "desc"
+                  effectiveWeekSort === "desc"
                     ? "bg-red-500/20 text-red-400 ring-1 ring-red-500/50"
                     : "text-zinc-400 active:bg-zinc-700 active:text-white"
                 }`}
               >
-                {maxWeek} → 1
+                <span className="inline-flex items-center gap-1 tabular-nums">
+                  <span>{maxWeek}</span>
+                  <span className="text-zinc-600">·</span>
+                  <span className="opacity-70">1</span>
+                </span>
               </button>
             </div>
           </div>
@@ -198,25 +224,40 @@ export default function HomePage() {
               <span className="text-sm font-medium text-zinc-400">Takım filtresi</span>
             </div>
             <div className="flex flex-wrap gap-2">
-              {TRACKED_TEAMS.map((team) => (
-                <label
-                  key={team}
-                  className="flex min-h-[44px] cursor-pointer items-center gap-2 rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 transition-colors active:bg-zinc-700 touch-manipulation"
-                >
-                  <input
-                    type="checkbox"
-                    checked={selectedTeams.includes(team)}
-                    onChange={() => toggleTeam(team)}
-                    className="h-4 w-4 rounded border-zinc-600 text-red-500 focus:ring-red-500"
-                  />
-                  <span className="text-sm text-zinc-300">{team}</span>
-                </label>
-              ))}
+              {TRACKED_TEAMS.map((team) => {
+                const isSelected = selectedTeams.includes(team);
+                const style = TEAM_STYLES[team];
+                return (
+                  <label
+                    key={team}
+                    className={`flex min-h-[44px] cursor-pointer items-center gap-2.5 rounded-xl border px-4 py-2.5 text-sm font-medium transition-all duration-200 touch-manipulation hover:scale-[1.02] active:scale-[0.98] ${
+                      isSelected
+                        ? `${style.accent} border-transparent ring-2 ${style.ring} shadow-lg`
+                        : "border-zinc-700 bg-zinc-800/80 text-zinc-400 hover:border-zinc-600 hover:bg-zinc-800 hover:text-zinc-300"
+                    }`}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={isSelected}
+                      onChange={() => toggleTeam(team)}
+                      className="sr-only"
+                    />
+                    <span
+                      className={`flex h-4 w-4 shrink-0 items-center justify-center rounded border ${
+                        isSelected ? "border-current bg-current/20" : "border-zinc-600"
+                      }`}
+                    >
+                      {isSelected && <Check className="h-2.5 w-2.5" strokeWidth={3} />}
+                    </span>
+                    <span>{team}</span>
+                  </label>
+                );
+              })}
               {selectedTeams.length > 0 && (
                 <button
                   type="button"
                   onClick={clearTeamFilter}
-                  className="min-h-[44px] rounded-md px-3 py-2 text-sm font-medium text-zinc-500 active:bg-zinc-800 active:text-white touch-manipulation"
+                  className="min-h-[44px] rounded-xl border border-zinc-700 bg-zinc-800/80 px-4 py-2.5 text-sm font-medium text-zinc-500 transition-colors hover:border-zinc-600 hover:text-zinc-300 active:bg-zinc-800 touch-manipulation"
                 >
                   Temizle
                 </button>

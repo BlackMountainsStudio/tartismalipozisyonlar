@@ -215,7 +215,7 @@ export default function CommentatorProfilePage({
             {commentator.expertise.map((item, i) => (
               <span
                 key={i}
-                className="rounded-lg bg-zinc-800 px-3 py-1.5 text-sm text-zinc-300"
+                className="rounded-xl border border-zinc-700 bg-zinc-800/80 px-4 py-2 text-sm font-medium text-zinc-300"
               >
                 {item}
               </span>
