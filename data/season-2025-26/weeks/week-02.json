@@ -20,8 +20,14 @@
             "https://www.milliyet.com.tr/skorer/galatasaray-karagumruk-macinda-tartisma-yaratan-pozisyon-eski-hakemler-degerlendirdi-temiz-bir-gol-degil-7427735"
           ],
           "refereeComments": [
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Temiz bir gol olduğunu söyleyemem. Elle itme müdahalesi faul." },
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Bu pozisyon net bir faul." }
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Temiz bir gol olduğunu söyleyemem. Elle itme müdahalesi faul."
+            },
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Bu pozisyon net bir faul."
+            }
           ],
           "status": "APPROVED"
         }

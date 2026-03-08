@@ -3,28 +3,6 @@
   "matches": [
     {
       "week": 23,
-      "date": "2026-02-22",
-      "homeTeam": "Kayserispor",
-      "awayTeam": "Konyaspor",
-      "league": "Süper Lig 2025-26",
-      "note": null,
-      "incidents": [
-        {
-          "minute": 86,
-          "type": "GOAL_DISALLOWED",
-          "description": "Konyaspor'un eşitlik golü VAR tarafından ofsayt nedeniyle iptal edildi; uzun VAR incelemesi sonrası karar bu maçın odak noktası oldu.",
-          "inFavorOf": "Kayserispor",
-          "against": "Konyaspor",
-          "confidenceScore": 0.82,
-          "sources": [
-            "https://www.haberler.com/kayserispor-konyaspor-var-incelemesi"
-          ],
-          "status": "APPROVED"
-        }
-      ]
-    },
-    {
-      "week": 23,
       "date": "2026-02-21",
       "homeTeam": "Konyaspor",
       "awayTeam": "Galatasaray",

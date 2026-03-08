@@ -21,8 +21,14 @@
             "https://www.caykurrizespor.org.tr/Haber/BASIN-ACIKLAMASI-30082025-Galatasaray-Caykur-Rizespor-maci-hakem-hatalari-6180.html"
           ],
           "refereeComments": [
-            { "author": "Deniz Ateş Bitnel", "text": "Santimlerle iptal edilen goller beni vicdanen rahatsız ediyor ama teknolojiye güvenmek zorundayız." },
-            { "author": "Mark Clattenburg", "text": "Bu tür pozisyonlar yıllar boyunca gol oldu. Fark neredeyse yok denecek kadar azdı." }
+            {
+              "author": "Deniz Ateş Bitnel",
+              "text": "Santimlerle iptal edilen goller beni vicdanen rahatsız ediyor ama teknolojiye güvenmek zorundayız."
+            },
+            {
+              "author": "Mark Clattenburg",
+              "text": "Bu tür pozisyonlar yıllar boyunca gol oldu. Fark neredeyse yok denecek kadar azdı."
+            }
           ],
           "status": "APPROVED"
         },

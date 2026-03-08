@@ -21,8 +21,14 @@
             "https://www.hurriyet.com.tr/sporarena/firat-aydinus-gaziantep-fk-galatasaray-macindaki-hakem-kararlarini-ve-cok-tartisilan-pozisyonlari-degerlendirdi-penalti-42908072"
           ],
           "refereeComments": [
-            { "author": "Ahmet Çakar", "text": "Galatasaray VAR yardımıyla penaltı kazandı ama karar yanlış. Sallai önce Rodrigues'in formasından çekti sonra çekildi." },
-            { "author": "Fırat Aydınus (Hürriyet)", "text": "Sallai rakibini çekerken top oyunda değil, Rodrigues çekerken top oyunda. VAR bu yüzden çağırdı." }
+            {
+              "author": "Ahmet Çakar",
+              "text": "Galatasaray VAR yardımıyla penaltı kazandı ama karar yanlış. Sallai önce Rodrigues'in formasından çekti sonra çekildi."
+            },
+            {
+              "author": "Fırat Aydınus (Hürriyet)",
+              "text": "Sallai rakibini çekerken top oyunda değil, Rodrigues çekerken top oyunda. VAR bu yüzden çağırdı."
+            }
           ],
           "status": "APPROVED"
         },

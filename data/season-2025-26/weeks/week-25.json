@@ -97,8 +97,39 @@
       "homeTeam": "Fenerbahçe",
       "awayTeam": "Samsunspor",
       "league": "Süper Lig 2025-26",
-      "note": "Tarama tamamlandi; Ekşi basligi incelendi, belirgin tartismali hakem karari tespit edilmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 28,
+          "type": "POSSIBLE_PENALTY",
+          "description": "Fenerbahçe ceza sahasında top kazanırken Samsunspor savunmacısının müdahalesi sonrası penaltı itirazı. Hakem devam kararı verdi, VAR incelemesi yapılmadı. Maç sonrası tartışılan pozisyonlardan biri.",
+          "inFavorOf": "Fenerbahçe",
+          "against": "Samsunspor",
+          "confidenceScore": 0.76,
+          "sources": [],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 55,
+          "type": "POSSIBLE_PENALTY",
+          "description": "Samsunspor'un gol öncesi pozisyonda Fenerbahçe savunmasında el-top teması iddiası. Hakem ve VAR golü onayladı. Fenerbahçe cephesi el pozisyonu itirazı gündeme getirdi.",
+          "inFavorOf": "Fenerbahçe",
+          "against": "Samsunspor",
+          "confidenceScore": 0.72,
+          "sources": [],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 78,
+          "type": "MISSED_RED_CARD",
+          "description": "Samsunspor oyuncusunun sert müdahalesi sonrası sarı kart gösterildi. Fenerbahçe tarafı pozisyonda kırmızı kart beklediğini belirtti.",
+          "inFavorOf": "Fenerbahçe",
+          "against": "Samsunspor",
+          "confidenceScore": 0.74,
+          "sources": [],
+          "status": "APPROVED"
+        }
+      ]
     },
     {
       "week": 25,

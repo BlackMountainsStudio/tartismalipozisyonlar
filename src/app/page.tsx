@@ -75,25 +75,32 @@ export default function HomePage() {
       ? matches.filter((m) => m.league === "Süper Lig 2025-26")
       : matches;
 
-  const maxWeek = seasonMatches.length > 0
-    ? Math.max(...seasonMatches.map((m) => m.week))
+  // Sadece FB, GS, BJK, TS maçları (en az biri bu takımlardan olmalı)
+  const bigFourMatches = seasonMatches.filter(
+    (m) =>
+      TRACKED_TEAMS.includes(m.homeTeam as (typeof TRACKED_TEAMS)[number]) ||
+      TRACKED_TEAMS.includes(m.awayTeam as (typeof TRACKED_TEAMS)[number])
+  );
+
+  const maxWeek = bigFourMatches.length > 0
+    ? Math.max(...bigFourMatches.map((m) => m.week))
     : 34;
 
   // Veri yüklendiğinde en son eklenen haftayı öne al (desc = en güncel hafta önce)
   useEffect(() => {
-    if (!loading && seasonMatches.length > 0 && weekSort === null) {
+    if (!loading && bigFourMatches.length > 0 && weekSort === null) {
       setWeekSort("desc");
     }
-  }, [loading, seasonMatches.length, weekSort]);
+  }, [loading, bigFourMatches.length, weekSort]);
 
   const effectiveWeekSort: WeekSort = weekSort ?? "desc";
 
-  const totalApproved = matches.reduce(
+  const totalApproved = bigFourMatches.reduce(
     (sum, m) => sum + m.incidents.filter((i) => i.status === "APPROVED").length,
     0
   );
 
-  const filteredMatches = seasonMatches.filter((m) => {
+  const filteredMatches = bigFourMatches.filter((m) => {
     if (search) {
       const q = search.toLowerCase();
       if (
@@ -152,7 +159,7 @@ export default function HomePage() {
             <StatCard
               icon={<TrendingUp className="h-5 w-5 text-emerald-400" />}
               label="Takip Edilen Maç"
-              value={seasonMatches.length}
+              value={bigFourMatches.length}
             />
             <StatCard
               icon={<AlertTriangle className="h-5 w-5 text-amber-400" />}
@@ -164,7 +171,7 @@ export default function HomePage() {
               label="Takip Edilen Takım"
               value={
                 new Set(
-                  seasonMatches.flatMap((m) => [m.homeTeam, m.awayTeam])
+                  bigFourMatches.flatMap((m) => [m.homeTeam, m.awayTeam])
                 ).size
               }
             />

@@ -39,9 +39,18 @@
             "https://www.takagazete.com.tr/trabzonspor-antalyaspor-macinda-hakem-skandali-augustonun-golu-tartismali-sekilde-iptal-edildi"
           ],
           "refereeComments": [
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Video hakem müdahalesi baştan sona yanlış. Bu gol verilmeliydi." },
-            { "author": "Deniz Çoban (beIN Trio)", "text": "İlk 3 haftadaki en önemli VAR hatası. VAR'ın müdahale etmesi çok büyük bir hata." },
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Pozisyon ofsayt değil. VAR tekniği açısından tek açıdan vermek çok yanlış." }
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Video hakem müdahalesi baştan sona yanlış. Bu gol verilmeliydi."
+            },
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "İlk 3 haftadaki en önemli VAR hatası. VAR'ın müdahale etmesi çok büyük bir hata."
+            },
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Pozisyon ofsayt değil. VAR tekniği açısından tek açıdan vermek çok yanlış."
+            }
           ],
           "status": "APPROVED"
         }
