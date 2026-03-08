@@ -63,11 +63,11 @@ async function main() {
           INSERT INTO "Incident" (
             "id", "matchId", "minute", "type", "description", "confidenceScore",
             "sources", "status", "videoUrl", "relatedVideos", "refereeComments",
-            "newsArticles", "createdAt", "updatedAt"
+            "newsArticles", "inFavorOf", "against", "createdAt", "updatedAt"
           )
           VALUES (
             concat('incident_', md5(random()::text || clock_timestamp()::text)),
-            $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, NOW(), NOW()
+            $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, NOW(), NOW()
           )
           `,
           [
@@ -82,6 +82,8 @@ async function main() {
             JSON.stringify(incident.relatedVideos ?? []),
             JSON.stringify(incident.refereeComments ?? []),
             JSON.stringify(incident.newsArticles ?? []),
+            incident.inFavorOf ?? null,
+            incident.against ?? null,
           ]
         );
         incidentCount += 1;

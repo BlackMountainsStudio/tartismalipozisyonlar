@@ -18,7 +18,9 @@
             "https://eksisozluk.com/7-mart-2026-turk-futbolunda-kara-gece--8080944?a=popular",
             "https://turkinform.com.tr/ben-dev-derbide-galatasaray-cephesinden-penalti-itirazi-var-odasi-sessiz-kaldi"
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Beşiktaş",
+          "against": "Galatasaray"
         },
         {
           "minute": 35,
@@ -33,12 +35,21 @@
           ],
           "videoUrl": "https://www.youtube.com/shorts/DeODXRRJBeA",
           "relatedVideos": [
-            { "url": "https://www.youtube.com/shorts/DeODXRRJBeA", "title": "Ahmet Çakar: Sane pozisyonunda kırmızı kart olmalıydı (YouTube Shorts)" }
+            {
+              "url": "https://www.youtube.com/shorts/DeODXRRJBeA",
+              "title": "Ahmet Çakar: Sane pozisyonunda kırmızı kart olmalıydı (YouTube Shorts)"
+            }
           ],
           "refereeComments": [
-            { "author": "Ahmet Çakar", "text": "Sane'nin ilk sarı aldığı pozisyonda kırmızı kart olması lazım.", "sourceUrl": "https://www.youtube.com/shorts/DeODXRRJBeA" }
+            {
+              "author": "Ahmet Çakar",
+              "text": "Sane'nin ilk sarı aldığı pozisyonda kırmızı kart olması lazım.",
+              "sourceUrl": "https://www.youtube.com/shorts/DeODXRRJBeA"
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Galatasaray",
+          "against": "Beşiktaş"
         },
         {
           "minute": 65,
@@ -48,7 +59,9 @@
           "sources": [
             "https://eksisozluk.com/7-mart-2026-besiktas-galatasaray-maci--8074595?a=popular"
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Galatasaray",
+          "against": "Beşiktaş"
         },
         {
           "minute": 68,
@@ -60,7 +73,9 @@
             "https://eksisozluk.com/7-mart-2026-turk-futbolunda-kara-gece--8080944?a=popular",
             "https://turkinform.com.tr/besiktasin-ofsayt-itirazinda-bulundugu-golun-var-goruntusu-yayinlandi"
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Galatasaray",
+          "against": "Beşiktaş"
         },
         {
           "minute": 72,
@@ -70,7 +85,9 @@
           "sources": [
             "https://eksisozluk.com/7-mart-2026-besiktas-galatasaray-maci--8074595?a=popular"
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Galatasaray",
+          "against": "Beşiktaş"
         }
       ]
     },

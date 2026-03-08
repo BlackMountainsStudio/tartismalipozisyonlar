@@ -20,9 +20,14 @@
           ],
           "videoUrl": "https://beinsports.com.tr/mac-ozetleri-goller/super-lig/ozet/2025-2026/24/trabzonspor-fatih-karagumruk",
           "refereeComments": [
-            { "author": "Ensonhaber", "text": "Oyundan çıkmayı reddetmesi dikkat çekti. Kısa süreli bir kararsızlık yaşandı." }
+            {
+              "author": "Ensonhaber",
+              "text": "Oyundan çıkmayı reddetmesi dikkat çekti. Kısa süreli bir kararsızlık yaşandı."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Fatih Karagümrük",
+          "against": "Trabzonspor"
         }
       ]
     },
@@ -43,9 +48,14 @@
           ],
           "videoUrl": "https://beinsports.com.tr/mac-ozetleri-goller/super-lig/pozisyonlar/2025-2026/24/galatasaray-corendon-alanyaspor/galatasarayin-golu-varda-iptal-edildi-39075",
           "refereeComments": [
-            { "author": "beIN Trio / eski hakemler", "text": "VAR ofsayt cizgisi kontrolunde golun iptal karari verildi. Pozisyon medyada genis yankı buldu." }
+            {
+              "author": "beIN Trio / eski hakemler",
+              "text": "VAR ofsayt cizgisi kontrolunde golun iptal karari verildi. Pozisyon medyada genis yankı buldu."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Alanyaspor",
+          "against": "Galatasaray"
         },
         {
           "minute": 52,
@@ -60,17 +70,40 @@
           ],
           "videoUrl": "https://www.youtube.com/shorts/UidFoc2Jijo",
           "relatedVideos": [
-            { "url": "https://www.youtube.com/shorts/UidFoc2Jijo", "title": "Osimhen penaltı pozisyonu (YouTube Shorts)" },
-            { "url": "https://www.youtube.com/shorts/yBQ_tsLDsLA", "title": "Galatasaray Alanyaspor penaltı tartışması (YouTube Shorts)" },
-            { "url": "https://www.youtube.com/results?search_query=Galatasaray+vs+Alanyaspor+osimhen+penalt%C4%B1+pozisyonu+", "title": "YouTube'da Osimhen penaltı pozisyonu araması" }
+            {
+              "url": "https://www.youtube.com/shorts/UidFoc2Jijo",
+              "title": "Osimhen penaltı pozisyonu (YouTube Shorts)"
+            },
+            {
+              "url": "https://www.youtube.com/shorts/yBQ_tsLDsLA",
+              "title": "Galatasaray Alanyaspor penaltı tartışması (YouTube Shorts)"
+            },
+            {
+              "url": "https://www.youtube.com/results?search_query=Galatasaray+vs+Alanyaspor+osimhen+penalt%C4%B1+pozisyonu+",
+              "title": "YouTube'da Osimhen penaltı pozisyonu araması"
+            }
           ],
           "refereeComments": [
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Penaltı verilse daha doğru olurdu." },
-            { "author": "Trio diğer eski hakemler (Bülent Yıldırım, Bahattin Duran)", "text": "Devam kararını desteklediler; temasın penaltı gerektirmediği yönünde görüş bildirdiler." },
-            { "author": "Yeni Çağ / beIN Trio yorumu", "text": "Galatasaray-Alanyaspor maçındaki penaltı pozisyonu Trio'da tek tek incelendi; Deniz Çoban penaltı verilmeli derken diğer iki eski hakem saha kararını doğru buldu." },
-            { "author": "Video ve sosyal medya yorumları", "text": "Pozisyon YouTube ve sosyal medyada geniş yer buldu; taraftar ve yorumcular 'penaltı verilmeliydi' ile 'devam doğru' görüşleriyle ikiye ayrıldı." }
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Penaltı verilse daha doğru olurdu."
+            },
+            {
+              "author": "Trio diğer eski hakemler (Bülent Yıldırım, Bahattin Duran)",
+              "text": "Devam kararını desteklediler; temasın penaltı gerektirmediği yönünde görüş bildirdiler."
+            },
+            {
+              "author": "Yeni Çağ / beIN Trio yorumu",
+              "text": "Galatasaray-Alanyaspor maçındaki penaltı pozisyonu Trio'da tek tek incelendi; Deniz Çoban penaltı verilmeli derken diğer iki eski hakem saha kararını doğru buldu."
+            },
+            {
+              "author": "Video ve sosyal medya yorumları",
+              "text": "Pozisyon YouTube ve sosyal medyada geniş yer buldu; taraftar ve yorumcular 'penaltı verilmeliydi' ile 'devam doğru' görüşleriyle ikiye ayrıldı."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Alanyaspor",
+          "against": "Galatasaray"
         },
         {
           "minute": 93,
@@ -82,10 +115,18 @@
             "https://www.yenicaggazetesi.com/eski-hakem-ahmet-cakar-galatasaray-alanyaspor-macinda-singonun-pozisyonuna-isyan-etti-besiktas-derbisi-oncesi-kart-ve-ceza-kararini-yorumladi-1004991h.htm"
           ],
           "refereeComments": [
-            { "author": "beIN Trio / eski hakemler", "text": "Net kırmızı kart pozisyonu olarak yorumlandı." },
-            { "author": "Ahmet Çakar", "text": "Singo'nun pozisyonuna isyan etti; kart ve ceza kararını eleştirdi." }
+            {
+              "author": "beIN Trio / eski hakemler",
+              "text": "Net kırmızı kart pozisyonu olarak yorumlandı."
+            },
+            {
+              "author": "Ahmet Çakar",
+              "text": "Singo'nun pozisyonuna isyan etti; kart ve ceza kararını eleştirdi."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Alanyaspor",
+          "against": "Galatasaray"
         }
       ]
     },
@@ -107,9 +148,14 @@
           ],
           "videoUrl": "https://beinsports.com.tr/lig/super-lig/ozet/2025-2026/24/kocaelispor-besiktas",
           "refereeComments": [
-            { "author": "Maç sonu yorumları", "text": "Pozisyonun penaltı olup olmadığı taraftar ve yorumcular arasında tartışma konusu oldu." }
+            {
+              "author": "Maç sonu yorumları",
+              "text": "Pozisyonun penaltı olup olmadığı taraftar ve yorumcular arasında tartışma konusu oldu."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Beşiktaş",
+          "against": "Kocaelispor"
         },
         {
           "minute": 82,
@@ -120,9 +166,14 @@
             "https://beinsports.com.tr/lig/super-lig/ozet/2025-2026/24/kocaelispor-besiktas"
           ],
           "refereeComments": [
-            { "author": "Maç analizi", "text": "Pozisyonda faul verilmemesi eleştirildi." }
+            {
+              "author": "Maç analizi",
+              "text": "Pozisyonda faul verilmemesi eleştirildi."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Beşiktaş",
+          "against": "Kocaelispor"
         }
       ]
     },
@@ -143,9 +194,14 @@
           ],
           "videoUrl": "https://beinsports.com.tr/lig/super-lig/ozet/2025-2026/24/fraport-tav-antalyaspor-2-2-fenerbahce-mac-ozeti",
           "refereeComments": [
-            { "author": "beIN Trio (üç eski hakem)", "text": "Pozisyonda net faul olduğu ve hakemin bu ihlali atladığı görüşünde birleşti." }
+            {
+              "author": "beIN Trio (üç eski hakem)",
+              "text": "Pozisyonda net faul olduğu ve hakemin bu ihlali atladığı görüşünde birleşti."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Antalyaspor",
+          "against": "Fenerbahçe"
         },
         {
           "minute": 75,
@@ -157,10 +213,18 @@
           ],
           "videoUrl": "https://beinsports.com.tr/lig/super-lig/ozet/2025-2026/24/fraport-tav-antalyaspor-2-2-fenerbahce-mac-ozeti",
           "refereeComments": [
-            { "author": "beIN Trio", "text": "Bu müdahale tartışmasız, açık ve bariz bir penaltı olarak değerlendirildi." },
-            { "author": "Hürriyet / Trio yorumu", "text": "Fenerbahçe'nin Antalyaspor maçındaki hakem kararları Trio'da tek tek incelendi; penaltı kararı en çok konuşulan pozisyon oldu." }
+            {
+              "author": "beIN Trio",
+              "text": "Bu müdahale tartışmasız, açık ve bariz bir penaltı olarak değerlendirildi."
+            },
+            {
+              "author": "Hürriyet / Trio yorumu",
+              "text": "Fenerbahçe'nin Antalyaspor maçındaki hakem kararları Trio'da tek tek incelendi; penaltı kararı en çok konuşulan pozisyon oldu."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Antalyaspor",
+          "against": "Fenerbahçe"
         }
       ]
     }

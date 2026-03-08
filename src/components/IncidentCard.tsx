@@ -21,6 +21,8 @@ interface IncidentCardProps {
   status: string;
   matchInfo?: string;
   videoUrl?: string | null;
+  inFavorOf?: string | null;
+  against?: string | null;
   actions?: React.ReactNode;
   clickable?: boolean;
   matchSlug?: string;
@@ -63,6 +65,8 @@ export default function IncidentCard({
   status,
   matchInfo,
   videoUrl,
+  inFavorOf,
+  against,
   actions,
   clickable = false,
   matchSlug,
@@ -97,9 +101,23 @@ export default function IncidentCard({
         </div>
       </div>
 
-      {matchInfo && (
-        <div className="mb-3 flex items-center gap-3 text-sm text-zinc-400">
-          <span>{matchInfo}</span>
+      {(matchInfo || inFavorOf || against) && (
+        <div className="mb-3 flex flex-wrap items-center gap-2 text-sm text-zinc-400">
+          {matchInfo && <span>{matchInfo}</span>}
+          {(inFavorOf || against) && (
+            <span className="flex items-center gap-2">
+              {inFavorOf && (
+                <span className="rounded bg-emerald-500/15 px-2 py-0.5 text-xs font-medium text-emerald-400">
+                  {inFavorOf} lehine
+                </span>
+              )}
+              {against && (
+                <span className="rounded bg-red-500/15 px-2 py-0.5 text-xs font-medium text-red-400">
+                  {against} aleyhine
+                </span>
+              )}
+            </span>
+          )}
         </div>
       )}
 

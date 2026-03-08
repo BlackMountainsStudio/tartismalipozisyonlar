@@ -36,6 +36,8 @@ interface Incident {
   videoUrl?: string | null;
   slug?: string;
   matchSlug?: string;
+  inFavorOf?: string | null;
+  against?: string | null;
   match?: {
     id: string;
     homeTeam: string;
@@ -51,6 +53,8 @@ interface Stats {
   byCategory: Record<string, number>;
   byTeam: Record<string, number>;
   byWeek: Record<number, number>;
+  byInFavorOf?: Record<string, number>;
+  byAgainst?: Record<string, number>;
 }
 
 const CATEGORY_LABELS: Record<string, string> = {
@@ -69,6 +73,7 @@ export default function PozisyonlarPage() {
   const [loading, setLoading] = useState(true);
   const [selectedTeams, setSelectedTeams] = useState<string[]>([]);
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
+  const [favorFilter, setFavorFilter] = useState<{ type: "inFavorOf" | "against"; team: string } | null>(null);
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(
     new Set(CATEGORY_ORDER)
   );
@@ -80,6 +85,7 @@ export default function PozisyonlarPage() {
       params.set("status", "APPROVED");
       if (selectedTeams.length > 0) params.set("team", selectedTeams.join(","));
       if (selectedTypes.length > 0) params.set("type", selectedTypes.join(","));
+      if (favorFilter) params.set(favorFilter.type, favorFilter.team);
 
       const [incRes, statsRes] = await Promise.all([
         fetch(`/api/incidents?${params}`, { cache: "no-store" }),
@@ -97,7 +103,7 @@ export default function PozisyonlarPage() {
     } finally {
       setLoading(false);
     }
-  }, [selectedTeams, selectedTypes]);
+  }, [selectedTeams, selectedTypes, favorFilter]);
 
   useEffect(() => {
     fetchData();
@@ -143,9 +149,21 @@ export default function PozisyonlarPage() {
   const clearFilters = () => {
     setSelectedTeams([]);
     setSelectedTypes([]);
+    setFavorFilter(null);
   };
 
-  const hasFilters = selectedTeams.length > 0 || selectedTypes.length > 0;
+  const hasFilters = selectedTeams.length > 0 || selectedTypes.length > 0 || favorFilter != null;
+
+  const favorTeams = stats && (stats.byInFavorOf || stats.byAgainst)
+    ? [...new Set([
+        ...Object.keys(stats.byInFavorOf ?? {}),
+        ...Object.keys(stats.byAgainst ?? {}),
+      ])].sort((a, b) => {
+        const aTotal = (stats.byInFavorOf?.[a] ?? 0) + (stats.byAgainst?.[a] ?? 0);
+        const bTotal = (stats.byInFavorOf?.[b] ?? 0) + (stats.byAgainst?.[b] ?? 0);
+        return bTotal - aTotal;
+      })
+    : [];
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
@@ -154,20 +172,21 @@ export default function PozisyonlarPage() {
           Var <span className="text-red-500">Odası</span>
         </h1>
         <p className="mt-2 text-zinc-400">
-          Türe ve takıma göre filtreleyip grupları açıp kapatabilirsiniz. İstatistik sayfası bir sonraki adımda eklenecek.
+          Türe, takıma ve lehine/aleyhine durumuna göre filtreleyip grupları açıp kapatabilirsiniz.
         </p>
       </div>
 
-      {/* Özet / sonuç sayısı */}
+      {/* Özet / sonuç sayısı ve lehine-aleyhine istatistikleri */}
       {stats && (
-        <div className="mb-6 flex flex-wrap items-center gap-4 rounded-xl border border-zinc-800 bg-zinc-900/40 p-4">
-          <div className="flex items-center gap-2">
-            <BarChart3 className="h-5 w-5 text-red-400" />
-            <span className="text-sm font-medium text-zinc-400">Sonuç</span>
-          </div>
-          <span className="text-2xl font-bold text-white">{stats.total}</span>
-          <span className="text-zinc-500">pozisyon</span>
-          {hasFilters && (
+        <div className="mb-6 space-y-4">
+          <div className="flex flex-wrap items-center gap-4 rounded-xl border border-zinc-800 bg-zinc-900/40 p-4">
+            <div className="flex items-center gap-2">
+              <BarChart3 className="h-5 w-5 text-red-400" />
+              <span className="text-sm font-medium text-zinc-400">Sonuç</span>
+            </div>
+            <span className="text-2xl font-bold text-white">{stats.total}</span>
+            <span className="text-zinc-500">pozisyon</span>
+            {hasFilters && (
             <button
               type="button"
               onClick={clearFilters}
@@ -177,6 +196,48 @@ export default function PozisyonlarPage() {
               Filtreleri temizle
             </button>
           )}
+          </div>
+
+          {/* Lehine / Aleyhine istatistikleri */}
+          {(stats.byInFavorOf && Object.keys(stats.byInFavorOf).length > 0) ||
+          (stats.byAgainst && Object.keys(stats.byAgainst).length > 0) ? (
+            <div className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-4">
+              <p className="mb-3 text-sm font-medium text-zinc-400">Pozisyonlar takım bazında (lehine / aleyhine)</p>
+              <div className="flex flex-wrap gap-4">
+                {[...new Set([
+                  ...Object.keys(stats.byInFavorOf ?? {}),
+                  ...Object.keys(stats.byAgainst ?? {}),
+                ])].sort((a, b) => {
+                  const aTotal = (stats.byInFavorOf?.[a] ?? 0) + (stats.byAgainst?.[a] ?? 0);
+                  const bTotal = (stats.byInFavorOf?.[b] ?? 0) + (stats.byAgainst?.[b] ?? 0);
+                  return bTotal - aTotal;
+                }).map((team) => {
+                  const lehine = stats.byInFavorOf?.[team] ?? 0;
+                  const aleyhine = stats.byAgainst?.[team] ?? 0;
+                  const style = TEAM_PILL_STYLES[team];
+                  return (
+                    <div
+                      key={team}
+                      className={`flex items-center gap-3 rounded-xl border px-4 py-2.5 ${
+                        style ? `${style.ring} border-transparent` : "border-zinc-700"
+                      }`}
+                    >
+                      <span className="font-medium text-white">{team}</span>
+                      <span className="flex items-center gap-2 text-sm">
+                        <span className="text-emerald-400" title="Lehine">
+                          +{lehine}
+                        </span>
+                        <span className="text-zinc-600">/</span>
+                        <span className="text-red-400" title="Aleyhine">
+                          −{aleyhine}
+                        </span>
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          ) : null}
         </div>
       )}
 
@@ -260,6 +321,66 @@ export default function PozisyonlarPage() {
             })}
           </div>
         </div>
+
+        {/* Lehine / Aleyhine filtre */}
+        {favorTeams.length > 0 && (
+          <div>
+            <p className="mb-2 text-xs font-medium uppercase tracking-wide text-zinc-500">
+              Lehine / Aleyhine
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {favorTeams.flatMap((team) => {
+                const lehineCount = stats?.byInFavorOf?.[team] ?? 0;
+                const aleyhineCount = stats?.byAgainst?.[team] ?? 0;
+                const style = TEAM_PILL_STYLES[team];
+                return [
+                  lehineCount > 0 && (
+                    <button
+                      key={`${team}-lehine`}
+                      type="button"
+                      onClick={() =>
+                        setFavorFilter((prev) =>
+                          prev?.type === "inFavorOf" && prev.team === team
+                            ? null
+                            : { type: "inFavorOf", team }
+                        )
+                      }
+                      className={`min-h-[44px] rounded-xl border px-4 py-2.5 text-sm font-medium transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] ${
+                        favorFilter?.type === "inFavorOf" && favorFilter.team === team && style
+                          ? `${style.accent} ${style.ring} border-transparent shadow-lg`
+                          : "border-zinc-700 bg-zinc-800/80 text-zinc-300 hover:border-zinc-600 hover:bg-zinc-800 hover:text-zinc-200"
+                      }`}
+                    >
+                      {team} lehine
+                      <span className="ml-1.5 text-zinc-500">({lehineCount})</span>
+                    </button>
+                  ),
+                  aleyhineCount > 0 && (
+                    <button
+                      key={`${team}-aleyhine`}
+                      type="button"
+                      onClick={() =>
+                        setFavorFilter((prev) =>
+                          prev?.type === "against" && prev.team === team
+                            ? null
+                            : { type: "against", team }
+                        )
+                      }
+                      className={`min-h-[44px] rounded-xl border px-4 py-2.5 text-sm font-medium transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] ${
+                        favorFilter?.type === "against" && favorFilter.team === team && style
+                          ? `${style.accent} ${style.ring} border-transparent shadow-lg`
+                          : "border-zinc-700 bg-zinc-800/80 text-zinc-300 hover:border-zinc-600 hover:bg-zinc-800 hover:text-zinc-200"
+                      }`}
+                    >
+                      {team} aleyhine
+                      <span className="ml-1.5 text-zinc-500">({aleyhineCount})</span>
+                    </button>
+                  ),
+                ].filter(Boolean);
+              })}
+            </div>
+          </div>
+        )}
       </div>
 
       {loading ? (
@@ -322,6 +443,8 @@ export default function PozisyonlarPage() {
                         sources={incident.sources}
                         status={incident.status}
                         videoUrl={incident.videoUrl}
+                        inFavorOf={incident.inFavorOf}
+                        against={incident.against}
                         matchInfo={
                           incident.match
                             ? `${incident.match.homeTeam} vs ${incident.match.awayTeam}`

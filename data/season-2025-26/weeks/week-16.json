@@ -18,11 +18,22 @@
             "https://www.milliyet.com.tr/skorer/antalyaspor-galatasaray-macinin-ardindan-trioda-penalti-degerlendirmesi-farkli-skor-olsa-cok-tartisilirdi-7501575"
           ],
           "refereeComments": [
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Jakobs doğal konumda, bence karar doğru." },
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Farklı bir skor olsa çok tartışılacak bir pozisyondu. Oyuncunun ayağından sekiyor ve doğal konumda eli, elle oynama düşünülemez." },
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Vücudu doğal, eli olabilecek en doğal konumda, devam kararı doğru." }
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Jakobs doğal konumda, bence karar doğru."
+            },
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Farklı bir skor olsa çok tartışılacak bir pozisyondu. Oyuncunun ayağından sekiyor ve doğal konumda eli, elle oynama düşünülemez."
+            },
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Vücudu doğal, eli olabilecek en doğal konumda, devam kararı doğru."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Galatasaray",
+          "against": "Antalyaspor"
         },
         {
           "minute": 75,
@@ -33,10 +44,18 @@
             "https://www.milliyet.com.tr/skorer/antalyaspor-galatasaray-macinin-ardindan-trioda-penalti-degerlendirmesi-farkli-skor-olsa-cok-tartisilirdi-7501575"
           ],
           "refereeComments": [
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Hissedince eli Kazımcan burada kolay bir şekilde düşmüş. Bir ihlal görmüyorum. Devam kararı doğru." },
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Eğer el çok kuvvetli ve şiddet içererek itmiş olsaydı penaltı derdim. Bu haliyle devam." }
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Hissedince eli Kazımcan burada kolay bir şekilde düşmüş. Bir ihlal görmüyorum. Devam kararı doğru."
+            },
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Eğer el çok kuvvetli ve şiddet içererek itmiş olsaydı penaltı derdim. Bu haliyle devam."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Antalyaspor",
+          "against": "Galatasaray"
         }
       ]
     },
@@ -59,7 +78,9 @@
             "https://www.cumhuriyet.com.tr/spor/eski-hakemler-trabzonspor-besiktas-macini-yorumladi-el-bilal-toure-ayagiyla-basti-ama-2461493"
           ],
           "videoUrl": "https://beinsports.com.tr/lig/super-lig/pozisyonlar/2025-2026/16/trabzonspor-besiktas/kirmizi-kart-el-bilal-toure-38456",
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Beşiktaş",
+          "against": "Trabzonspor"
         },
         {
           "minute": 45,
@@ -70,7 +91,9 @@
             "https://www.haberhergun.com/haber/trabzonspor-besiktas-derbisinde-tartismali-kararlar-kabul-etmiyorum-asla-dusunmezdim_48908/",
             "https://spor.haber7.com/super-lig/haber/3587952-trabzonspor-besiktas-macinda-tartismali-kararlar-eski-hakemler-bile-anlasamadi"
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Trabzonspor",
+          "against": "Beşiktaş"
         }
       ]
     },
@@ -92,11 +115,22 @@
             "https://www.fotomac.com.tr/fenerbahce/2025/12/15/fenerbahce-tumosan-konyaspor-macinda-penalti-karari-iste-o-pozisyon"
           ],
           "refereeComments": [
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Bu pozisyon penaltı. VAR müdahalesi de doğru." },
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Bu pozisyon kaçabilecek bir pozisyon değil." },
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Çok net bir penaltı." }
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Bu pozisyon penaltı. VAR müdahalesi de doğru."
+            },
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Bu pozisyon kaçabilecek bir pozisyon değil."
+            },
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Çok net bir penaltı."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Fenerbahçe",
+          "against": "Konyaspor"
         }
       ]
     }

@@ -18,7 +18,9 @@
             "https://m.sporx.com/besiktas-caykur-rizespor-maci-anlatim-4842461"
           ],
           "refereeComments": [],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Beşiktaş",
+          "against": "Çaykur Rizespor"
         },
         {
           "minute": 93,
@@ -30,7 +32,9 @@
             "https://www.hurriyet.com.tr/sporarena/jureckanin-berberi-vara-gidecek-gol-benim-yuzumden-iptal-oldu-42648647"
           ],
           "refereeComments": [],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Beşiktaş",
+          "against": "Çaykur Rizespor"
         }
       ]
     },
@@ -51,10 +55,18 @@
             "https://www.milliyet.com.tr/skorer/eski-hakemler-fenerbahce-eyupspor-macinin-tartismali-pozisyonlarini-degerlendirdi-hakem-bunu-nasil-7506134"
           ],
           "refereeComments": [
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Devam asla faul yok." },
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Çok yanlış bir faul kararı. Asensio'nun rüzgarıyla burgu atmış. Böyle faul verilmez. Çok önemli bir yer burası." }
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Devam asla faul yok."
+            },
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Çok yanlış bir faul kararı. Asensio'nun rüzgarıyla burgu atmış. Böyle faul verilmez. Çok önemli bir yer burası."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Eyüpspor",
+          "against": "Fenerbahçe"
         },
         {
           "minute": 60,
@@ -65,11 +77,22 @@
             "https://www.milliyet.com.tr/skorer/eski-hakemler-fenerbahce-eyupspor-macinin-tartismali-pozisyonlarini-degerlendirdi-hakem-bunu-nasil-7506134"
           ],
           "refereeComments": [
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Tartışmasız bir penaltı ve sarı kart. VAR müdahalesi gerekir. Hakemin bunu görmesine rağmen nasıl değerlendirmediğini bilmiyorum." },
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Kurtulmuş giden bir oyuncuyu çekmek çok net bir penaltıdır. Hakem buna penaltı verir, vermezse VAR müdahale eder." },
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Formadan tutma var, topun olduğu bölge, oyuncunun sonraki hamlesi etkileniyor. VAR kritik bir hataya imza atmış görünüyor." }
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Tartışmasız bir penaltı ve sarı kart. VAR müdahalesi gerekir. Hakemin bunu görmesine rağmen nasıl değerlendirmediğini bilmiyorum."
+            },
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Kurtulmuş giden bir oyuncuyu çekmek çok net bir penaltıdır. Hakem buna penaltı verir, vermezse VAR müdahale eder."
+            },
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Formadan tutma var, topun olduğu bölge, oyuncunun sonraki hamlesi etkileniyor. VAR kritik bir hataya imza atmış görünüyor."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Fenerbahçe",
+          "against": "Eyüpspor"
         }
       ]
     },
@@ -90,11 +113,22 @@
             "https://www.milliyet.com.tr/skorer/eski-hakemler-galatasaray-kasimpasa-macinin-tartismali-pozisyonlarini-degerlendirdi-sari-kart-olmasi-7506760"
           ],
           "refereeComments": [
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Rakibe kapsayıcı bir basma yok, ayak zemine basıyor. Asla sarı kart değil." },
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Pozisyon faul ama umut vaadeden atak olmadığı için sarı kart yanlış." },
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Bence de sarı kart yanlış karar." }
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Rakibe kapsayıcı bir basma yok, ayak zemine basıyor. Asla sarı kart değil."
+            },
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Pozisyon faul ama umut vaadeden atak olmadığı için sarı kart yanlış."
+            },
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Bence de sarı kart yanlış karar."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Galatasaray",
+          "against": "Kasımpaşa"
         },
         {
           "minute": 28,
@@ -105,11 +139,22 @@
             "https://www.milliyet.com.tr/skorer/eski-hakemler-galatasaray-kasimpasa-macinin-tartismali-pozisyonlarini-degerlendirdi-sari-kart-olmasi-7506760"
           ],
           "refereeComments": [
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Gelişi doğal, kol topun olduğu yere doğru genişledi hakemin kararı yanlış." },
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Davinson'un pozisyonda elle oynama kararı verilmesi gerekiyordu. Vücudu genişlediği için elle oynamadır. Kasımpaşa serbest vuruş kullanmalıydı." },
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Bence de elle oynama." }
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Gelişi doğal, kol topun olduğu yere doğru genişledi hakemin kararı yanlış."
+            },
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Davinson'un pozisyonda elle oynama kararı verilmesi gerekiyordu. Vücudu genişlediği için elle oynamadır. Kasımpaşa serbest vuruş kullanmalıydı."
+            },
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Bence de elle oynama."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Galatasaray",
+          "against": "Kasımpaşa"
         },
         {
           "minute": 32,
@@ -120,11 +165,22 @@
             "https://www.milliyet.com.tr/skorer/eski-hakemler-galatasaray-kasimpasa-macinin-tartismali-pozisyonlarini-degerlendirdi-sari-kart-olmasi-7506760"
           ],
           "refereeComments": [
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Torreira ilk sarı kartı yanlış görmüştü ama bu hareket çok net kontrolsüz bir basma. Bu hareket çok net bir sarı kart olmalıydı. Dolayısıyla 2. sarı karttan ihraç olmalıydı Torreira." },
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Bunun yüzde 100 ikinci sarı kart olduğunu söylememiz lazım." },
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Hakem aslında bunun haricinde kabul edilebilir hatalarla maçı götürdü. Bu hata önemli bir hata olarak kayıtlara geçti." }
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Torreira ilk sarı kartı yanlış görmüştü ama bu hareket çok net kontrolsüz bir basma. Bu hareket çok net bir sarı kart olmalıydı. Dolayısıyla 2. sarı karttan ihraç olmalıydı Torreira."
+            },
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Bunun yüzde 100 ikinci sarı kart olduğunu söylememiz lazım."
+            },
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Hakem aslında bunun haricinde kabul edilebilir hatalarla maçı götürdü. Bu hata önemli bir hata olarak kayıtlara geçti."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Galatasaray",
+          "against": "Kasımpaşa"
         }
       ]
     },
@@ -145,7 +201,9 @@
             "https://www.sabah.com.tr/spor/futbol/2025/12/22/trabzonspor-deplasmanda-takildi-7-gollu-maci-genclerbirligi-kazandi"
           ],
           "refereeComments": [],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Gençlerbirliği",
+          "against": "Trabzonspor"
         }
       ]
     }

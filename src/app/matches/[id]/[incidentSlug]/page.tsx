@@ -43,6 +43,8 @@ function toTemplateData(incident: unknown): IncidentDetailData | null {
     description: String(d.description ?? ""),
     confidenceScore: Number(d.confidenceScore ?? 0),
     sources: Array.isArray(d.sources) ? d.sources.map(String) : [],
+    inFavorOf: d.inFavorOf != null && String(d.inFavorOf).trim() ? String(d.inFavorOf).trim() : null,
+    against: d.against != null && String(d.against).trim() ? String(d.against).trim() : null,
     videoUrl: d.videoUrl ? String(d.videoUrl) : null,
     relatedVideos: parseJson<{ url: string; title: string }[]>(d.relatedVideos, []),
     newsArticles: parseJson<{ title: string; url: string; source: string; author: string }[]>(d.newsArticles, []),

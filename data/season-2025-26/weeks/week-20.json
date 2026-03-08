@@ -19,7 +19,9 @@
             "https://gazetevatan.com/galeri/antalyaspor-trabzonspor-macinda-penalti-kacti-puanlar-paylasildi-2346440"
           ],
           "refereeComments": [],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Trabzonspor",
+          "against": "Antalyaspor"
         },
         {
           "minute": 80,
@@ -30,7 +32,9 @@
             "https://www.aspor.com.tr/trabzonspor/2026/01/30/trabzonspor-penalti-kazandi-iste-o-pozisyon"
           ],
           "refereeComments": [],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Trabzonspor",
+          "against": "Antalyaspor"
         }
       ]
     },
@@ -52,9 +56,14 @@
             "https://www.sabah.com.tr/spor/futbol/2026/01/31/canli-super-ligde-besiktas-konyaspor-maci"
           ],
           "refereeComments": [
-            { "author": "Sergen Yalçın", "text": "Bize olunca kırmızı, rakibe olunca sarı. Konyaspor stoperleri ilk yarıda atılmalıydı." }
+            {
+              "author": "Sergen Yalçın",
+              "text": "Bize olunca kırmızı, rakibe olunca sarı. Konyaspor stoperleri ilk yarıda atılmalıydı."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Konyaspor",
+          "against": "Beşiktaş"
         }
       ]
     },
@@ -75,9 +84,14 @@
             "https://hurriyet.com.tr/sporarena/galatasarayin-kayserispor-macindaki-hakem-kararlarini-firat-aydinus-degerlendirdi-penaltilar-dogruydu-43097980"
           ],
           "refereeComments": [
-            { "author": "Fırat Aydınus (Hürriyet)", "text": "34. dakikada Lemina'ya çıkan sarı kart yanlış." }
+            {
+              "author": "Fırat Aydınus (Hürriyet)",
+              "text": "34. dakikada Lemina'ya çıkan sarı kart yanlış."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Kayserispor",
+          "against": "Galatasaray"
         },
         {
           "minute": 46,
@@ -88,9 +102,14 @@
             "https://hurriyet.com.tr/sporarena/galatasarayin-kayserispor-macindaki-hakem-kararlarini-firat-aydinus-degerlendirdi-penaltilar-dogruydu-43097980"
           ],
           "refereeComments": [
-            { "author": "Fırat Aydınus (Hürriyet)", "text": "45+1'de 2. sarı beklenen pozisyon için görüntüler müdahalenin olup olmadığını göstermiyor. Temas gözükse 2. sarı kart gerekirdi." }
+            {
+              "author": "Fırat Aydınus (Hürriyet)",
+              "text": "45+1'de 2. sarı beklenen pozisyon için görüntüler müdahalenin olup olmadığını göstermiyor. Temas gözükse 2. sarı kart gerekirdi."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Galatasaray",
+          "against": "Kayserispor"
         }
       ]
     },

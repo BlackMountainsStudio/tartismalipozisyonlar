@@ -18,9 +18,14 @@
             "https://www.mynet.com/super-ligde-21-haftanin-var-kayitlari-aciklandi-tartismali-pozisyonlara-bakis-subjektif-bir-karar-477150-myspor"
           ],
           "refereeComments": [
-            { "author": "TFF VAR kayıtları", "text": "Potansiyel gol iptali için sahada inceleme önerildi. Mavili oyuncunun ayağa bastığı tespit edildi." }
+            {
+              "author": "TFF VAR kayıtları",
+              "text": "Potansiyel gol iptali için sahada inceleme önerildi. Mavili oyuncunun ayağa bastığı tespit edildi."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Samsunspor",
+          "against": "Trabzonspor"
         }
       ]
     },
@@ -42,11 +47,22 @@
             "https://spor.haber7.com/besiktas/haber/3602790-besiktas-alanyaspor-macina-damga-vuran-pozisyon-penalti-verilmedi"
           ],
           "refereeComments": [
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Pozisyon çok net. Penaltı ve sarı kart. Hakemin devam kararı doğru değil." },
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Bu pozisyon penaltı. Sarı kart da tartışmasız. Hem sahada hem VAR'da ciddi bir hata yapılmış." },
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Bu pozisyona neden VAR müdahale etmedi, gerçekten anlamak zor. Havada, karada penaltı ve sarı kart." }
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Pozisyon çok net. Penaltı ve sarı kart. Hakemin devam kararı doğru değil."
+            },
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Bu pozisyon penaltı. Sarı kart da tartışmasız. Hem sahada hem VAR'da ciddi bir hata yapılmış."
+            },
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Bu pozisyona neden VAR müdahale etmedi, gerçekten anlamak zor. Havada, karada penaltı ve sarı kart."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Alanyaspor",
+          "against": "Beşiktaş"
         },
         {
           "minute": 54,
@@ -57,9 +73,14 @@
             "https://www.mynet.com/super-ligde-21-haftanin-var-kayitlari-aciklandi-tartismali-pozisyonlara-bakis-subjektif-bir-karar-477150-myspor"
           ],
           "refereeComments": [
-            { "author": "TFF VAR kayıtları", "text": "Sübjektif bir karar. 53 numaralı oyuncunun rakibine top oyuna girdiği andan itibaren müdahalesi olmadığı değerlendirildi." }
+            {
+              "author": "TFF VAR kayıtları",
+              "text": "Sübjektif bir karar. 53 numaralı oyuncunun rakibine top oyuna girdiği andan itibaren müdahalesi olmadığı değerlendirildi."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Beşiktaş",
+          "against": "Alanyaspor"
         }
       ]
     },

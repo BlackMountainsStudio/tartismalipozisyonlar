@@ -29,6 +29,8 @@ export interface IncidentDetailData {
   description: string;
   confidenceScore: number;
   sources: string[];
+  inFavorOf?: string | null;
+  against?: string | null;
   videoUrl: string | null;
   relatedVideos: { url: string; title: string }[];
   newsArticles: { title: string; url: string; source: string; author: string }[];
@@ -150,6 +152,20 @@ export default function IncidentDetailTemplate({
             <div className="inline-block rounded-lg bg-zinc-800/50 px-3 py-1.5 text-sm text-zinc-300">
               {incident.match.homeTeam} vs {incident.match.awayTeam} — {incident.match.league}, Hafta {incident.match.week}
             </div>
+            {(incident.inFavorOf || incident.against) && (
+              <div className="flex flex-wrap items-center gap-2">
+                {incident.inFavorOf && (
+                  <span className="rounded-md bg-emerald-500/15 px-2.5 py-1 text-xs font-medium text-emerald-400">
+                    {incident.inFavorOf} lehine
+                  </span>
+                )}
+                {incident.against && (
+                  <span className="rounded-md bg-red-500/15 px-2.5 py-1 text-xs font-medium text-red-400">
+                    {incident.against} aleyhine
+                  </span>
+                )}
+              </div>
+            )}
             {(incident.match.referee || incident.match.varReferee) && (
               <div className="flex flex-wrap items-center gap-3 text-xs text-zinc-500">
                 {incident.match.referee && (

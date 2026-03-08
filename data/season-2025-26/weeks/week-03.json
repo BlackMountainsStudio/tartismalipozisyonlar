@@ -31,6 +31,8 @@
           "minute": 40,
           "type": "GOAL_DISALLOWED",
           "description": "Augusto'nun golü VAR uyarısıyla Onuachu'nun ofsaytta olduğu gerekçesiyle iptal edildi. Onuachu topa müdahale etmedi; kaleci Abdullah'ın elinden seken top Augusto'nun önüne düştü. Trio ekibi kararı 'ilk 3 haftadaki en önemli VAR hatası' olarak nitelendirdi. Bülent Yıldırım: 'Video hakem müdahalesi baştan sona yanlış. Subjektif alanda VAR'ın karışmaması gerekirdi. Bu gol verilmeliydi.' Deniz Çoban: 'VAR'ın müdahale etmesi çok büyük bir hata. Kale arkası açısından Veysel o topu hiçbir şekilde çıkartamaz.'",
+          "inFavorOf": "Antalyaspor",
+          "against": "Trabzonspor",
           "confidenceScore": 0.92,
           "sources": [
             "https://www.cumhuriyet.com.tr/spor/eski-hakemler-trabzonspor-antalyaspor-macini-degerlendirdi-ilk-3-haftadaki-en-onemli-var-hatasi-2429205",

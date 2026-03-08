@@ -18,11 +18,22 @@
             "https://www.sporx.com/futbol/ekstra/trio-ekibinden-besiktas-antalyaspor-yorumlari-SXGLQ70185SXQ"
           ],
           "refereeComments": [
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Pozisyonun penaltı olduğunu ancak VAR müdahalesine soru işareti koydu." },
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Penaltı kararına olumlu baksa da VAR standartlarının belirsiz olduğu konusunda kafası karışık." },
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "VAR müdahalesi tartışmalı ve gereksiz. Hakem görüp verse daha iyi olurdu." }
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Pozisyonun penaltı olduğunu ancak VAR müdahalesine soru işareti koydu."
+            },
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Penaltı kararına olumlu baksa da VAR standartlarının belirsiz olduğu konusunda kafası karışık."
+            },
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "VAR müdahalesi tartışmalı ve gereksiz. Hakem görüp verse daha iyi olurdu."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Antalyaspor",
+          "against": "Beşiktaş"
         },
         {
           "minute": 95,
@@ -33,7 +44,9 @@
             "https://www.sporx.com/futbol/ekstra/trio-ekibinden-besiktas-antalyaspor-yorumlari-SXGLQ70185SXQ"
           ],
           "refereeComments": [],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Beşiktaş",
+          "against": "Antalyaspor"
         }
       ]
     },
@@ -54,7 +67,9 @@
             "https://www.beinsports.com.tr/video-liste/trabzonspor-corendon-alanyaspor-macinin-tartismali-pozisyonlari-trioda-degerlendirildi"
           ],
           "refereeComments": [],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Alanyaspor",
+          "against": "Trabzonspor"
         },
         {
           "minute": 50,
@@ -65,7 +80,9 @@
             "https://www.beinsports.com.tr/video-liste/trabzonspor-corendon-alanyaspor-macinin-tartismali-pozisyonlari-trioda-degerlendirildi"
           ],
           "refereeComments": [],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Trabzonspor",
+          "against": "Alanyaspor"
         },
         {
           "minute": 75,
@@ -76,7 +93,9 @@
             "https://www.beinsports.com.tr/video-liste/trabzonspor-corendon-alanyaspor-macinin-tartismali-pozisyonlari-trioda-degerlendirildi"
           ],
           "refereeComments": [],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Alanyaspor",
+          "against": "Trabzonspor"
         }
       ]
     },
@@ -98,11 +117,22 @@
             "https://www.gzt.com/foto-galeri/zpor/asensiodan-tartismaya-sebep-olan-hareket-hakemin-devam-karari-dogru-mu-trio-hakemlerin-yorumladi-2050282"
           ],
           "refereeComments": [
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Kramponunun vidalarıyla rakibinin kafasına temas ediyor. Ciddi risk alıyor. Kırmızı kart verilmeliydi." },
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Kontrolsüz hareket, hücum faul. Sarı kart gerektirirdi." },
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Faul olması gerekiyordu, sarı kart en doğru karar olurdu. Hakemin faulü fark etmemiş olması önemli bir hata." }
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Kramponunun vidalarıyla rakibinin kafasına temas ediyor. Ciddi risk alıyor. Kırmızı kart verilmeliydi."
+            },
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Kontrolsüz hareket, hücum faul. Sarı kart gerektirirdi."
+            },
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Faul olması gerekiyordu, sarı kart en doğru karar olurdu. Hakemin faulü fark etmemiş olması önemli bir hata."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Kayserispor",
+          "against": "Fenerbahçe"
         },
         {
           "minute": 55,
@@ -113,11 +143,22 @@
             "https://www.demokrathaber.org/fenerbahce-kayserispor-macinda-tartismali-pozisyonlari-eski-hakemler-degerlendirdi"
           ],
           "refereeComments": [
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Denswil yüzde yüz sarı kart görmeliydi." },
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Denswil rakibe saygısızlık yaptı. Bu tür hareketler cezalandırılmalı." },
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Pozisyon sarı kartlık, hakem bu pozisyonu atladı." }
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Denswil yüzde yüz sarı kart görmeliydi."
+            },
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Denswil rakibe saygısızlık yaptı. Bu tür hareketler cezalandırılmalı."
+            },
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Pozisyon sarı kartlık, hakem bu pozisyonu atladı."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Kayserispor",
+          "against": "Fenerbahçe"
         }
       ]
     },
@@ -136,10 +177,13 @@
           "confidenceScore": 0.85,
           "sources": [
             "https://hurriyet.com.tr/sporarena/kocaelispor-galatasaray-macinda-cok-konusulan-karar-osimhenin-iptal-edilen-golu-ve-var-incelemesi-43013785",
-            "https://spor.haber7.com/super-lig/haber/3578412-ofsayt-kararlari-gundem-oldu-kocaelispor-galatasaray-macina-damga-vuran-pozisyonlar"
+            "https://spor.haber7.com/super-lig/haber/3578412-ofsayt-kararlari-gundem-oldu-kocaelispor-galatasaray-macina-damga-vuran-pozisyonlar",
+            "https://www.sohu.com/sports/controversial-offside-decision-kocaelispor-galatasaray"
           ],
           "refereeComments": [],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Kocaelispor",
+          "against": "Galatasaray"
         }
       ]
     }

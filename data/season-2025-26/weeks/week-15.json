@@ -18,11 +18,22 @@
             "https://www.milliyet.com.tr/skorer/galatasaray-samsunspor-macinin-ardindan-bein-trioda-hakemler-ikiye-bolundu-bu-pozisyonlar-yaniltici-olabilir-7496689"
           ],
           "refereeComments": [
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Tabanı gösterdiniz. Bu topa sert değil artık rakibi de riske atıyorsunuz. Net kontrolsüz faul ve sarı kart." },
-            { "author": "Deniz Çoban (beIN Trio)", "text": "O kadar kontrolsüz ki hareketten sonra da kaymaya devam ediyor. Çok açık faul, çok açık sarı kart." },
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Rakibin iki ayağına da temas ediyor. Çok net sarı kart." }
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Tabanı gösterdiniz. Bu topa sert değil artık rakibi de riske atıyorsunuz. Net kontrolsüz faul ve sarı kart."
+            },
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "O kadar kontrolsüz ki hareketten sonra da kaymaya devam ediyor. Çok açık faul, çok açık sarı kart."
+            },
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Rakibin iki ayağına da temas ediyor. Çok net sarı kart."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Galatasaray",
+          "against": "Samsunspor"
         },
         {
           "minute": 55,
@@ -33,11 +44,22 @@
             "https://www.milliyet.com.tr/skorer/galatasaray-samsunspor-macinin-ardindan-bein-trioda-hakemler-ikiye-bolundu-bu-pozisyonlar-yaniltici-olabilir-7496689"
           ],
           "refereeComments": [
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Net bir hücum faul, kasıtlı olarak rakibin yüzüne gitmiş bir el var. Kırmızı kartı düşünmem ama sarı kart olması gerektiğini düşünüyorum." },
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Bu net bir sarı kart. Kontrolsüz bir araç olarak kullanıyor. Sportmenliğe aykırı." },
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Çok kontrolsüz bir hareket, mutlaka sarı kart verilmeliydi." }
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Net bir hücum faul, kasıtlı olarak rakibin yüzüne gitmiş bir el var. Kırmızı kartı düşünmem ama sarı kart olması gerektiğini düşünüyorum."
+            },
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Bu net bir sarı kart. Kontrolsüz bir araç olarak kullanıyor. Sportmenliğe aykırı."
+            },
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Çok kontrolsüz bir hareket, mutlaka sarı kart verilmeliydi."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Samsunspor",
+          "against": "Galatasaray"
         },
         {
           "minute": 90,
@@ -48,11 +70,22 @@
             "https://www.milliyet.com.tr/skorer/galatasaray-samsunspor-macinin-ardindan-bein-trioda-hakemler-ikiye-bolundu-bu-pozisyonlar-yaniltici-olabilir-7496689"
           ],
           "refereeComments": [
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Benim kararım penaltı." },
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Sol eline gelse doğal değil. Sağ kolu mümkün olduğunca yakın. Top eline gelince gayri ihtiyari geriye doğru açılıyor. Devam etmesinin doğru olduğunu düşünüyorum." },
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Kazımcan'ın kolları doğal pozisyonda. VAR'ın bu pozisyonla işi olmaz. Devam kararı doğru." }
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Benim kararım penaltı."
+            },
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Sol eline gelse doğal değil. Sağ kolu mümkün olduğunca yakın. Top eline gelince gayri ihtiyari geriye doğru açılıyor. Devam etmesinin doğru olduğunu düşünüyorum."
+            },
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Kazımcan'ın kolları doğal pozisyonda. VAR'ın bu pozisyonla işi olmaz. Devam kararı doğru."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Galatasaray",
+          "against": "Samsunspor"
         }
       ]
     },
@@ -73,11 +106,22 @@
             "https://www.cumhuriyet.com.tr/spor/eski-hakemler-basaksehir-fenerbahce-macini-yorumladi-penaltiyla-uzaktan-yakindan-alakasi-yok-ancak-2459207"
           ],
           "refereeComments": [
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Duarte'nin tutması net bir faul. Duran da reaksiyon gösteriyor. Kontrolsüz bir faul, kırmızı düşünülmez ama kesinlikle sarı verilmeliydi." },
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Faul doğru. Hakem burada sarı verse daha çok kabul ederdim ama kırmızıyı düşünmem." },
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Duran'ın eli Duarte'nin koluna geliyor. Hakem faul verir, Duran sarı kart görür." }
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Duarte'nin tutması net bir faul. Duran da reaksiyon gösteriyor. Kontrolsüz bir faul, kırmızı düşünülmez ama kesinlikle sarı verilmeliydi."
+            },
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Faul doğru. Hakem burada sarı verse daha çok kabul ederdim ama kırmızıyı düşünmem."
+            },
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Duran'ın eli Duarte'nin koluna geliyor. Hakem faul verir, Duran sarı kart görür."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Fenerbahçe",
+          "against": "İstanbul Başakşehir"
         },
         {
           "minute": 73,
@@ -88,11 +132,22 @@
             "https://www.cumhuriyet.com.tr/spor/eski-hakemler-basaksehir-fenerbahce-macini-yorumladi-penaltiyla-uzaktan-yakindan-alakasi-yok-ancak-2459207"
           ],
           "refereeComments": [
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Bu maçta en çok hakemi eleştireceğim konulardan biri bu. Penaltıyla alakası yok ancak oyuncular anlaştı diye es geçemezsiniz, cezasını keseceksiniz." },
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Asensio'nun Kemen'e ihlali yok, penaltı yok. Skriniar ve Kemen arasındaki tartışma böyle çözülmemeliydi, iki oyuncu da sarı kart görmeliydi." },
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Penaltı söz konusu değil, iki oyuncu da sarı kart görmeliydi." }
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Bu maçta en çok hakemi eleştireceğim konulardan biri bu. Penaltıyla alakası yok ancak oyuncular anlaştı diye es geçemezsiniz, cezasını keseceksiniz."
+            },
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Asensio'nun Kemen'e ihlali yok, penaltı yok. Skriniar ve Kemen arasındaki tartışma böyle çözülmemeliydi, iki oyuncu da sarı kart görmeliydi."
+            },
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Penaltı söz konusu değil, iki oyuncu da sarı kart görmeliydi."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Fenerbahçe",
+          "against": "İstanbul Başakşehir"
         }
       ]
     },
@@ -113,11 +168,22 @@
             "https://ajansspor.com/amp/haber/goztepe-trabzonsporda-olay-pozisyonlar-trioda-degerlendirdiler-net-penalti-713309"
           ],
           "refereeComments": [
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Pozisyonda ofsayt yok. Bariz gol şansı değerlendirmesinde tüm kriterler var. Kırmızı kart çok doğru karar." },
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Hakem harika bir yorum yaptı. Bariz gol şansının tarifi. Müthiş bir karar." },
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Karar çok doğru, kırmızı kart doğru." }
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Pozisyonda ofsayt yok. Bariz gol şansı değerlendirmesinde tüm kriterler var. Kırmızı kart çok doğru karar."
+            },
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Hakem harika bir yorum yaptı. Bariz gol şansının tarifi. Müthiş bir karar."
+            },
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Karar çok doğru, kırmızı kart doğru."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Trabzonspor",
+          "against": "Göztepe"
         },
         {
           "minute": 85,
@@ -128,11 +194,22 @@
             "https://ajansspor.com/amp/haber/goztepe-trabzonsporda-olay-pozisyonlar-trioda-degerlendirdiler-net-penalti-713309"
           ],
           "refereeComments": [
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Yüzde yüz protesto, hakemle göz teması kurup ellerini kaldırarak alkışladı. Yüzde yüz ikinci sarı karttan kırmızı gerekirdi." },
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Kırmızı kartı göstermemesinin izahını bulamadım. Yüzde yüz atılması lazım." },
-            { "author": "Bahattin Duran (beIN Trio)", "text": "4 hakemin gözden kaçırma ihtimali yok. Kabul edilemez bir hata benim için." }
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Yüzde yüz protesto, hakemle göz teması kurup ellerini kaldırarak alkışladı. Yüzde yüz ikinci sarı karttan kırmızı gerekirdi."
+            },
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Kırmızı kartı göstermemesinin izahını bulamadım. Yüzde yüz atılması lazım."
+            },
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "4 hakemin gözden kaçırma ihtimali yok. Kabul edilemez bir hata benim için."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Trabzonspor",
+          "against": "Göztepe"
         },
         {
           "minute": 95,
@@ -143,11 +220,22 @@
             "https://ajansspor.com/amp/haber/goztepe-trabzonsporda-olay-pozisyonlar-trioda-degerlendirdiler-net-penalti-713309"
           ],
           "refereeComments": [
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Bu pozisyon penaltı. Olaitan'ın sol bileğine bakın, bileği büküldü. Tüm kriterlerle net penaltı." },
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Olaitan yerde kıvransaydı VAR da karışırdı. Çok net penaltı." },
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Devam kararı değil, net şekilde penaltı. Bu hareket penaltı." }
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Bu pozisyon penaltı. Olaitan'ın sol bileğine bakın, bileği büküldü. Tüm kriterlerle net penaltı."
+            },
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Olaitan yerde kıvransaydı VAR da karışırdı. Çok net penaltı."
+            },
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Devam kararı değil, net şekilde penaltı. Bu hareket penaltı."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Trabzonspor",
+          "against": "Göztepe"
         }
       ]
     },
@@ -169,11 +257,22 @@
             "https://www.takvim.com.tr/besiktas/2025/12/08/besiktas-gaziantep-fk-macinda-penalti-bekledi-vardan-kritik-karar"
           ],
           "refereeComments": [
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Sabahtan akşama kadar faul yani net penaltı. VAR için de yeterli kanıt var." },
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Kırmızılı oyuncu beyazlı oyuncunun topa vurmasını engelliyor. Bence penaltı. Ancak VAR'ın karışabileceği bir pozisyon değil." },
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Devam kararı doğru değil, bence de net penaltı. VAR müdahale edemez." }
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Sabahtan akşama kadar faul yani net penaltı. VAR için de yeterli kanıt var."
+            },
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Kırmızılı oyuncu beyazlı oyuncunun topa vurmasını engelliyor. Bence penaltı. Ancak VAR'ın karışabileceği bir pozisyon değil."
+            },
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Devam kararı doğru değil, bence de net penaltı. VAR müdahale edemez."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Gaziantep",
+          "against": "Beşiktaş"
         },
         {
           "minute": 65,
@@ -184,11 +283,22 @@
             "https://kontraspor.com/futbol/bein-trio-besiktas-gaziantep-fk-macindaki-tartismali-pozisyonlari-degerlendirdi-var-buna-karisamaz-kirmizi-kart-ve-ofsayt-ise-57347"
           ],
           "refereeComments": [
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Ersin gelmiş kontrolsüz şekilde rakibine koluyla vurmuş. Bundan daha net penaltı var mı? VAR buna karışacak." },
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Pozisyon net penaltı. Ersin dağınık şekilde çıkmış, rakibe bam diye vurmuş. Penaltı ve VAR müdahalesi gerekir." },
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Çok net, tartışmasız. Kaleci topla oynayamadı, kontrolsüz faul yaptı. Penaltı, sarı kart, VAR müdahalesi mutlaka olmalıydı." }
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Ersin gelmiş kontrolsüz şekilde rakibine koluyla vurmuş. Bundan daha net penaltı var mı? VAR buna karışacak."
+            },
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Pozisyon net penaltı. Ersin dağınık şekilde çıkmış, rakibe bam diye vurmuş. Penaltı ve VAR müdahalesi gerekir."
+            },
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Çok net, tartışmasız. Kaleci topla oynayamadı, kontrolsüz faul yaptı. Penaltı, sarı kart, VAR müdahalesi mutlaka olmalıydı."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Beşiktaş",
+          "against": "Gaziantep"
         }
       ]
     }

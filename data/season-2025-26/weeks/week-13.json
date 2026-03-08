@@ -18,11 +18,22 @@
             "https://www.milliyet.com.tr/skorer/galatasaray-genclerbirligi-macinin-tartismali-pozisyonlari-trioda-degerlendirildi-hicbir-seyin-7488303"
           ],
           "refereeComments": [
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Bu pozisyon net kırmızı kart. Sallai'yi gördükten sonra daha kontrollü olmalıydı. İki ayağı birden havada. VAR için de yeterli kanıt mevcut." },
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Sonuçları düşünerek hareket etmelisiniz. Çok net kırmızı kart. Uçarak gidip vurdu." },
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Rakibin sağlığı için ciddi bir tehdit yarattığın an kırmızı kart görürsün." }
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Bu pozisyon net kırmızı kart. Sallai'yi gördükten sonra daha kontrollü olmalıydı. İki ayağı birden havada. VAR için de yeterli kanıt mevcut."
+            },
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Sonuçları düşünerek hareket etmelisiniz. Çok net kırmızı kart. Uçarak gidip vurdu."
+            },
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Rakibin sağlığı için ciddi bir tehdit yarattığın an kırmızı kart görürsün."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Gençlerbirliği",
+          "against": "Galatasaray"
         },
         {
           "minute": 45,
@@ -33,11 +44,22 @@
             "https://www.milliyet.com.tr/skorer/galatasaray-genclerbirligi-macinin-tartismali-pozisyonlari-trioda-degerlendirildi-hicbir-seyin-7488303"
           ],
           "refereeComments": [
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Ben bunun penaltı olduğunu düşünüyorum. Top gittikten sonra Thalisson ayağı görüp basıyor." },
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Benim için penaltı ancak gerçekten zor pozisyon. VAR'ın karışacağı pozisyon değil." },
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Bu haliyle VAR konusu değil, bana penaltı gibi gelmedi. Hakemin kararına saygı duyuyorum." }
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Ben bunun penaltı olduğunu düşünüyorum. Top gittikten sonra Thalisson ayağı görüp basıyor."
+            },
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Benim için penaltı ancak gerçekten zor pozisyon. VAR'ın karışacağı pozisyon değil."
+            },
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Bu haliyle VAR konusu değil, bana penaltı gibi gelmedi. Hakemin kararına saygı duyuyorum."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Gençlerbirliği",
+          "against": "Galatasaray"
         },
         {
           "minute": 94,
@@ -48,11 +70,22 @@
             "https://www.milliyet.com.tr/skorer/galatasaray-genclerbirligi-macinin-tartismali-pozisyonlari-trioda-degerlendirildi-hicbir-seyin-7488303"
           ],
           "refereeComments": [
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Sallai top için yaptı ama rakibin kafasına tabanıyla müdahale yaptı. Sallai rakibin sağlığını ciddi şekilde riske attı." },
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Tartışma yok. Kırmızı kart." },
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Top kafayla oynama mesafesinde. Kırmızı kart kararı doğru." }
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Sallai top için yaptı ama rakibin kafasına tabanıyla müdahale yaptı. Sallai rakibin sağlığını ciddi şekilde riske attı."
+            },
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Tartışma yok. Kırmızı kart."
+            },
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Top kafayla oynama mesafesinde. Kırmızı kart kararı doğru."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Gençlerbirliği",
+          "against": "Galatasaray"
         }
       ]
     },
@@ -74,11 +107,22 @@
             "https://www.sozcu.com.tr/besiktas-samsunspor-macinda-var-cagirdi-atilla-karaoglan-kararini-degistirmedi-p261847"
           ],
           "refereeComments": [
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Eller kollar doğal konumda. Penaltı olmadığını düşünüyorum, Atilla Karaoğlan'ı tebrik ediyorum." },
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Atilla Karaoğlan ile aynı fikirdeyim. VAR müdahalesinin yanlış olduğunu ve pozisyonun penaltı olmadığını düşünüyorum." },
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Enteresan bir VAR müdahalesi, neyse ki hakem bunu sağduyuyla çözdü." }
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Eller kollar doğal konumda. Penaltı olmadığını düşünüyorum, Atilla Karaoğlan'ı tebrik ediyorum."
+            },
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Atilla Karaoğlan ile aynı fikirdeyim. VAR müdahalesinin yanlış olduğunu ve pozisyonun penaltı olmadığını düşünüyorum."
+            },
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Enteresan bir VAR müdahalesi, neyse ki hakem bunu sağduyuyla çözdü."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Samsunspor",
+          "against": "Beşiktaş"
         }
       ]
     },
@@ -99,11 +143,22 @@
             "https://www.milliyet.com.tr/skorer/rizespor-fenerbahce-macinin-tartismali-pozisyonlari-trioda-degerlendirildi-elle-oynamak-nasil-olmaza-ornek-7488853"
           ],
           "refereeComments": [
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Bu faul. Kesinlikle faul." },
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Fred'in rakibiyle adil şekilde mücadele etmediği görülüyor. Faul verilse çok daha doğru olurdu." },
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Kol engel olarak kullanılıyor. Faul." }
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Bu faul. Kesinlikle faul."
+            },
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Fred'in rakibiyle adil şekilde mücadele etmediği görülüyor. Faul verilse çok daha doğru olurdu."
+            },
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Kol engel olarak kullanılıyor. Faul."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Çaykur Rizespor",
+          "against": "Fenerbahçe"
         },
         {
           "minute": 55,
@@ -114,11 +169,22 @@
             "https://www.milliyet.com.tr/skorer/rizespor-fenerbahce-macinin-tartismali-pozisyonlari-trioda-degerlendirildi-elle-oynamak-nasil-olmaza-ornek-7488853"
           ],
           "refereeComments": [
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Elle oynama nasıl olmaza bir örnek. Hatalı karar." },
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Bu pozisyonda bir ihlal yok. Hatalı karar." },
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Yanlış tespit. Oyun devam etmeliydi." }
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Elle oynama nasıl olmaza bir örnek. Hatalı karar."
+            },
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Bu pozisyonda bir ihlal yok. Hatalı karar."
+            },
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Yanlış tespit. Oyun devam etmeliydi."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Çaykur Rizespor",
+          "against": "Fenerbahçe"
         },
         {
           "minute": 70,
@@ -129,11 +195,22 @@
             "https://www.milliyet.com.tr/skorer/rizespor-fenerbahce-macinin-tartismali-pozisyonlari-trioda-degerlendirildi-elle-oynamak-nasil-olmaza-ornek-7488853"
           ],
           "refereeComments": [
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Umut vaat eden ataktan söz edemeyiz. Ben bu sarı karta asla katılmıyorum." },
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Ben Laci'nin bu maçta atılmasını kabul edemiyorum. Laci'nin ikinci sarı kartı kesinlikle yanlış." },
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Taktik faul yok. Umut vaat eden atak zaten yok. Karar yanlıştı." }
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Umut vaat eden ataktan söz edemeyiz. Ben bu sarı karta asla katılmıyorum."
+            },
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Ben Laci'nin bu maçta atılmasını kabul edemiyorum. Laci'nin ikinci sarı kartı kesinlikle yanlış."
+            },
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Taktik faul yok. Umut vaat eden atak zaten yok. Karar yanlıştı."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Çaykur Rizespor",
+          "against": "Fenerbahçe"
         }
       ]
     },
@@ -155,7 +232,9 @@
             "https://www.haberts.com/trabzonspor-basaksehir-macinda-erken-kirmizi-kart-ve-sakatlik-soku"
           ],
           "refereeComments": [],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Trabzonspor",
+          "against": "İstanbul Başakşehir"
         }
       ]
     }

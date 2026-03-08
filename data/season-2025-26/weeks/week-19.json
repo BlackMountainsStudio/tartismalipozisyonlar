@@ -47,10 +47,18 @@
             "https://www.aspor.com.tr/besiktas/2026/01/26/eyupsporun-besiktas-karsisinda-buldugu-gol-iptal-edildi"
           ],
           "refereeComments": [
-            { "author": "Mustafa Çulcu (Sabah)", "text": "Eyüpspor'un attığı tertemiz golü VAR'da Sarper Barış Saka ile skandal bir kararla iptal ettiler. Nereden baksan tam bir rezalet." },
-            { "author": "Deniz Çoban (Fanatik)", "text": "Bu golün VAR marifetiyle iptal edilmesi kesinlikle yanlıştı. Kaleci Ersin topla bilerek kontrollü oynuyor, ofsayttan söz edilemez. Gol iptal edilse bile Ersin rakibine faul yapıyor, penaltı verilmeliydi." }
+            {
+              "author": "Mustafa Çulcu (Sabah)",
+              "text": "Eyüpspor'un attığı tertemiz golü VAR'da Sarper Barış Saka ile skandal bir kararla iptal ettiler. Nereden baksan tam bir rezalet."
+            },
+            {
+              "author": "Deniz Çoban (Fanatik)",
+              "text": "Bu golün VAR marifetiyle iptal edilmesi kesinlikle yanlıştı. Kaleci Ersin topla bilerek kontrollü oynuyor, ofsayttan söz edilemez. Gol iptal edilse bile Ersin rakibine faul yapıyor, penaltı verilmeliydi."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Beşiktaş",
+          "against": "Eyüpspor"
         }
       ]
     }

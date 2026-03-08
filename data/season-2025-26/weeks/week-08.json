@@ -18,9 +18,14 @@
             "https://61saat.com/trabzonspor-kayserispora-pahaliya-odetti"
           ],
           "refereeComments": [
-            { "author": "Mustafa Çulçu (Fotomaç)", "text": "Topla oynayan Zubkov, geç kalıp faulü yapan Abdülsamet... Ama hakem Zubkov aleyhine endirekt verdi! Tehlikeli hareket topa değil rakibe yapılır." }
+            {
+              "author": "Mustafa Çulçu (Fotomaç)",
+              "text": "Topla oynayan Zubkov, geç kalıp faulü yapan Abdülsamet... Ama hakem Zubkov aleyhine endirekt verdi! Tehlikeli hareket topa değil rakibe yapılır."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Kayserispor",
+          "against": "Trabzonspor"
         },
         {
           "minute": 59,
@@ -31,9 +36,14 @@
             "https://61saat.com/trabzonspor-kayserispora-pahaliya-odetti"
           ],
           "refereeComments": [
-            { "author": "Mustafa Çulçu (Fotomaç)", "text": "59'da Augusto aleyhine bir faul çaldı ki trajikomikti! Faul ile yakından uzaktan alakası yok. Bunu aday hakem dahi çalmaz." }
+            {
+              "author": "Mustafa Çulçu (Fotomaç)",
+              "text": "59'da Augusto aleyhine bir faul çaldı ki trajikomikti! Faul ile yakından uzaktan alakası yok. Bunu aday hakem dahi çalmaz."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Kayserispor",
+          "against": "Trabzonspor"
         }
       ]
     },
@@ -48,6 +58,8 @@
           "minute": 34,
           "type": "RED_CARD",
           "description": "Davinson Sanchez'in bariz gol şansını engellediği pozisyonda gördüğü kırmızı kart maçın en çok konuşulan kararlarından biri oldu. Eski hakemler kararın doğru olduğu görüşünde birleşti.",
+          "inFavorOf": "Galatasaray",
+          "against": "Beşiktaş",
           "confidenceScore": 0.78,
           "sources": [
             "https://beinsports.com.tr/lig/super-lig/pozisyonlar/2025-2026/8/galatasaray-besiktas/kirmizi-kart-davinson-sanchez-37783",
@@ -67,7 +79,9 @@
             "https://www.hurriyet.com.tr/sporarena/firat-aydinus-galatasaray-besiktas-derbisindeki-hakem-kararlarini-degerlendirdi-osimhenin-2-emirhanin-1-kirmizi-kartlik-eylemi-var-42972458",
             "https://www.milliyet.com.tr/skorer/galatasaray-besiktas-derbisinde-tartisma-yaratan-karar-eski-hakem-degerlendirdi-tff-tekrar-oynatabilir-7458191"
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Beşiktaş",
+          "against": "Galatasaray"
         },
         {
           "minute": 65,
@@ -78,22 +92,38 @@
             "https://www.milliyet.com.tr/skorer/galatasaray-besiktas-derbisinde-tartisma-yaratan-karar-eski-hakem-degerlendirdi-tff-tekrar-oynatabilir-7458191"
           ],
           "refereeComments": [
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Beşiktaş 4 defa oyunu durdurup değişiklik yapmış gibi oldu. Hakem ekibi büyük bir iş birliği hatası yaptı. Tek yetkili TFF'dir." },
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Çok büyük bir hakem hatası." }
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Beşiktaş 4 defa oyunu durdurup değişiklik yapmış gibi oldu. Hakem ekibi büyük bir iş birliği hatası yaptı. Tek yetkili TFF'dir."
+            },
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Çok büyük bir hakem hatası."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Beşiktaş",
+          "against": "Galatasaray"
         },
         {
           "minute": 77,
           "type": "VAR_CONTROVERSY",
           "description": "Galatasaray hızlı hücuma çıkarken hakem önce avantaj gösterdi, ardından Sallai giderken düdük çalarak önceki pozisyona döndü. Trio ekibi kararı sert eleştirdi. Bahattin Duran: 'Çok çok büyük bir yanlış. Avantaj gösteriyor, sonra atağı keserek geri dönüyor. Hiçbir açıklaması yok.' Bülent Yıldırım: 'Umut vadeden atağı keserek geri döndü. Hatalar zinciri.'",
+          "inFavorOf": "Beşiktaş",
+          "against": "Galatasaray",
           "confidenceScore": 0.88,
           "sources": [
             "https://www.milliyet.com.tr/skorer/galatasaray-besiktas-derbisinde-tartisma-yaratan-karar-eski-hakem-degerlendirdi-tff-tekrar-oynatabilir-7458191"
           ],
           "refereeComments": [
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Çok çok büyük bir yanlış. Avantaj gösteriyor, sonra atağı keserek geri dönüyor." },
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Umut vadeden atağı keserek geri döndü. Hatalar zinciri." }
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Çok çok büyük bir yanlış. Avantaj gösteriyor, sonra atağı keserek geri dönüyor."
+            },
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Umut vadeden atağı keserek geri döndü. Hatalar zinciri."
+            }
           ],
           "status": "APPROVED"
         }
@@ -105,8 +135,21 @@
       "homeTeam": "Samsunspor",
       "awayTeam": "Fenerbahçe",
       "league": "Süper Lig 2025-26",
-      "note": "Tarama tamamlandı; belirgin tartışmalı hakem kararı tespit edilmedi",
-      "incidents": []
+      "note": null,
+      "incidents": [
+        {
+          "minute": 34,
+          "type": "GOAL_DISALLOWED",
+          "description": "Samsunspor'un attığı gol VAR tarafından ofsayt gerekçesiyle iptal edildi. Pozisyon uzun süre VAR'da tartışıldı. TFF VAR kayıt açıklaması ile teyit edildi.",
+          "inFavorOf": "Fenerbahçe",
+          "against": "Samsunspor",
+          "confidenceScore": 0.88,
+          "sources": [
+            "https://www.turkiyegazetesi.com.tr/spor/var-kayitlari-aciklandi-samsundaki-iptal-edilen-gol-tartismasi"
+          ],
+          "status": "APPROVED"
+        }
+      ]
     }
   ]
 }

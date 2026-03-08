@@ -13,6 +13,8 @@
           "minute": 34,
           "type": "GOAL_DISALLOWED",
           "description": "Rizespor'un Laci'nin golü ofsayt gerekçesiyle iptal edildi. VAR çizgisi tartışma yarattı. Deniz Ateş Bitnel: 'Santimlerle iptal edilen goller beni vicdanen rahatsız ediyor ama teknolojiye güvenmek zorundayız.' Mark Clattenburg: 'Bu tür pozisyonlar yıllar boyunca gol oldu. Fark neredeyse yok denecek kadar azdı, sadece bir ayak farkı vardı.' Rizespor resmi açıklamayla hakem yönetimini eleştirdi.",
+          "inFavorOf": "Galatasaray",
+          "against": "Çaykur Rizespor",
           "confidenceScore": 0.85,
           "sources": [
             "https://www.yenisafak.com/foto-galeri/spor/galatasaray-rizespor-macinda-tartisma-cikartan-ofsayt-karari-eski-hakemler-ne-dedi-4744298",
@@ -28,6 +30,8 @@
           "minute": 44,
           "type": "GOAL_DISALLOWED",
           "description": "Rizespor'un Sowe'un golü de ofsayt gerekçesiyle iptal edildi. Hassas çizgi değerlendirmesi tartışma konusu oldu. Rizespor yönetimi milimetrik ofsayt kararını eleştirdi.",
+          "inFavorOf": "Galatasaray",
+          "against": "Çaykur Rizespor",
           "confidenceScore": 0.78,
           "sources": [
             "https://www.imecegazetesi.com/galatasaray-c-rizespor-macinda-iptal-edilen-goller-dogru-mu-ofsayt-kararlari-tartisiliyor",
@@ -49,6 +53,8 @@
           "minute": 45,
           "type": "VAR_CONTROVERSY",
           "description": "45+5. dakikada Ogundu ile Djalo'nun ceza sahası mücadelesinde hakem Kadir Sağlam Alanyaspor lehine penaltı verdi. İbrahim Kaya penaltıyı gole çevirdi. Beşiktaş karara itiraz etti.",
+          "inFavorOf": "Alanyaspor",
+          "against": "Beşiktaş",
           "confidenceScore": 0.72,
           "sources": [
             "https://www.haberler.com/spor/alanyaspor-besiktas-i-penaltiyla-gecti-19000622-haberi/"
@@ -59,6 +65,8 @@
           "minute": 80,
           "type": "GOAL_DISALLOWED",
           "description": "El Bilal Toure'nin golü ofsayt gerekçesiyle iptal edildi. Beşiktaş 2-0 gerideyken skoru değiştirebilecek pozisyon elinden gitti.",
+          "inFavorOf": "Alanyaspor",
+          "against": "Beşiktaş",
           "confidenceScore": 0.85,
           "sources": [
             "https://www.star.com.tr/spor/mac-sonucu-alanyaspor-2-0-besiktas-haber-1962801/"
@@ -88,6 +96,8 @@
           "minute": 62,
           "type": "VAR_CONTROVERSY",
           "description": "Paul Onuachu kaleciyle karşı karşıya kaldığı pozisyonda yerde kaldı, hakem Adnan Deniz Kayatepe penaltı verdi. VAR incelemesi sonrası penaltı kararı iptal edildi. TFF tartışmalı anın VAR kayıtlarını kamuoyuyla paylaştı.",
+          "inFavorOf": "Samsunspor",
+          "against": "Trabzonspor",
           "confidenceScore": 0.88,
           "sources": [
             "https://www.kuzeyekspres.com.tr/haber/26166035/trabzonsporun-penaltisi-vara-takildi",
@@ -99,6 +109,8 @@
           "minute": 42,
           "type": "MISSED_YELLOW",
           "description": "Samsunspor oyuncularının dirsekleriyle yaptıkları müdahalelere sarı kart gösterilmedi. İlk yarının son bölümlerinde aut/köşe atışı kararlarında tutarsızlıklar yaşandı. Trabzonspor tribünlerden protestoda bulundu.",
+          "inFavorOf": "Samsunspor",
+          "against": "Trabzonspor",
           "confidenceScore": 0.78,
           "sources": [
             "https://www.takagazete.com.tr/trabzonspor-samsunspor-macinda-hakem-skandali-adnan-deniz-kayatepe-kararlariyla-bordo-mavilileri-cildirtti"

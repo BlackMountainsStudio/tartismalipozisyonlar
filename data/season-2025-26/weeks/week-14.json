@@ -18,11 +18,22 @@
             "https://www.cumhuriyet.com.tr/spor/eski-hakemler-trabzonspor-konyaspor-macini-yorumladi-hakemi-cok-sert-sekilde-elestirebilecegim-bir-pozisyon-2457121"
           ],
           "refereeComments": [
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Hiçbir tereddüdüm yok penaltı konusunda. VAR'a bırakılmayacak kadar çok net penaltıydı." },
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Hakemi çok sert şekilde eleştirebileceğim bir pozisyon. VAR müdahalesi olmadan karar verebileceğin bir pozisyon." },
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Neticede doğru bulundu fakat hakemin bu penaltıyı sahada vermesini beklerdik." }
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Hiçbir tereddüdüm yok penaltı konusunda. VAR'a bırakılmayacak kadar çok net penaltıydı."
+            },
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Hakemi çok sert şekilde eleştirebileceğim bir pozisyon. VAR müdahalesi olmadan karar verebileceğin bir pozisyon."
+            },
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Neticede doğru bulundu fakat hakemin bu penaltıyı sahada vermesini beklerdik."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Trabzonspor",
+          "against": "Konyaspor"
         },
         {
           "minute": 87,
@@ -33,11 +44,22 @@
             "https://www.cumhuriyet.com.tr/spor/eski-hakemler-trabzonspor-konyaspor-macini-yorumladi-hakemi-cok-sert-sekilde-elestirebilecegim-bir-pozisyon-2457121"
           ],
           "refereeComments": [
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Hakem pozisyonda 1.5-2 metre geride kalmış. Topun tamamının oyun alanını terk etmediğini görüyorum. Gol kararı verilmesi gerektiğini düşünüyorum." },
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Ben topun çizgiden koptuğunu görmüyorum. Teknik olarak verilmesi gereken karar goldü." },
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Bu görüntülere göre top oyun alanını terk etmemiş. VAR'da bu teknoloji varken bu golün iptal edilmemesi gerekirdi." }
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Hakem pozisyonda 1.5-2 metre geride kalmış. Topun tamamının oyun alanını terk etmediğini görüyorum. Gol kararı verilmesi gerektiğini düşünüyorum."
+            },
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Ben topun çizgiden koptuğunu görmüyorum. Teknik olarak verilmesi gereken karar goldü."
+            },
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Bu görüntülere göre top oyun alanını terk etmemiş. VAR'da bu teknoloji varken bu golün iptal edilmemesi gerekirdi."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Trabzonspor",
+          "against": "Konyaspor"
         }
       ]
     },
@@ -58,11 +80,22 @@
             "https://www.milliyet.com.tr/skorer/fatih-karagumruk-besiktas-macinin-tartismali-pozisyonlari-trioda-degerlendirildi-mudahalenin-niteligi-onemli-7493164"
           ],
           "refereeComments": [
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Çok doğru bir VAR müdahalesi, çok doğru bir penaltı." },
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Bu pozisyonda iki dakika kontrol edilecek bir şey yok. Penaltı." },
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Penaltıda şüphe yok, video hakem müdahalesinde şüphe yok. Tartışmasız doğru." }
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Çok doğru bir VAR müdahalesi, çok doğru bir penaltı."
+            },
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Bu pozisyonda iki dakika kontrol edilecek bir şey yok. Penaltı."
+            },
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Penaltıda şüphe yok, video hakem müdahalesinde şüphe yok. Tartışmasız doğru."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Beşiktaş",
+          "against": "Fatih Karagümrük"
         },
         {
           "minute": 90,
@@ -73,10 +106,18 @@
             "https://www.milliyet.com.tr/skorer/fatih-karagumruk-besiktas-macinin-tartismali-pozisyonlari-trioda-degerlendirildi-mudahalenin-niteligi-onemli-7493164"
           ],
           "refereeComments": [
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Yardımcı hakem şüpheleniyor, duraksıyor. Net ofsayt." },
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Net ofsayt ise o seviyede o bayrak kalkmalı. Doğru yerde bulunan bir yardımcı rahatlıkla görebilirdi." }
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Yardımcı hakem şüpheleniyor, duraksıyor. Net ofsayt."
+            },
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Net ofsayt ise o seviyede o bayrak kalkmalı. Doğru yerde bulunan bir yardımcı rahatlıkla görebilirdi."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Fatih Karagümrük",
+          "against": "Beşiktaş"
         }
       ]
     },
@@ -99,11 +140,22 @@
           ],
           "videoUrl": "https://beinsports.com.tr/lig/super-lig/pozisyonlar/2025-2026/14/fenerbahce-galatasaray/iste-fenerbahcenin-iptal-edilen-golu-38316",
           "refereeComments": [
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Eli tamamen kendi isteğiyle bu şekilde duruyor. Karar doğru." },
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Bu bilerek oynama sayılan bir hamle. El doğal konumda değil. Video hakem müdahalesi ve gol iptali %100 doğru." },
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Doğru bir karar, oyuncunun kolu doğal konumda değil." }
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Eli tamamen kendi isteğiyle bu şekilde duruyor. Karar doğru."
+            },
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Bu bilerek oynama sayılan bir hamle. El doğal konumda değil. Video hakem müdahalesi ve gol iptali %100 doğru."
+            },
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Doğru bir karar, oyuncunun kolu doğal konumda değil."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Galatasaray",
+          "against": "Fenerbahçe"
         },
         {
           "minute": 45,
@@ -115,11 +167,22 @@
           ],
           "videoUrl": "https://beinsports.com.tr/lig/super-lig/pozisyonlar/2025-2026/14/fenerbahce-galatasaray/fenerbahce-asensio-ile-gole-yaklasti-38317",
           "refereeComments": [
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Penaltı gerektiren bir ihlal görmüyorum, ihlal gerektiren bir temas olduğunu düşünmüyorum." },
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Ederson kontrolsüz şekilde kaymıyor, duruyor. Hakem kararını doğru buluyorum." },
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Hakemin yorumuna saygı duyuyorum, penaltı olduğunu düşünmüyorum." }
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Penaltı gerektiren bir ihlal görmüyorum, ihlal gerektiren bir temas olduğunu düşünmüyorum."
+            },
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Ederson kontrolsüz şekilde kaymıyor, duruyor. Hakem kararını doğru buluyorum."
+            },
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Hakemin yorumuna saygı duyuyorum, penaltı olduğunu düşünmüyorum."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Fenerbahçe",
+          "against": "Galatasaray"
         },
         {
           "minute": 65,
@@ -130,11 +193,22 @@
             "https://www.milliyet.com.tr/skorer/fenerbahce-galatasaray-derbisinin-tartismali-pozisyonlari-trioda-degerlendirildi-7493806"
           ],
           "refereeComments": [
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Hakemin maç içinde kaçırdığı en net pozisyonlardan biri. Sarı karttan başlar. Skriniar kesinlikle sarı kart görmeliydi." },
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Bunu kaçırmak yakışık almamış. Sarı kart verilmesi gereken, atlanmaması gereken bir fauldü." },
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Bu pozisyon sarı kart sınırları içinde kalıyor." }
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Hakemin maç içinde kaçırdığı en net pozisyonlardan biri. Sarı karttan başlar. Skriniar kesinlikle sarı kart görmeliydi."
+            },
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Bunu kaçırmak yakışık almamış. Sarı kart verilmesi gereken, atlanmaması gereken bir fauldü."
+            },
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Bu pozisyon sarı kart sınırları içinde kalıyor."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Galatasaray",
+          "against": "Fenerbahçe"
         }
       ]
     }

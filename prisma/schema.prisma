@@ -114,19 +114,21 @@ model Referee {
 }
 
 model Incident {
-  id              String  @id @default(cuid())
+  id              String   @id @default(cuid())
   slug            String?
   matchId         String
   minute          Int?
   type            String
   description     String
   confidenceScore Float
-  sources         String  @default("[]")
-  status          String  @default("PENDING")
+  sources         String   @default("[]")
+  status          String   @default("PENDING")
   videoUrl        String?
-  relatedVideos   String  @default("[]")
-  refereeComments String  @default("[]")
-  newsArticles    String  @default("[]")
+  relatedVideos   String   @default("[]")
+  refereeComments String   @default("[]")
+  newsArticles    String   @default("[]")
+  inFavorOf       String?  // Pozisyon lehine olan takım
+  against         String?  // Pozisyon aleyhine olan takım
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 
@@ -138,6 +140,8 @@ model Incident {
   @@index([status])
   @@index([type])
   @@index([slug])
+  @@index([inFavorOf])
+  @@index([against])
 }
 
 model CrawledContent {

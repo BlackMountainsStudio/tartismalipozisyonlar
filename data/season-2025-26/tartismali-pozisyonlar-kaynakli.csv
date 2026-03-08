@@ -1,0 +1,7 @@
+maç,hafta,dakika,olay,tipi,lehine,aleyhine,kaynak
+Samsunspor–Fenerbahçe,8,34,İptal edilen gol (ofsayt),GOAL_DISALLOWED,Fenerbahçe,Samsunspor,TFF VAR kayıt açıklaması / Türkiye Gazetesi
+Göztepe–Fenerbahçe,2,41,Penaltı VAR kararı,PENALTY,Fenerbahçe,Göztepe,KÜRE Encyclopedia beIN VAR raporu
+Göztepe–Fenerbahçe,2,42,Sarı→kırmızı kart (VAR),RED_CARD,Göztepe,Fenerbahçe,KÜRE Encyclopedia beIN VAR raporu
+Galatasaray–Eyüpspor,5,53,İptal edilen gol (ofsayt),GOAL_DISALLOWED,Galatasaray,Eyüpspor,Türkiye Today
+Kocaelispor–Galatasaray,12,83,İptal edilen gol (ofsayt),GOAL_DISALLOWED,Kocaelispor,Galatasaray,Sohu.com / Hürriyet / Spor Haber7
+Kayserispor–Konyaspor,23,86,VAR ofsayt gol iptali,GOAL_DISALLOWED,Kayserispor,Konyaspor,Haberler.com

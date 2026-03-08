@@ -18,7 +18,9 @@
             "https://www.hurriyet.com.tr/sporarena/besiktas-goztepe-karsisinda-penalti-bekledi-sergen-yalcindan-tepki-42954773",
             "https://spor.haber7.com/besiktas/haber/3564757-besiktas-penalti-bekledi-sergen-yalcinin-itirazi-sonucsuz-kaldi"
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Göztepe",
+          "against": "Beşiktaş"
         }
       ]
     },
@@ -38,7 +40,9 @@
           "sources": [
             "https://spor.haber7.com/trabzonspor/haber/3565007-akyazida-penalti-itirazi-hakem-devam-ettirdi"
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Gaziantep",
+          "against": "Trabzonspor"
         }
       ]
     },
@@ -68,10 +72,18 @@
             "https://spor.haber7.com/galatasaray/haber/3565539-galatasaray-konyaspor-macinda-penalti-tartismalari-hakemler-ikiye-bolundu"
           ],
           "refereeComments": [
-            { "author": "Bülent Yıldırım", "text": "Penaltı verilirse saygı duyarım, devam diyen hakemi eleştirmem." },
-            { "author": "Bünyamin Gezer", "text": "Ben olsam penaltıyı veririm. Sallai rakibini tek elle itti." }
+            {
+              "author": "Bülent Yıldırım",
+              "text": "Penaltı verilirse saygı duyarım, devam diyen hakemi eleştirmem."
+            },
+            {
+              "author": "Bünyamin Gezer",
+              "text": "Ben olsam penaltıyı veririm. Sallai rakibini tek elle itti."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Galatasaray",
+          "against": "Konyaspor"
         },
         {
           "minute": 34,
@@ -82,9 +94,14 @@
             "https://www.hurriyet.com.tr/sporarena/firat-aydinus-galatasaray-konyaspor-macindaki-tartismali-hakem-kararlarini-inceledi-adeta-bu-macta-kart-gostermeyecegim-diye-42958091"
           ],
           "refereeComments": [
-            { "author": "Fırat Aydınus (Hürriyet)", "text": "Sallai'nin bu kadar üst üste faul yapıp hiç kart görmemesi inanılır gibi değil." }
+            {
+              "author": "Fırat Aydınus (Hürriyet)",
+              "text": "Sallai'nin bu kadar üst üste faul yapıp hiç kart görmemesi inanılır gibi değil."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Galatasaray",
+          "against": "Konyaspor"
         }
       ]
     }

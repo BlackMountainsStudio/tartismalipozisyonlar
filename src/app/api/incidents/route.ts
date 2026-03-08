@@ -31,6 +31,8 @@ export async function GET(request: NextRequest) {
     const minConfidence = searchParams.get("minConfidence");
     const team = searchParams.get("team")?.trim() || undefined;
     const typeParam = searchParams.get("type")?.trim() || undefined;
+    const inFavorOf = searchParams.get("inFavorOf")?.trim() || undefined;
+    const against = searchParams.get("against")?.trim() || undefined;
 
     if (matchSlug && incidentSlug) {
       const shortId = getShortIdFromIncidentSlug(incidentSlug);
@@ -109,6 +111,8 @@ export async function GET(request: NextRequest) {
         };
       }
     }
+    if (inFavorOf) where.inFavorOf = inFavorOf;
+    if (against) where.against = against;
 
     const incidents = await prisma.incident.findMany({
       where,
@@ -144,6 +148,8 @@ export async function GET(request: NextRequest) {
         matchSlug: matchSlugComputed,
         sources: parseSources(inc.sources),
         videoUrl: inc.videoUrl ?? null,
+        inFavorOf: inc.inFavorOf ?? null,
+        against: inc.against ?? null,
         refereeComments: (() => {
           try {
             return JSON.parse(inc.refereeComments);

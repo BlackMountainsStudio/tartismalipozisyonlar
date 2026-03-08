@@ -67,6 +67,8 @@ async function upsertIncidents(matchId, incidents) {
     const hasRelatedVideos = Object.prototype.hasOwnProperty.call(incident, "relatedVideos");
     const hasRefereeComments = Object.prototype.hasOwnProperty.call(incident, "refereeComments");
     const hasNewsArticles = Object.prototype.hasOwnProperty.call(incident, "newsArticles");
+    const hasInFavorOf = Object.prototype.hasOwnProperty.call(incident, "inFavorOf");
+    const hasAgainst = Object.prototype.hasOwnProperty.call(incident, "against");
 
     // Önce aynı maç+dakika+tür+açıklama ile ara; yoksa sadece maç+dakika+tür ile ara (mevcut kaydı güncellemek için)
     let existing = await pool.query(
@@ -124,6 +126,8 @@ async function upsertIncidents(matchId, incidents) {
             "relatedVideos" = CASE WHEN $8::boolean THEN $9 ELSE "relatedVideos" END,
             "refereeComments" = CASE WHEN $10::boolean THEN $11 ELSE "refereeComments" END,
             "newsArticles" = CASE WHEN $12::boolean THEN $13 ELSE "newsArticles" END,
+            "inFavorOf" = CASE WHEN $14::boolean THEN $15 ELSE "inFavorOf" END,
+            "against" = CASE WHEN $16::boolean THEN $17 ELSE "against" END,
             "updatedAt" = NOW()
           WHERE "id" = $1
         `,
@@ -141,6 +145,10 @@ async function upsertIncidents(matchId, incidents) {
           JSON.stringify(incident.refereeComments ?? []),
           hasNewsArticles,
           JSON.stringify(incident.newsArticles ?? []),
+          hasInFavorOf,
+          incident.inFavorOf ?? null,
+          hasAgainst,
+          incident.against ?? null,
         ]
       );
       continue;
@@ -151,11 +159,11 @@ async function upsertIncidents(matchId, incidents) {
         INSERT INTO "Incident" (
           "id", "matchId", "minute", "type", "description", "confidenceScore",
           "sources", "status", "videoUrl", "relatedVideos", "refereeComments",
-          "newsArticles", "createdAt", "updatedAt"
+          "newsArticles", "inFavorOf", "against", "createdAt", "updatedAt"
         )
         VALUES (
           concat('incident_', md5(random()::text || clock_timestamp()::text)),
-          $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, NOW(), NOW()
+          $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, NOW(), NOW()
         )
       `,
       [
@@ -170,6 +178,8 @@ async function upsertIncidents(matchId, incidents) {
         JSON.stringify(incident.relatedVideos ?? []),
         JSON.stringify(incident.refereeComments ?? []),
         JSON.stringify(incident.newsArticles ?? []),
+        incident.inFavorOf ?? null,
+        incident.against ?? null,
       ]
     );
   }

@@ -18,11 +18,22 @@
             "https://www.yenicaggazetesi.com/bein-trio-galatasaray-alanyaspor-macini-degerlendirdi-hakem-kararlari-dogru-mu-besiktas-derbisi-oncesi-ali-sansalanin-kart-ve-ceza-kararlari-1005091h.htm"
           ],
           "refereeComments": [
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Penaltı verilse daha doğru olurdu. Hakemin kararı yanlış." },
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Çok zor pozisyon, hücum faul verirdim." },
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Faulü Osimhen yapıyor. Penaltı değil." }
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Penaltı verilse daha doğru olurdu. Hakemin kararı yanlış."
+            },
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Çok zor pozisyon, hücum faul verirdim."
+            },
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Faulü Osimhen yapıyor. Penaltı değil."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Alanyaspor",
+          "against": "Galatasaray"
         },
         {
           "minute": 55,
@@ -33,10 +44,18 @@
             "https://www.yenicaggazetesi.com/bein-trio-galatasaray-alanyaspor-macini-degerlendirdi-hakem-kararlari-dogru-mu-besiktas-derbisi-oncesi-ali-sansalanin-kart-ve-ceza-kararlari-1005091h.htm"
           ],
           "refereeComments": [
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Sarı kart kararı yanlış, faul de yok." },
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Aliti'nin teması yok, faul ve sarı kart kararı yanlış." }
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Sarı kart kararı yanlış, faul de yok."
+            },
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Aliti'nin teması yok, faul ve sarı kart kararı yanlış."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Alanyaspor",
+          "against": "Galatasaray"
         },
         {
           "minute": 64,
@@ -47,10 +66,18 @@
             "https://www.yenicaggazetesi.com/bein-trio-galatasaray-alanyaspor-macini-degerlendirdi-hakem-kararlari-dogru-mu-besiktas-derbisi-oncesi-ali-sansalanin-kart-ve-ceza-kararlari-1005091h.htm"
           ],
           "refereeComments": [
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Minimum sarı kart. Faul bile verilmedi." },
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Kırmızı kartı daha çok desteklerdim, sarı kartı kabul ederdim." }
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Minimum sarı kart. Faul bile verilmedi."
+            },
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Kırmızı kartı daha çok desteklerdim, sarı kartı kabul ederdim."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Alanyaspor",
+          "against": "Galatasaray"
         },
         {
           "minute": 90,
@@ -61,10 +88,18 @@
             "https://www.yenicaggazetesi.com/bein-trio-galatasaray-alanyaspor-macini-degerlendirdi-hakem-kararlari-dogru-mu-besiktas-derbisi-oncesi-ali-sansalanin-kart-ve-ceza-kararlari-1005091h.htm"
           ],
           "refereeComments": [
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Amasız, fakatsız kırmızı kart. VAR neden karışmadı?" },
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Her yerde kırmızı kart bu. Tartışmam." }
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Amasız, fakatsız kırmızı kart. VAR neden karışmadı?"
+            },
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Her yerde kırmızı kart bu. Tartışmam."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Alanyaspor",
+          "against": "Galatasaray"
         }
       ]
     },
@@ -86,9 +121,14 @@
             "https://www.sporx.com/trabzonspor-a-var-uyarisindan-sonra-da-penalti-SXHBQ1133973SXQ"
           ],
           "refereeComments": [
-            { "author": "Deniz Çoban", "text": "Penaltı kararı doğru. VAR müdahalesi gereksiz ve hatalıydı. Elle oynama çekme eyleminden sonraydı." }
+            {
+              "author": "Deniz Çoban",
+              "text": "Penaltı kararı doğru. VAR müdahalesi gereksiz ve hatalıydı. Elle oynama çekme eyleminden sonraydı."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Trabzonspor",
+          "against": "Fatih Karagümrük"
         }
       ]
     },

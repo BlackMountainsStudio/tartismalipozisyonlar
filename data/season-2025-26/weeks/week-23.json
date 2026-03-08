@@ -3,6 +3,28 @@
   "matches": [
     {
       "week": 23,
+      "date": "2026-02-22",
+      "homeTeam": "Kayserispor",
+      "awayTeam": "Konyaspor",
+      "league": "Süper Lig 2025-26",
+      "note": null,
+      "incidents": [
+        {
+          "minute": 86,
+          "type": "GOAL_DISALLOWED",
+          "description": "Konyaspor'un eşitlik golü VAR tarafından ofsayt nedeniyle iptal edildi; uzun VAR incelemesi sonrası karar bu maçın odak noktası oldu.",
+          "inFavorOf": "Kayserispor",
+          "against": "Konyaspor",
+          "confidenceScore": 0.82,
+          "sources": [
+            "https://www.haberler.com/kayserispor-konyaspor-var-incelemesi"
+          ],
+          "status": "APPROVED"
+        }
+      ]
+    },
+    {
+      "week": 23,
       "date": "2026-02-21",
       "homeTeam": "Konyaspor",
       "awayTeam": "Galatasaray",
@@ -19,11 +41,22 @@
             "https://uye.turkiyegazetesi.com.tr/spor/iptal-edilen-gol-tartismasi-hakemler-penalti-faul-ve-ofsayti-degerlendirdi-1772555"
           ],
           "refereeComments": [
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Bu subjektif bir ofsayt yorumu. Hakem golü vermişken VAR'ın karışmaması gerekiyordu. İptal kararı doğru değil." },
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Ofsayt olduğunu düşünmüyorum. VAR protokolü gereği devreye girmemeliydi." },
-            { "author": "Bahattin Duran (beIN Trio)", "text": "UEFA standartlarında bu pozisyona müdahale edilmez. Sahadaki karar geçerli kalmalıydı." }
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Bu subjektif bir ofsayt yorumu. Hakem golü vermişken VAR'ın karışmaması gerekiyordu. İptal kararı doğru değil."
+            },
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Ofsayt olduğunu düşünmüyorum. VAR protokolü gereği devreye girmemeliydi."
+            },
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "UEFA standartlarında bu pozisyona müdahale edilmez. Sahadaki karar geçerli kalmalıydı."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Konyaspor",
+          "against": "Galatasaray"
         },
         {
           "minute": 50,
@@ -34,10 +67,18 @@
             "https://www.haber3.com/spor/futbol/trendyol-super-lig/konyaspor-galatasaray-macindaki-ofsayt-karari-dogru-mu-haberi-6248824"
           ],
           "refereeComments": [
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Boey istemeden de olsa faul yapıyor, devam kararı yanlıştı." },
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Hakemin devam kararını doğru buluyorum, yoruma açık bir pozisyon." }
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Boey istemeden de olsa faul yapıyor, devam kararı yanlıştı."
+            },
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Hakemin devam kararını doğru buluyorum, yoruma açık bir pozisyon."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Konyaspor",
+          "against": "Galatasaray"
         }
       ]
     },
@@ -77,10 +118,18 @@
             "https://www.hurriyet.com.tr/sporarena/fenerbahce-kasimpasa-macinda-sahalarda-ender-rastlanacak-anlar-kimse-anlayamadi-iki-topla-oynanirken-penalti-beklediler-43114918"
           ],
           "refereeComments": [
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Hakemin maçın yönetimi ile ilgili yaptığı en büyük hata. Sahada 2 top var. Maçın devam etmesi kabul edilemez." },
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Maçın kontrolünün olmadığı anlardan birisiydi. Oyunun devam etmesini kabul etmek mümkün değil. Amatör kümede bile uzun süredir görmediğim bir kare." }
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Hakemin maçın yönetimi ile ilgili yaptığı en büyük hata. Sahada 2 top var. Maçın devam etmesi kabul edilemez."
+            },
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Maçın kontrolünün olmadığı anlardan birisiydi. Oyunun devam etmesini kabul etmek mümkün değil. Amatör kümede bile uzun süredir görmediğim bir kare."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Kasımpaşa",
+          "against": "Fenerbahçe"
         },
         {
           "minute": 62,
@@ -91,11 +140,22 @@
             "https://www.ensonhaber.com/kralspor/futbol/fenerbahce-kasimpasa-macinin-tartismali-pozisyonlarini-eski-hakemler-yorumladi"
           ],
           "refereeComments": [
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Yere destek olacak ayağına yapılan temasın sonraki hamleyi etkilediğini düşünüyorum. Penaltı verilse çok daha doğru olurdu." },
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Doğal aksiyon içinde iki ayak arasında temas. Devam kararını doğru buluyorum." },
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Yoruma açık pozisyon. Ben penaltı için yeterli olmadığını düşünüyorum." }
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Yere destek olacak ayağına yapılan temasın sonraki hamleyi etkilediğini düşünüyorum. Penaltı verilse çok daha doğru olurdu."
+            },
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Doğal aksiyon içinde iki ayak arasında temas. Devam kararını doğru buluyorum."
+            },
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Yoruma açık pozisyon. Ben penaltı için yeterli olmadığını düşünüyorum."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Kasımpaşa",
+          "against": "Fenerbahçe"
         }
       ]
     }

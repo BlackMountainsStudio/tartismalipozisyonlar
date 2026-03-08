@@ -28,10 +28,18 @@
             "https://www.milliyet.com.tr/skorer/galatasaray-goztepe-macinda-tartisma-yaratan-karar-kirmizi-kart-dogru-mu-7471721"
           ],
           "refereeComments": [
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Çizgi çizilecek bir ofsayt bile yok. VAR incelemesi neden yapıldı? İş birliği olacak iş değil." },
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Göztepeli oyuncu geri pas yapıyor. İş birliği açısından skandal." }
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Çizgi çizilecek bir ofsayt bile yok. VAR incelemesi neden yapıldı? İş birliği olacak iş değil."
+            },
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Göztepeli oyuncu geri pas yapıyor. İş birliği açısından skandal."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Göztepe",
+          "against": "Galatasaray"
         },
         {
           "minute": 50,
@@ -42,10 +50,18 @@
             "https://www.milliyet.com.tr/skorer/galatasaray-goztepe-macinda-tartisma-yaratan-karar-kirmizi-kart-dogru-mu-7471721"
           ],
           "refereeComments": [
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Bir ihlal yok. Hakemi aldatmaya yönelik hareket. Osimhen'in sarı kart görmesi gerekiyordu." },
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Temas var da teması yapan Osimhen. Penaltı kesinlikle söz konusu değil." }
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Bir ihlal yok. Hakemi aldatmaya yönelik hareket. Osimhen'in sarı kart görmesi gerekiyordu."
+            },
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Temas var da teması yapan Osimhen. Penaltı kesinlikle söz konusu değil."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Göztepe",
+          "against": "Galatasaray"
         },
         {
           "minute": 75,
@@ -56,10 +72,18 @@
             "https://www.milliyet.com.tr/skorer/galatasaray-goztepe-macinda-tartisma-yaratan-karar-kirmizi-kart-dogru-mu-7471721"
           ],
           "refereeComments": [
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Kontrolsüz şekilde kolu götürüyor. Net sarı kart. Öncesinde Osimhen faul yapıyor. En doğru karar Göztepe lehine faul, Bokele 2. sarı kırmızı." },
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "İlk faulü Osimhen yapıyor. Bokele'nin 2. sarı kartında şüphe yok." }
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Kontrolsüz şekilde kolu götürüyor. Net sarı kart. Öncesinde Osimhen faul yapıyor. En doğru karar Göztepe lehine faul, Bokele 2. sarı kırmızı."
+            },
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "İlk faulü Osimhen yapıyor. Bokele'nin 2. sarı kartında şüphe yok."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Galatasaray",
+          "against": "Göztepe"
         }
       ]
     },
@@ -80,10 +104,18 @@
             "https://www.milliyet.com.tr/skorer/galatasaray-goztepe-macinda-tartisma-yaratan-karar-kirmizi-kart-dogru-mu-7471721"
           ],
           "refereeComments": [
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Hakemden izin almadan gidiyor. Sarı kart görmesi gerekiyor." },
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Sarı kartı görmesi gerekirdi." }
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Hakemden izin almadan gidiyor. Sarı kart görmesi gerekiyor."
+            },
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Sarı kartı görmesi gerekirdi."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Kasımpaşa",
+          "against": "Beşiktaş"
         },
         {
           "minute": 31,
@@ -95,10 +127,18 @@
             "https://www.hurriyet.com.tr/sporarena/kasimpasa-besiktas-macina-damga-vuran-sekans-4-dakikada-her-sey-oldu-kacan-penalti-gol-ve-var-42997557"
           ],
           "refereeComments": [
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Net penaltı. Opoku'nun kart görmesi gerekiyor." },
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Sarı kart %100. Penaltı ile sarı kart gerekirdi. Hakem ciddi hata yaptı." }
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Net penaltı. Opoku'nun kart görmesi gerekiyor."
+            },
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Sarı kart %100. Penaltı ile sarı kart gerekirdi. Hakem ciddi hata yaptı."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Beşiktaş",
+          "against": "Kasımpaşa"
         },
         {
           "minute": 35,
@@ -110,10 +150,18 @@
             "https://www.hurriyet.com.tr/sporarena/kasimpasa-besiktas-macina-damga-vuran-sekans-4-dakikada-her-sey-oldu-kacan-penalti-gol-ve-var-42997557"
           ],
           "refereeComments": [
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Oyuncunun kendini penaltı almak için atladığı belli. Cafu'ya cezasını neden vermiyorsunuz?" },
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "VAR maçı kurtardı ancak Cafu'nun da sarı kart görmesi gerekirdi." }
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Oyuncunun kendini penaltı almak için atladığı belli. Cafu'ya cezasını neden vermiyorsunuz?"
+            },
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "VAR maçı kurtardı ancak Cafu'nun da sarı kart görmesi gerekirdi."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Beşiktaş",
+          "against": "Kasımpaşa"
         }
       ]
     },
@@ -134,7 +182,9 @@
             "https://www.fotomac.com.tr/fenerbahce/2025/10/27/gaziantep-fk-fenerbahce-macinda-kirmizi-kart-karari-iste-o-pozisyon"
           ],
           "refereeComments": [],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Fenerbahçe",
+          "against": "Gaziantep"
         }
       ]
     }

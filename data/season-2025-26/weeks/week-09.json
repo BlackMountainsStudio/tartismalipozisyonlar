@@ -26,7 +26,9 @@
           "sources": [
             "https://m.sporx.com/caykur-rizespor-trabzonspor-maci-anlatim-4842395"
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Trabzonspor",
+          "against": "Çaykur Rizespor"
         }
       ]
     },
@@ -48,9 +50,14 @@
             "https://www.yenisafak.com/foto-galeri/spor/basaksehirin-golu-ofsayt-miydi-eski-hakem-galatasaray-macindaki-pozisyonu-degerlendirdi-4759823"
           ],
           "refereeComments": [
-            { "author": "Deniz Ateş Bitnel (Eski Süper Lig hakemi)", "text": "Net teknoloji olmadan çıplak gözle bile ofsayt. Ne incelendi bu kadar anlamadım?" }
+            {
+              "author": "Deniz Ateş Bitnel (Eski Süper Lig hakemi)",
+              "text": "Net teknoloji olmadan çıplak gözle bile ofsayt. Ne incelendi bu kadar anlamadım?"
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Galatasaray",
+          "against": "İstanbul Başakşehir"
         }
       ]
     },
@@ -71,10 +78,18 @@
             "https://www.milliyet.com.tr/skorer/fenerbahce-karagumruk-macinda-tartisma-yaratan-kararlar-penalti-karari-dogru-mu-7467285"
           ],
           "refereeComments": [
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Böyle penaltı olmaz. Karşılıklı ikili mücadele var." },
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Devam kararı doğru. Fiziksel mücadele var, ekstra ihlal söz konusu değil." }
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Böyle penaltı olmaz. Karşılıklı ikili mücadele var."
+            },
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Devam kararı doğru. Fiziksel mücadele var, ekstra ihlal söz konusu değil."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Fatih Karagümrük",
+          "against": "Fenerbahçe"
         },
         {
           "minute": 19,
@@ -85,10 +100,18 @@
             "https://www.milliyet.com.tr/skorer/fenerbahce-karagumruk-macinda-tartisma-yaratan-kararlar-penalti-karari-dogru-mu-7467285"
           ],
           "refereeComments": [
-            { "author": "Deniz Çoban (beIN Trio)", "text": "Net penaltı. Nene dribling esnasında dengesi bozuluyor." },
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Penaltı doğruydu. Balkovec topa temas etmiyor, riski almış." }
+            {
+              "author": "Deniz Çoban (beIN Trio)",
+              "text": "Net penaltı. Nene dribling esnasında dengesi bozuluyor."
+            },
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "Penaltı doğruydu. Balkovec topa temas etmiyor, riski almış."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Fenerbahçe",
+          "against": "Fatih Karagümrük"
         },
         {
           "minute": 82,
@@ -99,10 +122,18 @@
             "https://www.milliyet.com.tr/skorer/fenerbahce-karagumruk-macinda-tartisma-yaratan-kararlar-penalti-karari-dogru-mu-7467285"
           ],
           "refereeComments": [
-            { "author": "Bülent Yıldırım (beIN Trio)", "text": "İkinci sarı kart tartışılmaz. Hakem çok uzak olduğu için yanıldı, kuvvetli basma." },
-            { "author": "Bahattin Duran (beIN Trio)", "text": "Balkovec'in maçta gördüğü her iki sarı kart da doğru." }
+            {
+              "author": "Bülent Yıldırım (beIN Trio)",
+              "text": "İkinci sarı kart tartışılmaz. Hakem çok uzak olduğu için yanıldı, kuvvetli basma."
+            },
+            {
+              "author": "Bahattin Duran (beIN Trio)",
+              "text": "Balkovec'in maçta gördüğü her iki sarı kart da doğru."
+            }
           ],
-          "status": "APPROVED"
+          "status": "APPROVED",
+          "inFavorOf": "Fenerbahçe",
+          "against": "Fatih Karagümrük"
         }
       ]
     }

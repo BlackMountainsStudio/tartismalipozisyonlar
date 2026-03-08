@@ -21,6 +21,8 @@ interface Incident {
   confidenceScore: number;
   sources: string[];
   status: string;
+  inFavorOf?: string | null;
+  against?: string | null;
 }
 
 interface Match {
@@ -48,6 +50,8 @@ export default function DashboardMatchDetailPage({
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editDescription, setEditDescription] = useState("");
+  const [editInFavorOf, setEditInFavorOf] = useState("");
+  const [editAgainst, setEditAgainst] = useState("");
   const [referees, setReferees] = useState<{ id: string; name: string; slug: string; role: string }[]>([]);
   const [editingMatch, setEditingMatch] = useState(false);
   const [matchRefereeId, setMatchRefereeId] = useState("");
@@ -119,6 +123,8 @@ export default function DashboardMatchDetailPage({
     if (incident) {
       setEditingId(id);
       setEditDescription(incident.description);
+      setEditInFavorOf(incident.inFavorOf ?? "");
+      setEditAgainst(incident.against ?? "");
     }
   }
 
@@ -128,13 +134,22 @@ export default function DashboardMatchDetailPage({
       const res = await fetch(`/api/incidents/${editingId}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ description: editDescription }),
+        body: JSON.stringify({
+          description: editDescription,
+          inFavorOf: editInFavorOf.trim() || null,
+          against: editAgainst.trim() || null,
+        }),
       });
       if (res.ok) {
         setIncidents((prev) =>
           prev.map((inc) =>
             inc.id === editingId
-              ? { ...inc, description: editDescription }
+              ? {
+                  ...inc,
+                  description: editDescription,
+                  inFavorOf: editInFavorOf.trim() || null,
+                  against: editAgainst.trim() || null,
+                }
               : inc
           )
         );
@@ -378,7 +393,7 @@ export default function DashboardMatchDetailPage({
         })}
       </div>
 
-      {editingId && (
+      {editingId && match && (
         <div className="mb-6 rounded-xl border border-emerald-500/30 bg-zinc-900 p-4">
           <h3 className="mb-2 text-sm font-medium text-white">
             Pozisyonu Düzenle
@@ -389,6 +404,32 @@ export default function DashboardMatchDetailPage({
             className="mb-3 w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white outline-none focus:border-emerald-500"
             rows={3}
           />
+          <div className="mb-3 grid grid-cols-2 gap-3 sm:grid-cols-2">
+            <div>
+              <label className="mb-1 block text-xs text-zinc-500">Lehine</label>
+              <select
+                value={editInFavorOf}
+                onChange={(e) => setEditInFavorOf(e.target.value)}
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white outline-none focus:border-emerald-500"
+              >
+                <option value="">—</option>
+                <option value={match.homeTeam}>{match.homeTeam}</option>
+                <option value={match.awayTeam}>{match.awayTeam}</option>
+              </select>
+            </div>
+            <div>
+              <label className="mb-1 block text-xs text-zinc-500">Aleyhine</label>
+              <select
+                value={editAgainst}
+                onChange={(e) => setEditAgainst(e.target.value)}
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white outline-none focus:border-emerald-500"
+              >
+                <option value="">—</option>
+                <option value={match.homeTeam}>{match.homeTeam}</option>
+                <option value={match.awayTeam}>{match.awayTeam}</option>
+              </select>
+            </div>
+          </div>
           <div className="flex gap-2">
             <button
               onClick={saveEdit}
@@ -425,6 +466,9 @@ export default function DashboardMatchDetailPage({
               confidenceScore={incident.confidenceScore}
               sources={incident.sources}
               status={incident.status}
+              inFavorOf={incident.inFavorOf}
+              against={incident.against}
+              matchInfo={match ? `${match.homeTeam} vs ${match.awayTeam}` : undefined}
               actions={
                 <ApprovalButtons
                   incidentId={incident.id}

@@ -9,6 +9,8 @@ export async function GET(request: NextRequest) {
     const status = searchParams.get("status") ?? "APPROVED";
     const team = searchParams.get("team")?.trim() || undefined;
     const typeParam = searchParams.get("type")?.trim() || undefined;
+    const inFavorOf = searchParams.get("inFavorOf")?.trim() || undefined;
+    const against = searchParams.get("against")?.trim() || undefined;
 
     const where: Record<string, unknown> = { status: status.toUpperCase() };
     if (team) {
@@ -28,11 +30,15 @@ export async function GET(request: NextRequest) {
       if (types.length === 1) where.type = types[0];
       else if (types.length > 1) where.type = { in: types };
     }
+    if (inFavorOf) where.inFavorOf = inFavorOf;
+    if (against) where.against = against;
 
     const incidents = await prisma.incident.findMany({
       where,
       select: {
         type: true,
+        inFavorOf: true,
+        against: true,
         matchId: true,
         match: {
           select: { homeTeam: true, awayTeam: true, week: true },
@@ -44,6 +50,8 @@ export async function GET(request: NextRequest) {
     const byType: Record<string, number> = {};
     const byTeam: Record<string, number> = {};
     const byWeek: Record<number, number> = {};
+    const byInFavorOf: Record<string, number> = {};
+    const byAgainst: Record<string, number> = {};
     const typeCategoryOrder: Record<string, string> = {
       PENALTY: "penalty",
       POSSIBLE_PENALTY: "penalty",
@@ -69,6 +77,12 @@ export async function GET(request: NextRequest) {
         const w = inc.match.week;
         byWeek[w] = (byWeek[w] ?? 0) + 1;
       }
+      if (inc.inFavorOf) {
+        byInFavorOf[inc.inFavorOf] = (byInFavorOf[inc.inFavorOf] ?? 0) + 1;
+      }
+      if (inc.against) {
+        byAgainst[inc.against] = (byAgainst[inc.against] ?? 0) + 1;
+      }
     }
 
     return NextResponse.json(
@@ -84,13 +98,19 @@ export async function GET(request: NextRequest) {
             .map(([k, v]) => [Number(k), v] as const)
             .sort((a, b) => a[0] - b[0])
         ),
+        byInFavorOf: Object.fromEntries(
+          Object.entries(typeof byInFavorOf === "object" && byInFavorOf != null ? byInFavorOf : {}).sort((a, b) => b[1] - a[1])
+        ),
+        byAgainst: Object.fromEntries(
+          Object.entries(typeof byAgainst === "object" && byAgainst != null ? byAgainst : {}).sort((a, b) => b[1] - a[1])
+        ),
       },
       { headers: NO_CACHE_HEADERS }
     );
   } catch (err) {
     console.error("GET /api/incidents/stats error:", err);
     return NextResponse.json(
-      { total: 0, byType: {}, byCategory: {}, byTeam: {}, byWeek: {} },
+      { total: 0, byType: {}, byCategory: {}, byTeam: {}, byWeek: {}, byInFavorOf: {}, byAgainst: {} },
       { headers: NO_CACHE_HEADERS }
     );
   }
