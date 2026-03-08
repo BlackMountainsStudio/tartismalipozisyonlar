@@ -45,7 +45,8 @@ model User {
   email         String?   @unique
   emailVerified DateTime?
   image         String?
-  nickname      String?   // Görünen ad (OAuth'tan gelirse name, kullanıcı değiştirebilir)
+  nickname      String?
+  password      String?   // bcrypt hash - sadece credentials ile kayıt olanlar için
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
