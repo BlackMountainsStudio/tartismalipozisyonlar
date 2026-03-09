@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SessionProvider from "@/components/SessionProvider";
@@ -41,6 +43,8 @@ export default function RootLayout({
           <Navbar />
           <main className="min-h-[calc(100vh-4rem-6rem)]">{children}</main>
           <Footer />
+          <SpeedInsights />
+          <Analytics />
         </SessionProvider>
       </body>
     </html>
