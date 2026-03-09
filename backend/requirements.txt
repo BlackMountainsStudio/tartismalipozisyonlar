@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+alembic
+psycopg2-binary
+scrapy
+scrapy-playwright
+playwright
+beautifulsoup4
+sentence-transformers
+qdrant-client
+python-dotenv
+apscheduler
