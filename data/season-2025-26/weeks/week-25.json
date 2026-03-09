@@ -100,6 +100,18 @@
       "note": null,
       "incidents": [
         {
+          "minute": 2,
+          "type": "FOUL",
+          "description": "Musaba – Thomasson faul pozisyonunda hakem faul verdi. Trio ekibi doğru karar olarak değerlendirdi.",
+          "inFavorOf": "Fenerbahçe",
+          "against": "Samsunspor",
+          "confidenceScore": 0.85,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
+          ],
+          "status": "APPROVED"
+        },
+        {
           "minute": 4,
           "type": "FOUL",
           "description": "Skriniar'a yapılan müdahale sonrası Marius Mouandilmadji'ye sarı kart gösterildi. Eski hakemler kararın hatalı olduğunu belirtti: Bahattin Duran 'Marius'un dizi ayak bileğine geldi, en fazla dikkatsiz faul. Sarı kart kesinlikle yanlış.' Bülent Yıldırım 'En fazla topuğa gelen diz darbesi var. Kart olmaz.' Deniz Çoban '40 saniye içinde 3 kararda hakem başarısız.'",
@@ -108,11 +120,229 @@
           "confidenceScore": 0.85,
           "sources": [
             "https://spor.haber7.com/super-lig/haber/3514041-fenerbahce-penalti-bekledi-vardan-uyari-gelmedi",
-            "https://www.f5haber.com/fenerbahce-samsunspor-macinda-penalti-karari-olay-oldu-hakem-gormezden-geldi-fotogaleri-6754122"
+            "https://www.f5haber.com/fenerbahce-samsunspor-macinda-penalti-karari-olay-oldu-hakem-gormezden-geldi-fotogaleri-6754122",
+            "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
           ],
           "refereeComments": [
             { "author": "Bahattin Duran (beIN Trio)", "text": "Marius'un gördüğü sarı kart kesinlikle yanlış." },
             { "author": "Bülent Yıldırım (beIN Trio)", "text": "En fazla topuğa gelen diz darbesi var. Kart olmaz." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 6,
+          "type": "FOUL",
+          "description": "Kante basma pozisyonunda hakem faul verdi. Trio: faul doğru, kart zorunlu değil.",
+          "inFavorOf": "Samsunspor",
+          "against": "Fenerbahçe",
+          "confidenceScore": 0.8,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 10,
+          "type": "MISSED_YELLOW",
+          "description": "Guendouzi'ye yapılan müdahalede hakem faul verdi ancak sarı kart göstermedi. Deniz Çoban: 'Sarı kart çıkmamasını kabul etmem. Faul veriyorsa sarı kart da göstermeliydi.' Bahattin Duran: 'Net bir sarı kart olmalıydı.' Bülent Yıldırım: 'Faul çalınıyorsa sarı da çıkar.'",
+          "inFavorOf": "Fenerbahçe",
+          "against": "Samsunspor",
+          "confidenceScore": 0.88,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
+          ],
+          "refereeComments": [
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Sarı kart çıkmamasını kabul etmem. Faul veriyorsa sarı kart da göstermeliydi." },
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Net bir sarı kart olmalıydı, gösterilmedi." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 12,
+          "type": "FOUL",
+          "description": "Fred'in arkadan Celil Yüksel'e yaptığı faulde hakem faul kararı verdi ancak sarı kartı Samsunsporlu Celil Yüksel'e gösterdi. Trio: faul kararı doğru ancak sarı kart gereksiz; kart Celil'e çıkmamalıydı. Bülent Yıldırım: 'Faul tamam, kart gereksiz.' Bahattin Duran: 'Fred'in faulü var, kart olmamalıydı.' Deniz Çoban: 'Sarı kart gereksiz.'",
+          "inFavorOf": "Samsunspor",
+          "against": "Fenerbahçe",
+          "confidenceScore": 0.85,
+          "sources": [
+            "https://12punto.com.tr/spor/galeri-trio-ekibi-fenerbahce-samsunspor-macindaki-tartismali-kararlari-degerlendirdi-samsunsporun-penalti-bekledigi-pozisyonda-devam-karari-dogru-mu-77922"
+          ],
+          "refereeComments": [
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Faul tamam, kart gereksiz." },
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Faul kararı doğru. Kart olmamalıydı." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 15,
+          "type": "MISSED_YELLOW",
+          "description": "Kerem Aktürkoğlu'nun topsuz alanda rakibi çekmesi pozisyonunda hakem devam kararı verdi. Trio: faul ve sarı kart olmalıydı.",
+          "inFavorOf": "Samsunspor",
+          "against": "Fenerbahçe",
+          "confidenceScore": 0.82,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 17,
+          "type": "MISSED_YELLOW",
+          "description": "Marius Mouandilmadji'nin topu uzaklaştırma (oyunu geciktirme) hareketinde hakem sadece uyarı verdi. Trio: sarı kart verilmeliydi.",
+          "inFavorOf": "Fenerbahçe",
+          "against": "Samsunspor",
+          "confidenceScore": 0.78,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 23,
+          "type": "MISSED_YELLOW",
+          "description": "Mert Müldür'ün çelme müdahalesinde hakem faul verdi ancak sarı kart göstermedi. Trio: sarı kart olmalıydı. (Dakika, Samsunspor'un 2-1'lik golünün atıldığı 23. dakika civarına göre tahmin edilmiştir.)",
+          "inFavorOf": "Samsunspor",
+          "against": "Fenerbahçe",
+          "confidenceScore": 0.75,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022",
+            "https://www.sozcu.com.tr/samsunspor-un-golunden-sonra-fenerbahce-taraftarindan-mert-muldur-e-tepki-p299906"
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 24,
+          "type": "YELLOW_CARD",
+          "description": "Mert Müldür'ün müdahalesinde hakem sarı kart gösterdi. Trio: doğru karar.",
+          "inFavorOf": "Samsunspor",
+          "against": "Fenerbahçe",
+          "confidenceScore": 0.85,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 25,
+          "type": "FOUL",
+          "description": "Mendes – Brown faulünde hakem faul verdi. Trio: basit faul, kart gereksiz.",
+          "inFavorOf": "Fenerbahçe",
+          "against": "Samsunspor",
+          "confidenceScore": 0.82,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 25,
+          "type": "VAR_CONTROVERSY",
+          "description": "Samsunspor'un Emil Holse ile penaltı beklediği pozisyonda hakem devam kararı verdi. Trio: devam kararı doğru; Amrabat'ın temasında ihlal yok. Deniz Çoban: 'Cihan Aydın'ın 25. dakikada ilk doğru kararını verdi.'",
+          "inFavorOf": "Fenerbahçe",
+          "against": "Samsunspor",
+          "confidenceScore": 0.85,
+          "sources": [
+            "https://12punto.com.tr/spor/galeri-trio-ekibi-fenerbahce-samsunspor-macindaki-tartismali-kararlari-degerlendirdi-samsunsporun-penalti-bekledigi-pozisyonda-devam-karari-dogru-mu-77922"
+          ],
+          "refereeComments": [
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Devam kararı doğru. Amrabat'ın temasında ihlal olmadığını düşünüyorum." },
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Devam kararı doğru." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 26,
+          "type": "MISSED_YELLOW",
+          "description": "Fenerbahçeli Alexander Djiku'nun Emil Holse'ye yaptığı müdahalede hakem faul verdi ancak sarı kart göstermedi. Trio: faul ve sarı kart olmalıydı. Bahattin Duran: 'Fenerbahçeli oyuncu sol eliyle kuvvetli itiyor. Faul ve sarı kart olmalıydı.' Deniz Çoban: 'Djiku sarı kart görmeliydi.'",
+          "inFavorOf": "Samsunspor",
+          "against": "Fenerbahçe",
+          "confidenceScore": 0.84,
+          "sources": [
+            "https://12punto.com.tr/spor/galeri-trio-ekibi-fenerbahce-samsunspor-macindaki-tartismali-kararlari-degerlendirdi-samsunsporun-penalti-bekledigi-pozisyonda-devam-karari-dogru-mu-77922"
+          ],
+          "refereeComments": [
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Faul ve sarı kart olmalıydı." },
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Djiku sarı kart görmeliydi." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 27,
+          "type": "MISSED_YELLOW",
+          "description": "Mert Hakan Yandaş'ın düdükten sonra topu vurması pozisyonunda hakem faul verdi ancak sarı kart göstermedi. Trio: sarı kart verilmeliydi.",
+          "inFavorOf": "Fenerbahçe",
+          "against": "Samsunspor",
+          "confidenceScore": 0.8,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 38,
+          "type": "FOUL",
+          "description": "Jayden Oosterwolde müdahalesinde hakem faul verdi. Trio: devam kararı daha doğru olurdu.",
+          "inFavorOf": "Samsunspor",
+          "against": "Fenerbahçe",
+          "confidenceScore": 0.72,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 39,
+          "type": "MISSED_YELLOW",
+          "description": "Jayden Oosterwolde'nin Thomasson'u tutma pozisyonunda hakem faul verdi ancak sarı kart göstermedi. Deniz Çoban: 'Futbol böyle oynanmaz. Bu sarı kart gerektiren bir hareket.' Bahattin Duran: 'Boğaza sarılan ve indirilen el, kesinlikle sarı kart.'",
+          "inFavorOf": "Fenerbahçe",
+          "against": "Samsunspor",
+          "confidenceScore": 0.88,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
+          ],
+          "refereeComments": [
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Futbol böyle oynanmaz. Bu sarı kart gerektiren bir hareket." },
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Boğaza sarılan ve indirilen el, kesinlikle sarı kart." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 41,
+          "type": "YELLOW_CARD",
+          "description": "Okan Kocuk'un zaman geçirme hareketinde hakem sarı kart gösterdi. Trio: doğru karar.",
+          "inFavorOf": "Fenerbahçe",
+          "against": "Samsunspor",
+          "confidenceScore": 0.9,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 43,
+          "type": "YELLOW_CARD",
+          "description": "Mendes'in zaman geçirme hareketinde hakem sarı kart gösterdi. Trio: doğru karar.",
+          "inFavorOf": "Fenerbahçe",
+          "against": "Samsunspor",
+          "confidenceScore": 0.9,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 47,
+          "type": "MISSED_YELLOW",
+          "description": "İlk yarının sonunda (45+2) Guendouzi'ye yapılan basma müdahalesi. Mendes'in sarı kartı vardı; Trio bu taktik faulde ikinci sarı kartın gösterilmesi gerektiğini söyledi. Deniz Çoban: 'Hakem faulü kaçırdı. İkinci sarı kartı göstermeliydi.' Bahattin Duran: 'Net bir faul kaçırıldı.'",
+          "inFavorOf": "Fenerbahçe",
+          "against": "Samsunspor",
+          "confidenceScore": 0.85,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
+          ],
+          "refereeComments": [
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Bu taktik faulde ikinci sarı kartı göstermeliydi." },
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Hakemin yanlışı net bir faulü kaçırması." }
           ],
           "status": "APPROVED"
         },
@@ -124,12 +354,97 @@
           "against": "Samsunspor",
           "confidenceScore": 0.82,
           "sources": [
-            "https://spor.haber7.com/super-lig/haber/3514041-fenerbahce-penalti-bekledi-vardan-uyari-gelmedi"
+            "https://spor.haber7.com/super-lig/haber/3514041-fenerbahce-penalti-bekledi-vardan-uyari-gelmedi",
+            "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
           ],
           "refereeComments": [
             { "author": "Deniz Ateş Bitnel", "text": "Zeki Yavru'nun dirseği genişleyip bariyer oluyor. Penaltı verilmeli, VAR müdahale etmeliydi." },
             { "author": "Fırat Aydınus", "text": "Zeki kolları aşağıda değil yukarıda, dirsekleri dışarıda. Bu pozisyon penaltı." },
             { "author": "Mark Clattenburg", "text": "Hakemin oyunu devam ettirme kararı doğru. Top, kolu hafifçe açılmış savunma oyuncusunun koluna çarpıyor." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 55,
+          "type": "MISSED_YELLOW",
+          "description": "Kerem Aktürkoğlu'nun sportmenlik dışı hareketinde hakem faul verdi ancak sarı kart göstermedi. Trio: sarı kart olmalıydı. (Dakika tahmini; kaynaklarda net dakika belirtilmemiştir.)",
+          "inFavorOf": "Samsunspor",
+          "against": "Fenerbahçe",
+          "confidenceScore": 0.75,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 56,
+          "type": "MISSED_YELLOW",
+          "description": "Kingsley Schindler – Fred arasında yaşanan pozisyonda hakem faul verdi ancak Kingsley'e sarı kart göstermedi. Trio: faul kararı verilip Kingsley sarı kart görmeliydi. Bülent Yıldırım: 'Evet, sarı kart.' Bahattin Duran: 'Faulle birlikte Kingsley sarı kart görmeliydi.' Deniz Çoban: 'Net sarı kart.'",
+          "inFavorOf": "Fenerbahçe",
+          "against": "Samsunspor",
+          "confidenceScore": 0.84,
+          "sources": [
+            "https://12punto.com.tr/spor/galeri-trio-ekibi-fenerbahce-samsunspor-macindaki-tartismali-kararlari-degerlendirdi-samsunsporun-penalti-bekledigi-pozisyonda-devam-karari-dogru-mu-77922"
+          ],
+          "refereeComments": [
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Faulle birlikte Kingsley sarı kart görmeliydi." },
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Net sarı kart." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 57,
+          "type": "MISSED_YELLOW",
+          "description": "57. dakikada taç çizgisi kenarında Samsunsporlu Yunus Emre'nin Edin Dzeko'ya iki koluyla tutma müdahalesi. Hakem faul verdi ancak sarı kart göstermedi. Trio: sarı kart olmalıydı. Bülent Yıldırım: 'İki koluyla tutuyor. Sportmenliğe aykırı. Sarı kart olmalıydı.' Bahattin Duran: 'Net sarı kart.' Deniz Çoban: 'Sarı kart olmalıydı.'",
+          "inFavorOf": "Fenerbahçe",
+          "against": "Samsunspor",
+          "confidenceScore": 0.88,
+          "sources": [
+            "https://12punto.com.tr/spor/galeri-trio-ekibi-fenerbahce-samsunspor-macindaki-tartismali-kararlari-degerlendirdi-samsunsporun-penalti-bekledigi-pozisyonda-devam-karari-dogru-mu-77922"
+          ],
+          "refereeComments": [
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "İki koluyla tutuyor. Sportmenliğe aykırı. Sarı kart olmalıydı." },
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Sarı kart olmalıydı." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 58,
+          "type": "MISSED_YELLOW",
+          "description": "Yalçın Kaya – Fred müdahalesinde hakem faul verdi ancak sarı kart göstermedi. Trio: sarı kart verilmeliydi. (Dakika tahmini; kaynaklarda net dakika belirtilmemiştir.)",
+          "inFavorOf": "Fenerbahçe",
+          "against": "Samsunspor",
+          "confidenceScore": 0.75,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 70,
+          "type": "POSSIBLE_PENALTY",
+          "description": "70. dakikada Levent Mercan'ın şutu savunmada van Drongelen'den geri döndü. Fenerbahçe penaltı bekledi, hakem devam kararı verdi.",
+          "inFavorOf": "Fenerbahçe",
+          "against": "Samsunspor",
+          "confidenceScore": 0.7,
+          "sources": [
+            "https://www.posta.com.tr/spor/fenerbahce-samsunspor-macinda-ilk-duduk-caldi-2971823"
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 74,
+          "type": "FOUL",
+          "description": "75. dakikada Marius'un ikinci sarıdan kırmızı görmesinden hemen önce Skriniar'ın Marius'a yaptığı müdahale. Hakem faulü çalmadı. Trio: açık faul vardı, hakem atladı; Marius hakemle iletişim kurmaya çalışırken sırt çevrildi. Bahattin Duran: 'Marius'un bu hareketi zaten sarı kart. Ama öncesinde Skriniar net bir faul yaptı. Hakem atladı.' Deniz Çoban: 'Açık bir faul var. Oyuncunun dudağı açılmış. Siz faulu çalmıyorsunuz, oyuncu sizinle iletişim kurmaya çalışıyor.'",
+          "inFavorOf": "Samsunspor",
+          "against": "Fenerbahçe",
+          "confidenceScore": 0.85,
+          "sources": [
+            "https://12punto.com.tr/spor/galeri-trio-ekibi-fenerbahce-samsunspor-macindaki-tartismali-kararlari-degerlendirdi-samsunsporun-penalti-bekledigi-pozisyonda-devam-karari-dogru-mu-77922"
+          ],
+          "refereeComments": [
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Öncesinde Skriniar net bir faul yaptı. Hakem atladı." },
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Açık bir faul var. Faulu çalmıyorsunuz, oyuncu iletişim kurmaya çalışıyor." }
           ],
           "status": "APPROVED"
         },
@@ -141,11 +456,138 @@
           "against": "Samsunspor",
           "confidenceScore": 0.80,
           "sources": [
-            "https://spor.haber7.com/super-lig/haber/3514041-fenerbahce-penalti-bekledi-vardan-uyari-gelmedi"
+            "https://spor.haber7.com/super-lig/haber/3514041-fenerbahce-penalti-bekledi-vardan-uyari-gelmedi",
+            "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
           ],
           "refereeComments": [
             { "author": "Deniz Ateş Bitnel", "text": "Samsunsporlu oyuncunun 2. sarı karttan kırmızı görmesi %100 doğru." },
             { "author": "Mark Clattenburg", "text": "İkinci sarı kartı vermesi kararı bana göre yanlıştı. Oyuncu dikkatini çekmek için jest yapar şekilde dokundu." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 81,
+          "type": "MISSED_YELLOW",
+          "description": "Guendouzi'nin aldatma (simülasyon) pozisyonunda hakem devam etti. Trio: sarı kart verilmeliydi.",
+          "inFavorOf": "Samsunspor",
+          "against": "Fenerbahçe",
+          "confidenceScore": 0.78,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 83,
+          "type": "MISSED_YELLOW",
+          "description": "Emil Holse'nin topu uzaklaştırma (oyunu geciktirme) hareketinde hakem uyarı verdi. Trio: sarı kart olmalıydı.",
+          "inFavorOf": "Fenerbahçe",
+          "against": "Samsunspor",
+          "confidenceScore": 0.78,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 89,
+          "type": "VAR_CONTROVERSY",
+          "description": "Dorgeles Nene'nin golü. VAR kontrolünde ofsayt olmadığı onaylandı, doğru karar olarak değerlendirildi. Trio: gol temiz.",
+          "inFavorOf": "Fenerbahçe",
+          "against": "Samsunspor",
+          "confidenceScore": 0.9,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
+          ],
+          "refereeComments": [
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Fenerbahçe'nin golü temiz." },
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Gol temiz." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 95,
+          "type": "YELLOW_CARD",
+          "description": "Matteo Guendouzi golü attıktan sonra tel örgülere tırmanarak sevinç gösterdi; hakem sportmenlik dışı hareket gerekçesiyle sarı kart gösterdi. Trio: sarı kart doğru.",
+          "inFavorOf": "Samsunspor",
+          "against": "Fenerbahçe",
+          "confidenceScore": 0.9,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 95,
+          "type": "VAR_CONTROVERSY",
+          "description": "Sidiki Cherif'in galibiyet gölü (90+5). Ofsayt kontrolünde ihlal olmadığı onaylandı. Trio: gol temiz, kaleci topu görüyor, Archie Brown kaleciye etki etmiyor.",
+          "inFavorOf": "Fenerbahçe",
+          "against": "Samsunspor",
+          "confidenceScore": 0.9,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
+          ],
+          "refereeComments": [
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Fenerbahçe'nin galibiyet gölü temiz. Golde ihlal söz konusu değil." },
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Gol temiz." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 100,
+          "type": "FOUL",
+          "description": "90+10. dakikada Vanderson (Vandron Gelen) faulünde hakem faul verdi. Trio: sarı kart olabilirdi.",
+          "inFavorOf": "Fenerbahçe",
+          "against": "Samsunspor",
+          "confidenceScore": 0.75,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 101,
+          "type": "MISSED_RED_CARD",
+          "description": "90+11. dakikada Ederson ile Vanderson (Drongelen) arasında kavga pozisyonu. Hakem hiçbir oyuncuya kart göstermedi. Trio: her iki oyuncu da ikinci sarı karttan ihraç edilmeliydi. Deniz Çoban ve Bahattin Duran: 'Ederson ve Drongelen ikinci sarıdan atılmalıydı.' Bülent Yıldırım: 'UEFA\'da böyle bir karmaşaya sebep olsa hakem bir daha görev vermez.'",
+          "inFavorOf": "Fenerbahçe",
+          "against": "Samsunspor",
+          "confidenceScore": 0.88,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
+          ],
+          "refereeComments": [
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Ederson ve Drongelen ikinci sarı karttan atılmalıydı." },
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "UEFA'da böyle bir karmaşaya sebep olsa hakem bir daha görev vermez." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 101,
+          "type": "MISSED_YELLOW",
+          "description": "90+11. dakikada Cherif Ndiaye'nin Levent'e yaptığı hareketinde hakem faul verdi ancak sarı kart göstermedi. Trio: Ndiaye'e sarı kart gerekirdi.",
+          "inFavorOf": "Fenerbahçe",
+          "against": "Samsunspor",
+          "confidenceScore": 0.82,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
+          ],
+          "refereeComments": [
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Cherif Ndiaye'e sarı kart gerekirdi." }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 101,
+          "type": "MISSED_YELLOW",
+          "description": "90+11. dakikada Ederson'un hakem düdüğünden sonra topa vurması. Trio: açık sarı kart, Ederson'un ihracı gerekirdi.",
+          "inFavorOf": "Samsunspor",
+          "against": "Fenerbahçe",
+          "confidenceScore": 0.85,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
+          ],
+          "refereeComments": [
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Ederson da vurup zaman geçirdi. Açık bir sarı kart. Ederson'un ihracı gerekir." }
           ],
           "status": "APPROVED"
         }
