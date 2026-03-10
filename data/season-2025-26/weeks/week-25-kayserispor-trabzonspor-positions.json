@@ -1,0 +1,189 @@
+{
+  "match": {
+    "homeTeam": "Kayserispor",
+    "awayTeam": "Trabzonspor",
+    "week": 25,
+    "date": "2026-03-09",
+    "homeScore": 1,
+    "awayScore": 3,
+    "referee_on_field": "Cihan Aydın",
+    "var_referees": ["Özgür Yankaya", "İbrahim Çağlar Uyarcan"],
+    "stats": {
+      "fouls": 17,
+      "yellow_cards": 4,
+      "red_cards": 1,
+      "ball_in_play": "56:37"
+    },
+    "comment_sources": ["beIN Trio (Deniz Çoban, Bahattin Duran)", "Mustafa Çulcu"]
+  },
+  "positions": [
+    {
+      "minute": 5,
+      "position": "Dorukhan'ın kayarak çift ayak müdahalesi",
+      "referee_on_field": "Sarı kart",
+      "var_decision": "VAR devreye girdi, kırmızı önerildi",
+      "trio_comments": {
+        "deniz_coban": "Sınırda; yoğunluk yok; sahadaki hakemi destekliyorum.",
+        "bahattin_duran": "Kırmızı için kriterler var, sarı da olabilir."
+      },
+      "mustafa_culcu": {
+        "comment": "Topa temas var, ama yüksekte; kaval kemiği yanına geliyor; hakem pozisyona çok yakın.",
+        "verdict": "Sarı kart yeterli; kırmızı ağır olurdu"
+      },
+      "correct_decision": "Sarı kart yeterli; kırmızı ağır olurdu",
+      "in_favor_of": "Kayserispor",
+      "against": "Trabzonspor"
+    },
+    {
+      "minute": null,
+      "position": "Onuachu'nun eline top gelmesi",
+      "referee_on_field": "Devam",
+      "var_decision": null,
+      "trio_comments": { "summary": "Eller doğal konumda; penaltı yok." },
+      "mustafa_culcu": null,
+      "correct_decision": "Doğru karar",
+      "in_favor_of": "Trabzonspor",
+      "against": "Kayserispor"
+    },
+    {
+      "minute": 18,
+      "position": "Onuachu penaltı beklentisi",
+      "referee_on_field": "Devam",
+      "var_decision": null,
+      "trio_comments": { "summary": "Penaltı yok, hakem doğru." },
+      "mustafa_culcu": {
+        "comment": "Top iki oyuncunun ortasında; omuzdan kol teması yok.",
+        "verdict": "Doğru karar, penaltı çıkmaz"
+      },
+      "correct_decision": "Doğru karar, penaltı çıkmaz",
+      "in_favor_of": "Kayserispor",
+      "against": "Trabzonspor"
+    },
+    {
+      "minute": null,
+      "position": "Kardoso müdahalesi (bariz gol şansı tartışması)",
+      "referee_on_field": "Faul + sarı kart",
+      "var_decision": null,
+      "trio_comments": { "summary": "Faul + sarı kart olmalıydı." },
+      "mustafa_culcu": {
+        "comment": "Temas minimal, topa vuruyor, rakibin düşmesine sebep olmuyor.",
+        "verdict": "Sarı kart doğru; kırmızı gerekmez"
+      },
+      "correct_decision": "Sarı kart doğru; kırmızı gerekmez",
+      "in_favor_of": "Kayserispor",
+      "against": "Trabzonspor"
+    },
+    {
+      "minute": null,
+      "position": "Ramazan'ın itirazı",
+      "referee_on_field": "Sarı kart",
+      "var_decision": null,
+      "trio_comments": { "summary": "Hakem doğru." },
+      "mustafa_culcu": null,
+      "correct_decision": "Doğru karar",
+      "in_favor_of": null,
+      "against": null
+    },
+    {
+      "minute": null,
+      "position": "Ozan'ın taktik faulü",
+      "referee_on_field": "Avantaj oynatıldı",
+      "var_decision": null,
+      "trio_comments": { "summary": "Avantaj uygun değil; sarı kart olmalıydı." },
+      "mustafa_culcu": null,
+      "correct_decision": "Sarı kart eksik",
+      "in_favor_of": "Kayserispor",
+      "against": "Trabzonspor"
+    },
+    {
+      "minute": null,
+      "position": "Ozan ve Augusto kafa / ofsayt pozisyonu",
+      "referee_on_field": "Devam",
+      "var_decision": "VAR çağrısı",
+      "trio_comments": { "summary": "Öncesinde ofsayt, doğru karar." },
+      "mustafa_culcu": {
+        "comment": "Augusto'nun kafasına müdahale sonrası ofsayt başlıyor; VAR protokolü doğru uygulanmış.",
+        "verdict": "Ofsayt doğru; penaltı yok"
+      },
+      "correct_decision": "Ofsayt doğru; penaltı yok",
+      "in_favor_of": "Kayserispor",
+      "against": "Trabzonspor"
+    },
+    {
+      "minute": 51,
+      "position": "Zupku sert şut ve Beneş elle müdahale",
+      "referee_on_field": "Penaltı verildi",
+      "var_decision": null,
+      "trio_comments": { "summary": "Hakem doğru." },
+      "mustafa_culcu": {
+        "comment": "Top Beneş'in sağ eline çarpıyor, açık ve net penaltı.",
+        "verdict": "Penaltı doğru; hakem doğru yaptı"
+      },
+      "correct_decision": "Penaltı doğru; hakem doğru yaptı",
+      "in_favor_of": "Trabzonspor",
+      "against": "Kayserispor"
+    },
+    {
+      "minute": null,
+      "position": "Muçi'nin Furkan'a müdahalesi",
+      "referee_on_field": "Faul",
+      "var_decision": null,
+      "trio_comments": { "summary": "Kart gerekmez; dikkatsiz faul." },
+      "mustafa_culcu": null,
+      "correct_decision": "Doğru karar",
+      "in_favor_of": "Kayserispor",
+      "against": "Trabzonspor"
+    },
+    {
+      "minute": 48,
+      "position": "Pina'nın düdükten sonra topa vurması",
+      "referee_on_field": "Kart verilmedi",
+      "var_decision": null,
+      "trio_comments": { "summary": "Sarı kart olmalıydı." },
+      "mustafa_culcu": null,
+      "correct_decision": "Sarı kart eksik",
+      "in_favor_of": "Kayserispor",
+      "against": "Trabzonspor"
+    },
+    {
+      "minute": null,
+      "position": "Kayserispor penaltı beklentisi (kol doğal konumda)",
+      "referee_on_field": "Devam",
+      "var_decision": null,
+      "trio_comments": { "summary": "El doğal konumda." },
+      "mustafa_culcu": {
+        "comment": "Kol doğal konumda, müdahale yok; kol kapalı, topa müdahale yok.",
+        "verdict": "Devam doğru; penaltı yok"
+      },
+      "correct_decision": "Devam doğru; penaltı yok",
+      "in_favor_of": "Trabzonspor",
+      "against": "Kayserispor"
+    },
+    {
+      "minute": 90,
+      "position": "Maç sonu itiraz eden oyunculara kart",
+      "referee_on_field": "1 sarı kart",
+      "var_decision": null,
+      "trio_comments": { "summary": "Tek kart yeterli, başka kart gerekmez." },
+      "mustafa_culcu": null,
+      "correct_decision": "Doğru karar",
+      "in_favor_of": null,
+      "against": null
+    }
+  ],
+  "summary_evaluation": {
+    "referee_on_field": "Cihan Aydın pozisyonlara yakın ve çoğunlukla doğru karar verdi.",
+    "var": "Özgür Yankaya ofsayt ve penaltı pozisyonlarında protokolü doğru uyguladı.",
+    "mustafa_culcu": "Dorukhan'ın kayarak müdahalesini 'Cüneyt gelişi' benzeri örnekle açıklıyor; sarı kartın yeterli olduğunu vurguluyor. Penaltı ve ofsayt analizleri ayrıntılı ve doğru.",
+    "controversial_points": [
+      "5. dakikadaki kırmızı kart önerisi tartışmalı",
+      "Kardoso ve Dorukhan pozisyonlarında ağır kart beklenmemeli"
+    ]
+  },
+  "referee_report": {
+    "errors": [
+      "VAR'ın kırmızı kart müdahalesi tartışmalı (5. dk Dorukhan)",
+      "Sarı kart eksik veya yanlış (Ozan, Pina)"
+    ]
+  }
+}

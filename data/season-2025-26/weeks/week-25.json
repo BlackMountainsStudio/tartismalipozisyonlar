@@ -1023,8 +1023,208 @@
       "homeTeam": "Kayserispor",
       "awayTeam": "Trabzonspor",
       "league": "Süper Lig 2025-26",
-      "note": "Tarama tamamlandi; Ekşi basligi incelendi, belirgin tartismali hakem karari tespit edilmedi",
-      "incidents": []
+      "note": "Maç skoru: 1-3 (Trabzonspor galip). Hakem: Cihan Aydın. VAR: Özgür Yankaya, İbrahim Çağlar Uyarcan. Faul: 17, Sarı: 4, Kırmızı: 1, Top oyunda: 56:37. Yorum kaynakları: beIN Trio, Mustafa Çulcu.",
+      "incidents": [
+        {
+          "minute": 5,
+          "type": "VAR_CONTROVERSY",
+          "description": "Dorukhan'ın kayarak çift ayak müdahalesi. Sahadaki hakem sarı kart gösterdi, VAR devreye girip kırmızı önerdi. Trio: Sınırda pozisyon, sarı doğru. Mustafa Çulcu: Topa temas var ama yüksekte; kaval kemiği yanına geliyor; hakem pozisyona çok yakın; sarı yeterli, kırmızı ağır olurdu.",
+          "referee_on_field": "Sarı kart",
+          "var_decision": "VAR devreye girdi, kırmızı önerildi",
+          "correct_decision": "Sarı kart yeterli; kırmızı ağır olurdu",
+          "confidenceScore": 0.88,
+          "sources": [],
+          "refereeComments": [
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Sınırda; yoğunluk yok; sahadaki hakemi destekliyorum.", "stance": "AGREE" },
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Kırmızı için kriterler var, sarı da olabilir.", "stance": "AGREE" },
+            { "author": "Mustafa Çulcu", "text": "Topa temas var, ama yüksekte; kaval kemiği yanına geliyor; hakem pozisyona çok yakın. Sarı kart yeterli; kırmızı ağır olurdu.", "stance": "AGREE" }
+          ],
+          "status": "APPROVED",
+          "inFavorOf": "Kayserispor",
+          "against": "Trabzonspor"
+        },
+        {
+          "minute": null,
+          "type": "HANDBALL",
+          "description": "Onuachu'nun eline top gelmesi. Hakem devam kararı verdi. Trio: Eller doğal konumda; penaltı yok.",
+          "referee_on_field": "Devam",
+          "var_decision": null,
+          "correct_decision": "Doğru karar",
+          "confidenceScore": 0.9,
+          "sources": [],
+          "refereeComments": [
+            { "author": "beIN Trio", "text": "Eller doğal konumda; penaltı yok.", "stance": "AGREE" }
+          ],
+          "status": "APPROVED",
+          "inFavorOf": "Trabzonspor",
+          "against": "Kayserispor"
+        },
+        {
+          "minute": 18,
+          "type": "POSSIBLE_PENALTY",
+          "description": "Onuachu penaltı beklentisi. Hakem devam kararı verdi. Trio: Penaltı yok, hakem doğru. Mustafa Çulcu: Top iki oyuncunun ortasında; omuzdan kol teması yok; penaltı çıkmaz.",
+          "referee_on_field": "Devam",
+          "var_decision": null,
+          "correct_decision": "Doğru karar, penaltı çıkmaz",
+          "confidenceScore": 0.88,
+          "sources": [],
+          "refereeComments": [
+            { "author": "beIN Trio", "text": "Penaltı yok, hakem doğru.", "stance": "AGREE" },
+            { "author": "Mustafa Çulcu", "text": "Top iki oyuncunun ortasında; omuzdan kol teması yok. Penaltı çıkmaz.", "stance": "AGREE" }
+          ],
+          "status": "APPROVED",
+          "inFavorOf": "Kayserispor",
+          "against": "Trabzonspor"
+        },
+        {
+          "minute": null,
+          "type": "YELLOW_CARD",
+          "description": "Kardoso'nun kayarak müdahalesi (bariz gol şansı tartışması). Hakem faul + sarı kart verdi. Trio: Sarı kart eksikti. Mustafa Çulcu: Temas minimal, topa vuruyor, rakibin düşmesine sebep olmuyor; sarı kart doğru, kırmızı gerekmez.",
+          "referee_on_field": "Faul + sarı kart",
+          "var_decision": null,
+          "correct_decision": "Sarı kart doğru; kırmızı gerekmez (Mustafa Çulcu)",
+          "confidenceScore": 0.8,
+          "sources": [],
+          "refereeComments": [
+            { "author": "beIN Trio", "text": "Faul + sarı kart olmalıydı.", "stance": "DISAGREE" },
+            { "author": "Mustafa Çulcu", "text": "Temas minimal, topa vuruyor, rakibin düşmesine sebep olmuyor. Sarı kart doğru; kırmızı gerekmez.", "stance": "AGREE" }
+          ],
+          "status": "APPROVED",
+          "inFavorOf": "Kayserispor",
+          "against": "Trabzonspor"
+        },
+        {
+          "minute": null,
+          "type": "YELLOW_CARD",
+          "description": "Ramazan'ın itirazı. Hakem sarı kart gösterdi. Trio: Hakem doğru.",
+          "referee_on_field": "Sarı kart",
+          "var_decision": null,
+          "correct_decision": "Doğru karar",
+          "confidenceScore": 0.9,
+          "sources": [],
+          "refereeComments": [
+            { "author": "beIN Trio", "text": "Hakem doğru.", "stance": "AGREE" }
+          ],
+          "status": "APPROVED",
+          "inFavorOf": null,
+          "against": null
+        },
+        {
+          "minute": null,
+          "type": "MISSED_YELLOW",
+          "description": "Ozan'ın taktik faulü. Hakem avantaj oynatıldı. Trio: Avantaj uygun değil; sarı kart olmalıydı.",
+          "referee_on_field": "Avantaj oynatıldı",
+          "var_decision": null,
+          "correct_decision": "Sarı kart eksik",
+          "confidenceScore": 0.8,
+          "sources": [],
+          "refereeComments": [
+            { "author": "beIN Trio", "text": "Avantaj uygun değil; sarı kart olmalıydı.", "stance": "DISAGREE" }
+          ],
+          "status": "APPROVED",
+          "inFavorOf": "Kayserispor",
+          "against": "Trabzonspor"
+        },
+        {
+          "minute": null,
+          "type": "HANDBALL",
+          "description": "Ozan ve Augusto kafa / ofsayt pozisyonu. Augusto'nun kafasına müdahale sonrası ofsayt başlıyor. Hakem devam, VAR çağrısı yapıldı. Trio: Öncesinde ofsayt, doğru karar. Mustafa Çulcu: VAR protokolü doğru uygulanmış; ofsayt doğru, penaltı yok.",
+          "referee_on_field": "Devam",
+          "var_decision": "VAR çağrısı",
+          "correct_decision": "Ofsayt doğru; penaltı yok",
+          "confidenceScore": 0.9,
+          "sources": [],
+          "refereeComments": [
+            { "author": "beIN Trio", "text": "Öncesinde ofsayt, doğru karar.", "stance": "AGREE" },
+            { "author": "Mustafa Çulcu", "text": "Augusto'nun kafasına müdahale sonrası ofsayt başlıyor; VAR protokolü doğru uygulanmış.", "stance": "AGREE" }
+          ],
+          "status": "APPROVED",
+          "inFavorOf": "Kayserispor",
+          "against": "Trabzonspor"
+        },
+        {
+          "minute": 51,
+          "type": "PENALTY",
+          "description": "Zupku'nun sert şutu ve Beneş'in elle müdahalesi. Trabzonspor lehine penaltı verildi. Trio: Hakem doğru. Mustafa Çulcu: Top Beneş'in sağ eline çarpıyor, açık ve net penaltı.",
+          "referee_on_field": "Penaltı verildi",
+          "var_decision": null,
+          "correct_decision": "Penaltı doğru; hakem doğru yaptı",
+          "confidenceScore": 0.92,
+          "sources": [],
+          "refereeComments": [
+            { "author": "beIN Trio", "text": "Hakem doğru.", "stance": "AGREE" },
+            { "author": "Mustafa Çulcu", "text": "Top Beneş'in sağ eline çarpıyor, açık ve net penaltı.", "stance": "AGREE" }
+          ],
+          "status": "APPROVED",
+          "inFavorOf": "Trabzonspor",
+          "against": "Kayserispor"
+        },
+        {
+          "minute": null,
+          "type": "FOUL",
+          "description": "Muçi'nin Furkan'a müdahalesi. Hakem faul verdi. Trio: Kart gerekmez; dikkatsiz faul.",
+          "referee_on_field": "Faul",
+          "var_decision": null,
+          "correct_decision": "Doğru karar",
+          "confidenceScore": 0.88,
+          "sources": [],
+          "refereeComments": [
+            { "author": "beIN Trio", "text": "Kart gerekmez; dikkatsiz faul.", "stance": "AGREE" }
+          ],
+          "status": "APPROVED",
+          "inFavorOf": "Kayserispor",
+          "against": "Trabzonspor"
+        },
+        {
+          "minute": 48,
+          "type": "MISSED_YELLOW",
+          "description": "Pina'nın düdükten sonra topa vurması. Hakem kart vermedi. Trio: Sarı kart olmalıydı.",
+          "referee_on_field": "Kart verilmedi",
+          "var_decision": null,
+          "correct_decision": "Sarı kart eksik",
+          "confidenceScore": 0.9,
+          "sources": [],
+          "refereeComments": [
+            { "author": "beIN Trio", "text": "Sarı kart olmalıydı.", "stance": "DISAGREE" }
+          ],
+          "status": "APPROVED",
+          "inFavorOf": "Kayserispor",
+          "against": "Trabzonspor"
+        },
+        {
+          "minute": null,
+          "type": "POSSIBLE_PENALTY",
+          "description": "Kayserispor penaltı beklentisi (elle oynama). Hakem devam kararı verdi. Trio: El doğal konumda. Mustafa Çulcu: Kol doğal konumda, müdahale yok; kol kapalı, topa müdahale yok.",
+          "referee_on_field": "Devam",
+          "var_decision": null,
+          "correct_decision": "Devam doğru; penaltı yok",
+          "confidenceScore": 0.9,
+          "sources": [],
+          "refereeComments": [
+            { "author": "beIN Trio", "text": "El doğal konumda.", "stance": "AGREE" },
+            { "author": "Mustafa Çulcu", "text": "Kol doğal konumda, müdahale yok; kol kapalı, topa müdahale yok.", "stance": "AGREE" }
+          ],
+          "status": "APPROVED",
+          "inFavorOf": "Trabzonspor",
+          "against": "Kayserispor"
+        },
+        {
+          "minute": 90,
+          "type": "YELLOW_CARD",
+          "description": "Maç sonu itiraz eden oyunculara kart. Hakem 1 sarı kart gösterdi. Trio: Tek kart yeterli, başka kart gerekmez.",
+          "referee_on_field": "1 sarı kart",
+          "var_decision": null,
+          "correct_decision": "Doğru karar",
+          "confidenceScore": 0.9,
+          "sources": [],
+          "refereeComments": [
+            { "author": "beIN Trio", "text": "Tek kart yeterli, başka kart gerekmez.", "stance": "AGREE" }
+          ],
+          "status": "APPROVED",
+          "inFavorOf": null,
+          "against": null
+        }
+      ]
     }
   ]
 }

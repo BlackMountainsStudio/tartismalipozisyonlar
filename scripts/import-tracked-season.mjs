@@ -14,7 +14,7 @@ const weeksDir = path.join(process.cwd(), "data", "season-2025-26", "weeks");
 function loadWeekFiles() {
   return fs
     .readdirSync(weeksDir)
-    .filter((file) => file.endsWith(".json"))
+    .filter((file) => /^week-\d+\.json$/.test(file))
     .sort()
     .map((file) => ({
       file,

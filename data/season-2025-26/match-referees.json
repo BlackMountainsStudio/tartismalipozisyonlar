@@ -306,6 +306,13 @@
       "awayTeam": "Göztepe",
       "week": 25,
       "referee": "Yasin Kol"
+    },
+    {
+      "homeTeam": "Kayserispor",
+      "awayTeam": "Trabzonspor",
+      "week": 25,
+      "referee": "Cihan Aydın",
+      "varReferee": "Özgür Yankaya"
     }
   ]
 }
