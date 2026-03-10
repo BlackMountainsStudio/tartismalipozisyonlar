@@ -17,10 +17,41 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const SITE_URL = "https://varodasi.com";
+
 export const metadata: Metadata = {
   title: "Var Odası - Hakem Kararları Analiz Platformu",
   description:
     "Tartışmalı hakem kararlarını topluluk tartışmalarını analiz ederek otomatik tespit eden AI destekli platform. varodasi.com",
+  metadataBase: new URL(SITE_URL),
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+  },
+  openGraph: {
+    type: "website",
+    locale: "tr_TR",
+    url: SITE_URL,
+    siteName: "Var Odası",
+    title: "Var Odası - Hakem Kararları Analiz Platformu",
+    description:
+      "Tartışmalı hakem kararlarını topluluk tartışmalarını analiz ederek otomatik tespit eden AI destekli platform.",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Var Odası - Hakem Kararları Analiz Platformu",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Var Odası - Hakem Kararları Analiz Platformu",
+    description:
+      "Tartışmalı hakem kararlarını topluluk tartışmalarını analiz ederek otomatik tespit eden AI destekli platform.",
+  },
 };
 
 export const viewport: Viewport = {

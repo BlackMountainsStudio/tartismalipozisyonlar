@@ -3,6 +3,7 @@
 import Link from "next/link";
 import ConfidenceBadge from "./ConfidenceBadge";
 import { getSourceLabel, getVideoProviderName, getOpenInNewTabLabel, getOpinionSourceLabel } from "@/lib/linkLabels";
+import { getIncidentImpactPoints } from "@/lib/incidentCategories";
 import {
   ArrowLeft,
   Calendar,
@@ -184,6 +185,13 @@ export default function IncidentDetailTemplate({
           <span className={`rounded-full px-3 py-1 text-xs font-medium ring-1 ring-inset ${STATUS_STYLES[incident.status] ?? STATUS_STYLES.PENDING}`}>
             {STATUS_LABELS[incident.status] ?? incident.status}
           </span>
+          <Link
+            href="/rehber"
+            className="rounded-md bg-amber-500/10 px-2.5 py-1 text-xs font-medium text-amber-400 ring-1 ring-amber-500/20 transition-colors hover:bg-amber-500/20"
+            title="Puanlama rehberi"
+          >
+            {getIncidentImpactPoints(incident.type)} puan
+          </Link>
         </div>
         <div className="mb-4 flex flex-wrap items-center gap-4 text-sm text-zinc-400">
           {incident.minute != null && (

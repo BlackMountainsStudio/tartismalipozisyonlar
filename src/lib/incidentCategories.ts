@@ -65,3 +65,23 @@ export const INCIDENT_TYPE_LABELS: Record<string, string> = {
   HANDBALL: "El ile Temas",
   VAR_CONTROVERSY: "VAR Tartışması",
 };
+
+/** Karar tipine göre maç etkisi puanı (1–10, yüksek = daha kritik) */
+export const INCIDENT_IMPACT_POINTS: Record<string, number> = {
+  PENALTY: 9,
+  POSSIBLE_PENALTY: 8,
+  GOAL_DISALLOWED: 8,
+  OFFSIDE: 7,
+  POSSIBLE_OFFSIDE_GOAL: 6,
+  RED_CARD: 8,
+  MISSED_RED_CARD: 7,
+  YELLOW_CARD: 3,
+  MISSED_YELLOW: 4,
+  FOUL: 2,
+  HANDBALL: 5,
+  VAR_CONTROVERSY: 5,
+};
+
+export function getIncidentImpactPoints(type: string): number {
+  return INCIDENT_IMPACT_POINTS[type] ?? 3;
+}

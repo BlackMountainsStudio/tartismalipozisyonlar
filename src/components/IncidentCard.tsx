@@ -5,6 +5,7 @@ import { incidentUrl } from "@/lib/links";
 import { AlertTriangle, ShieldAlert, Eye, Flag, ChevronRight, Video } from "lucide-react";
 import ConfidenceBadge from "./ConfidenceBadge";
 import { getVideoLinkLabel } from "@/lib/linkLabels";
+import { getIncidentImpactPoints } from "@/lib/incidentCategories";
 
 function extractYouTubeId(url: string): string | null {
   const match = url.match(/(?:watch\?v=|youtu\.be\/|embed\/|shorts\/)([a-zA-Z0-9_-]{11})/);
@@ -94,6 +95,12 @@ export default function IncidentCard({
             </span>
           )}
           <span className="font-semibold text-white">{typeInfo.label}</span>
+          <span
+            className="rounded bg-amber-500/10 px-1.5 py-0.5 text-[10px] font-medium text-amber-400 ring-1 ring-amber-500/20"
+            title="Maç etkisi puanı"
+          >
+            {getIncidentImpactPoints(type)} puan
+          </span>
           {(inFavorOf || against) && (
             <span className="flex items-center gap-1.5">
               {inFavorOf && (

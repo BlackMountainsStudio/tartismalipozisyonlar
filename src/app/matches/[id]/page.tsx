@@ -6,7 +6,7 @@ import Link from "next/link";
 import IncidentCard from "@/components/IncidentCard";
 import CommentSection from "@/components/CommentSection";
 import { matchUrl, refereeUrl } from "@/lib/links";
-import { INCIDENT_TYPE_LABELS } from "@/lib/incidentCategories";
+import { INCIDENT_TYPE_LABELS, getIncidentImpactPoints } from "@/lib/incidentCategories";
 import { ArrowLeft, Loader2, Calendar, Trophy, Shield, UserRound, Scale } from "lucide-react";
 
 interface Incident {
@@ -21,6 +21,8 @@ interface Incident {
   slug?: string;
   matchSlug?: string;
   opinionSummary?: { agree: number; disagree: number; neutral: number } | null;
+  inFavorOf?: string | null;
+  against?: string | null;
 }
 
 interface Match {
@@ -113,6 +115,26 @@ export default function MatchPage({
   const correctCount = incidentsWithOpinions.filter(
     (i) => (i.opinionSummary?.agree ?? 0) > (i.opinionSummary?.disagree ?? 0)
   ).length;
+  const wrongIncidents = incidentsWithOpinions.filter(
+    (i) => (i.opinionSummary?.disagree ?? 0) > (i.opinionSummary?.agree ?? 0)
+  );
+  const wrongCount = wrongIncidents.length;
+  const wrongAgainstHome = wrongIncidents.filter((i) => i.against === match.homeTeam).length;
+  const wrongAgainstAway = wrongIncidents.filter((i) => i.against === match.awayTeam).length;
+
+  const pointsFor = (inc: Incident) => getIncidentImpactPoints(inc.type);
+  const impactHomeAgainst = wrongIncidents
+    .filter((i) => i.against === match.homeTeam)
+    .reduce((s, i) => s + pointsFor(i), 0);
+  const impactHomeFavor = wrongIncidents
+    .filter((i) => i.inFavorOf === match.homeTeam)
+    .reduce((s, i) => s + pointsFor(i), 0);
+  const impactAwayAgainst = wrongIncidents
+    .filter((i) => i.against === match.awayTeam)
+    .reduce((s, i) => s + pointsFor(i), 0);
+  const impactAwayFavor = wrongIncidents
+    .filter((i) => i.inFavorOf === match.awayTeam)
+    .reduce((s, i) => s + pointsFor(i), 0);
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
@@ -185,12 +207,75 @@ export default function MatchPage({
           {match.awayTeam}
         </h1>
         {totalWithOpinions > 0 && (
-          <div className="mt-4 flex items-center justify-center gap-2 rounded-lg border border-zinc-800 bg-zinc-900/50 px-4 py-2">
-            <Scale className="h-4 w-4 text-amber-400" />
-            <span className="text-sm text-zinc-300">
-              <span className="font-semibold text-white">{correctCount}/{totalWithOpinions}</span>
-              {" "}tartışmalı kararı doğru vermiş
-            </span>
+          <div className="mt-4 flex flex-col items-center gap-2">
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <div className="flex items-center gap-2 rounded-lg border border-zinc-800 bg-zinc-900/50 px-4 py-2">
+                <Scale className="h-4 w-4 text-emerald-400" />
+                <span className="text-sm text-zinc-300">
+                  <span className="font-semibold text-emerald-400">{correctCount}/{totalWithOpinions}</span>
+                  {" "}doğru karar
+                </span>
+              </div>
+              <div className="flex items-center gap-2 rounded-lg border border-zinc-800 bg-zinc-900/50 px-4 py-2">
+                <Scale className="h-4 w-4 text-red-400" />
+                <span className="text-sm text-zinc-300">
+                  <span className="font-semibold text-red-400">{wrongCount}/{totalWithOpinions}</span>
+                  {" "}yanlış karar
+                </span>
+              </div>
+            </div>
+            {wrongCount > 0 && (wrongAgainstHome > 0 || wrongAgainstAway > 0) && (
+              <div className="flex flex-wrap items-center justify-center gap-2 text-xs text-zinc-500">
+                <span>Yanlış kararlar:</span>
+                {wrongAgainstHome > 0 && (
+                  <span>
+                    <span className="font-medium text-zinc-400">{wrongAgainstHome}/{wrongCount}</span>
+                    {" "}{match.homeTeam}
+                  </span>
+                )}
+                {wrongAgainstAway > 0 && (
+                  <span>
+                    <span className="font-medium text-zinc-400">{wrongAgainstAway}/{wrongCount}</span>
+                    {" "}{match.awayTeam}
+                  </span>
+                )}
+              </div>
+            )}
+            {wrongCount > 0 && (impactHomeAgainst > 0 || impactHomeFavor > 0 || impactAwayAgainst > 0 || impactAwayFavor > 0) && (
+              <div className="flex flex-wrap items-center justify-center gap-4 text-xs">
+                <Link
+                  href="/rehber"
+                  className="text-zinc-500 hover:text-amber-400"
+                  title="Puanlama rehberi"
+                >
+                  Maç etkisi (puan)
+                </Link>
+                {(impactHomeAgainst > 0 || impactHomeFavor > 0) && (
+                  <span className="text-zinc-400">
+                    {match.homeTeam}:{" "}
+                    {impactHomeFavor > 0 && (
+                      <span className="text-emerald-400">+{impactHomeFavor} lehine</span>
+                    )}
+                    {impactHomeFavor > 0 && impactHomeAgainst > 0 && " · "}
+                    {impactHomeAgainst > 0 && (
+                      <span className="text-red-400">-{impactHomeAgainst} aleyhine</span>
+                    )}
+                  </span>
+                )}
+                {(impactAwayAgainst > 0 || impactAwayFavor > 0) && (
+                  <span className="text-zinc-400">
+                    {match.awayTeam}:{" "}
+                    {impactAwayFavor > 0 && (
+                      <span className="text-emerald-400">+{impactAwayFavor} lehine</span>
+                    )}
+                    {impactAwayFavor > 0 && impactAwayAgainst > 0 && " · "}
+                    {impactAwayAgainst > 0 && (
+                      <span className="text-red-400">-{impactAwayAgainst} aleyhine</span>
+                    )}
+                  </span>
+                )}
+              </div>
+            )}
           </div>
         )}
       </div>
@@ -228,6 +313,8 @@ export default function MatchPage({
                 matchInfo={`${match.homeTeam} vs ${match.awayTeam}`}
                 refereeLabel={INCIDENT_TYPE_LABELS[incident.type]}
                 opinionSummary={incident.opinionSummary ?? undefined}
+                inFavorOf={incident.inFavorOf}
+                against={incident.against}
                 matchSlug={currentMatchSlug}
                 incidentSlug={incident.slug ?? undefined}
                 clickable
