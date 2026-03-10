@@ -9,56 +9,222 @@
       "league": "Süper Lig 2025-26",
       "incidents": [
         {
-          "minute": 20,
-          "type": "POSSIBLE_PENALTY",
-          "description": "Baris Alper Yilmaz'in ceza sahasina girdigi atakta Agbadou mudahalesi sonrasi yerde kaldigi pozisyonda Galatasaray penalti bekledi. Hakem oyunu devam ettirdi, VAR'dan inceleme tavsiyesi gelmemesi derbi sonrasi Ekşi basliklarinda en cok tartisilan kararlardan biri oldu.",
-          "confidenceScore": 0.84,
+          "minute": 2,
+          "type": "MISSED_YELLOW",
+          "description": "Murillo'nun Barış Alper'e kontrolsüz basması. Hakem kart göstermedi. Deniz Çoban, Bahattin Duran ve Ahmet Çakar sarı kart olmalıydı dedi.",
+          "confidenceScore": 0.85,
           "sources": [
-            "https://eksisozluk.com/7-mart-2026-besiktas-galatasaray-maci--8074595?a=popular",
-            "https://eksisozluk.com/7-mart-2026-turk-futbolunda-kara-gece--8080944?a=popular",
-            "https://turkinform.com.tr/ben-dev-derbide-galatasaray-cephesinden-penalti-itirazi-var-odasi-sessiz-kaldi"
-          ],
-          "status": "APPROVED",
-          "inFavorOf": "Beşiktaş",
-          "against": "Galatasaray"
-        },
-        {
-          "minute": 35,
-          "type": "MISSED_RED_CARD",
-          "description": "Besiktas cephesi, Sane'nin faulunde yalnizca sari kart cikmasina sert tepki gosterdi. Kulubun resmi hesabinin 'Daha ne olmasi gerekiyor?' paylasimi ve ayni pozisyonun derbi sonu tartisma basliklarina tasinmasi, kamuoyunda verilmeyen kirmizi kart itirazini one cikardi. Ahmet Cakar da bu pozisyonda kirmizi kart olmasi gerektigini belirtti.",
-          "confidenceScore": 0.81,
-          "sources": [
-            "https://www.youtube.com/shorts/DeODXRRJBeA",
-            "https://eksisozluk.com/7-mart-2026-besiktas-galatasaray-maci--8074595?a=popular",
-            "https://eksisozluk.com/7-mart-2026-turk-futbolunda-kara-gece--8080944?a=popular",
-            "https://turkinform.com.tr/besiktas-cephesinden-sari-kart-kararina-tepki-daha-ne-olmasi-gerekiyor"
-          ],
-          "videoUrl": "https://www.youtube.com/shorts/DeODXRRJBeA",
-          "relatedVideos": [
-            {
-              "url": "https://www.youtube.com/shorts/DeODXRRJBeA",
-              "title": "Ahmet Çakar: Sane pozisyonunda kırmızı kart olmalıydı (YouTube Shorts)"
-            }
+            "https://eksisozluk.com/7-mart-2026-besiktas-galatasaray-maci--8074595?a=popular"
           ],
           "refereeComments": [
-            {
-              "author": "Ahmet Çakar",
-              "text": "Sane'nin ilk sarı aldığı pozisyonda kırmızı kart olması lazım.",
-              "sourceUrl": "https://www.youtube.com/shorts/DeODXRRJBeA",
-              "stance": "DISAGREE"
-            }
+            { "author": "Deniz Çoban", "text": "Sarı kart olmalıydı.", "stance": "DISAGREE" },
+            { "author": "Bahattin Duran", "text": "Sarı kart olmalıydı.", "stance": "DISAGREE" },
+            { "author": "Ahmet Çakar", "text": "Ben olsam sarı veririm.", "stance": "DISAGREE" }
           ],
           "status": "APPROVED",
           "inFavorOf": "Galatasaray",
           "against": "Beşiktaş"
         },
         {
-          "minute": 65,
-          "type": "MISSED_RED_CARD",
-          "description": "Victor Osimhen kaleciye faul yapti, baldirina basti. Besiktas cephesi bu pozisyonda Osimhen'in kirmizi kart gormesi gerektigini savundu.",
-          "confidenceScore": 0.78,
+          "minute": 3,
+          "type": "YELLOW_CARD",
+          "description": "Osimhen'in Ersin'e müdahalesi. Hakem sarı kart gösterdi (gecikmeli). Ahmet Çakar sarı maksimum, kırmızı olmaz dedi; zamanlama eleştirildi.",
+          "confidenceScore": 0.82,
           "sources": [
             "https://eksisozluk.com/7-mart-2026-besiktas-galatasaray-maci--8074595?a=popular"
+          ],
+          "refereeComments": [
+            { "author": "Ahmet Çakar", "text": "Sarı maksimum, kırmızı olmaz. Kart çok geç çıktı.", "stance": "AGREE" }
+          ],
+          "status": "APPROVED",
+          "inFavorOf": "Galatasaray",
+          "against": "Beşiktaş"
+        },
+        {
+          "minute": 4,
+          "type": "FOUL",
+          "description": "Olayta'nın Abdülkerim'e müdahalesi (hücum faul/şarj). Hakem faul çaldı. Bahattin Duran: Buna faul çalarsanız her temas faul olur, devam etmesi daha doğru.",
+          "confidenceScore": 0.8,
+          "sources": [
+            "https://eksisozluk.com/7-mart-2026-besiktas-galatasaray-maci--8074595?a=popular"
+          ],
+          "refereeComments": [
+            { "author": "Bahattin Duran", "text": "Devam etmesi daha doğru; gereksiz hafif faul.", "stance": "DISAGREE" }
+          ],
+          "status": "APPROVED",
+          "inFavorOf": "Galatasaray",
+          "against": "Beşiktaş"
+        },
+        {
+          "minute": 5,
+          "type": "MISSED_YELLOW",
+          "description": "Olayta'nın topsuz alanda sportmenlik dışı hareketi (rakibe yönelik). Hakem kart göstermedi. Deniz ve Bahattin net sarı kart dedi.",
+          "confidenceScore": 0.88,
+          "sources": [
+            "https://eksisozluk.com/7-mart-2026-besiktas-galatasaray-maci--8074595?a=popular"
+          ],
+          "refereeComments": [
+            { "author": "Deniz Çoban", "text": "Net sarı kart.", "stance": "DISAGREE" },
+            { "author": "Bahattin Duran", "text": "Net sarı kart.", "stance": "DISAGREE" }
+          ],
+          "status": "APPROVED",
+          "inFavorOf": "Galatasaray",
+          "against": "Beşiktaş"
+        },
+        {
+          "minute": 16,
+          "type": "MISSED_YELLOW",
+          "description": "Orkun'un uzaktan sprinte gelip itiraz/mobbing yapması. Hakem kart göstermedi. Deniz Çoban: Burada sarı gösteririm.",
+          "confidenceScore": 0.85,
+          "sources": [
+            "https://eksisozluk.com/7-mart-2026-besiktas-galatasaray-maci--8074595?a=popular"
+          ],
+          "refereeComments": [
+            { "author": "Deniz Çoban", "text": "Bu şekilde geliş sarı kartlık olmalıydı.", "stance": "DISAGREE" }
+          ],
+          "status": "APPROVED",
+          "inFavorOf": "Beşiktaş",
+          "against": "Galatasaray"
+        },
+        {
+          "minute": 20,
+          "type": "POSSIBLE_PENALTY",
+          "description": "Barış Alper'in ceza sahasında düşmesi (Udokai + Akbadu teması). Hakem devam kararı verdi. Bahattin, Deniz, Ali Naci ve Ahmet Çakar penaltı olmadığını söyledi; Okan Buruk itiraz etti.",
+          "confidenceScore": 0.84,
+          "sources": [
+            "https://eksisozluk.com/7-mart-2026-besiktas-galatasaray-maci--8074595?a=popular",
+            "https://eksisozluk.com/7-mart-2026-turk-futbolunda-kara-gece--8080944?a=popular",
+            "https://turkinform.com.tr/ben-dev-derbide-galatasaray-cephesinden-penalti-itirazi-var-odasi-sessiz-kaldi"
+          ],
+          "refereeComments": [
+            { "author": "Bahattin Duran", "text": "Devam doğru.", "stance": "AGREE" },
+            { "author": "Deniz Çoban", "text": "Devam doğru.", "stance": "AGREE" },
+            { "author": "Ahmet Çakar", "text": "Asla penaltı değil; Barış topun üstüne basıp dengesini bozuyor.", "stance": "AGREE" },
+            { "author": "Ali Naci", "text": "Bence penaltı değil.", "stance": "AGREE" }
+          ],
+          "status": "APPROVED",
+          "inFavorOf": "Beşiktaş",
+          "against": "Galatasaray"
+        },
+        {
+          "minute": 28,
+          "type": "MISSED_RED_CARD",
+          "description": "Sane'nin müdahalesi (krampon/vidalar, gergin ayak, şekil bozukluğu). Hakem sarı kart ve avantaj verdi. Deniz, Bahattin, Ahmet Çakar ve Sergen Yalçın net kırmızı kart dedi; VAR da çağırmalıydı.",
+          "confidenceScore": 0.9,
+          "sources": [
+            "https://www.youtube.com/shorts/DeODXRRJBeA",
+            "https://eksisozluk.com/7-mart-2026-besiktas-galatasaray-maci--8074595?a=popular",
+            "https://turkinform.com.tr/besiktas-cephesinden-sari-kart-kararina-tepki-daha-ne-olmasi-gerekiyor"
+          ],
+          "videoUrl": "https://www.youtube.com/shorts/DeODXRRJBeA",
+          "relatedVideos": [
+            { "url": "https://www.youtube.com/shorts/DeODXRRJBeA", "title": "Ahmet Çakar: Sane pozisyonunda kırmızı kart olmalıydı" }
+          ],
+          "refereeComments": [
+            { "author": "Ahmet Çakar", "text": "Sane'nin ilk sarı aldığı pozisyonda kırmızı kart olması lazım.", "sourceUrl": "https://www.youtube.com/shorts/DeODXRRJBeA", "stance": "DISAGREE" },
+            { "author": "Deniz Çoban", "text": "Net kırmızı kart, VAR da çağırmalıydı.", "stance": "DISAGREE" },
+            { "author": "Bahattin Duran", "text": "Net kırmızı kart.", "stance": "DISAGREE" },
+            { "author": "Sergen Yalçın", "text": "20. dakikada atılması lazım.", "stance": "DISAGREE" }
+          ],
+          "status": "APPROVED",
+          "inFavorOf": "Galatasaray",
+          "against": "Beşiktaş"
+        },
+        {
+          "minute": 29,
+          "type": "YELLOW_CARD",
+          "description": "Orkun'un alkışla protestosu. Hakem sarı kart gösterdi. Deniz Çoban doğru karar dedi; geç kalınmış vurgusu var.",
+          "confidenceScore": 0.85,
+          "sources": [
+            "https://eksisozluk.com/7-mart-2026-besiktas-galatasaray-maci--8074595?a=popular"
+          ],
+          "refereeComments": [
+            { "author": "Deniz Çoban", "text": "Net sarı kart, doğru karar.", "stance": "AGREE" }
+          ],
+          "status": "APPROVED",
+          "inFavorOf": "Beşiktaş",
+          "against": "Galatasaray"
+        },
+        {
+          "minute": 30,
+          "type": "YELLOW_CARD",
+          "description": "Muriqi'nin Barış Alper'e faulü; hakem 2. faul gerekçesiyle sarı gösterdi. Deniz: Tasarruf edilebilir sarı. Bahattin: Hakem o gerekçeyle gösterdiyse yanlış mantık.",
+          "confidenceScore": 0.7,
+          "sources": [
+            "https://eksisozluk.com/7-mart-2026-besiktas-galatasaray-maci--8074595?a=popular"
+          ],
+          "refereeComments": [
+            { "author": "Deniz Çoban", "text": "Tasarruf edilebilir sarı, kart şart değil.", "stance": "NEUTRAL" },
+            { "author": "Bahattin Duran", "text": "Hakem o gerekçeyle gösterdiyse yanlış mantık.", "stance": "DISAGREE" }
+          ],
+          "status": "APPROVED",
+          "inFavorOf": "Galatasaray",
+          "against": "Beşiktaş"
+        },
+        {
+          "minute": 47,
+          "type": "MISSED_YELLOW",
+          "description": "Akbadu'nun Osimhen'in ayağına basması (45+2). Hakem kart göstermedi. Bahattin, Deniz, Ali Naci ve Ahmet Çakar tartışmasız sarı kart dedi.",
+          "confidenceScore": 0.9,
+          "sources": [
+            "https://eksisozluk.com/7-mart-2026-besiktas-galatasaray-maci--8074595?a=popular"
+          ],
+          "refereeComments": [
+            { "author": "Bahattin Duran", "text": "Tartışmasız sarı kart.", "stance": "DISAGREE" },
+            { "author": "Deniz Çoban", "text": "Tartışmasız sarı kart.", "stance": "DISAGREE" },
+            { "author": "Ahmet Çakar", "text": "Sarı gibi.", "stance": "DISAGREE" },
+            { "author": "Ali Naci", "text": "Bu da sarı.", "stance": "DISAGREE" }
+          ],
+          "status": "APPROVED",
+          "inFavorOf": "Galatasaray",
+          "against": "Beşiktaş"
+        },
+        {
+          "minute": 56,
+          "type": "MISSED_RED_CARD",
+          "description": "Osimhen düdükten sonra topu sürüp kaleci üzerinden vurdu; çatışma çıktı. Hakem kart göstermedi. Bahattin, Deniz, Ahmet Çakar ve Sergen: 2. sarı + ihraç olmalıydı.",
+          "confidenceScore": 0.92,
+          "sources": [
+            "https://eksisozluk.com/7-mart-2026-besiktas-galatasaray-maci--8074595?a=popular"
+          ],
+          "refereeComments": [
+            { "author": "Ahmet Çakar", "text": "Tartışmasız ikinci sarıdan kırmızı, kural kitabında yazar.", "stance": "DISAGREE" },
+            { "author": "Sergen Yalçın", "text": "Osimhen'in ikinci yarıda %100 atılması lazım.", "stance": "DISAGREE" },
+            { "author": "Deniz Çoban", "text": "2. sarı kart ve ihraç.", "stance": "DISAGREE" },
+            { "author": "Bahattin Duran", "text": "2. sarı kart ve ihraç.", "stance": "DISAGREE" }
+          ],
+          "status": "APPROVED",
+          "inFavorOf": "Beşiktaş",
+          "against": "Galatasaray"
+        },
+        {
+          "minute": 56,
+          "type": "MISSED_RED_CARD",
+          "description": "Orkun'un hakemi kolundan çekmesi (aynı olay dizisinde). Hakem kart göstermedi. Deniz ve Bahattin: Hakemi tutup çekemez, Orkun da 2. sarı görmeliydi.",
+          "confidenceScore": 0.88,
+          "sources": [
+            "https://eksisozluk.com/7-mart-2026-besiktas-galatasaray-maci--8074595?a=popular"
+          ],
+          "refereeComments": [
+            { "author": "Deniz Çoban", "text": "Hakemi tutup çekemez, Orkun da 2. sarı görmeliydi.", "stance": "DISAGREE" },
+            { "author": "Bahattin Duran", "text": "Orkun da 2. sarı görmeliydi.", "stance": "DISAGREE" }
+          ],
+          "status": "APPROVED",
+          "inFavorOf": "Beşiktaş",
+          "against": "Galatasaray"
+        },
+        {
+          "minute": 63,
+          "type": "RED_CARD",
+          "description": "Sane'nin Rıdvan'a topsuz alanda basması. VAR incelemesiyle kırmızı kart verildi. Deniz ve Bahattin sonuç doğru dedi; saha içi tespit eleştirildi.",
+          "confidenceScore": 0.88,
+          "sources": [
+            "https://eksisozluk.com/7-mart-2026-besiktas-galatasaray-maci--8074595?a=popular"
+          ],
+          "refereeComments": [
+            { "author": "Ahmet Çakar", "text": "Doğru; kasıt olmasa bile kontrolsüz basma ile kırmızı çıkar.", "stance": "AGREE" },
+            { "author": "Deniz Çoban", "text": "Kırmızı kart doğru.", "stance": "AGREE" },
+            { "author": "Bahattin Duran", "text": "Sonuç doğru; saha içi tespit daha iyi olurdu.", "stance": "AGREE" }
           ],
           "status": "APPROVED",
           "inFavorOf": "Galatasaray",
@@ -67,11 +233,10 @@
         {
           "minute": 68,
           "type": "POSSIBLE_OFFSIDE_GOAL",
-          "description": "Victor Osimhen'in golunde Besiktas cephesi ofsayt itirazinda bulundu. Yari otomatik ofsayt sistemi ihlal olmadigini aciklasa da, VAR gorselinin yayinlanmasi ve karar sonrasi tepkiler pozisyonu haftanin en cok konusulan ofsayt tartismalarindan biri haline getirdi.",
+          "description": "Victor Osimhen'in golünde Beşiktaş ofsayt itirazında bulundu. Yarı otomatik ofsayt sistemi ihlal olmadığını açıklasa da, VAR görselinin yayınlanması ve karar sonrası tepkiler pozisyonu tartışmalı hale getirdi.",
           "confidenceScore": 0.77,
           "sources": [
             "https://eksisozluk.com/7-mart-2026-besiktas-galatasaray-maci--8074595?a=popular",
-            "https://eksisozluk.com/7-mart-2026-turk-futbolunda-kara-gece--8080944?a=popular",
             "https://turkinform.com.tr/besiktasin-ofsayt-itirazinda-bulundugu-golun-var-goruntusu-yayinlandi"
           ],
           "status": "APPROVED",
@@ -79,16 +244,35 @@
           "against": "Beşiktaş"
         },
         {
-          "minute": 72,
-          "type": "MISSED_RED_CARD",
-          "description": "Ofsayt calindiktan sonra Osimhen oyunu devam ettirdi ve sut cekti. Besiktas cephesi, Osimhen'in itiraz nedeniyle ikinci sari karttan kirmizi kart gormesi gerektigini savundu.",
+          "minute": 95,
+          "type": "POSSIBLE_OFFSIDE",
+          "description": "Son saniyelerde Beşiktaş'ın korner beklediği pozisyona ofsayt bayrağı kaldırıldı, korner kullanılmadı. Ali Naci ofsayt olmadığını söyledi.",
           "confidenceScore": 0.75,
           "sources": [
             "https://eksisozluk.com/7-mart-2026-besiktas-galatasaray-maci--8074595?a=popular"
           ],
+          "refereeComments": [
+            { "author": "Ali Naci", "text": "Ofsayt yoktu; gol olsaydı VAR döndürürdü ama Beşiktaş korner kullanacaktı.", "stance": "DISAGREE" }
+          ],
           "status": "APPROVED",
           "inFavorOf": "Galatasaray",
           "against": "Beşiktaş"
+        },
+        {
+          "minute": 100,
+          "type": "YELLOW_CARD",
+          "description": "Okan Buruk'un sarı kartı (90+10). 4. hakem diyaloğu sonrası verildi. Deniz ve Bahattin görüntüden net eleştiri çıkmadığını belirtti.",
+          "confidenceScore": 0.6,
+          "sources": [
+            "https://eksisozluk.com/7-mart-2026-besiktas-galatasaray-maci--8074595?a=popular"
+          ],
+          "refereeComments": [
+            { "author": "Deniz Çoban", "text": "Görüntüden hakeme net eleştiri çıkmıyor.", "stance": "NEUTRAL" },
+            { "author": "Bahattin Duran", "text": "4. hakem diyaloğu sonrası.", "stance": "NEUTRAL" }
+          ],
+          "status": "APPROVED",
+          "inFavorOf": "Beşiktaş",
+          "against": "Galatasaray"
         }
       ]
     },
@@ -266,6 +450,19 @@
           "status": "APPROVED"
         },
         {
+          "minute": 18,
+          "type": "MISSED_YELLOW",
+          "description": "Jayden Oosterwolde'nin boğazdan tutma hareketi. Hareket sert ve çirkin bulundu; kırmızı olur mu tartışması geçti ancak yayında net doğru/yanlış hükmü kurulmadı.",
+          "inFavorOf": "Fenerbahçe",
+          "against": "Samsunspor",
+          "confidenceScore": 0.7,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
+          ],
+          "refereeComments": [],
+          "status": "APPROVED"
+        },
+        {
           "minute": 23,
           "type": "MISSED_YELLOW",
           "description": "Mert Müldür'ün çelme müdahalesinde hakem faul verdi ancak sarı kart göstermedi. Trio: sarı kart olmalıydı. (Dakika, Samsunspor'un 2-1'lik golünün atıldığı 23. dakika civarına göre tahmin edilmiştir.)",
@@ -325,6 +522,21 @@
         },
         {
           "minute": 38,
+          "type": "MISSED_YELLOW",
+          "description": "Samsunsporlu oyuncunun (Musaba'ya benzetilen) tekrarlı faulleri (38, 45+1, 47). Pozisyonun kendisi sarı zaten; birinde vermedin diyelim, sonra yine yaptı. Hakemin maç takibi ve oyuncu analizi eleştirildi.",
+          "inFavorOf": "Fenerbahçe",
+          "against": "Samsunspor",
+          "confidenceScore": 0.82,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
+          ],
+          "refereeComments": [
+            { "author": "Yayın yorumu", "text": "Pozisyonun kendisi sarı zaten; birinde vermedin diyelim, sonra yine yaptı.", "stance": "DISAGREE" }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 38,
           "type": "FOUL",
           "description": "Jayden Oosterwolde müdahalesinde hakem faul verdi. Trio: devam kararı daha doğru olurdu.",
           "inFavorOf": "Samsunspor",
@@ -334,11 +546,7 @@
             "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
           ],
           "refereeComments": [
-            {
-              "author": "beIN Trio",
-              "text": "Devam kararı daha doğru olurdu.",
-              "stance": "DISAGREE"
-            }
+            { "author": "beIN Trio", "text": "Devam kararı daha doğru olurdu.", "stance": "DISAGREE" }
           ],
           "status": "APPROVED"
         },
@@ -410,6 +618,21 @@
           "status": "APPROVED"
         },
         {
+          "minute": 46,
+          "type": "YELLOW_CARD",
+          "description": "İlk yarının son anlarında (45+1) Mendes'e sarı kart; Guendouzi'nin ayakkabıya basması itirazı. Ahmet Çakar: Faul var diyemem, bilerek bir şey yok, sarı olmayabilir; kart ağır olabilir.",
+          "inFavorOf": "Fenerbahçe",
+          "against": "Samsunspor",
+          "confidenceScore": 0.65,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
+          ],
+          "refereeComments": [
+            { "author": "Ahmet Çakar", "text": "Faul var diyemem, sarı olmayabilir; hakem üzerinden ekmek çıkmaz.", "stance": "NEUTRAL" }
+          ],
+          "status": "APPROVED"
+        },
+        {
           "minute": 47,
           "type": "MISSED_YELLOW",
           "description": "İlk yarının sonunda (45+2) Guendouzi'ye yapılan basma müdahalesi. Mendes'in sarı kartı vardı; Trio bu taktik faulde ikinci sarı kartın gösterilmesi gerektiğini söyledi. Deniz Çoban: 'Hakem faulü kaçırdı. İkinci sarı kartı göstermeliydi.' Bahattin Duran: 'Net bir faul kaçırıldı.'",
@@ -435,6 +658,21 @@
               "text": "İkinci sarı kart gösterilmeliydi.",
               "stance": "DISAGREE"
             }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 51,
+          "type": "YELLOW_CARD",
+          "description": "Borevkovic'in Kerem'e faulünde hakem sarı kart gösterdi. Kart doğru bulundu ancak bu maçta vermesi gerekenler yanında standardın zayıf kaldığı eleştirisi yapıldı.",
+          "inFavorOf": "Fenerbahçe",
+          "against": "Samsunspor",
+          "confidenceScore": 0.8,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
+          ],
+          "refereeComments": [
+            { "author": "Yayın yorumu", "text": "Verdi tamam ama bu maçta vermesi gerekenler yanında sağlıklı kalmıyor.", "stance": "AGREE" }
           ],
           "status": "APPROVED"
         },
@@ -487,9 +725,39 @@
           "status": "APPROVED"
         },
         {
+          "minute": 55,
+          "type": "YELLOW_CARD",
+          "description": "Yunus Emre'nin sarı kartı. Yorumcular doğru karar olarak değerlendirdi.",
+          "inFavorOf": "Samsunspor",
+          "against": "Fenerbahçe",
+          "confidenceScore": 0.85,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
+          ],
+          "refereeComments": [
+            { "author": "Yayın yorumu", "text": "Doğru.", "stance": "AGREE" }
+          ],
+          "status": "APPROVED"
+        },
+        {
           "minute": 58,
           "type": "MISSED_YELLOW",
-          "description": "Yalçın Kaya – Fred müdahalesinde hakem faul verdi ancak sarı kart göstermedi. Trio: sarı kart verilmeliydi. (Dakika tahmini; kaynaklarda net dakika belirtilmemiştir.)",
+          "description": "Mert Müldür'ün topsuz alanda faulü. Hakem sarı kart göstermedi. Yorumcular: Nasıl sarı kartsız geçiştirebilirsin? Sarı verilmeliydi.",
+          "inFavorOf": "Samsunspor",
+          "against": "Fenerbahçe",
+          "confidenceScore": 0.85,
+          "sources": [
+            "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
+          ],
+          "refereeComments": [
+            { "author": "Yayın yorumu", "text": "Nasıl sarı kartsız geçiştirebilirsin? Sarı verilmeliydi.", "stance": "DISAGREE" }
+          ],
+          "status": "APPROVED"
+        },
+        {
+          "minute": 58,
+          "type": "MISSED_YELLOW",
+          "description": "Yalçın Kaya – Fred müdahalesinde hakem faul verdi ancak sarı kart göstermedi. Trio: sarı kart verilmeliydi.",
           "inFavorOf": "Samsunspor",
           "against": "Fenerbahçe",
           "confidenceScore": 0.75,
@@ -497,11 +765,7 @@
             "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
           ],
           "refereeComments": [
-            {
-              "author": "beIN Trio",
-              "text": "Sarı kart verilmeliydi.",
-              "stance": "DISAGREE"
-            }
+            { "author": "beIN Trio", "text": "Sarı kart verilmeliydi.", "stance": "DISAGREE" }
           ],
           "status": "APPROVED"
         },
@@ -595,7 +859,7 @@
         {
           "minute": 89,
           "type": "VAR_CONTROVERSY",
-          "description": "Dorgeles Nene'nin golü. VAR kontrolünde ofsayt olmadığı onaylandı, doğru karar olarak değerlendirildi. Trio: gol temiz.",
+          "description": "Dorgeles Nene'nin 2. golü. Sosyal medyada ofsayt itirazı yapıldı. VAR kontrolünde ofsayt olmadığı onaylandı. Ahmet Çakar: Ofsayt değil, ofsayt olmadığı belli, en az 1 metre geride.",
           "inFavorOf": "Fenerbahçe",
           "against": "Samsunspor",
           "confidenceScore": 0.9,
@@ -603,28 +867,17 @@
             "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
           ],
           "refereeComments": [
-            {
-              "author": "Bahattin Duran (beIN Trio)",
-              "text": "Fenerbahçe'nin golü temiz.",
-              "stance": "AGREE"
-            },
-            {
-              "author": "Deniz Çoban (beIN Trio)",
-              "text": "Gol temiz.",
-              "stance": "AGREE"
-            },
-            {
-              "author": "Bülent Yıldırım (beIN Trio)",
-              "text": "Gol temiz.",
-              "stance": "AGREE"
-            }
+            { "author": "Ahmet Çakar", "text": "Ofsayt değil, ofsayt olmadığı belli, en az 1 metre geride.", "stance": "AGREE" },
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Fenerbahçe'nin golü temiz.", "stance": "AGREE" },
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Gol temiz.", "stance": "AGREE" },
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Gol temiz.", "stance": "AGREE" }
           ],
           "status": "APPROVED"
         },
         {
           "minute": 95,
           "type": "YELLOW_CARD",
-          "description": "Matteo Guendouzi golü attıktan sonra tel örgülere tırmanarak sevinç gösterdi; hakem sportmenlik dışı hareket gerekçesiyle sarı kart gösterdi. Trio: sarı kart doğru.",
+          "description": "Matteo Guendouzi golü attıktan sonra tribüne yönelip tellere tırmandı; hakem abartılı sevinç gerekçesiyle sarı kart gösterdi. Ahmet Çakar: Kural gereği sarı doğru; ancak geçen hafta Torreira'ya uygulanmadığı için çifte standart eleştirisi yaptı.",
           "inFavorOf": "Samsunspor",
           "against": "Fenerbahçe",
           "confidenceScore": 0.9,
@@ -632,18 +885,15 @@
             "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
           ],
           "refereeComments": [
-            {
-              "author": "beIN Trio",
-              "text": "Sarı kart doğru.",
-              "stance": "AGREE"
-            }
+            { "author": "Ahmet Çakar", "text": "Kural gereği sarı doğru; ancak Torreira'ya uygulanmadığı için çifte standart.", "stance": "AGREE" },
+            { "author": "beIN Trio", "text": "Sarı kart doğru.", "stance": "AGREE" }
           ],
           "status": "APPROVED"
         },
         {
           "minute": 95,
           "type": "VAR_CONTROVERSY",
-          "description": "Sidiki Cherif'in galibiyet gölü (90+5). Ofsayt kontrolünde ihlal olmadığı onaylandı. Trio: gol temiz, kaleci topu görüyor, Archie Brown kaleciye etki etmiyor.",
+          "description": "Sidiki Cherif'in 3. golü (90+5). Brown'un kalecinin görüş alanını kapattığı iddiasıyla ofsayt itirazı yapıldı. Ahmet Çakar: Asla ofsayt değil, Brown direğin dışına çekildi, kaleciye müdahale etmedi. Bülent Uygun: Şutun gittiği köşe ve Brown'un hareketine göre kaleciye etki yok, gol geçerli.",
           "inFavorOf": "Fenerbahçe",
           "against": "Samsunspor",
           "confidenceScore": 0.9,
@@ -651,21 +901,11 @@
             "https://www.milliyet.com.tr/skorer/fenerbahce-samsunspor-macinin-tartismali-pozisyonlarini-eski-hakemler-degerlendirdi-futbol-boyle-oynanmaz-7551022"
           ],
           "refereeComments": [
-            {
-              "author": "Bahattin Duran (beIN Trio)",
-              "text": "Fenerbahçe'nin galibiyet gölü temiz. Golde ihlal söz konusu değil.",
-              "stance": "AGREE"
-            },
-            {
-              "author": "Deniz Çoban (beIN Trio)",
-              "text": "Gol temiz.",
-              "stance": "AGREE"
-            },
-            {
-              "author": "Bülent Yıldırım (beIN Trio)",
-              "text": "Gol temiz, kaleci topu görüyor.",
-              "stance": "AGREE"
-            }
+            { "author": "Ahmet Çakar", "text": "Asla ofsayt değil, Brown kaleciye müdahale etmedi.", "stance": "AGREE" },
+            { "author": "Bülent Uygun", "text": "Kaleciye etki yok, gol geçerli.", "stance": "AGREE" },
+            { "author": "Bahattin Duran (beIN Trio)", "text": "Fenerbahçe'nin galibiyet gölü temiz.", "stance": "AGREE" },
+            { "author": "Deniz Çoban (beIN Trio)", "text": "Gol temiz.", "stance": "AGREE" },
+            { "author": "Bülent Yıldırım (beIN Trio)", "text": "Gol temiz, kaleci topu görüyor.", "stance": "AGREE" }
           ],
           "status": "APPROVED"
         },
