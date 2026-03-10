@@ -8,11 +8,17 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const week = searchParams.get("week");
     const team = searchParams.get("team");
+    const leagueParam = searchParams.get("league");
     const slugParam = searchParams.get("slug");
     const idParam = searchParams.get("id");
 
     const where: Record<string, unknown> = {};
     if (week) where.week = parseInt(week);
+    if (leagueParam) {
+      where.league = leagueParam;
+    } else if (!slugParam && !idParam) {
+      where.league = "Süper Lig 2025-26";
+    }
     if (team) {
       where.OR = [
         { homeTeam: { contains: team, mode: "insensitive" } },

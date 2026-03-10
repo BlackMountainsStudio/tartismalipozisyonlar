@@ -34,7 +34,7 @@ export interface IncidentDetailData {
   videoUrl: string | null;
   relatedVideos: { url: string; title: string }[];
   newsArticles: { title: string; url: string; source: string; author: string }[];
-  refereeComments: { author?: string; text: string; sourceUrl?: string }[];
+  refereeComments: { author?: string; text: string; sourceUrl?: string; stance?: "AGREE" | "DISAGREE" | "NEUTRAL" }[];
   opinions: {
     id: string;
     comment: string;
@@ -61,6 +61,7 @@ const TYPE_LABELS: Record<string, { label: string; icon: React.ReactNode; color:
   POSSIBLE_OFFSIDE_GOAL: { label: "Ofsayt Tartışması", icon: <Eye className="h-5 w-5" />, color: "text-blue-400" },
   OFFSIDE: { label: "Ofsayt Kararı", icon: <Eye className="h-5 w-5" />, color: "text-blue-400" },
   MISSED_RED_CARD: { label: "Verilmeyen Kırmızı Kart", icon: <ShieldAlert className="h-5 w-5" />, color: "text-red-400" },
+  MISSED_YELLOW: { label: "Verilmeyen Sarı Kart", icon: <ShieldAlert className="h-5 w-5" />, color: "text-yellow-400" },
   RED_CARD: { label: "Kırmızı Kart", icon: <ShieldAlert className="h-5 w-5" />, color: "text-red-400" },
   YELLOW_CARD: { label: "Sarı Kart", icon: <ShieldAlert className="h-5 w-5" />, color: "text-yellow-400" },
   VAR_CONTROVERSY: { label: "VAR Tartışması", icon: <AlertTriangle className="h-5 w-5" />, color: "text-purple-400" },
@@ -86,6 +87,38 @@ const STANCE_INFO: Record<string, { label: string; icon: React.ReactNode; style:
   DISAGREE: { label: "Karara İtiraz", icon: <XCircle className="h-4 w-4" />, style: "text-red-400", bg: "border-red-500/20 bg-red-500/5" },
   NEUTRAL: { label: "Kararsız", icon: <MinusCircle className="h-4 w-4" />, style: "text-zinc-400", bg: "border-zinc-700 bg-zinc-800/30" },
 };
+
+const BEIN_TRIO_NAMES = ["Deniz Çoban (beIN Trio)", "Bahattin Duran (beIN Trio)", "Bülent Yıldırım (beIN Trio)"];
+
+function expandRefereeCommentsForDisplay(
+  comments: { author?: string; text: string; sourceUrl?: string; stance?: "AGREE" | "DISAGREE" | "NEUTRAL" }[]
+): { author: string; text: string; sourceUrl?: string; stance?: "AGREE" | "DISAGREE" | "NEUTRAL" }[] {
+  const result: { author: string; text: string; sourceUrl?: string; stance?: "AGREE" | "DISAGREE" | "NEUTRAL" }[] = [];
+  for (const rc of comments) {
+    if (rc.author === "beIN Trio" && (rc.stance === "AGREE" || rc.stance === "DISAGREE")) {
+      for (const name of BEIN_TRIO_NAMES) {
+        result.push({ ...rc, author: name });
+      }
+    } else {
+      result.push({ ...rc, author: rc.author ?? "" });
+    }
+  }
+  return result;
+}
+
+function countRefereeStances(
+  comments: { author?: string; text: string; stance?: "AGREE" | "DISAGREE" | "NEUTRAL" }[]
+): { agree: number; disagree: number; total: number } {
+  let agree = 0;
+  let disagree = 0;
+  for (const rc of comments) {
+    if (!rc.stance || !["AGREE", "DISAGREE", "NEUTRAL"].includes(rc.stance)) continue;
+    const weight = rc.author === "beIN Trio" ? 3 : 1;
+    if (rc.stance === "AGREE") agree += weight;
+    else if (rc.stance === "DISAGREE") disagree += weight;
+  }
+  return { agree, disagree, total: agree + disagree };
+}
 
 function extractYouTubeId(url: string): string | null {
   const match = url.match(/(?:watch\?v=|youtu\.be\/|embed\/|shorts\/)([a-zA-Z0-9_-]{11})/);
@@ -114,6 +147,25 @@ export default function IncidentDetailTemplate({
   const newsArticles = incident.newsArticles ?? [];
   const agreeCount = opinions.filter((o) => o.stance === "AGREE").length;
   const disagreeCount = opinions.filter((o) => o.stance === "DISAGREE").length;
+  const rcStanceCounts = countRefereeStances(refereeComments);
+  const rcAgreeCount = rcStanceCounts.agree;
+  const rcDisagreeCount = rcStanceCounts.disagree;
+  const rcTotalWithStance = rcStanceCounts.total;
+  const displayRefereeComments = expandRefereeCommentsForDisplay(refereeComments);
+
+  const hasVerdict = opinions.length > 0 || rcTotalWithStance > 0;
+  const verdictAgree = opinions.length > 0 ? agreeCount : rcAgreeCount;
+  const verdictDisagree = opinions.length > 0 ? disagreeCount : rcDisagreeCount;
+  const verdictTotal = verdictAgree + verdictDisagree;
+  const agreePercent = verdictTotal > 0 ? (verdictAgree / verdictTotal) * 100 : 0;
+  const verdict =
+    !hasVerdict || verdictTotal === 0
+      ? null
+      : agreePercent >= 60
+        ? { label: "Doğru karar", style: "text-emerald-400", bg: "bg-emerald-500/10" }
+        : agreePercent <= 40
+          ? { label: "Yanlış karar", style: "text-red-400", bg: "bg-red-500/10" }
+          : { label: "Kararsız", style: "text-amber-400", bg: "bg-amber-500/10" };
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
@@ -176,18 +228,32 @@ export default function IncidentDetailTemplate({
                 <span className="text-sm text-zinc-500">Yorumcular:</span>
                 {opinions.length > 0 ? (
                   <span className="text-sm">
-                    <span className="text-emerald-400">{agreeCount}/{opinions.length}</span>
-                    <span className="text-zinc-600 mx-1">·</span>
-                    <span className="text-red-400">{disagreeCount}/{opinions.length}</span>
-                    <span className="text-zinc-600 mx-1">·</span>
-                    <span className="text-zinc-500">
-                      {opinions.filter((o) => o.stance === "NEUTRAL").length}/{opinions.length}
-                    </span>
+                    <span className="text-emerald-400">{agreeCount}/{opinions.length} katılıyor</span>
+                    <span className="mx-2 text-zinc-600">·</span>
+                    <span className="text-red-400">{disagreeCount}/{opinions.length} karşı</span>
+                  </span>
+                ) : rcTotalWithStance > 0 ? (
+                  <span className="text-sm">
+                    <span className="text-emerald-400">{rcAgreeCount}/{rcTotalWithStance} katılıyor</span>
+                    <span className="mx-2 text-zinc-600">·</span>
+                    <span className="text-red-400">{rcDisagreeCount}/{rcTotalWithStance} karşı</span>
+                  </span>
+                ) : refereeComments.length > 0 ? (
+                  <span className="text-sm text-zinc-500">
+                    {refereeComments.length} alıntı
                   </span>
                 ) : (
                   <span className="text-sm text-zinc-500">–</span>
                 )}
               </div>
+              {verdict && (
+                <div className={`flex items-center gap-2 border-l border-zinc-700 pl-4`}>
+                  <span className="text-sm text-zinc-500">Sonuç:</span>
+                  <span className={`rounded-md px-2 py-0.5 text-sm font-medium ${verdict.bg} ${verdict.style}`}>
+                    {verdict.label}
+                  </span>
+                </div>
+              )}
             </div>
             {(incident.match.referee || incident.match.varReferee) && (
               <div className="flex flex-wrap items-center gap-3 text-xs text-zinc-500">
@@ -295,20 +361,37 @@ export default function IncidentDetailTemplate({
             <Scale className="h-5 w-5 text-red-400" />
             Hakem ve Uzman Yorumları
           </h2>
-          {opinions.length >= 2 && (
-            <div className="flex items-center gap-3 text-xs">
-              {disagreeCount > 0 && <span className="flex items-center gap-1 text-red-400"><XCircle className="h-3.5 w-3.5" /> {disagreeCount} itiraz</span>}
-              {agreeCount > 0 && <span className="flex items-center gap-1 text-emerald-400"><CheckCircle2 className="h-3.5 w-3.5" /> {agreeCount} onay</span>}
+          {(opinions.length > 0 || rcTotalWithStance > 0) && (
+            <div className="flex items-center gap-2 rounded-full bg-zinc-800/70 px-3 py-1 text-xs">
+              {opinions.length > 0 ? (
+                <>
+                  <span className="text-emerald-400">{agreeCount}/{opinions.length} katılıyor</span>
+                  <span className="text-zinc-600">·</span>
+                  <span className="text-red-400">{disagreeCount}/{opinions.length} karşı</span>
+                </>
+              ) : (
+                <>
+                  <span className="text-emerald-400">{rcAgreeCount}/{rcTotalWithStance} katılıyor</span>
+                  <span className="text-zinc-600">·</span>
+                  <span className="text-red-400">{rcDisagreeCount}/{rcTotalWithStance} karşı</span>
+                </>
+              )}
             </div>
           )}
         </div>
-        <p className="mb-4 text-xs text-zinc-500">beIN Trio, eski hakemler ve uzmanların bu pozisyona dair yorumları</p>
         {(refereeComments.length > 0 || opinions.length > 0) ? (
           <div className="space-y-4">
-            {refereeComments.map((rc, i) => (
-              <div key={`rc-${i}`} className="rounded-lg border border-zinc-700/50 bg-zinc-800/30 p-4">
+            {displayRefereeComments.map((rc, i) => {
+              const si = rc.stance ? (STANCE_INFO[rc.stance] ?? STANCE_INFO.NEUTRAL) : null;
+              return (
+              <div key={`rc-${i}`} className={`rounded-lg border p-4 ${si ? si.bg : "border-zinc-700/50 bg-zinc-800/30"}`}>
                 {rc.author && <p className="mb-2 text-xs font-semibold text-amber-400/90">{rc.author}</p>}
                 <p className="text-sm leading-relaxed text-zinc-300 italic">&ldquo;{rc.text}&rdquo;</p>
+                {si && (
+                  <div className="mt-2 flex items-center gap-1">
+                    <span className={`flex items-center gap-1 text-xs font-medium ${si.style}`}>{si.icon} {si.label}</span>
+                  </div>
+                )}
                 {rc.sourceUrl && (
                   <div className="mt-3 flex justify-end">
                     <a
@@ -323,7 +406,8 @@ export default function IncidentDetailTemplate({
                   </div>
                 )}
               </div>
-            ))}
+            );
+            })}
             {opinions.map((op) => {
               const si = STANCE_INFO[op.stance] ?? STANCE_INFO.NEUTRAL;
               return (

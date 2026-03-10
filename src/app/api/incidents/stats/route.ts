@@ -11,19 +11,23 @@ export async function GET(request: NextRequest) {
     const typeParam = searchParams.get("type")?.trim() || undefined;
     const inFavorOf = searchParams.get("inFavorOf")?.trim() || undefined;
     const against = searchParams.get("against")?.trim() || undefined;
+    const leagueParam = searchParams.get("league");
 
-    const where: Record<string, unknown> = { status: status.toUpperCase() };
+    const matchFilter: Record<string, unknown>[] = [];
+    if (leagueParam !== "all") {
+      matchFilter.push({ league: leagueParam ?? "Süper Lig 2025-26" });
+    }
     if (team) {
       const teams = team.split(",").map((t) => t.trim()).filter(Boolean);
       if (teams.length === 1) {
-        where.match = {
-          OR: [{ homeTeam: teams[0] }, { awayTeam: teams[0] }],
-        };
+        matchFilter.push({ OR: [{ homeTeam: teams[0] }, { awayTeam: teams[0] }] });
       } else if (teams.length > 1) {
-        where.match = {
-          OR: teams.flatMap((t) => [{ homeTeam: t }, { awayTeam: t }]),
-        };
+        matchFilter.push({ OR: teams.flatMap((t) => [{ homeTeam: t }, { awayTeam: t }]) });
       }
+    }
+    const where: Record<string, unknown> = { status: status.toUpperCase() };
+    if (matchFilter.length > 0) {
+      where.match = matchFilter.length === 1 ? matchFilter[0] : { AND: matchFilter };
     }
     if (typeParam) {
       const types = typeParam.split(",").map((t) => t.trim()).filter(Boolean);
@@ -61,6 +65,7 @@ export async function GET(request: NextRequest) {
       RED_CARD: "card",
       YELLOW_CARD: "card",
       MISSED_RED_CARD: "card",
+      MISSED_YELLOW: "card",
       FOUL: "foul_handball",
       HANDBALL: "foul_handball",
       VAR_CONTROVERSY: "other",

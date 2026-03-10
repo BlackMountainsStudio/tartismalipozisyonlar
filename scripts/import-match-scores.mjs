@@ -57,9 +57,9 @@ async function main() {
     const matchRes = await pool.query(
       `SELECT "id" FROM "Match"
        WHERE "homeTeam" = $1 AND "awayTeam" = $2 AND "week" = $3
-         AND ("league" = $4 OR "league" LIKE $5)
+         AND "league" = $4
        LIMIT 1`,
-      [homeTeam, awayTeam, week, league, "%Süper Lig%"]
+      [homeTeam, awayTeam, week, league]
     );
 
     if (!matchRes.rows[0]) {

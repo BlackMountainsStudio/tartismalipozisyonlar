@@ -80,9 +80,10 @@ const STANCE_INFO: Record<string, { label: string; icon: React.ReactNode; style:
 const TYPE_LABELS: Record<string, string> = {
   POSSIBLE_PENALTY: "Penaltı Pozisyonu",
   PENALTY: "Penaltı Kararı",
-  OFFSIDE: "Ofsayt Kararı",
   POSSIBLE_OFFSIDE_GOAL: "Ofsayt Tartışması",
+  OFFSIDE: "Ofsayt Kararı",
   MISSED_RED_CARD: "Verilmeyen Kırmızı Kart",
+  MISSED_YELLOW: "Verilmeyen Sarı Kart",
   RED_CARD: "Kırmızı Kart",
   YELLOW_CARD: "Sarı Kart",
   VAR_CONTROVERSY: "VAR Tartışması",

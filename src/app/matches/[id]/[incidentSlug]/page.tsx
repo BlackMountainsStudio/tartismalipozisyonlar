@@ -13,6 +13,7 @@ const TYPE_LABELS: Record<string, { label: string }> = {
   POSSIBLE_OFFSIDE_GOAL: { label: "Ofsayt Tartışması" },
   OFFSIDE: { label: "Ofsayt Kararı" },
   MISSED_RED_CARD: { label: "Verilmeyen Kırmızı Kart" },
+  MISSED_YELLOW: { label: "Verilmeyen Sarı Kart" },
   RED_CARD: { label: "Kırmızı Kart" },
   YELLOW_CARD: { label: "Sarı Kart" },
   VAR_CONTROVERSY: { label: "VAR Tartışması" },

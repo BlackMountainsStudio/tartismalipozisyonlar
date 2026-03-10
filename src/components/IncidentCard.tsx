@@ -38,6 +38,7 @@ const INCIDENT_TYPE_LABELS: Record<string, { label: string; icon: React.ReactNod
   POSSIBLE_OFFSIDE_GOAL: { label: "Ofsayt Tartışması", icon: <Eye className="h-4 w-4" /> },
   OFFSIDE: { label: "Ofsayt Kararı", icon: <Eye className="h-4 w-4" /> },
   MISSED_RED_CARD: { label: "Verilmeyen Kırmızı Kart", icon: <ShieldAlert className="h-4 w-4" /> },
+  MISSED_YELLOW: { label: "Verilmeyen Sarı Kart", icon: <ShieldAlert className="h-4 w-4" /> },
   RED_CARD: { label: "Kırmızı Kart", icon: <ShieldAlert className="h-4 w-4" /> },
   YELLOW_CARD: { label: "Sarı Kart", icon: <ShieldAlert className="h-4 w-4" /> },
   VAR_CONTROVERSY: { label: "VAR Tartışması", icon: <AlertTriangle className="h-4 w-4" /> },
@@ -132,15 +133,20 @@ export default function IncidentCard({
           {opinionSummary && (opinionSummary.agree + opinionSummary.disagree + opinionSummary.neutral) > 0 && (
             <div className="flex flex-wrap items-center gap-2 text-xs">
               <span className="text-zinc-500">Yorumcular:</span>
-              {opinionSummary.agree > 0 && (
-                <span className="text-emerald-400">{opinionSummary.agree} doğru</span>
-              )}
-              {opinionSummary.disagree > 0 && (
-                <span className="text-red-400">{opinionSummary.disagree} yanlış</span>
-              )}
-              {opinionSummary.neutral > 0 && (
-                <span className="text-zinc-500">{opinionSummary.neutral} kararsız</span>
-              )}
+              <span className="text-emerald-400">{opinionSummary.agree}/{opinionSummary.agree + opinionSummary.disagree + opinionSummary.neutral} katılıyor</span>
+              <span className="text-zinc-600">·</span>
+              <span className="text-red-400">{opinionSummary.disagree}/{opinionSummary.agree + opinionSummary.disagree + opinionSummary.neutral} karşı</span>
+              {(() => {
+                const total = opinionSummary.agree + opinionSummary.disagree;
+                const agreePct = total > 0 ? (opinionSummary.agree / total) * 100 : 0;
+                const verdict = agreePct >= 60 ? { label: "Doğru karar", style: "text-emerald-400 bg-emerald-500/10" } : agreePct <= 40 ? { label: "Yanlış karar", style: "text-red-400 bg-red-500/10" } : { label: "Kararsız", style: "text-amber-400 bg-amber-500/10" };
+                return total > 0 ? (
+                  <>
+                    <span className="text-zinc-600">·</span>
+                    <span className={`rounded px-1.5 py-0.5 text-xs font-medium ${verdict.style}`}>{verdict.label}</span>
+                  </>
+                ) : null;
+              })()}
             </div>
           )}
         </div>

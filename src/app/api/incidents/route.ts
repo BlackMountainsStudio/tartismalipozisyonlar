@@ -96,20 +96,25 @@ export async function GET(request: NextRequest) {
       if (types.length === 1) where.type = types[0];
       else if (types.length > 1) where.type = { in: types };
     }
+    const leagueParam = searchParams.get("league");
+    const matchFilter: Record<string, unknown>[] = [];
+    if (!matchId && leagueParam !== "all") {
+      matchFilter.push({ league: leagueParam ?? "Süper Lig 2025-26" });
+    }
     if (team) {
       const teams = team.split(",").map((t) => t.trim()).filter(Boolean);
       if (teams.length === 1) {
-        where.match = {
+        matchFilter.push({
           OR: [{ homeTeam: teams[0] }, { awayTeam: teams[0] }],
-        };
+        });
       } else if (teams.length > 1) {
-        where.match = {
-          OR: teams.flatMap((t) => [
-            { homeTeam: t },
-            { awayTeam: t },
-          ]),
-        };
+        matchFilter.push({
+          OR: teams.flatMap((t) => [{ homeTeam: t }, { awayTeam: t }]),
+        });
       }
+    }
+    if (matchFilter.length > 0) {
+      where.match = matchFilter.length === 1 ? matchFilter[0] : { AND: matchFilter };
     }
     if (inFavorOf) where.inFavorOf = inFavorOf;
     if (against) where.against = against;
@@ -137,10 +142,21 @@ export async function GET(request: NextRequest) {
 
     const mapped = incidents.map((inc) => {
       const opinions = (inc as { opinions?: { stance: string }[] }).opinions ?? [];
-      const agreeCount = opinions.filter((o) => o.stance === "AGREE").length;
-      const disagreeCount = opinions.filter((o) => o.stance === "DISAGREE").length;
-      const neutralCount = opinions.filter((o) => o.stance === "NEUTRAL").length;
-      const opinionSummary = opinions.length > 0 ? { agree: agreeCount, disagree: disagreeCount, neutral: neutralCount } : null;
+      let agreeCount = opinions.filter((o) => o.stance === "AGREE").length;
+      let disagreeCount = opinions.filter((o) => o.stance === "DISAGREE").length;
+      let neutralCount = opinions.filter((o) => o.stance === "NEUTRAL").length;
+      if (opinions.length === 0) {
+        const rc = (() => { try { return JSON.parse(inc.refereeComments); } catch { return []; } })();
+        const rcWithStance = Array.isArray(rc) ? rc.filter((r: { stance?: string }) => r.stance && ["AGREE", "DISAGREE", "NEUTRAL"].includes(r.stance)) : [];
+        for (const r of rcWithStance) {
+          const w = (r as { author?: string }).author === "beIN Trio" ? 3 : 1;
+          if (r.stance === "AGREE") agreeCount += w;
+          else if (r.stance === "DISAGREE") disagreeCount += w;
+          else if (r.stance === "NEUTRAL") neutralCount += w;
+        }
+      }
+      const totalWithStance = agreeCount + disagreeCount + neutralCount;
+      const opinionSummary = totalWithStance > 0 ? { agree: agreeCount, disagree: disagreeCount, neutral: neutralCount } : null;
       const match = inc.match as { slug?: string | null; league: string; week: number; date: Date; homeTeam: string; awayTeam: string };
       const matchSlugComputed =
         match?.slug ??
