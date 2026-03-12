@@ -12,6 +12,10 @@ import {
   AlertTriangle,
   Video,
   ChevronRight,
+  Flag,
+  Square,
+  CircleDot,
+  Radio,
 } from "lucide-react";
 import IncidentRadarSection from "@/components/IncidentRadarSection";
 
@@ -27,6 +31,16 @@ interface MatchWithIncidents {
   incidentCount: number;
 }
 
+interface RefereeStats {
+  totalMatches: number;
+  penalties: number;
+  redCards: number;
+  yellowCards: number;
+  varInterventions: number;
+  controversialDecisions: number;
+  refereeRating?: number | null;
+}
+
 interface RefereeDetail {
   id: string;
   name: string;
@@ -35,6 +49,7 @@ interface RefereeDetail {
   bio: string | null;
   photoUrl: string | null;
   matchesWithIncidents: MatchWithIncidents[];
+  stats?: RefereeStats;
 }
 
 const ROLE_LABELS: Record<string, string> = {
@@ -134,6 +149,57 @@ export default function HakemDetailPage({
           </div>
         </div>
       </div>
+
+      {/* Hakem istatistikleri */}
+      {referee.stats && (
+        <div className="mb-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+          <div className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-4 text-center">
+            <p className="text-2xl font-bold text-white">{referee.stats.totalMatches}</p>
+            <p className="mt-1 text-xs font-medium text-zinc-500">Toplam maç</p>
+          </div>
+          <div className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-4 text-center">
+            <p className="text-2xl font-bold text-amber-400">{referee.stats.penalties}</p>
+            <p className="mt-1 flex items-center justify-center gap-1 text-xs font-medium text-zinc-500">
+              <Flag className="h-3.5 w-3.5" />
+              Penaltı
+            </p>
+          </div>
+          <div className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-4 text-center">
+            <p className="text-2xl font-bold text-red-400">{referee.stats.redCards}</p>
+            <p className="mt-1 flex items-center justify-center gap-1 text-xs font-medium text-zinc-500">
+              <Square className="h-3.5 w-3.5" />
+              Kırmızı kart
+            </p>
+          </div>
+          <div className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-4 text-center">
+            <p className="text-2xl font-bold text-yellow-400">{referee.stats.yellowCards}</p>
+            <p className="mt-1 flex items-center justify-center gap-1 text-xs font-medium text-zinc-500">
+              <CircleDot className="h-3.5 w-3.5" />
+              Sarı kart
+            </p>
+          </div>
+          <div className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-4 text-center">
+            <p className="text-2xl font-bold text-red-500">{referee.stats.varInterventions}</p>
+            <p className="mt-1 flex items-center justify-center gap-1 text-xs font-medium text-zinc-500">
+              <Radio className="h-3.5 w-3.5" />
+              VAR müdahalesi
+            </p>
+          </div>
+          <div className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-4 text-center">
+            <p className="text-2xl font-bold text-amber-400">{referee.stats.controversialDecisions}</p>
+            <p className="mt-1 flex items-center justify-center gap-1 text-xs font-medium text-zinc-500">
+              <AlertTriangle className="h-3.5 w-3.5" />
+              Tartışmalı karar
+            </p>
+          </div>
+          {referee.stats.refereeRating != null && (
+            <div className="col-span-2 sm:col-span-3 lg:col-span-6 rounded-xl border-2 border-red-500/30 bg-red-500/5 p-4 text-center">
+              <p className="text-3xl font-bold text-red-400">{referee.stats.refereeRating}</p>
+              <p className="mt-1 text-xs font-medium text-zinc-400">Performans Rating (0-10)</p>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Hakem radar görselleştirmesi - profil ile maç listesi arasında */}
       <div className="mb-10">

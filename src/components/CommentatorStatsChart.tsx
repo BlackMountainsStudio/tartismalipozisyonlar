@@ -131,9 +131,9 @@ export default function CommentatorStatsChart({
                 border: "1px solid #3f3f46",
                 borderRadius: "8px",
               }}
-              formatter={(value: number, name: string) => [
-                `${value} değerlendirme`,
-                name,
+              formatter={(value, name) => [
+                `${value ?? 0} değerlendirme`,
+                String(name),
               ]}
             />
             <Legend

@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import IncidentCard from "@/components/IncidentCard";
 import IncidentRadarSection from "@/components/IncidentRadarSection";
+import IncidentHeatmap from "@/components/IncidentHeatmap";
 import {
   getCategoryKey,
   CATEGORY_ORDER,
@@ -242,6 +243,16 @@ export default function PozisyonlarPage() {
               </div>
             </div>
           ) : null}
+        </div>
+      )}
+
+      {/* Dakika bazlı heatmap */}
+      {incidents.length > 0 && (
+        <div className="mb-8">
+          <IncidentHeatmap
+            incidents={incidents.map((i) => ({ minute: i.minute, type: i.type }))}
+            title="Pozisyon yoğunluğu (dakika dilimleri)"
+          />
         </div>
       )}
 

@@ -14,12 +14,18 @@ export async function GET(
       include: {
         matchesAsReferee: {
           include: {
-            incidents: { where: { status: "APPROVED" }, select: { id: true, type: true, minute: true, description: true, slug: true } },
+            incidents: {
+              where: { status: "APPROVED" },
+              select: { id: true, type: true, minute: true, description: true, slug: true, varIntervention: true },
+            },
           },
         },
         matchesAsVarReferee: {
           include: {
-            incidents: { where: { status: "APPROVED" }, select: { id: true, type: true, minute: true, description: true, slug: true } },
+            incidents: {
+              where: { status: "APPROVED" },
+              select: { id: true, type: true, minute: true, description: true, slug: true, varIntervention: true },
+            },
           },
         },
       },
@@ -63,6 +69,40 @@ export async function GET(
       incidentCount: m.incidentCount,
     }));
 
+    // Hakem istatistikleri: penaltı, kırmızı kart, sarı kart, VAR müdahaleleri
+    const refIncidents = referee.matchesAsReferee.flatMap((m) => m.incidents);
+    const varIncidents = referee.matchesAsVarReferee.flatMap((m) => m.incidents);
+    const allIncidents = [...refIncidents, ...varIncidents];
+    const penalties = allIncidents.filter((i) => i.type === "PENALTY" || i.type === "POSSIBLE_PENALTY").length;
+    const redCards = allIncidents.filter((i) => i.type === "RED_CARD" || i.type === "MISSED_RED_CARD").length;
+    const yellowCards = allIncidents.filter((i) => i.type === "YELLOW_CARD" || i.type === "MISSED_YELLOW").length;
+    // VAR müdahaleleri: orta hakemken varIntervention=true olanlar + VAR hakemken tüm pozisyonlar
+    const varInterventions =
+      refIncidents.filter((i) => i.varIntervention).length + varIncidents.length;
+    const totalMatches =
+      referee.matchesAsReferee.length + referee.matchesAsVarReferee.length;
+
+    // Hakem performans rating: yorumcu/uzman katılım oranına göre (doğru_karar/toplam_karar)*10
+    const incidentsWithOpinions = await prisma.incident.findMany({
+      where: {
+        id: { in: allIncidents.map((i) => i.id) },
+        opinions: { some: {} },
+      },
+      include: { opinions: { select: { stance: true } } },
+    });
+    let agreeTotal = 0;
+    let totalWithStance = 0;
+    for (const inc of incidentsWithOpinions) {
+      for (const op of inc.opinions) {
+        if (op.stance === "AGREE" || op.stance === "DISAGREE") {
+          totalWithStance += 1;
+          if (op.stance === "AGREE") agreeTotal += 1;
+        }
+      }
+    }
+    const refereeRating =
+      totalWithStance > 0 ? Math.round((agreeTotal / totalWithStance) * 100) / 10 : null;
+
     return NextResponse.json(
       {
         id: referee.id,
@@ -74,6 +114,15 @@ export async function GET(
         createdAt: referee.createdAt,
         updatedAt: referee.updatedAt,
         matchesWithIncidents: matchesList,
+        stats: {
+          totalMatches,
+          penalties,
+          redCards,
+          yellowCards,
+          varInterventions,
+          controversialDecisions: allIncidents.length,
+          refereeRating,
+        },
       },
       { headers: NO_CACHE_HEADERS }
     );

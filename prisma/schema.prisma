@@ -54,6 +54,7 @@ model User {
   sessions       Session[]
   comments       Comment[]
   commentReports CommentReport[]
+  votes          Vote[]
 
   @@index([email])
 }
@@ -89,6 +90,7 @@ model Match {
   incidents      Incident[]
   crawledContent CrawledContent[]
   comments       Comment[]
+  varEvents      VarEvent[]
 
   @@index([homeTeam])
   @@index([awayTeam])
@@ -116,34 +118,90 @@ model Referee {
 }
 
 model Incident {
-  id              String   @id @default(cuid())
-  slug            String?
-  matchId         String
-  minute          Int?
-  type            String
-  description     String
-  confidenceScore Float
-  sources         String   @default("[]")
-  status          String   @default("PENDING")
-  videoUrl        String?
-  relatedVideos   String   @default("[]")
-  refereeComments String   @default("[]")
-  newsArticles    String   @default("[]")
-  inFavorOf       String?  // Pozisyon lehine olan takım
-  against         String?  // Pozisyon aleyhine olan takım
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  id               String   @id @default(cuid())
+  slug             String?
+  matchId          String
+  minute           Int?
+  type             String
+  description      String
+  confidenceScore  Float
+  sources          String   @default("[]")
+  status           String   @default("PENDING")
+  videoUrl         String?
+  relatedVideos    String   @default("[]")
+  refereeComments  String   @default("[]")
+  newsArticles     String   @default("[]")
+  inFavorOf        String?  // Pozisyon lehine olan takım
+  against          String?  // Pozisyon aleyhine olan takım
+  category         String?  // Roadmap: penalty, red_card, handball, offside, foul, second_yellow
+  refereeDecision  String?  // Hakem kararı: PENALTY, CONTINUE, YELLOW_CARD, RED_CARD
+  varIntervention  Boolean  @default(false) // VAR müdahale etti mi?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
 
-  match    Match           @relation(fields: [matchId], references: [id], onDelete: Cascade)
-  comments Comment[]
-  opinions ExpertOpinion[]
+  match            Match             @relation(fields: [matchId], references: [id], onDelete: Cascade)
+  comments         Comment[]
+  opinions         ExpertOpinion[]
+  votes            Vote[]
+  varEvents        VarEvent[]
+  similarFrom      SimilarPosition[] @relation("SimilarFrom")
+  similarTo        SimilarPosition[] @relation("SimilarTo")
 
   @@index([matchId])
   @@index([status])
   @@index([type])
+  @@index([category])
   @@index([slug])
   @@index([inFavorOf])
   @@index([against])
+  @@index([varIntervention])
+}
+
+// Community Karar Sistemi (Fan Oylaması)
+model Vote {
+  id           String   @id @default(cuid())
+  positionId   String
+  userId       String
+  decisionType String   // PENALTY, CONTINUE, YELLOW_CARD, RED_CARD
+  createdAt    DateTime @default(now())
+
+  incident Incident @relation(fields: [positionId], references: [id], onDelete: Cascade)
+  user     User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([positionId, userId])
+  @@index([positionId])
+  @@index([userId])
+}
+
+// VAR Müdahale Analizi
+model VarEvent {
+  id              String   @id @default(cuid())
+  matchId         String
+  positionId      String
+  refereeDecision String?  // İlk hakem kararı
+  varCalled       Boolean  @default(false)
+  finalDecision   String?  // VAR sonrası nihai karar
+  createdAt       DateTime @default(now())
+
+  incident Incident @relation(fields: [positionId], references: [id], onDelete: Cascade)
+  match    Match    @relation(fields: [matchId], references: [id], onDelete: Cascade)
+
+  @@index([matchId])
+  @@index([positionId])
+}
+
+// Benzer Pozisyon Karşılaştırma
+model SimilarPosition {
+  positionId        String
+  similarPositionId String
+  similarityScore   Float
+
+  position        Incident @relation("SimilarFrom", fields: [positionId], references: [id], onDelete: Cascade)
+  similarPosition Incident @relation("SimilarTo", fields: [similarPositionId], references: [id], onDelete: Cascade)
+
+  @@id([positionId, similarPositionId])
+  @@index([positionId])
+  @@index([similarPositionId])
 }
 
 model CrawledContent {

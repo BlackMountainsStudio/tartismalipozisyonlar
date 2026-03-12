@@ -17,6 +17,45 @@ export const INCIDENT_CATEGORIES: Record<
   VAR_CONTROVERSY: { key: "other", label: "Diğer" },
 };
 
+/** Roadmap kategorileri: penalty, red_card, handball, offside, foul, second_yellow, other */
+export const ROADMAP_CATEGORIES = [
+  "penalty",
+  "red_card",
+  "handball",
+  "offside",
+  "foul",
+  "second_yellow",
+  "other",
+] as const;
+
+export type RoadmapCategory = (typeof ROADMAP_CATEGORIES)[number];
+
+/** Type -> Roadmap category mapping */
+export const TYPE_TO_ROADMAP_CATEGORY: Record<string, RoadmapCategory> = {
+  PENALTY: "penalty",
+  POSSIBLE_PENALTY: "penalty",
+  RED_CARD: "red_card",
+  MISSED_RED_CARD: "red_card",
+  YELLOW_CARD: "second_yellow",
+  MISSED_YELLOW: "second_yellow",
+  HANDBALL: "handball",
+  GOAL_DISALLOWED: "offside",
+  OFFSIDE: "offside",
+  POSSIBLE_OFFSIDE_GOAL: "offside",
+  FOUL: "foul",
+  VAR_CONTROVERSY: "other",
+};
+
+export const ROADMAP_CATEGORY_LABELS: Record<RoadmapCategory, string> = {
+  penalty: "Penaltı",
+  red_card: "Kırmızı Kart",
+  handball: "El ile Temas",
+  offside: "Ofsayt",
+  foul: "Faul",
+  second_yellow: "İkinci Sarı Kart",
+  other: "Diğer",
+};
+
 export const CATEGORY_ORDER = [
   "penalty",
   "offside_goal",
@@ -33,6 +72,10 @@ export function getCategoryKey(type: string): string {
 
 export function getCategoryLabel(type: string): string {
   return INCIDENT_CATEGORIES[type]?.label ?? "Diğer";
+}
+
+export function getRoadmapCategory(type: string): RoadmapCategory | null {
+  return (TYPE_TO_ROADMAP_CATEGORY[type] as RoadmapCategory) ?? null;
 }
 
 /** Tüm benzersiz pozisyon türleri (API type değerleri) */

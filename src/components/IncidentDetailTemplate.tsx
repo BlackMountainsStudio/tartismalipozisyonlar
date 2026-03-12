@@ -2,6 +2,9 @@
 
 import Link from "next/link";
 import ConfidenceBadge from "./ConfidenceBadge";
+import VoteSection from "./VoteSection";
+import SimilarPositionsSection from "./SimilarPositionsSection";
+import AIPredictionSection from "./AIPredictionSection";
 import { getSourceLabel, getVideoProviderName, getOpenInNewTabLabel, getOpinionSourceLabel } from "@/lib/linkLabels";
 import { getIncidentImpactPoints } from "@/lib/incidentCategories";
 import {
@@ -361,6 +364,18 @@ export default function IncidentDetailTemplate({
           <p className="text-sm text-zinc-500">Bu pozisyonda henüz video eklenmemiş.</p>
         )}
       </div>
+
+      {/* 3.5 KULLANICI OYLAMA */}
+      <VoteSection
+        incidentId={incident.id}
+        refereeDecisionLabel={typeInfo.label}
+      />
+
+      {/* 3.6 BENZER POZİSYONLAR */}
+      <SimilarPositionsSection incidentId={incident.id} />
+
+      {/* 3.7 AI KARAR TAHMİNİ */}
+      <AIPredictionSection incidentId={incident.id} />
 
       {/* 4. HAKEM VE UZMAN YORUMLARI */}
       <div className="mb-8 rounded-xl border border-zinc-800 bg-zinc-900/50 p-6">

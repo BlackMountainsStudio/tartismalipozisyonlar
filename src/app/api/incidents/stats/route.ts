@@ -12,6 +12,7 @@ export async function GET(request: NextRequest) {
     const inFavorOf = searchParams.get("inFavorOf")?.trim() || undefined;
     const against = searchParams.get("against")?.trim() || undefined;
     const leagueParam = searchParams.get("league");
+    const categoryParam = searchParams.get("category")?.trim() || undefined;
 
     const matchFilter: Record<string, unknown>[] = [];
     if (leagueParam !== "all") {
@@ -33,6 +34,29 @@ export async function GET(request: NextRequest) {
       const types = typeParam.split(",").map((t) => t.trim()).filter(Boolean);
       if (types.length === 1) where.type = types[0];
       else if (types.length > 1) where.type = { in: types };
+    }
+    if (categoryParam) {
+      const categories = categoryParam.split(",").map((c) => c.trim()).filter(Boolean);
+      const typeMap: Record<string, string[]> = {
+        penalty: ["PENALTY", "POSSIBLE_PENALTY"],
+        red_card: ["RED_CARD", "MISSED_RED_CARD"],
+        handball: ["HANDBALL"],
+        offside: ["OFFSIDE", "GOAL_DISALLOWED", "POSSIBLE_OFFSIDE_GOAL"],
+        foul: ["FOUL"],
+        second_yellow: ["YELLOW_CARD", "MISSED_YELLOW"],
+        other: ["VAR_CONTROVERSY"],
+      };
+      const allTypes: string[] = [];
+      for (const c of categories) {
+        const t = typeMap[c];
+        if (t) allTypes.push(...t);
+      }
+      if (allTypes.length > 0) {
+        where.OR = [
+          { category: { in: categories } },
+          { category: null, type: { in: allTypes } },
+        ];
+      }
     }
     if (inFavorOf) where.inFavorOf = inFavorOf;
     if (against) where.against = against;

@@ -31,6 +31,8 @@ export async function GET(request: NextRequest) {
     const minConfidence = searchParams.get("minConfidence");
     const team = searchParams.get("team")?.trim() || undefined;
     const typeParam = searchParams.get("type")?.trim() || undefined;
+    const categoryParam = searchParams.get("category")?.trim() || undefined;
+    const seasonParam = searchParams.get("season")?.trim() || undefined;
     const inFavorOf = searchParams.get("inFavorOf")?.trim() || undefined;
     const against = searchParams.get("against")?.trim() || undefined;
 
@@ -96,6 +98,29 @@ export async function GET(request: NextRequest) {
       if (types.length === 1) where.type = types[0];
       else if (types.length > 1) where.type = { in: types };
     }
+    if (categoryParam) {
+      const categories = categoryParam.split(",").map((c) => c.trim()).filter(Boolean);
+      const typeMap: Record<string, string[]> = {
+        penalty: ["PENALTY", "POSSIBLE_PENALTY"],
+        red_card: ["RED_CARD", "MISSED_RED_CARD"],
+        handball: ["HANDBALL"],
+        offside: ["OFFSIDE", "GOAL_DISALLOWED", "POSSIBLE_OFFSIDE_GOAL"],
+        foul: ["FOUL"],
+        second_yellow: ["YELLOW_CARD", "MISSED_YELLOW"],
+        other: ["VAR_CONTROVERSY"],
+      };
+      const allTypes: string[] = [];
+      for (const c of categories) {
+        const t = typeMap[c];
+        if (t) allTypes.push(...t);
+      }
+      if (allTypes.length > 0) {
+        where.OR = [
+          { category: { in: categories } },
+          { category: null, type: { in: allTypes } },
+        ];
+      }
+    }
     const leagueParam = searchParams.get("league");
     const refereeSlugParam = searchParams.get("refereeSlug")?.trim() || undefined;
     const refereeSlugs = refereeSlugParam
@@ -105,6 +130,9 @@ export async function GET(request: NextRequest) {
     const matchFilter: Record<string, unknown>[] = [];
     if (!matchId && leagueParam !== "all") {
       matchFilter.push({ league: leagueParam ?? "Süper Lig 2025-26" });
+    }
+    if (seasonParam) {
+      matchFilter.push({ league: { contains: seasonParam } });
     }
     if (refereeSlugs.length > 0) {
       matchFilter.push({

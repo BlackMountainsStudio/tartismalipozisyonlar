@@ -32,7 +32,7 @@ export async function GET(request: NextRequest) {
         referee: { select: { id: true, name: true, slug: true, role: true } },
         varReferee: { select: { id: true, name: true, slug: true, role: true } },
         incidents: {
-          select: { id: true, type: true, status: true, confidenceScore: true, minute: true, description: true, slug: true },
+          select: { id: true, type: true, status: true, confidenceScore: true, minute: true, description: true, slug: true, varIntervention: true },
         },
       },
       orderBy: { date: "desc" },
@@ -40,7 +40,12 @@ export async function GET(request: NextRequest) {
 
     const withSlug = matches.map((m) => {
       const slug = m.slug ?? buildMatchSlug({ league: m.league, week: m.week, date: m.date, homeTeam: m.homeTeam, awayTeam: m.awayTeam });
-      return { ...m, slug };
+      const approved = (m.incidents ?? []).filter((i) => i.status === "APPROVED");
+      const penaltyEvents = approved.filter((i) => i.type === "PENALTY" || i.type === "POSSIBLE_PENALTY").length;
+      const redCards = approved.filter((i) => i.type === "RED_CARD" || i.type === "MISSED_RED_CARD").length;
+      const varInterventions = approved.filter((i) => i.varIntervention).length;
+      const controversyScore = penaltyEvents * 2 + redCards * 2 + varInterventions;
+      return { ...m, slug, controversyScore };
     });
 
     if (slugParam || idParam) {
