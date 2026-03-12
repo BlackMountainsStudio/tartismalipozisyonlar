@@ -50,22 +50,13 @@ type ValueDisplayMode = "count" | "points";
 /** Dakika filtresi modu */
 type MinuteFilterMode = "whole_match" | "minute_range";
 
-/** Karar tipi eksen tanımları (takım adlarına göre dinamik) */
-function getDecisionAxisDefinitions(
-  teamA: string,
-  teamB: string
-): { key: string; label: string; shortLabel: string }[] {
-  const shortA = teamA.length > 8 ? teamA.slice(0, 6) + "…" : teamA;
-  const shortB = teamB.length > 8 ? teamB.slice(0, 6) + "…" : teamB;
-  return [
-    { key: "lehine_home", label: `${teamA} lehine verilen kararlar`, shortLabel: `${shortA} Lehine` },
-    { key: "aleyhine_home", label: `${teamA} aleyhine verilen kararlar`, shortLabel: `${shortA} Aleyhine` },
-    { key: "correct", label: "Yorumculara göre doğru karar", shortLabel: "Doğru Karar" },
-    { key: "wrong", label: "Yorumculara göre yanlış karar", shortLabel: "Yanlış Karar" },
-    { key: "lehine_away", label: `${teamB} lehine verilen kararlar`, shortLabel: `${shortB} Lehine` },
-    { key: "aleyhine_away", label: `${teamB} aleyhine verilen kararlar`, shortLabel: `${shortB} Aleyhine` },
-  ];
-}
+/** Karar tipi eksen tanımları - Lehine/Aleyhine ve Doğru/Yanlış karşılıklı */
+const COMMON_DECISION_AXIS_DEFINITIONS = [
+  { key: "lehine", label: "Takım lehine verilen kararlar", shortLabel: "Lehine" },
+  { key: "correct", label: "Yorumculara göre doğru karar", shortLabel: "Doğru Karar" },
+  { key: "aleyhine", label: "Takım aleyhine verilen kararlar", shortLabel: "Aleyhine" },
+  { key: "wrong", label: "Yorumculara göre yanlış karar", shortLabel: "Yanlış Karar" },
+] as const;
 
 /** Pozisyon tipi eksen tanımları */
 const POSITION_AXIS_DEFINITIONS = CATEGORY_ORDER.map((categoryKey) => ({
@@ -94,18 +85,15 @@ const POSITION_AXIS_DEFINITIONS = CATEGORY_ORDER.map((categoryKey) => ({
 
 const MINUTE_SLIDER_MAX = 120;
 
-function deriveTeamsFromIncidents(incidents: RadarIncident[]): string[] {
-  const teams = new Set<string>();
-  for (const inc of incidents) {
-    if (inc.inFavorOf) teams.add(inc.inFavorOf);
-    if (inc.against) teams.add(inc.against);
-    if (inc.match) {
-      teams.add(inc.match.homeTeam);
-      teams.add(inc.match.awayTeam);
-    }
-  }
-  return [...teams].sort();
-}
+/** Radar grafiğinde kullanılacak sabit 4 takım */
+const RADAR_TEAMS = ["Fenerbahçe", "Galatasaray", "Beşiktaş", "Trabzonspor"] as const;
+
+const TEAM_CHART_COLORS = [
+  { stroke: "#ef4444", fill: "#ef4444" },
+  { stroke: "#3b82f6", fill: "#3b82f6" },
+  { stroke: "#22c55e", fill: "#22c55e" },
+  { stroke: "#eab308", fill: "#eab308" },
+];
 
 export default function MatchRadarChart({
   incidents,
@@ -115,43 +103,58 @@ export default function MatchRadarChart({
   availableTeams: availableTeamsProp,
   className = "",
 }: MatchRadarChartProps) {
-  const derivedTeams = useMemo(
-    () => deriveTeamsFromIncidents(incidents),
-    [incidents]
+  const availableTeams = useMemo(
+    () => (availableTeamsProp?.length ? availableTeamsProp : [...RADAR_TEAMS]),
+    [availableTeamsProp]
   );
-  const availableTeams = availableTeamsProp?.length
-    ? availableTeamsProp
-    : derivedTeams;
-  const defaultTeamA = availableTeams[0] ?? "";
-  const defaultTeamB = availableTeams[1] ?? availableTeams[0] ?? "";
+  const defaultSelectedTeams = useMemo(
+    () => availableTeams.slice(0, 4),
+    [availableTeams]
+  );
 
-  const [selectedTeamA, setSelectedTeamA] = useState(defaultTeamA);
-  const [selectedTeamB, setSelectedTeamB] = useState(defaultTeamB);
+  const [selectedTeams, setSelectedTeams] = useState<Set<string>>(
+    () => new Set(defaultSelectedTeams)
+  );
 
-  const homeTeam =
-    mode === "single_match"
-      ? (homeTeamProp ?? "")
-      : selectedTeamA;
-  const awayTeam =
-    mode === "single_match"
-      ? (awayTeamProp ?? "")
-      : selectedTeamB;
+  const toggleTeamSelection = (team: string) => {
+    setSelectedTeams((prev) => {
+      const next = new Set(prev);
+      if (next.has(team)) {
+        if (next.size <= 2) return prev;
+        next.delete(team);
+      } else {
+        if (next.size >= 4) return prev;
+        next.add(team);
+      }
+      return next;
+    });
+  };
+
+  const visibleTeams = useMemo(
+    () =>
+      mode === "single_match"
+        ? [homeTeamProp!, awayTeamProp!].filter(Boolean)
+        : [...selectedTeams].sort(),
+    [mode, homeTeamProp, awayTeamProp, selectedTeams]
+  );
 
   useEffect(() => {
     if (mode === "aggregate" && availableTeams.length >= 2) {
-      setSelectedTeamA((prev) =>
-        availableTeams.includes(prev) ? prev : defaultTeamA
-      );
-      setSelectedTeamB((prev) =>
-        availableTeams.includes(prev) ? prev : defaultTeamB
-      );
+      setSelectedTeams((prev) => {
+        const valid = new Set(prev);
+        valid.forEach((t) => {
+          if (!availableTeams.includes(t)) valid.delete(t);
+        });
+        if (valid.size < 2) {
+          return new Set(availableTeams.slice(0, 4));
+        }
+        return valid;
+      });
     }
-  }, [mode, availableTeams, defaultTeamA, defaultTeamB]);
+  }, [mode, availableTeams]);
 
   const [chartAxisSetType, setChartAxisSetType] = useState<ChartAxisSetType>("decision");
   const [valueDisplayMode, setValueDisplayMode] = useState<ValueDisplayMode>("count");
-  const [isHomeTeamVisible, setIsHomeTeamVisible] = useState(true);
-  const [isAwayTeamVisible, setIsAwayTeamVisible] = useState(true);
   const [selectedPositionCategoryFilters, setSelectedPositionCategoryFilters] = useState<Set<string>>(
     () => new Set(CATEGORY_ORDER)
   );
@@ -161,11 +164,11 @@ export default function MatchRadarChart({
 
   const currentAxisDefinitions =
     chartAxisSetType === "decision"
-      ? getDecisionAxisDefinitions(homeTeam, awayTeam)
+      ? [...COMMON_DECISION_AXIS_DEFINITIONS]
       : POSITION_AXIS_DEFINITIONS;
 
   const [selectedAxisKeys, setSelectedAxisKeys] = useState<Set<string>>(
-    () => new Set(getDecisionAxisDefinitions(homeTeam || "Ev", awayTeam || "Dep").map((axis) => axis.key))
+    () => new Set(COMMON_DECISION_AXIS_DEFINITIONS.map((axis) => axis.key))
   );
 
   const toggleAxisSelection = (axisKey: string) => {
@@ -222,12 +225,12 @@ export default function MatchRadarChart({
     );
     if (activeAxisDefinitions.length < 2) return [];
 
-    const homeTeamValuesByAxisKey: Record<string, number> = {};
-    const awayTeamValuesByAxisKey: Record<string, number> = {};
-
-    for (const axis of activeAxisDefinitions) {
-      homeTeamValuesByAxisKey[axis.key] = 0;
-      awayTeamValuesByAxisKey[axis.key] = 0;
+    const teamValuesByAxisKey: Record<string, Record<string, number>> = {};
+    for (const team of visibleTeams) {
+      teamValuesByAxisKey[team] = {};
+      for (const axis of activeAxisDefinitions) {
+        teamValuesByAxisKey[team][axis.key] = 0;
+      }
     }
 
     for (const incident of incidentsFilteredByPositionAndMinute) {
@@ -239,81 +242,70 @@ export default function MatchRadarChart({
       const isWrongDecision = expertDisagreeCount > expertAgreeCount;
 
       if (chartAxisSetType === "decision") {
-        if (selectedAxisKeys.has("lehine_home") && incident.inFavorOf === homeTeam) {
-          homeTeamValuesByAxisKey.lehine_home += contributionValue;
-        }
-        if (selectedAxisKeys.has("aleyhine_home") && incident.against === homeTeam) {
-          homeTeamValuesByAxisKey.aleyhine_home += contributionValue;
-        }
-        if (selectedAxisKeys.has("lehine_away") && incident.inFavorOf === awayTeam) {
-          awayTeamValuesByAxisKey.lehine_away += contributionValue;
-        }
-        if (selectedAxisKeys.has("aleyhine_away") && incident.against === awayTeam) {
-          awayTeamValuesByAxisKey.aleyhine_away += contributionValue;
-        }
-        if (selectedAxisKeys.has("correct") && isCorrectDecision) {
-          homeTeamValuesByAxisKey.correct += contributionValue;
-          awayTeamValuesByAxisKey.correct += contributionValue;
-        }
-        if (selectedAxisKeys.has("wrong") && isWrongDecision) {
-          homeTeamValuesByAxisKey.wrong += contributionValue;
-          awayTeamValuesByAxisKey.wrong += contributionValue;
+        for (const team of visibleTeams) {
+          if (selectedAxisKeys.has("lehine") && incident.inFavorOf === team) {
+            teamValuesByAxisKey[team].lehine += contributionValue;
+          }
+          if (selectedAxisKeys.has("aleyhine") && incident.against === team) {
+            teamValuesByAxisKey[team].aleyhine += contributionValue;
+          }
+          const incidentAffectsTeam =
+            incident.inFavorOf === team || incident.against === team;
+          if (selectedAxisKeys.has("correct") && isCorrectDecision && incidentAffectsTeam) {
+            teamValuesByAxisKey[team].correct += contributionValue;
+          }
+          if (selectedAxisKeys.has("wrong") && isWrongDecision && incidentAffectsTeam) {
+            teamValuesByAxisKey[team].wrong += contributionValue;
+          }
         }
       } else {
         const positionCategoryKey = getCategoryKey(incident.type);
         if (selectedAxisKeys.has(positionCategoryKey)) {
-          const incidentAffectsHomeTeam =
-            incident.inFavorOf === homeTeam || incident.against === homeTeam;
-          const incidentAffectsAwayTeam =
-            incident.inFavorOf === awayTeam || incident.against === awayTeam;
-          if (incidentAffectsHomeTeam) {
-            homeTeamValuesByAxisKey[positionCategoryKey] += contributionValue;
-          }
-          if (incidentAffectsAwayTeam) {
-            awayTeamValuesByAxisKey[positionCategoryKey] += contributionValue;
+          for (const team of visibleTeams) {
+            const incidentAffectsTeam =
+              incident.inFavorOf === team || incident.against === team;
+            if (incidentAffectsTeam) {
+              teamValuesByAxisKey[team][positionCategoryKey] += contributionValue;
+            }
           }
         }
       }
     }
 
-    const maximumValueForScale = Math.max(
-      1,
-      ...Object.values(homeTeamValuesByAxisKey),
-      ...Object.values(awayTeamValuesByAxisKey)
+    const allValues = visibleTeams.flatMap((t) =>
+      Object.values(teamValuesByAxisKey[t] ?? {})
     );
+    const maximumValueForScale = Math.max(1, ...allValues);
 
     return activeAxisDefinitions.map((axis) => {
-      const homeTeamValueForAxis = homeTeamValuesByAxisKey[axis.key] ?? 0;
-      const awayTeamValueForAxis = awayTeamValuesByAxisKey[axis.key] ?? 0;
-      return {
+      const point: Record<string, string | number> = {
         axisShortLabel: axis.shortLabel,
         axisFullLabel: axis.label,
-        [homeTeam]: homeTeamValueForAxis,
-        [awayTeam]: awayTeamValueForAxis,
         maximumValueForScale,
       };
+      for (const team of visibleTeams) {
+        point[team] = teamValuesByAxisKey[team]?.[axis.key] ?? 0;
+      }
+      return point;
     });
   }, [
     incidentsFilteredByPositionAndMinute,
     chartAxisSetType,
     selectedAxisKeys,
     valueDisplayMode,
-    homeTeam,
-    awayTeam,
+    visibleTeams,
     currentAxisDefinitions,
   ]);
 
-  const chartHasAnyData = radarChartDataPoints.some(
-    (dataPoint) =>
-      Number(dataPoint[homeTeam] ?? 0) > 0 || Number(dataPoint[awayTeam] ?? 0) > 0
+  const chartHasAnyData = radarChartDataPoints.some((dataPoint) =>
+    visibleTeams.some((t) => Number(dataPoint[t] ?? 0) > 0)
   );
 
   const hasAnyIncidents = incidents.length > 0;
   const hasValidTeams =
     mode === "single_match"
-      ? Boolean(homeTeam && awayTeam)
-      : availableTeams.length >= 2 &&
-        Boolean(selectedTeamA && selectedTeamB && selectedTeamA !== selectedTeamB);
+      ? visibleTeams.length >= 2
+      : selectedTeams.size >= 2;
 
   if (!hasAnyIncidents) {
     return null;
@@ -385,53 +377,23 @@ export default function MatchRadarChart({
 
         {mode === "aggregate" && availableTeams.length >= 2 && (
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-xs text-zinc-500">Karşılaştır:</span>
-            <select
-              value={selectedTeamA}
-              onChange={(e) => setSelectedTeamA(e.target.value)}
-              className="rounded-lg border border-zinc-700 bg-zinc-800 px-2 py-1 text-xs text-white outline-none focus:border-red-500"
-            >
-              {availableTeams.map((t) => (
-                <option key={t} value={t}>
-                  {t}
-                </option>
-              ))}
-            </select>
-            <span className="text-xs text-zinc-600">vs</span>
-            <select
-              value={selectedTeamB}
-              onChange={(e) => setSelectedTeamB(e.target.value)}
-              className="rounded-lg border border-zinc-700 bg-zinc-800 px-2 py-1 text-xs text-white outline-none focus:border-red-500"
-            >
-              {availableTeams.map((t) => (
-                <option key={t} value={t}>
-                  {t}
-                </option>
-              ))}
-            </select>
+            <span className="text-xs text-zinc-500">Takımlar:</span>
+            {availableTeams.map((team) => (
+              <label
+                key={team}
+                className="flex cursor-pointer items-center gap-1.5 rounded-lg border border-zinc-700 bg-zinc-800/50 px-2 py-1 transition-colors hover:bg-zinc-800"
+              >
+                <input
+                  type="checkbox"
+                  checked={selectedTeams.has(team)}
+                  onChange={() => toggleTeamSelection(team)}
+                  className="h-3 w-3 rounded border-zinc-600 bg-zinc-800 text-red-500 focus:ring-red-500"
+                />
+                <span className="text-xs text-zinc-300">{team}</span>
+              </label>
+            ))}
           </div>
         )}
-        <div className="flex items-center gap-2">
-          <span className="text-xs text-zinc-500">Göster:</span>
-          <label className="flex cursor-pointer items-center gap-1.5">
-            <input
-              type="checkbox"
-              checked={isHomeTeamVisible}
-              onChange={(event) => setIsHomeTeamVisible(event.target.checked)}
-              className="h-3.5 w-3.5 rounded border-zinc-600 bg-zinc-800 text-red-500 focus:ring-red-500"
-            />
-            <span className="text-xs text-zinc-400">{homeTeam}</span>
-          </label>
-          <label className="flex cursor-pointer items-center gap-1.5">
-            <input
-              type="checkbox"
-              checked={isAwayTeamVisible}
-              onChange={(event) => setIsAwayTeamVisible(event.target.checked)}
-              className="h-3.5 w-3.5 rounded border-zinc-600 bg-zinc-800 text-red-500 focus:ring-red-500"
-            />
-            <span className="text-xs text-zinc-400">{awayTeam}</span>
-          </label>
-        </div>
 
         <div className="flex flex-wrap items-center gap-2">
           <span className="text-xs text-zinc-500">Pozisyon tipi:</span>
@@ -567,26 +529,20 @@ export default function MatchRadarChart({
                 tick={{ fill: "#71717a", fontSize: 10 }}
                 tickCount={4}
               />
-              {isHomeTeamVisible && (
-                <Radar
-                  name={homeTeam}
-                  dataKey={homeTeam}
-                  stroke="#ef4444"
-                  fill="#ef4444"
-                  fillOpacity={0.25}
-                  strokeWidth={2}
-                />
-              )}
-              {isAwayTeamVisible && (
-                <Radar
-                  name={awayTeam}
-                  dataKey={awayTeam}
-                  stroke="#3b82f6"
-                  fill="#3b82f6"
-                  fillOpacity={0.25}
-                  strokeWidth={2}
-                />
-              )}
+              {visibleTeams.map((team, idx) => {
+                  const colors = TEAM_CHART_COLORS[idx % TEAM_CHART_COLORS.length];
+                  return (
+                    <Radar
+                      key={team}
+                      name={team}
+                      dataKey={team}
+                      stroke={colors.stroke}
+                      fill={colors.fill}
+                      fillOpacity={0.25}
+                      strokeWidth={2}
+                    />
+                  );
+                })}
               <Tooltip
                 contentStyle={{
                   backgroundColor: "#27272a",
@@ -616,7 +572,7 @@ export default function MatchRadarChart({
       {(!hasValidTeams || radarChartDataPoints.length < 2) && (
         <p className="py-8 text-center text-sm text-zinc-500">
           {!hasValidTeams && mode === "aggregate"
-            ? "Karşılaştırmak için farklı iki takım seçin"
+            ? "En az 2 takım seçin"
             : "En az 2 eksen seçin"}
         </p>
       )}
