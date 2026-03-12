@@ -7,6 +7,13 @@ import {
   PolarGrid,
   PolarAngleAxis,
   PolarRadiusAxis,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  LineChart,
+  Line,
   ResponsiveContainer,
   Legend,
   Tooltip,
@@ -49,6 +56,9 @@ type ValueDisplayMode = "count" | "points";
 
 /** Dakika filtresi modu */
 type MinuteFilterMode = "whole_match" | "minute_range";
+
+/** Görselleştirme tipi */
+type VisualizationType = "radar" | "bar" | "line";
 
 /** Karar tipi eksen tanımları - Lehine/Aleyhine ve Doğru/Yanlış karşılıklı */
 const COMMON_DECISION_AXIS_DEFINITIONS = [
@@ -155,6 +165,7 @@ export default function MatchRadarChart({
 
   const [chartAxisSetType, setChartAxisSetType] = useState<ChartAxisSetType>("decision");
   const [valueDisplayMode, setValueDisplayMode] = useState<ValueDisplayMode>("count");
+  const [visualizationType, setVisualizationType] = useState<VisualizationType>("radar");
   const [selectedPositionCategoryFilters, setSelectedPositionCategoryFilters] = useState<Set<string>>(
     () => new Set(CATEGORY_ORDER)
   );
@@ -318,7 +329,7 @@ export default function MatchRadarChart({
   return (
     <div className={`rounded-xl border border-zinc-800 bg-zinc-900/40 p-4 ${className}`}>
       <h3 className="mb-4 text-sm font-semibold text-white">
-        Karar Radar Görselleştirmesi
+        Karar Görselleştirmesi
       </h3>
 
       {/* Kontroller */}
@@ -346,6 +357,43 @@ export default function MatchRadarChart({
             }`}
           >
             Pozisyon
+          </button>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <span className="text-xs text-zinc-500">Görselleştirme:</span>
+          <button
+            type="button"
+            onClick={() => setVisualizationType("radar")}
+            className={`rounded-lg px-2 py-1 text-xs font-medium transition-colors ${
+              visualizationType === "radar"
+                ? "bg-red-500/20 text-red-400"
+                : "bg-zinc-800 text-zinc-400 hover:bg-zinc-700"
+            }`}
+          >
+            Radar
+          </button>
+          <button
+            type="button"
+            onClick={() => setVisualizationType("bar")}
+            className={`rounded-lg px-2 py-1 text-xs font-medium transition-colors ${
+              visualizationType === "bar"
+                ? "bg-red-500/20 text-red-400"
+                : "bg-zinc-800 text-zinc-400 hover:bg-zinc-700"
+            }`}
+          >
+            Sütun
+          </button>
+          <button
+            type="button"
+            onClick={() => setVisualizationType("line")}
+            className={`rounded-lg px-2 py-1 text-xs font-medium transition-colors ${
+              visualizationType === "line"
+                ? "bg-red-500/20 text-red-400"
+                : "bg-zinc-800 text-zinc-400 hover:bg-zinc-700"
+            }`}
+          >
+            Çizgi
           </button>
         </div>
 
@@ -506,30 +554,31 @@ export default function MatchRadarChart({
         ))}
       </div>
 
-      {/* Radar Chart */}
+      {/* Chart */}
       {hasValidTeams && radarChartDataPoints.length >= 2 && (
         <div className="h-72 w-full">
           <ResponsiveContainer width="100%" height="100%">
-            <RechartsRadar
-              cx="50%"
-              cy="50%"
-              outerRadius="70%"
-              data={radarChartDataPoints}
-              margin={{ top: 8, right: 8, bottom: 8, left: 8 }}
-            >
-              <PolarGrid stroke="#3f3f46" />
-              <PolarAngleAxis
-                dataKey="axisShortLabel"
-                tick={{ fill: "#a1a1aa", fontSize: 11 }}
-                tickLine={{ stroke: "#52525b" }}
-              />
-              <PolarRadiusAxis
-                angle={90}
-                domain={[0, "auto"]}
-                tick={{ fill: "#71717a", fontSize: 10 }}
-                tickCount={4}
-              />
-              {visibleTeams.map((team, idx) => {
+            {visualizationType === "radar" ? (
+              <RechartsRadar
+                cx="50%"
+                cy="50%"
+                outerRadius="70%"
+                data={radarChartDataPoints}
+                margin={{ top: 8, right: 8, bottom: 8, left: 8 }}
+              >
+                <PolarGrid stroke="#3f3f46" />
+                <PolarAngleAxis
+                  dataKey="axisShortLabel"
+                  tick={{ fill: "#a1a1aa", fontSize: 11 }}
+                  tickLine={{ stroke: "#52525b" }}
+                />
+                <PolarRadiusAxis
+                  angle={90}
+                  domain={[0, "auto"]}
+                  tick={{ fill: "#71717a", fontSize: 10 }}
+                  tickCount={4}
+                />
+                {visibleTeams.map((team, idx) => {
                   const colors = TEAM_CHART_COLORS[idx % TEAM_CHART_COLORS.length];
                   return (
                     <Radar
@@ -543,28 +592,130 @@ export default function MatchRadarChart({
                     />
                   );
                 })}
-              <Tooltip
-                contentStyle={{
-                  backgroundColor: "#27272a",
-                  border: "1px solid #3f3f46",
-                  borderRadius: "8px",
-                }}
-                labelStyle={{ color: "#a1a1aa" }}
-                formatter={(value, name) => [
-                  `${Number(value ?? 0)} ${valueDisplayMode === "points" ? "puan" : "adet"}`,
-                  String(name ?? ""),
-                ]}
-                labelFormatter={(_, payload) =>
-                  payload?.[0]?.payload?.axisFullLabel ?? ""
-                }
-              />
-              <Legend
-                wrapperStyle={{ fontSize: "12px" }}
-                formatter={(value) => (
-                  <span className="text-zinc-300">{value}</span>
-                )}
-              />
-            </RechartsRadar>
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: "#27272a",
+                    border: "1px solid #3f3f46",
+                    borderRadius: "8px",
+                  }}
+                  labelStyle={{ color: "#a1a1aa" }}
+                  formatter={(value, name) => [
+                    `${Number(value ?? 0)} ${valueDisplayMode === "points" ? "puan" : "adet"}`,
+                    String(name ?? ""),
+                  ]}
+                  labelFormatter={(_, payload) =>
+                    payload?.[0]?.payload?.axisFullLabel ?? ""
+                  }
+                />
+                <Legend
+                  wrapperStyle={{ fontSize: "12px" }}
+                  formatter={(value) => (
+                    <span className="text-zinc-300">{value}</span>
+                  )}
+                />
+              </RechartsRadar>
+            ) : visualizationType === "bar" ? (
+              <BarChart
+                data={radarChartDataPoints}
+                margin={{ top: 8, right: 8, bottom: 8, left: 8 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" stroke="#3f3f46" />
+                <XAxis
+                  dataKey="axisShortLabel"
+                  tick={{ fill: "#a1a1aa", fontSize: 11 }}
+                  tickLine={{ stroke: "#52525b" }}
+                />
+                <YAxis
+                  tick={{ fill: "#71717a", fontSize: 10 }}
+                  tickLine={{ stroke: "#52525b" }}
+                />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: "#27272a",
+                    border: "1px solid #3f3f46",
+                    borderRadius: "8px",
+                  }}
+                  labelStyle={{ color: "#a1a1aa" }}
+                  formatter={(value, name) => [
+                    `${Number(value ?? 0)} ${valueDisplayMode === "points" ? "puan" : "adet"}`,
+                    String(name ?? ""),
+                  ]}
+                  labelFormatter={(_, payload) =>
+                    payload?.[0]?.payload?.axisFullLabel ?? ""
+                  }
+                />
+                <Legend
+                  wrapperStyle={{ fontSize: "12px" }}
+                  formatter={(value) => (
+                    <span className="text-zinc-300">{value}</span>
+                  )}
+                />
+                {visibleTeams.map((team, idx) => {
+                  const colors = TEAM_CHART_COLORS[idx % TEAM_CHART_COLORS.length];
+                  return (
+                    <Bar
+                      key={team}
+                      dataKey={team}
+                      name={team}
+                      fill={colors.fill}
+                      fillOpacity={0.8}
+                      radius={[2, 2, 0, 0]}
+                    />
+                  );
+                })}
+              </BarChart>
+            ) : (
+              <LineChart
+                data={radarChartDataPoints}
+                margin={{ top: 8, right: 8, bottom: 8, left: 8 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" stroke="#3f3f46" />
+                <XAxis
+                  dataKey="axisShortLabel"
+                  tick={{ fill: "#a1a1aa", fontSize: 11 }}
+                  tickLine={{ stroke: "#52525b" }}
+                />
+                <YAxis
+                  tick={{ fill: "#71717a", fontSize: 10 }}
+                  tickLine={{ stroke: "#52525b" }}
+                />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: "#27272a",
+                    border: "1px solid #3f3f46",
+                    borderRadius: "8px",
+                  }}
+                  labelStyle={{ color: "#a1a1aa" }}
+                  formatter={(value, name) => [
+                    `${Number(value ?? 0)} ${valueDisplayMode === "points" ? "puan" : "adet"}`,
+                    String(name ?? ""),
+                  ]}
+                  labelFormatter={(_, payload) =>
+                    payload?.[0]?.payload?.axisFullLabel ?? ""
+                  }
+                />
+                <Legend
+                  wrapperStyle={{ fontSize: "12px" }}
+                  formatter={(value) => (
+                    <span className="text-zinc-300">{value}</span>
+                  )}
+                />
+                {visibleTeams.map((team, idx) => {
+                  const colors = TEAM_CHART_COLORS[idx % TEAM_CHART_COLORS.length];
+                  return (
+                    <Line
+                      key={team}
+                      type="monotone"
+                      dataKey={team}
+                      name={team}
+                      stroke={colors.stroke}
+                      strokeWidth={2}
+                      dot={{ fill: colors.fill, r: 4 }}
+                    />
+                  );
+                })}
+              </LineChart>
+            )}
           </ResponsiveContainer>
         </div>
       )}
