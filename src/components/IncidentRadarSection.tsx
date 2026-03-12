@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import MatchRadarChart, {
   type RadarIncident,
   type RadarChartMode,
@@ -28,6 +28,12 @@ interface IncidentRadarSectionProps {
   availableTeams?: string[];
   /** Kapsam seçimini gizle (örn. ana sayfada sadece "tüm maçlar") */
   showScopeToggle?: boolean;
+  /** Veri yüklendiğinde çağrılır (incident sayısı) */
+  onDataLoaded?: (count: number) => void;
+  /** Hakem seçici göster (hakem detay sayfası vb.) */
+  enableRefereeFilter?: boolean;
+  /** Hakem filtresi için başlangıç slug (örn. mevcut sayfa hakemi) */
+  initialRefereeSlug?: string;
   className?: string;
 }
 
@@ -42,17 +48,50 @@ export default function IncidentRadarSection({
   mode = "single_match",
   availableTeams: availableTeamsProp,
   showScopeToggle = true,
+  onDataLoaded,
+  enableRefereeFilter = false,
+  initialRefereeSlug,
   className = "",
 }: IncidentRadarSectionProps) {
   const [allIncidents, setAllIncidents] = useState<RadarIncident[]>([]);
   const [loadingAll, setLoadingAll] = useState(false);
+  const [referees, setReferees] = useState<{ id: string; name: string; slug: string }[]>([]);
+  const [refereeFilterMode, setRefereeFilterMode] = useState<"all" | "select">(
+    () => (initialRefereeSlug ? "select" : "all")
+  );
+  const [selectedRefereeSlugs, setSelectedRefereeSlugs] = useState<Set<string>>(
+    () => (initialRefereeSlug ? new Set([initialRefereeSlug]) : new Set())
+  );
+
+  const fetchReferees = useCallback(async () => {
+    try {
+      const res = await fetch("/api/referees", { cache: "no-store" });
+      const data = await res.json();
+      const list = Array.isArray(data) ? data : [];
+      setReferees(list.filter((r: { matchesWithIncidentsCount?: number }) => (r.matchesWithIncidentsCount ?? 0) > 0));
+    } catch {
+      setReferees([]);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (enableRefereeFilter) fetchReferees();
+  }, [enableRefereeFilter, fetchReferees]);
+
+  const effectiveFetchParams = useMemo(() => {
+    const base = { ...allDataFetchParams };
+    if (enableRefereeFilter && refereeFilterMode === "select" && selectedRefereeSlugs.size > 0) {
+      base.refereeSlug = [...selectedRefereeSlugs].join(",");
+    }
+    return base;
+  }, [allDataFetchParams, enableRefereeFilter, refereeFilterMode, selectedRefereeSlugs]);
 
   const fetchAllIncidents = useCallback(async () => {
     setLoadingAll(true);
     try {
       const params = new URLSearchParams({
         status: "APPROVED",
-        ...allDataFetchParams,
+        ...effectiveFetchParams,
       });
       const res = await fetch(`/api/incidents?${params}`, { cache: "no-store" });
       const data = await res.json();
@@ -74,7 +113,7 @@ export default function IncidentRadarSection({
     } finally {
       setLoadingAll(false);
     }
-  }, [allDataFetchParams]);
+  }, [effectiveFetchParams]);
 
   const effectiveScope = showScopeToggle ? scope : "all";
 
@@ -86,6 +125,13 @@ export default function IncidentRadarSection({
 
   const incidents =
     effectiveScope === "all" ? allIncidents : currentIncidents;
+
+  useEffect(() => {
+    if (!loadingAll && onDataLoaded) {
+      onDataLoaded(incidents.length);
+    }
+  }, [incidents.length, loadingAll, onDataLoaded]);
+
   const chartMode: RadarChartMode =
     mode === "aggregate" || effectiveScope === "all"
       ? "aggregate"
@@ -95,6 +141,9 @@ export default function IncidentRadarSection({
 
   const hasData = incidents.length > 0;
   if (!hasData && scope === "current" && showScopeToggle) {
+    return null;
+  }
+  if (!hasData && !showScopeToggle && effectiveScope === "all" && !loadingAll && !enableRefereeFilter) {
     return null;
   }
 
@@ -141,13 +190,71 @@ export default function IncidentRadarSection({
           <Loader2 className="h-8 w-8 animate-spin text-red-500" />
         </div>
       ) : (
-        <MatchRadarChart
-          incidents={incidents}
-          homeTeam={homeTeam}
-          awayTeam={awayTeam}
-          mode={chartMode}
-          availableTeams={availableTeamsProp}
-        />
+        <>
+          {enableRefereeFilter && referees.length > 0 && (
+            <div className="mb-4 flex flex-wrap items-center gap-3">
+              <span className="text-xs text-zinc-500">Hakemler:</span>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setRefereeFilterMode("all")}
+                  className={`rounded-lg px-2 py-1 text-xs font-medium transition-colors ${
+                    refereeFilterMode === "all"
+                      ? "bg-red-500/20 text-red-400"
+                      : "bg-zinc-800 text-zinc-400 hover:bg-zinc-700"
+                  }`}
+                >
+                  Hepsi
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setRefereeFilterMode("select")}
+                  className={`rounded-lg px-2 py-1 text-xs font-medium transition-colors ${
+                    refereeFilterMode === "select"
+                      ? "bg-red-500/20 text-red-400"
+                      : "bg-zinc-800 text-zinc-400 hover:bg-zinc-700"
+                  }`}
+                >
+                  Seç
+                </button>
+              </div>
+              {refereeFilterMode === "select" && (
+                <div className="flex flex-wrap items-center gap-2">
+                  {referees.map((ref) => (
+                    <label
+                      key={ref.id}
+                      className="flex cursor-pointer items-center gap-1.5 rounded-lg border border-zinc-700 bg-zinc-800/50 px-2 py-1 transition-colors hover:bg-zinc-800"
+                    >
+                      <input
+                        type="checkbox"
+                        checked={selectedRefereeSlugs.has(ref.slug)}
+                        onChange={() => {
+                          const next = new Set(selectedRefereeSlugs);
+                          if (next.has(ref.slug)) {
+                            if (next.size <= 1) return;
+                            next.delete(ref.slug);
+                          } else {
+                            next.add(ref.slug);
+                          }
+                          setSelectedRefereeSlugs(next);
+                        }}
+                        className="h-3 w-3 rounded border-zinc-600 bg-zinc-800 text-red-500 focus:ring-red-500"
+                      />
+                      <span className="text-xs text-zinc-300">{ref.name}</span>
+                    </label>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+          <MatchRadarChart
+            incidents={incidents}
+            homeTeam={homeTeam}
+            awayTeam={awayTeam}
+            mode={chartMode}
+            availableTeams={availableTeamsProp}
+          />
+        </>
       )}
     </div>
   );

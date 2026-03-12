@@ -97,18 +97,21 @@ export async function GET(request: NextRequest) {
       else if (types.length > 1) where.type = { in: types };
     }
     const leagueParam = searchParams.get("league");
-    const refereeSlug = searchParams.get("refereeSlug")?.trim() || undefined;
+    const refereeSlugParam = searchParams.get("refereeSlug")?.trim() || undefined;
+    const refereeSlugs = refereeSlugParam
+      ? refereeSlugParam.split(",").map((s) => s.trim()).filter(Boolean)
+      : [];
     const commentatorSlug = searchParams.get("commentatorSlug")?.trim() || undefined;
     const matchFilter: Record<string, unknown>[] = [];
     if (!matchId && leagueParam !== "all") {
       matchFilter.push({ league: leagueParam ?? "Süper Lig 2025-26" });
     }
-    if (refereeSlug) {
+    if (refereeSlugs.length > 0) {
       matchFilter.push({
-        OR: [
-          { referee: { slug: refereeSlug } },
-          { varReferee: { slug: refereeSlug } },
-        ],
+        OR: refereeSlugs.flatMap((slug) => [
+          { referee: { slug } },
+          { varReferee: { slug } },
+        ]),
       });
     }
     if (team) {

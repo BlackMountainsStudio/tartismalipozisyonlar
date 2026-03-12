@@ -20,6 +20,7 @@ import {
 import { getOpinionSourceLabel } from "@/lib/linkLabels";
 import { incidentUrl } from "@/lib/links";
 import { buildMatchSlug, buildIncidentSlug } from "@/lib/slug";
+import CommentatorStatsChart from "@/components/CommentatorStatsChart";
 
 interface Opinion {
   id: string;
@@ -187,6 +188,18 @@ export default function YorumcuDetayPage({
         <StatBox label="Karar Doğru" value={agreeCount} color="text-emerald-400" />
         <StatBox label="İtiraz Etti" value={disagreeCount} color="text-red-400" />
         <StatBox label="Kararsız" value={neutralCount} color="text-zinc-400" />
+      </div>
+
+      {/* Pozisyon tipine göre değerlendirme grafiği */}
+      <div className="mb-8">
+        <CommentatorStatsChart
+          opinions={commentator.opinions.map((o) => ({
+            id: o.id,
+            stance: o.stance,
+            incident: { type: o.incident.type },
+          }))}
+          commentatorName={commentator.name}
+        />
       </div>
 
       {/* Kariyer */}

@@ -13,6 +13,7 @@ import {
   Video,
   ChevronRight,
 } from "lucide-react";
+import IncidentRadarSection from "@/components/IncidentRadarSection";
 
 interface MatchWithIncidents {
   id: string;
@@ -50,6 +51,8 @@ export default function HakemDetailPage({
   const router = useRouter();
   const [referee, setReferee] = useState<RefereeDetail | null>(null);
   const [loading, setLoading] = useState(true);
+  const [radarDataCount, setRadarDataCount] = useState<number | null>(null);
+  const onRadarDataLoaded = useCallback((count: number) => setRadarDataCount(count), []);
 
   const fetchData = useCallback(async () => {
     try {
@@ -130,6 +133,31 @@ export default function HakemDetailPage({
             )}
           </div>
         </div>
+      </div>
+
+      {/* Hakem radar görselleştirmesi - profil ile maç listesi arasında */}
+      <div className="mb-10">
+        <h2 className="mb-4 text-xl font-bold text-white">
+          Karar istatistikleri
+        </h2>
+          <IncidentRadarSection
+            currentIncidents={[]}
+            scope="all"
+            onScopeChange={() => {}}
+            allDataFetchParams={{}}
+            showScopeToggle={false}
+            mode="aggregate"
+            onDataLoaded={onRadarDataLoaded}
+            enableRefereeFilter
+            initialRefereeSlug={referee.slug}
+          />
+        {radarDataCount === 0 && (
+          <div className="rounded-xl border border-dashed border-zinc-800 bg-zinc-900/30 py-8 text-center">
+            <p className="text-sm text-zinc-500">
+              Bu hakemin maçlarında görselleştirilecek onaylı pozisyon bulunamadı
+            </p>
+          </div>
+        )}
       </div>
 
       <h2 className="mb-4 flex items-center gap-2 text-xl font-bold text-white">
