@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import IncidentCard from "@/components/IncidentCard";
+import IncidentRadarSection from "@/components/IncidentRadarSection";
 import {
   getCategoryKey,
   CATEGORY_ORDER,
@@ -76,6 +77,7 @@ export default function PozisyonlarPage() {
   const [selectedTeams, setSelectedTeams] = useState<string[]>([]);
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
   const [favorFilter, setFavorFilter] = useState<{ type: "inFavorOf" | "against"; team: string } | null>(null);
+  const [radarScope, setRadarScope] = useState<"current" | "all">("current");
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(
     new Set(CATEGORY_ORDER)
   );
@@ -240,6 +242,32 @@ export default function PozisyonlarPage() {
               </div>
             </div>
           ) : null}
+        </div>
+      )}
+
+      {/* Radar görselleştirme */}
+      {(incidents.length > 0 || radarScope === "all") && (
+        <div className="mb-8">
+          <IncidentRadarSection
+            currentIncidents={incidents.map((i) => ({
+              id: i.id,
+              type: i.type,
+              minute: i.minute,
+              inFavorOf: i.inFavorOf,
+              against: i.against,
+              opinionSummary: i.opinionSummary,
+              match: i.match,
+            }))}
+            scope={radarScope}
+            onScopeChange={setRadarScope}
+            allDataFetchParams={{
+              ...(selectedTeams.length > 0 && { team: selectedTeams.join(",") }),
+              ...(selectedTypes.length > 0 && { type: selectedTypes.join(",") }),
+              ...(favorFilter && { [favorFilter.type]: favorFilter.team }),
+            }}
+            mode="aggregate"
+            showScopeToggle={true}
+          />
         </div>
       )}
 

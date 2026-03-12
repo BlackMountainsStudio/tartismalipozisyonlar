@@ -97,9 +97,19 @@ export async function GET(request: NextRequest) {
       else if (types.length > 1) where.type = { in: types };
     }
     const leagueParam = searchParams.get("league");
+    const refereeSlug = searchParams.get("refereeSlug")?.trim() || undefined;
+    const commentatorSlug = searchParams.get("commentatorSlug")?.trim() || undefined;
     const matchFilter: Record<string, unknown>[] = [];
     if (!matchId && leagueParam !== "all") {
       matchFilter.push({ league: leagueParam ?? "Süper Lig 2025-26" });
+    }
+    if (refereeSlug) {
+      matchFilter.push({
+        OR: [
+          { referee: { slug: refereeSlug } },
+          { varReferee: { slug: refereeSlug } },
+        ],
+      });
     }
     if (team) {
       const teams = team.split(",").map((t) => t.trim()).filter(Boolean);
@@ -118,6 +128,11 @@ export async function GET(request: NextRequest) {
     }
     if (inFavorOf) where.inFavorOf = inFavorOf;
     if (against) where.against = against;
+    if (commentatorSlug) {
+      where.opinions = {
+        some: { commentator: { slug: commentatorSlug } },
+      };
+    }
 
     const incidents = await prisma.incident.findMany({
       where,

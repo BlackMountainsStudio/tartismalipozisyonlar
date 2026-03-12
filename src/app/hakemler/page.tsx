@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import IncidentRadarSection from "@/components/IncidentRadarSection";
 import { Loader2, UserRound, ChevronRight, AlertTriangle } from "lucide-react";
 
 interface RefereeListItem {
@@ -32,6 +33,7 @@ export default function HakemlerPage() {
   const [referees, setReferees] = useState<RefereeListItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [roleFilter, setRoleFilter] = useState<RoleFilter>("all");
+  const [radarRefereeSlug, setRadarRefereeSlug] = useState<string>("");
 
   useEffect(() => {
     fetch("/api/referees", { cache: "no-store" })
@@ -66,6 +68,35 @@ export default function HakemlerPage() {
         <p className="text-zinc-400">
           Maçlarda görev yapan hakem ve VAR hakemleri · Tartışmalı karar aldıkları maçlar
         </p>
+      </div>
+
+      {/* Radar görselleştirme */}
+      <div className="mb-8">
+        <div className="mb-3 flex flex-wrap items-center gap-2">
+          <span className="text-xs text-zinc-500">Hakem filtresi (radar):</span>
+          <select
+            value={radarRefereeSlug}
+            onChange={(e) => setRadarRefereeSlug(e.target.value)}
+            className="rounded-lg border border-zinc-700 bg-zinc-800 px-2 py-1 text-xs text-white outline-none focus:border-red-500"
+          >
+            <option value="">Tüm hakemler</option>
+            {filteredReferees.map((r) => (
+              <option key={r.id} value={r.slug}>
+                {r.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <IncidentRadarSection
+          currentIncidents={[]}
+          scope="all"
+          onScopeChange={() => {}}
+          allDataFetchParams={{
+            ...(radarRefereeSlug && { refereeSlug: radarRefereeSlug }),
+          }}
+          mode="aggregate"
+          showScopeToggle={false}
+        />
       </div>
 
       {/* Hakem / VAR filtresi */}

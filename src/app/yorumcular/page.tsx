@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import IncidentRadarSection from "@/components/IncidentRadarSection";
 import { Loader2, Scale, ChevronRight, CheckCircle2, XCircle, MinusCircle } from "lucide-react";
 
 interface Opinion {
@@ -27,6 +28,7 @@ interface Commentator {
 export default function YorumcularPage() {
   const [commentators, setCommentators] = useState<Commentator[]>([]);
   const [loading, setLoading] = useState(true);
+  const [radarCommentatorSlug, setRadarCommentatorSlug] = useState<string>("");
 
   useEffect(() => {
     fetch("/api/commentators", { cache: "no-store" })
@@ -56,6 +58,35 @@ export default function YorumcularPage() {
         <p className="text-zinc-400">
           Tartışmalı pozisyonları değerlendiren eski hakemler ve spor yorumcuları
         </p>
+      </div>
+
+      {/* Radar görselleştirme */}
+      <div className="mb-8">
+        <div className="mb-3 flex flex-wrap items-center gap-2">
+          <span className="text-xs text-zinc-500">Yorumcu filtresi (radar):</span>
+          <select
+            value={radarCommentatorSlug}
+            onChange={(e) => setRadarCommentatorSlug(e.target.value)}
+            className="rounded-lg border border-zinc-700 bg-zinc-800 px-2 py-1 text-xs text-white outline-none focus:border-red-500"
+          >
+            <option value="">Tüm yorumcular</option>
+            {commentators.map((c) => (
+              <option key={c.id} value={c.slug}>
+                {c.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <IncidentRadarSection
+          currentIncidents={[]}
+          scope="all"
+          onScopeChange={() => {}}
+          allDataFetchParams={{
+            ...(radarCommentatorSlug && { commentatorSlug: radarCommentatorSlug }),
+          }}
+          mode="aggregate"
+          showScopeToggle={false}
+        />
       </div>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">

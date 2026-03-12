@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import IncidentCard from "@/components/IncidentCard";
 import CommentSection from "@/components/CommentSection";
+import IncidentRadarSection from "@/components/IncidentRadarSection";
 import { matchUrl, refereeUrl } from "@/lib/links";
 import { INCIDENT_TYPE_LABELS, getIncidentImpactPoints } from "@/lib/incidentCategories";
 import { ArrowLeft, Loader2, Calendar, Trophy, Shield, UserRound, Scale } from "lucide-react";
@@ -50,6 +51,7 @@ export default function MatchPage({
   const [match, setMatch] = useState<Match | null>(null);
   const [incidents, setIncidents] = useState<Incident[]>([]);
   const [loading, setLoading] = useState(true);
+  const [radarScope, setRadarScope] = useState<"current" | "all">("current");
 
   const fetchData = useCallback(async () => {
     try {
@@ -279,6 +281,23 @@ export default function MatchPage({
           </div>
         )}
       </div>
+
+      {(incidents.length > 0 || radarScope === "all") && (
+        <IncidentRadarSection
+          currentIncidents={incidents.map((i) => ({
+            id: i.id,
+            type: i.type,
+            minute: i.minute,
+            inFavorOf: i.inFavorOf,
+            against: i.against,
+            opinionSummary: i.opinionSummary,
+          }))}
+          currentHomeTeam={match.homeTeam}
+          currentAwayTeam={match.awayTeam}
+          scope={radarScope}
+          onScopeChange={setRadarScope}
+        />
+      )}
 
       <h2 className="mb-6 text-xl font-bold text-white">
         Var <span className="text-red-500">Odası</span>

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import MatchCard from "@/components/MatchCard";
+import IncidentRadarSection from "@/components/IncidentRadarSection";
 import { Shield, Loader2, TrendingUp, AlertTriangle, Search, ArrowUpDown, Users, Check } from "lucide-react";
 
 const TRACKED_TEAMS = [
@@ -291,6 +292,19 @@ export default function HomePage() {
               )}
             </div>
           </div>
+        </div>
+
+        {/* Radar görselleştirme - tüm maçlar */}
+        <div className="mb-10">
+          <IncidentRadarSection
+            currentIncidents={[]}
+            scope="all"
+            onScopeChange={() => {}}
+            allDataFetchParams={{ league: "Süper Lig 2025-26" }}
+            mode="aggregate"
+            availableTeams={[...TRACKED_TEAMS]}
+            showScopeToggle={false}
+          />
         </div>
 
         {loading ? (
