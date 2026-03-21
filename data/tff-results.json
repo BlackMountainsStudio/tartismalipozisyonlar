@@ -1,0 +1,727 @@
+{
+  "matches": [
+    {
+      "week": 1,
+      "date": "8.08.2025",
+      "home": "GAZİANTEP",
+      "away": "Galatasaray",
+      "score": "0 - 3"
+    },
+    {
+      "week": 1,
+      "date": "11.08.2025",
+      "home": "Trabzonspor",
+      "away": "KOCAELİSPOR",
+      "score": "1 - 0"
+    },
+    {
+      "week": 1,
+      "date": "17.09.2025",
+      "home": "Fenerbahçe",
+      "away": "ALANYASPOR",
+      "score": "2 - 2"
+    },
+    {
+      "week": 1,
+      "date": "24.09.2025",
+      "home": "KAYSERİSPOR",
+      "away": "Beşiktaş",
+      "score": "0 - 4"
+    },
+    {
+      "week": 2,
+      "date": "15.08.2025",
+      "home": "Galatasaray",
+      "away": "FATİH KARAGÜMRÜK",
+      "score": "3 - 0"
+    },
+    {
+      "week": 2,
+      "date": "16.08.2025",
+      "home": "GÖZTEPE",
+      "away": "Fenerbahçe",
+      "score": "0 - 0"
+    },
+    {
+      "week": 2,
+      "date": "17.08.2025",
+      "home": "Beşiktaş",
+      "away": "EYÜPSPOR",
+      "score": "2 - 1"
+    },
+    {
+      "week": 2,
+      "date": "18.08.2025",
+      "home": "KASIMPAŞA",
+      "away": "Trabzonspor",
+      "score": "0 - 1"
+    },
+    {
+      "week": 3,
+      "date": "23.08.2025",
+      "home": "Fenerbahçe",
+      "away": "KOCAELİSPOR",
+      "score": "3 - 1"
+    },
+    {
+      "week": 3,
+      "date": "24.08.2025",
+      "home": "KAYSERİSPOR",
+      "away": "Galatasaray",
+      "score": "0 - 4"
+    },
+    {
+      "week": 3,
+      "date": "24.08.2025",
+      "home": "Trabzonspor",
+      "away": "ANTALYASPOR",
+      "score": "1 - 0"
+    },
+    {
+      "week": 3,
+      "date": "22.10.2025",
+      "home": "KONYASPOR",
+      "away": "Beşiktaş",
+      "score": "0 - 2"
+    },
+    {
+      "week": 4,
+      "date": "30.08.2025",
+      "home": "Galatasaray",
+      "away": "ÇAYKUR RİZESPOR",
+      "score": "3 - 1"
+    },
+    {
+      "week": 4,
+      "date": "31.08.2025",
+      "home": "Trabzonspor",
+      "away": "SAMSUNSPOR",
+      "score": "1 - 1"
+    },
+    {
+      "week": 4,
+      "date": "31.08.2025",
+      "home": "GENÇLERBİRLİĞİ",
+      "away": "Fenerbahçe",
+      "score": "1 - 3"
+    },
+    {
+      "week": 4,
+      "date": "31.08.2025",
+      "home": "ALANYASPOR",
+      "away": "Beşiktaş",
+      "score": "2 - 0"
+    },
+    {
+      "week": 5,
+      "date": "13.09.2025",
+      "home": "EYÜPSPOR",
+      "away": "Galatasaray",
+      "score": "0 - 2"
+    },
+    {
+      "week": 5,
+      "date": "13.09.2025",
+      "home": "Beşiktaş",
+      "away": "BAŞAKŞEHİR",
+      "score": "2 - 1"
+    },
+    {
+      "week": 5,
+      "date": "14.09.2025",
+      "home": "Fenerbahçe",
+      "away": "Trabzonspor",
+      "score": "1 - 0"
+    },
+    {
+      "week": 6,
+      "date": "19.09.2025",
+      "home": "GÖZTEPE",
+      "away": "Beşiktaş",
+      "score": "3 - 0"
+    },
+    {
+      "week": 6,
+      "date": "20.09.2025",
+      "home": "Trabzonspor",
+      "away": "GAZİANTEP",
+      "score": "1 - 1"
+    },
+    {
+      "week": 6,
+      "date": "21.09.2025",
+      "home": "KASIMPAŞA",
+      "away": "Fenerbahçe",
+      "score": "1 - 1"
+    },
+    {
+      "week": 6,
+      "date": "22.09.2025",
+      "home": "Galatasaray",
+      "away": "KONYASPOR",
+      "score": "3 - 1"
+    },
+    {
+      "week": 7,
+      "date": "26.09.2025",
+      "home": "ALANYASPOR",
+      "away": "Galatasaray",
+      "score": "0 - 1"
+    },
+    {
+      "week": 7,
+      "date": "27.09.2025",
+      "home": "FATİH KARAGÜMRÜK",
+      "away": "Trabzonspor",
+      "score": "3 - 4"
+    },
+    {
+      "week": 7,
+      "date": "28.09.2025",
+      "home": "Fenerbahçe",
+      "away": "ANTALYASPOR",
+      "score": "2 - 0"
+    },
+    {
+      "week": 7,
+      "date": "29.09.2025",
+      "home": "Beşiktaş",
+      "away": "KOCAELİSPOR",
+      "score": "3 - 1"
+    },
+    {
+      "week": 8,
+      "date": "3.10.2025",
+      "home": "Trabzonspor",
+      "away": "KAYSERİSPOR",
+      "score": "4 - 0"
+    },
+    {
+      "week": 8,
+      "date": "4.10.2025",
+      "home": "Galatasaray",
+      "away": "Beşiktaş",
+      "score": "1 - 1"
+    },
+    {
+      "week": 8,
+      "date": "5.10.2025",
+      "home": "SAMSUNSPOR",
+      "away": "Fenerbahçe",
+      "score": "0 - 0"
+    },
+    {
+      "week": 9,
+      "date": "18.10.2025",
+      "home": "Beşiktaş",
+      "away": "GENÇLERBİRLİĞİ",
+      "score": "1 - 2"
+    },
+    {
+      "week": 9,
+      "date": "18.10.2025",
+      "home": "BAŞAKŞEHİR",
+      "away": "Galatasaray",
+      "score": "1 - 2"
+    },
+    {
+      "week": 9,
+      "date": "18.10.2025",
+      "home": "ÇAYKUR RİZESPOR",
+      "away": "Trabzonspor",
+      "score": "1 - 2"
+    },
+    {
+      "week": 9,
+      "date": "19.10.2025",
+      "home": "Fenerbahçe",
+      "away": "FATİH KARAGÜMRÜK",
+      "score": "2 - 1"
+    },
+    {
+      "week": 10,
+      "date": "25.10.2025",
+      "home": "Trabzonspor",
+      "away": "EYÜPSPOR",
+      "score": "2 - 0"
+    },
+    {
+      "week": 10,
+      "date": "26.10.2025",
+      "home": "KASIMPAŞA",
+      "away": "Beşiktaş",
+      "score": "1 - 1"
+    },
+    {
+      "week": 10,
+      "date": "26.10.2025",
+      "home": "Galatasaray",
+      "away": "GÖZTEPE",
+      "score": "3 - 1"
+    },
+    {
+      "week": 10,
+      "date": "27.10.2025",
+      "home": "GAZİANTEP",
+      "away": "Fenerbahçe",
+      "score": "0 - 4"
+    },
+    {
+      "week": 11,
+      "date": "1.11.2025",
+      "home": "Galatasaray",
+      "away": "Trabzonspor",
+      "score": "0 - 0"
+    },
+    {
+      "week": 11,
+      "date": "2.11.2025",
+      "home": "Beşiktaş",
+      "away": "Fenerbahçe",
+      "score": "2 - 3"
+    },
+    {
+      "week": 12,
+      "date": "8.11.2025",
+      "home": "Trabzonspor",
+      "away": "ALANYASPOR",
+      "score": "1 - 1"
+    },
+    {
+      "week": 12,
+      "date": "8.11.2025",
+      "home": "ANTALYASPOR",
+      "away": "Beşiktaş",
+      "score": "1 - 3"
+    },
+    {
+      "week": 12,
+      "date": "9.11.2025",
+      "home": "KOCAELİSPOR",
+      "away": "Galatasaray",
+      "score": "1 - 0"
+    },
+    {
+      "week": 12,
+      "date": "9.11.2025",
+      "home": "Fenerbahçe",
+      "away": "KAYSERİSPOR",
+      "score": "4 - 2"
+    },
+    {
+      "week": 13,
+      "date": "22.11.2025",
+      "home": "Galatasaray",
+      "away": "GENÇLERBİRLİĞİ",
+      "score": "3 - 2"
+    },
+    {
+      "week": 13,
+      "date": "23.11.2025",
+      "home": "ÇAYKUR RİZESPOR",
+      "away": "Fenerbahçe",
+      "score": "2 - 5"
+    },
+    {
+      "week": 13,
+      "date": "23.11.2025",
+      "home": "Beşiktaş",
+      "away": "SAMSUNSPOR",
+      "score": "1 - 1"
+    },
+    {
+      "week": 13,
+      "date": "24.11.2025",
+      "home": "BAŞAKŞEHİR",
+      "away": "Trabzonspor",
+      "score": "3 - 4"
+    },
+    {
+      "week": 14,
+      "date": "29.11.2025",
+      "home": "Trabzonspor",
+      "away": "KONYASPOR",
+      "score": "3 - 1"
+    },
+    {
+      "week": 14,
+      "date": "30.11.2025",
+      "home": "FATİH KARAGÜMRÜK",
+      "away": "Beşiktaş",
+      "score": "0 - 2"
+    },
+    {
+      "week": 14,
+      "date": "1.12.2025",
+      "home": "Fenerbahçe",
+      "away": "Galatasaray",
+      "score": "1 - 1"
+    },
+    {
+      "week": 15,
+      "date": "5.12.2025",
+      "home": "Galatasaray",
+      "away": "SAMSUNSPOR",
+      "score": "3 - 2"
+    },
+    {
+      "week": 15,
+      "date": "6.12.2025",
+      "home": "BAŞAKŞEHİR",
+      "away": "Fenerbahçe",
+      "score": "1 - 1"
+    },
+    {
+      "week": 15,
+      "date": "7.12.2025",
+      "home": "GÖZTEPE",
+      "away": "Trabzonspor",
+      "score": "1 - 2"
+    },
+    {
+      "week": 15,
+      "date": "8.12.2025",
+      "home": "Beşiktaş",
+      "away": "GAZİANTEP",
+      "score": "2 - 2"
+    },
+    {
+      "week": 16,
+      "date": "13.12.2025",
+      "home": "ANTALYASPOR",
+      "away": "Galatasaray",
+      "score": "1 - 4"
+    },
+    {
+      "week": 16,
+      "date": "14.12.2025",
+      "home": "Trabzonspor",
+      "away": "Beşiktaş",
+      "score": "3 - 3"
+    },
+    {
+      "week": 16,
+      "date": "15.12.2025",
+      "home": "Fenerbahçe",
+      "away": "KONYASPOR",
+      "score": "4 - 0"
+    },
+    {
+      "week": 17,
+      "date": "20.12.2025",
+      "home": "Beşiktaş",
+      "away": "ÇAYKUR RİZESPOR",
+      "score": "1 - 0"
+    },
+    {
+      "week": 17,
+      "date": "20.12.2025",
+      "home": "EYÜPSPOR",
+      "away": "Fenerbahçe",
+      "score": "0 - 3"
+    },
+    {
+      "week": 17,
+      "date": "21.12.2025",
+      "home": "Galatasaray",
+      "away": "KASIMPAŞA",
+      "score": "3 - 0"
+    },
+    {
+      "week": 17,
+      "date": "22.12.2025",
+      "home": "GENÇLERBİRLİĞİ",
+      "away": "Trabzonspor",
+      "score": "4 - 3"
+    },
+    {
+      "week": 18,
+      "date": "17.01.2026",
+      "home": "Galatasaray",
+      "away": "GAZİANTEP",
+      "score": "1 - 1"
+    },
+    {
+      "week": 18,
+      "date": "18.01.2026",
+      "home": "KOCAELİSPOR",
+      "away": "Trabzonspor",
+      "score": "1 - 2"
+    },
+    {
+      "week": 18,
+      "date": "18.01.2026",
+      "home": "ALANYASPOR",
+      "away": "Fenerbahçe",
+      "score": "2 - 3"
+    },
+    {
+      "week": 18,
+      "date": "19.01.2026",
+      "home": "Beşiktaş",
+      "away": "KAYSERİSPOR",
+      "score": "1 - 0"
+    },
+    {
+      "week": 19,
+      "date": "23.01.2026",
+      "home": "Trabzonspor",
+      "away": "KASIMPAŞA",
+      "score": "2 - 1"
+    },
+    {
+      "week": 19,
+      "date": "24.01.2026",
+      "home": "FATİH KARAGÜMRÜK",
+      "away": "Galatasaray",
+      "score": "1 - 3"
+    },
+    {
+      "week": 19,
+      "date": "25.01.2026",
+      "home": "Fenerbahçe",
+      "away": "GÖZTEPE",
+      "score": "1 - 1"
+    },
+    {
+      "week": 19,
+      "date": "26.01.2026",
+      "home": "EYÜPSPOR",
+      "away": "Beşiktaş",
+      "score": "2 - 2"
+    },
+    {
+      "week": 20,
+      "date": "30.01.2026",
+      "home": "ANTALYASPOR",
+      "away": "Trabzonspor",
+      "score": "1 - 1"
+    },
+    {
+      "week": 20,
+      "date": "31.01.2026",
+      "home": "Beşiktaş",
+      "away": "KONYASPOR",
+      "score": "2 - 1"
+    },
+    {
+      "week": 20,
+      "date": "1.02.2026",
+      "home": "Galatasaray",
+      "away": "KAYSERİSPOR",
+      "score": "4 - 0"
+    },
+    {
+      "week": 20,
+      "date": "2.02.2026",
+      "home": "KOCAELİSPOR",
+      "away": "Fenerbahçe",
+      "score": "0 - 2"
+    },
+    {
+      "week": 21,
+      "date": "7.02.2026",
+      "home": "SAMSUNSPOR",
+      "away": "Trabzonspor",
+      "score": "0 - 3"
+    },
+    {
+      "week": 21,
+      "date": "8.02.2026",
+      "home": "Beşiktaş",
+      "away": "ALANYASPOR",
+      "score": "2 - 2"
+    },
+    {
+      "week": 21,
+      "date": "8.02.2026",
+      "home": "ÇAYKUR RİZESPOR",
+      "away": "Galatasaray",
+      "score": "0 - 3"
+    },
+    {
+      "week": 21,
+      "date": "9.02.2026",
+      "home": "Fenerbahçe",
+      "away": "GENÇLERBİRLİĞİ",
+      "score": "3 - 1"
+    },
+    {
+      "week": 22,
+      "date": "13.02.2026",
+      "home": "Galatasaray",
+      "away": "EYÜPSPOR",
+      "score": "5 - 1"
+    },
+    {
+      "week": 22,
+      "date": "14.02.2026",
+      "home": "Trabzonspor",
+      "away": "Fenerbahçe",
+      "score": "2 - 3"
+    },
+    {
+      "week": 22,
+      "date": "15.02.2026",
+      "home": "BAŞAKŞEHİR",
+      "away": "Beşiktaş",
+      "score": "2 - 3"
+    },
+    {
+      "week": 23,
+      "date": "21.02.2026",
+      "home": "KONYASPOR",
+      "away": "Galatasaray",
+      "score": "2 - 0"
+    },
+    {
+      "week": 23,
+      "date": "22.02.2026",
+      "home": "Beşiktaş",
+      "away": "GÖZTEPE",
+      "score": "4 - 0"
+    },
+    {
+      "week": 23,
+      "date": "22.02.2026",
+      "home": "GAZİANTEP",
+      "away": "Trabzonspor",
+      "score": "1 - 2"
+    },
+    {
+      "week": 23,
+      "date": "23.02.2026",
+      "home": "Fenerbahçe",
+      "away": "KASIMPAŞA",
+      "score": "1 - 1"
+    },
+    {
+      "week": 24,
+      "date": "27.02.2026",
+      "home": "Trabzonspor",
+      "away": "FATİH KARAGÜMRÜK",
+      "score": "3 - 1"
+    },
+    {
+      "week": 24,
+      "date": "28.02.2026",
+      "home": "KOCAELİSPOR",
+      "away": "Beşiktaş",
+      "score": "0 - 1"
+    },
+    {
+      "week": 24,
+      "date": "28.02.2026",
+      "home": "Galatasaray",
+      "away": "ALANYASPOR",
+      "score": "3 - 1"
+    },
+    {
+      "week": 24,
+      "date": "1.03.2026",
+      "home": "ANTALYASPOR",
+      "away": "Fenerbahçe",
+      "score": "2 - 2"
+    },
+    {
+      "week": 25,
+      "date": "7.03.2026",
+      "home": "Beşiktaş",
+      "away": "Galatasaray",
+      "score": "0 - 1"
+    },
+    {
+      "week": 25,
+      "date": "8.03.2026",
+      "home": "Fenerbahçe",
+      "away": "SAMSUNSPOR",
+      "score": "3 - 2"
+    },
+    {
+      "week": 25,
+      "date": "9.03.2026",
+      "home": "KAYSERİSPOR",
+      "away": "Trabzonspor",
+      "score": "1 - 3"
+    },
+    {
+      "week": 26,
+      "date": "13.03.2026",
+      "home": "FATİH KARAGÜMRÜK",
+      "away": "Fenerbahçe",
+      "score": "2 - 0"
+    },
+    {
+      "week": 26,
+      "date": "14.03.2026",
+      "home": "Galatasaray",
+      "away": "BAŞAKŞEHİR",
+      "score": "3 - 0"
+    },
+    {
+      "week": 26,
+      "date": "14.03.2026",
+      "home": "Trabzonspor",
+      "away": "ÇAYKUR RİZESPOR",
+      "score": "1 - 0"
+    },
+    {
+      "week": 26,
+      "date": "15.03.2026",
+      "home": "GENÇLERBİRLİĞİ",
+      "away": "Beşiktaş",
+      "score": "0 - 2"
+    },
+    {
+      "week": 27,
+      "date": "17.03.2026",
+      "home": "Fenerbahçe",
+      "away": "GAZİANTEP",
+      "score": "4 - 1"
+    },
+    {
+      "week": 27,
+      "date": "18.03.2026",
+      "home": "EYÜPSPOR",
+      "away": "Trabzonspor",
+      "score": "0 - 1"
+    },
+    {
+      "week": 27,
+      "date": "19.03.2026",
+      "home": "Beşiktaş",
+      "away": "KASIMPAŞA",
+      "score": "2 - 1"
+    }
+  ],
+  "standings": {
+    "Fenerbahçe": {
+      "played": 27,
+      "wins": 17,
+      "draws": 9,
+      "losses": 1,
+      "points": 60
+    },
+    "Galatasaray": {
+      "played": 26,
+      "wins": 20,
+      "draws": 4,
+      "losses": 2,
+      "points": 64
+    },
+    "Beşiktaş": {
+      "played": 27,
+      "wins": 15,
+      "draws": 7,
+      "losses": 5,
+      "points": 52
+    },
+    "Trabzonspor": {
+      "played": 27,
+      "wins": 18,
+      "draws": 6,
+      "losses": 3,
+      "points": 60
+    }
+  }
+}
