@@ -64,7 +64,7 @@ export default function HakemlerClient({ initialReferees }: HakemlerClientProps)
             id="radar-referee-filter"
             value={radarRefereeSlug}
             onChange={(e) => setRadarRefereeSlug(e.target.value)}
-            className="rounded-lg border border-zinc-700 bg-zinc-800 px-2 py-1 text-xs text-white outline-none focus:border-red-500"
+            className="rounded-lg border border-zinc-700 bg-zinc-800 px-2 py-1 text-xs text-white focus:outline-none focus:border-red-500"
           >
             <option value="">Tüm hakemler</option>
             {filteredReferees.map((r) => (

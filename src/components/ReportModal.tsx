@@ -79,7 +79,7 @@ export default function ReportModal({
             placeholder="Şikayet nedeninizi yazabilirsiniz..."
             rows={3}
             maxLength={500}
-            className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-sm text-white placeholder-zinc-500 outline-none focus:border-red-500"
+            className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-red-500"
           />
           <div className="mt-1 text-right text-xs text-zinc-500">{reason.length}/500</div>
 

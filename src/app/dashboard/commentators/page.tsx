@@ -169,7 +169,7 @@ export default function DashboardCommentatorsPage() {
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 required
                 placeholder="ör. Erman Toroğlu"
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 outline-none focus:border-purple-500"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-purple-500"
               />
             </div>
             <div>
@@ -180,7 +180,7 @@ export default function DashboardCommentatorsPage() {
                 onChange={(e) => setFormData({ ...formData, role: e.target.value })}
                 required
                 placeholder="ör. Eski Hakem, Yorumcu"
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 outline-none focus:border-purple-500"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-purple-500"
               />
             </div>
             <div>
@@ -190,7 +190,7 @@ export default function DashboardCommentatorsPage() {
                 value={formData.photoUrl}
                 onChange={(e) => setFormData({ ...formData, photoUrl: e.target.value })}
                 placeholder="https://..."
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 outline-none focus:border-purple-500"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-purple-500"
               />
             </div>
             <div>
@@ -200,7 +200,7 @@ export default function DashboardCommentatorsPage() {
                 value={formData.birthDate}
                 onChange={(e) => setFormData({ ...formData, birthDate: e.target.value })}
                 placeholder="ör. 1 Ocak 1960"
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 outline-none focus:border-purple-500"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-purple-500"
               />
             </div>
             <div>
@@ -210,7 +210,7 @@ export default function DashboardCommentatorsPage() {
                 value={formData.birthPlace}
                 onChange={(e) => setFormData({ ...formData, birthPlace: e.target.value })}
                 placeholder="ör. İstanbul"
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 outline-none focus:border-purple-500"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-purple-500"
               />
             </div>
             <div>
@@ -220,7 +220,7 @@ export default function DashboardCommentatorsPage() {
                 value={formData.education}
                 onChange={(e) => setFormData({ ...formData, education: e.target.value })}
                 placeholder="ör. Beden Eğitimi"
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 outline-none focus:border-purple-500"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-purple-500"
               />
             </div>
             <div className="sm:col-span-2 lg:col-span-3">
@@ -231,7 +231,7 @@ export default function DashboardCommentatorsPage() {
                 required
                 rows={3}
                 placeholder="Kısa biyografi..."
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 outline-none focus:border-purple-500"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-purple-500"
               />
             </div>
             <div className="sm:col-span-2">
@@ -241,7 +241,7 @@ export default function DashboardCommentatorsPage() {
                 value={formData.expertise}
                 onChange={(e) => setFormData({ ...formData, expertise: e.target.value })}
                 placeholder="ör. Hakem Kararları, VAR, Penaltı"
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 outline-none focus:border-purple-500"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-purple-500"
               />
             </div>
             <div className="flex items-end gap-2">
@@ -269,7 +269,7 @@ export default function DashboardCommentatorsPage() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Yorumcu ara..."
-            className="w-full rounded-lg border border-zinc-700 bg-zinc-800 py-2.5 pl-10 pr-4 text-sm text-white placeholder-zinc-500 outline-none focus:border-purple-500"
+            className="w-full rounded-lg border border-zinc-700 bg-zinc-800 py-2.5 pl-10 pr-4 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-purple-500"
           />
         </div>
       </div>

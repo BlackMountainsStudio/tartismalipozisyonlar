@@ -164,7 +164,7 @@ export default function SuggestionPage() {
               onChange={(e) => setName(e.target.value)}
               placeholder={session ? (session.user?.nickname || session.user?.name) || "Adınız" : "Adınız"}
               maxLength={100}
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-sm text-white placeholder-zinc-500 outline-none focus:border-red-500"
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-red-500"
             />
           </div>
           <div>
@@ -178,7 +178,7 @@ export default function SuggestionPage() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="ornek@email.com"
               maxLength={200}
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-sm text-white placeholder-zinc-500 outline-none focus:border-red-500"
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-red-500"
             />
           </div>
         </div>
@@ -194,7 +194,7 @@ export default function SuggestionPage() {
             onChange={(e) => setSubject(e.target.value)}
             placeholder="Mesajınızın konusu"
             maxLength={200}
-            className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-sm text-white placeholder-zinc-500 outline-none focus:border-red-500"
+            className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-red-500"
           />
         </div>
 
@@ -209,7 +209,7 @@ export default function SuggestionPage() {
             placeholder="Detaylı olarak yazın..."
             rows={5}
             maxLength={3000}
-            className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-sm text-white placeholder-zinc-500 outline-none focus:border-red-500"
+            className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-red-500"
           />
           <div className="mt-1 text-right text-xs text-zinc-600">
             {message.length}/3000

@@ -230,7 +230,7 @@ export default function CommentSection({ matchId, incidentId }: CommentSectionPr
             placeholder={textareaPlaceholder}
             rows={3}
             maxLength={1000}
-            className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-sm text-white placeholder-zinc-500 outline-none focus:border-red-500"
+            className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-red-500"
           />
           <div className="mt-1 text-right text-xs text-zinc-500">{content.length}/1000</div>
         </div>
@@ -414,7 +414,7 @@ export default function CommentSection({ matchId, incidentId }: CommentSectionPr
                         placeholder={`@${comment.author} yanıtla...`}
                         rows={2}
                         maxLength={1000}
-                        className="flex-1 rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 outline-none focus:border-red-500"
+                        className="flex-1 rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-red-500"
                       />
                       <button
                         type="button"

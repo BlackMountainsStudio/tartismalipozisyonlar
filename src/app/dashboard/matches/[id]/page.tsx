@@ -312,7 +312,7 @@ export default function DashboardMatchDetailPage({
                         value={matchHomeScore}
                         onChange={(e) => setMatchHomeScore(e.target.value)}
                         placeholder="–"
-                        className="w-14 rounded-lg border border-zinc-700 bg-zinc-800 px-2 py-1.5 text-sm text-white outline-none focus:border-emerald-500"
+                        className="w-14 rounded-lg border border-zinc-700 bg-zinc-800 px-2 py-1.5 text-sm text-white focus:outline-none focus:border-emerald-500"
                       />
                     </div>
                     <div>
@@ -323,7 +323,7 @@ export default function DashboardMatchDetailPage({
                         value={matchAwayScore}
                         onChange={(e) => setMatchAwayScore(e.target.value)}
                         placeholder="–"
-                        className="w-14 rounded-lg border border-zinc-700 bg-zinc-800 px-2 py-1.5 text-sm text-white outline-none focus:border-emerald-500"
+                        className="w-14 rounded-lg border border-zinc-700 bg-zinc-800 px-2 py-1.5 text-sm text-white focus:outline-none focus:border-emerald-500"
                       />
                     </div>
                     <div>
@@ -331,7 +331,7 @@ export default function DashboardMatchDetailPage({
                       <select
                         value={matchRefereeId}
                         onChange={(e) => setMatchRefereeId(e.target.value)}
-                        className="rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-1.5 text-sm text-white outline-none focus:border-emerald-500"
+                        className="rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-1.5 text-sm text-white focus:outline-none focus:border-emerald-500"
                       >
                         <option value="">Seçiniz</option>
                         {referees.filter((r) => r.role === "REFEREE").map((r) => (
@@ -347,7 +347,7 @@ export default function DashboardMatchDetailPage({
                       <select
                         value={matchVarRefereeId}
                         onChange={(e) => setMatchVarRefereeId(e.target.value)}
-                        className="rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-1.5 text-sm text-white outline-none focus:border-emerald-500"
+                        className="rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-1.5 text-sm text-white focus:outline-none focus:border-emerald-500"
                       >
                         <option value="">Seçiniz</option>
                         {referees.filter((r) => r.role === "VAR").map((r) => (
@@ -443,7 +443,7 @@ export default function DashboardMatchDetailPage({
           <textarea
             value={editDescription}
             onChange={(e) => setEditDescription(e.target.value)}
-            className="mb-3 w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white outline-none focus:border-emerald-500"
+            className="mb-3 w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500"
             rows={3}
           />
           <div className="mb-3 grid grid-cols-2 gap-3 sm:grid-cols-2">
@@ -452,7 +452,7 @@ export default function DashboardMatchDetailPage({
               <select
                 value={editInFavorOf}
                 onChange={(e) => setEditInFavorOf(e.target.value)}
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white outline-none focus:border-emerald-500"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500"
               >
                 <option value="">—</option>
                 <option value={match.homeTeam}>{match.homeTeam}</option>
@@ -464,7 +464,7 @@ export default function DashboardMatchDetailPage({
               <select
                 value={editAgainst}
                 onChange={(e) => setEditAgainst(e.target.value)}
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white outline-none focus:border-emerald-500"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500"
               >
                 <option value="">—</option>
                 <option value={match.homeTeam}>{match.homeTeam}</option>

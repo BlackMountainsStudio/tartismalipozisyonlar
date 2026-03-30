@@ -174,7 +174,7 @@ export default function DashboardVideosPage() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="ör. Fenerbahçe penaltı pozisyonu hafta 12..."
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-800 py-2.5 pl-10 pr-4 text-sm text-white placeholder-zinc-500 outline-none focus:border-purple-500"
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-800 py-2.5 pl-10 pr-4 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-purple-500"
             />
           </div>
           <button
@@ -250,7 +250,7 @@ export default function DashboardVideosPage() {
           <select
             value={selectedIncident}
             onChange={(e) => setSelectedIncident(e.target.value)}
-            className="rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-sm text-white outline-none focus:border-purple-500"
+            className="rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-sm text-white focus:outline-none focus:border-purple-500"
           >
             <option value="">Pozisyon seçin</option>
             {incidents.filter((i) => i != null).map((inc) => (
@@ -264,7 +264,7 @@ export default function DashboardVideosPage() {
             value={videoUrlInput}
             onChange={(e) => setVideoUrlInput(e.target.value)}
             placeholder="Video URL yapıştırın..."
-            className="rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-sm text-white placeholder-zinc-500 outline-none focus:border-purple-500"
+            className="rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-purple-500"
           />
           <button
             type="submit"

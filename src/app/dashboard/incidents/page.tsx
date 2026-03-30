@@ -209,7 +209,7 @@ export default function DashboardIncidentsPage() {
                 value={formData.matchId}
                 onChange={(e) => setFormData({ ...formData, matchId: e.target.value })}
                 required
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white outline-none focus:border-red-500"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white focus:outline-none focus:border-red-500"
               >
                 <option value="">Maç seçin</option>
                 {matches.map((m) => (
@@ -224,7 +224,7 @@ export default function DashboardIncidentsPage() {
               <select
                 value={formData.type}
                 onChange={(e) => setFormData({ ...formData, type: e.target.value })}
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white outline-none focus:border-red-500"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white focus:outline-none focus:border-red-500"
               >
                 {Object.entries(INCIDENT_TYPE_LABELS).map(([key, label]) => (
                   <option key={key} value={key}>{label}</option>
@@ -238,7 +238,7 @@ export default function DashboardIncidentsPage() {
                 value={formData.minute}
                 onChange={(e) => setFormData({ ...formData, minute: e.target.value })}
                 placeholder="ör. 45"
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 outline-none focus:border-red-500"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-red-500"
               />
             </div>
             <div className="sm:col-span-2">
@@ -249,7 +249,7 @@ export default function DashboardIncidentsPage() {
                 required
                 rows={2}
                 placeholder="Pozisyonun detaylı açıklaması..."
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 outline-none focus:border-red-500"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-red-500"
               />
             </div>
             <div>
@@ -261,7 +261,7 @@ export default function DashboardIncidentsPage() {
                 min="0"
                 max="1"
                 step="0.1"
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white outline-none focus:border-red-500"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white focus:outline-none focus:border-red-500"
               />
             </div>
             <div>
@@ -271,7 +271,7 @@ export default function DashboardIncidentsPage() {
                 value={formData.videoUrl}
                 onChange={(e) => setFormData({ ...formData, videoUrl: e.target.value })}
                 placeholder="https://..."
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 outline-none focus:border-red-500"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-red-500"
               />
             </div>
             <div className="flex items-end">
@@ -296,7 +296,7 @@ export default function DashboardIncidentsPage() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Pozisyon veya takım ara..."
-            className="w-full rounded-lg border border-zinc-700 bg-zinc-800 py-2.5 pl-10 pr-4 text-sm text-white placeholder-zinc-500 outline-none focus:border-red-500"
+            className="w-full rounded-lg border border-zinc-700 bg-zinc-800 py-2.5 pl-10 pr-4 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-red-500"
           />
         </div>
         <div className="flex flex-wrap items-center gap-2">
@@ -320,7 +320,7 @@ export default function DashboardIncidentsPage() {
           <select
             value={typeFilter}
             onChange={(e) => setTypeFilter(e.target.value)}
-            className="rounded-lg border border-zinc-700 bg-zinc-800 px-2 py-1.5 text-xs text-zinc-400 outline-none focus:border-red-500"
+            className="rounded-lg border border-zinc-700 bg-zinc-800 px-2 py-1.5 text-xs text-zinc-400 focus:outline-none focus:border-red-500"
           >
             <option value="all">Tüm Türler</option>
             {Object.entries(INCIDENT_TYPE_LABELS).map(([key, label]) => (
@@ -352,7 +352,7 @@ export default function DashboardIncidentsPage() {
                     <select
                       value={editData.type}
                       onChange={(e) => setEditData({ ...editData, type: e.target.value })}
-                      className="rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white outline-none"
+                      className="rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white focus:outline-none"
                     >
                       {Object.entries(INCIDENT_TYPE_LABELS).map(([key, label]) => (
                         <option key={key} value={key}>{label}</option>
@@ -363,21 +363,21 @@ export default function DashboardIncidentsPage() {
                       value={editData.minute}
                       onChange={(e) => setEditData({ ...editData, minute: e.target.value })}
                       placeholder="Dakika"
-                      className="rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white outline-none"
+                      className="rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white focus:outline-none"
                     />
                     <input
                       type="url"
                       value={editData.videoUrl}
                       onChange={(e) => setEditData({ ...editData, videoUrl: e.target.value })}
                       placeholder="Video URL"
-                      className="rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white outline-none"
+                      className="rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white focus:outline-none"
                     />
                   </div>
                   <textarea
                     value={editData.description}
                     onChange={(e) => setEditData({ ...editData, description: e.target.value })}
                     rows={2}
-                    className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white outline-none"
+                    className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white focus:outline-none"
                   />
                   <div className="flex gap-2">
                     <button onClick={saveEdit} className="flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-emerald-500">

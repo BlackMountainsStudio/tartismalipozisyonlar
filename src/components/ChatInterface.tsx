@@ -141,7 +141,7 @@ export default function ChatInterface({ matchId }: ChatInterfaceProps) {
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleSend()}
             placeholder="Ask about incidents, matches, or referee decisions..."
-            className="flex-1 rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2.5 text-sm text-white placeholder-zinc-500 outline-none transition-colors focus:border-emerald-500"
+            className="flex-1 rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none transition-colors focus:border-emerald-500"
           />
           <button
             onClick={handleSend}

@@ -121,7 +121,7 @@ export default function DashboardMatchesPage() {
                 onChange={(e) => setFormData({ ...formData, homeTeam: e.target.value })}
                 required
                 placeholder="ör. Fenerbahçe"
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 outline-none focus:border-red-500"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-red-500"
               />
             </div>
             <div>
@@ -132,7 +132,7 @@ export default function DashboardMatchesPage() {
                 onChange={(e) => setFormData({ ...formData, awayTeam: e.target.value })}
                 required
                 placeholder="ör. Trabzonspor"
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 outline-none focus:border-red-500"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-red-500"
               />
             </div>
             <div>
@@ -141,7 +141,7 @@ export default function DashboardMatchesPage() {
                 type="text"
                 value={formData.league}
                 onChange={(e) => setFormData({ ...formData, league: e.target.value })}
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 outline-none focus:border-red-500"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-red-500"
               />
             </div>
             <div>
@@ -153,7 +153,7 @@ export default function DashboardMatchesPage() {
                 required
                 min="1"
                 placeholder="ör. 12"
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 outline-none focus:border-red-500"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-red-500"
               />
             </div>
             <div>
@@ -163,7 +163,7 @@ export default function DashboardMatchesPage() {
                 value={formData.date}
                 onChange={(e) => setFormData({ ...formData, date: e.target.value })}
                 required
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 outline-none focus:border-red-500"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-red-500"
               />
             </div>
             <div>
@@ -171,7 +171,7 @@ export default function DashboardMatchesPage() {
               <select
                 value={formData.refereeId}
                 onChange={(e) => setFormData({ ...formData, refereeId: e.target.value })}
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white outline-none focus:border-red-500"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white focus:outline-none focus:border-red-500"
               >
                 <option value="">Seçiniz</option>
                 {referees.filter((r) => r.role === "REFEREE").map((r) => (
@@ -187,7 +187,7 @@ export default function DashboardMatchesPage() {
               <select
                 value={formData.varRefereeId}
                 onChange={(e) => setFormData({ ...formData, varRefereeId: e.target.value })}
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white outline-none focus:border-red-500"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white focus:outline-none focus:border-red-500"
               >
                 <option value="">Seçiniz</option>
                 {referees.filter((r) => r.role === "VAR").map((r) => (
@@ -220,7 +220,7 @@ export default function DashboardMatchesPage() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Maç ara..."
-            className="w-full rounded-lg border border-zinc-700 bg-zinc-800 py-2.5 pl-10 pr-4 text-sm text-white placeholder-zinc-500 outline-none focus:border-red-500"
+            className="w-full rounded-lg border border-zinc-700 bg-zinc-800 py-2.5 pl-10 pr-4 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-red-500"
           />
         </div>
       </div>

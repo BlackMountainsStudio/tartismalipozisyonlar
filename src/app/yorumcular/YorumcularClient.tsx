@@ -44,7 +44,7 @@ export default function YorumcularClient({ initialCommentators }: YorumcularClie
             id="radar-commentator-filter"
             value={radarCommentatorSlug}
             onChange={(e) => setRadarCommentatorSlug(e.target.value)}
-            className="rounded-lg border border-zinc-700 bg-zinc-800 px-2 py-1 text-xs text-white outline-none focus:border-red-500"
+            className="rounded-lg border border-zinc-700 bg-zinc-800 px-2 py-1 text-xs text-white focus:outline-none focus:border-red-500"
           >
             <option value="">Tüm yorumcular</option>
             {initialCommentators.map((c) => (

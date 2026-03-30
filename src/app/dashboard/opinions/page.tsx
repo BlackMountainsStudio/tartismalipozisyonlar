@@ -197,7 +197,7 @@ export default function DashboardOpinionsPage() {
                 onChange={(e) => setFormData({ ...formData, commentatorId: e.target.value })}
                 required
                 disabled={!!editingId}
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white outline-none focus:border-cyan-500 disabled:opacity-50"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white focus:outline-none focus:border-cyan-500 disabled:opacity-50"
               >
                 <option value="">Yorumcu seçin</option>
                 {commentators.map((c) => (
@@ -212,7 +212,7 @@ export default function DashboardOpinionsPage() {
                 onChange={(e) => setFormData({ ...formData, incidentId: e.target.value })}
                 required
                 disabled={!!editingId}
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white outline-none focus:border-cyan-500 disabled:opacity-50"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white focus:outline-none focus:border-cyan-500 disabled:opacity-50"
               >
                 <option value="">Pozisyon seçin</option>
                 {incidents.map((inc) => (
@@ -227,7 +227,7 @@ export default function DashboardOpinionsPage() {
               <select
                 value={formData.stance}
                 onChange={(e) => setFormData({ ...formData, stance: e.target.value })}
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white outline-none focus:border-cyan-500"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white focus:outline-none focus:border-cyan-500"
               >
                 <option value="CORRECT">Doğru Karar</option>
                 <option value="INCORRECT">Yanlış Karar</option>
@@ -241,7 +241,7 @@ export default function DashboardOpinionsPage() {
                 value={formData.sourceUrl}
                 onChange={(e) => setFormData({ ...formData, sourceUrl: e.target.value })}
                 placeholder="https://..."
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 outline-none focus:border-cyan-500"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-cyan-500"
               />
             </div>
             <div className="sm:col-span-2">
@@ -252,7 +252,7 @@ export default function DashboardOpinionsPage() {
                 required
                 rows={3}
                 placeholder="Uzman görüşünü yazın..."
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 outline-none focus:border-cyan-500"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-cyan-500"
               />
             </div>
             <div className="flex gap-2 sm:col-span-2">
@@ -280,7 +280,7 @@ export default function DashboardOpinionsPage() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Görüş, yorumcu veya pozisyon ara..."
-            className="w-full rounded-lg border border-zinc-700 bg-zinc-800 py-2.5 pl-10 pr-4 text-sm text-white placeholder-zinc-500 outline-none focus:border-cyan-500"
+            className="w-full rounded-lg border border-zinc-700 bg-zinc-800 py-2.5 pl-10 pr-4 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-cyan-500"
           />
         </div>
         <div className="flex gap-2">

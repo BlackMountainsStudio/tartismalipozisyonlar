@@ -200,7 +200,7 @@ export default function LocalCrawlerPage() {
               value={teamA}
               onChange={(e) => setTeamA(e.target.value)}
               disabled={metaLoading}
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-sm text-white outline-none focus:border-red-500"
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-sm text-white focus:outline-none focus:border-red-500"
             >
               <option value="">Takım seçin</option>
               {availableTeams.map((t) => (
@@ -218,7 +218,7 @@ export default function LocalCrawlerPage() {
               value={teamB}
               onChange={(e) => setTeamB(e.target.value)}
               disabled={metaLoading}
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-sm text-white outline-none focus:border-red-500"
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-sm text-white focus:outline-none focus:border-red-500"
             >
               <option value="">Takım seçin</option>
               {availableTeams.map((t) => (
@@ -239,7 +239,7 @@ export default function LocalCrawlerPage() {
               value={season}
               onChange={(e) => setSeason(e.target.value)}
               disabled={metaLoading || availableSeasons.length === 0}
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-sm text-white outline-none focus:border-red-500"
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-sm text-white focus:outline-none focus:border-red-500"
             >
               <option value="">Sezon seçin</option>
               {availableSeasons.map((s) => (

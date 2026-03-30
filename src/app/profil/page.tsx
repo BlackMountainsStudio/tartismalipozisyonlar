@@ -244,7 +244,7 @@ export default function ProfilPage() {
                 value={form.name}
                 onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
                 placeholder="Adınız Soyadınız"
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-white placeholder-zinc-500 outline-none focus:border-red-500"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-white placeholder-zinc-500 focus:outline-none focus:border-red-500"
               />
             </div>
             <div>
@@ -255,7 +255,7 @@ export default function ProfilPage() {
                 onChange={(e) => setForm((f) => ({ ...f, nickname: e.target.value }))}
                 placeholder="Yorumlarda görünecek isim"
                 maxLength={50}
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-white placeholder-zinc-500 outline-none focus:border-red-500"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-white placeholder-zinc-500 focus:outline-none focus:border-red-500"
               />
             </div>
             <div>
@@ -265,7 +265,7 @@ export default function ProfilPage() {
                 value={form.email}
                 onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
                 placeholder="ornek@email.com"
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-white placeholder-zinc-500 outline-none focus:border-red-500"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-white placeholder-zinc-500 focus:outline-none focus:border-red-500"
               />
             </div>
 
