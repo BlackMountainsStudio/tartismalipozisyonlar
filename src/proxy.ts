@@ -67,7 +67,7 @@ function handleCorsPrelight(request: NextRequest): NextResponse {
   return setCorsHeaders(response, origin);
 }
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const method = request.method;
   const origin = request.headers.get("origin");
