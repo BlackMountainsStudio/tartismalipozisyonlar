@@ -70,7 +70,8 @@ export default function DashboardIncidentsPage() {
       ]);
       const incData = await incRes.json();
       const matchData = await matchRes.json();
-      setIncidents(Array.isArray(incData) ? incData.filter((i) => i != null && typeof i === "object") : []);
+      const incList = Array.isArray(incData?.data) ? incData.data : (Array.isArray(incData) ? incData : []);
+      setIncidents(incList.filter((i: unknown) => i != null && typeof i === "object"));
       setMatches(Array.isArray(matchData) ? matchData : []);
     } catch {
       setIncidents([]);

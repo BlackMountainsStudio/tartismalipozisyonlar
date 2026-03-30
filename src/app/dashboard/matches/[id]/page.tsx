@@ -83,7 +83,7 @@ export default function DashboardMatchDetailPage({
       }
 
       const incidentsData = await incidentsRes.json();
-      setIncidents(Array.isArray(incidentsData) ? incidentsData : []);
+      setIncidents(Array.isArray(incidentsData?.data) ? incidentsData.data : (Array.isArray(incidentsData) ? incidentsData : []));
 
       const refereeData = await refereesRes.json();
       setReferees(Array.isArray(refereeData) ? refereeData : []);

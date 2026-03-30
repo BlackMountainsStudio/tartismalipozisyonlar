@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { prisma } from "@/database/db";
 
+export const revalidate = 60;
+
 const TYPE_LABELS: Record<string, string> = {
   POSSIBLE_PENALTY: "Penaltı Pozisyonu",
   PENALTY: "Penaltı Kararı",

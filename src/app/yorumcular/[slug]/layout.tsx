@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { prisma } from "@/database/db";
 
+export const revalidate = 300;
+
 export async function generateMetadata({
   params,
 }: {

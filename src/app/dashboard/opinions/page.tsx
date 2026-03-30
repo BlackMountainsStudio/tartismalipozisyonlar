@@ -80,7 +80,7 @@ export default function DashboardOpinionsPage() {
       const incData = await incRes.json();
       setOpinions(Array.isArray(opData) ? opData : []);
       setCommentators(Array.isArray(comData) ? comData : []);
-      setIncidents(Array.isArray(incData) ? incData : []);
+      setIncidents(Array.isArray(incData?.data) ? incData.data : (Array.isArray(incData) ? incData : []));
     } catch {
       setOpinions([]);
     } finally {

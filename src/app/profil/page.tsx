@@ -200,7 +200,7 @@ export default function ProfilPage() {
                 {session?.user?.image ? (
                   <Image
                     src={session.user.image}
-                    alt={session.user.name || "Profil"}
+                    alt={`${session.user.nickname ?? session.user.name ?? "Kullanıcı"} profil fotoğrafı`}
                     width={96}
                     height={96}
                     className="h-24 w-24 object-cover"

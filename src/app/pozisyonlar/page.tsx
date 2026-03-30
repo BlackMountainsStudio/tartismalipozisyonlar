@@ -108,7 +108,8 @@ export default function PozisyonlarPage() {
       const incData = await incRes.json();
       const statsData = await statsRes.json();
 
-      setIncidents(Array.isArray(incData) ? incData.filter((i): i is Incident => i != null && typeof i === "object") : []);
+      const incList = Array.isArray(incData?.data) ? incData.data : (Array.isArray(incData) ? incData : []);
+      setIncidents(incList.filter((i: unknown): i is Incident => i != null && typeof i === "object"));
       setStats(statsData && typeof statsData === "object" ? statsData : null);
     } catch (err) {
       console.error("Failed to fetch pozisyonlar:", err);

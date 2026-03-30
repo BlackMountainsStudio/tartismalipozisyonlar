@@ -7,12 +7,14 @@ export async function GET() {
     const referees = await prisma.referee.findMany({
       include: {
         matchesAsReferee: {
-          include: {
+          select: {
+            id: true,
             incidents: { where: { status: "APPROVED" }, select: { id: true } },
           },
         },
         matchesAsVarReferee: {
-          include: {
+          select: {
+            id: true,
             incidents: { where: { status: "APPROVED" }, select: { id: true } },
           },
         },

@@ -48,7 +48,7 @@ export default function DashboardVideosPage() {
     try {
       const res = await fetch("/api/incidents", { cache: "no-store" });
       const data = await res.json();
-      const list = Array.isArray(data) ? data : [];
+      const list = Array.isArray(data?.data) ? data.data : (Array.isArray(data) ? data : []);
       const filtered = list.filter(
         (i: unknown): i is Record<string, unknown> & { id: string } =>
           i != null && typeof i === "object" && "id" in i

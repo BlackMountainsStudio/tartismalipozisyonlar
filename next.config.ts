@@ -12,6 +12,14 @@ const nextConfig: NextConfig = {
     CUSTOM_KEY: process.env.CUSTOM_KEY,
   },
 
+  // 301 redirects for old/English URLs
+  async redirects() {
+    return [
+      { source: "/commentators", destination: "/yorumcular", permanent: true },
+      { source: "/commentators/:slug", destination: "/yorumcular/:slug", permanent: true },
+    ];
+  },
+
   // OAuth profil resimleri (Google) + YouTube thumbnail'lar
   images: {
     remotePatterns: [

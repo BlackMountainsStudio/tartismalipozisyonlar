@@ -36,7 +36,7 @@ export default function DashboardCategoriesPage() {
     try {
       const res = await fetch("/api/incidents", { cache: "no-store" });
       const data = await res.json();
-      const incidents = Array.isArray(data) ? data : [];
+      const incidents = Array.isArray(data?.data) ? data.data : (Array.isArray(data) ? data : []);
 
       const countMap: Record<string, TypeCount> = {};
       for (const type of Object.keys(INCIDENT_TYPE_LABELS)) {
