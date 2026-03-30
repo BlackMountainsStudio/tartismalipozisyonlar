@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/database/db";
+import { UserProfilePatchSchema, parseBody } from "@/lib/schemas";
 
 export async function GET() {
   const session = await auth();
@@ -21,13 +22,20 @@ export async function PATCH(request: NextRequest) {
     return NextResponse.json({ error: "Oturum gerekli" }, { status: 401 });
   }
   try {
-    const body = await request.json();
-    const { name, nickname, email, image } = body;
+    const raw = await request.json();
+    const parsed = parseBody(UserProfilePatchSchema, raw);
+    if ("error" in parsed) {
+      return NextResponse.json({ error: parsed.error }, { status: parsed.status });
+    }
+    const { name, nickname, email } = parsed.data;
     const data: Record<string, unknown> = {};
-    if (typeof name === "string" && name.trim()) data.name = name.trim();
-    if (typeof nickname === "string") data.nickname = nickname.trim() || null;
-    if (typeof email === "string" && email.trim()) data.email = email.trim();
-    if (typeof image === "string") data.image = image;
+    if (name) data.name = name;
+    if (nickname !== undefined) data.nickname = nickname || null;
+    if (email) data.email = email;
+
+    if (Object.keys(data).length === 0) {
+      return NextResponse.json({ error: "Güncellenecek alan yok" }, { status: 400 });
+    }
 
     const user = await prisma.user.update({
       where: { id: session.user.id },

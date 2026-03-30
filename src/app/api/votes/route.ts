@@ -2,8 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/database/db";
 import { NO_CACHE_HEADERS } from "@/lib/api-response";
-
-const DECISION_TYPES = ["PENALTY", "CONTINUE", "YELLOW_CARD", "RED_CARD"] as const;
+import { VotePostSchema, parseBody } from "@/lib/schemas";
 
 export async function GET(request: NextRequest) {
   try {
@@ -74,22 +73,12 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Giriş yapmanız gerekiyor" }, { status: 401 });
     }
 
-    const body = await request.json();
-    const { positionId, decisionType } = body;
-
-    if (!positionId || !decisionType) {
-      return NextResponse.json(
-        { error: "positionId ve decisionType gerekli" },
-        { status: 400 }
-      );
+    const raw = await request.json();
+    const parsed = parseBody(VotePostSchema, raw);
+    if ("error" in parsed) {
+      return NextResponse.json({ error: parsed.error }, { status: parsed.status });
     }
-
-    if (!DECISION_TYPES.includes(decisionType)) {
-      return NextResponse.json(
-        { error: "Geçersiz decisionType. PENALTY, CONTINUE, YELLOW_CARD, RED_CARD olabilir" },
-        { status: 400 }
-      );
-    }
+    const { positionId, decisionType } = parsed.data;
 
     const incident = await prisma.incident.findUnique({
       where: { id: positionId },

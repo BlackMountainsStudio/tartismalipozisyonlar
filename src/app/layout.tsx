@@ -1,11 +1,14 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SessionProvider from "@/components/SessionProvider";
 import "./globals.css";
+
+const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID;
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -82,6 +85,15 @@ export default function RootLayout({
           <Footer />
           <SpeedInsights />
           <Analytics />
+          {CLARITY_ID && (
+            <Script
+              id="microsoft-clarity"
+              strategy="afterInteractive"
+              dangerouslySetInnerHTML={{
+                __html: `(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","${CLARITY_ID}");`,
+              }}
+            />
+          )}
         </SessionProvider>
       </body>
     </html>

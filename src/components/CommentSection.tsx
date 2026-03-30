@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useSession } from "next-auth/react";
 import { MessageSquare, Send, Loader2, User, ThumbsUp, ThumbsDown, HelpCircle, Reply, Flag } from "lucide-react";
 import Link from "next/link";
+import { track } from "@vercel/analytics";
 import AuthModal from "./AuthModal";
 import ReportModal from "./ReportModal";
 
@@ -122,6 +123,7 @@ export default function CommentSection({ matchId, incidentId }: CommentSectionPr
       });
 
       if (res.ok) {
+        track("comment_submit", { incidentId: incidentId ?? "", matchId: matchId ?? "" });
         setContent("");
         fetchComments();
       } else {

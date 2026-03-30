@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useSession } from "next-auth/react";
 import { Flag, Square, CircleDot, Play } from "lucide-react";
+import { track } from "@vercel/analytics";
 import AuthModal from "./AuthModal";
 
 const DECISION_OPTIONS: { type: string; label: string; icon: React.ReactNode; style: string }[] = [
@@ -63,6 +64,7 @@ export default function VoteSection({ incidentId, refereeDecisionLabel }: VoteSe
         body: JSON.stringify({ positionId: incidentId, decisionType }),
       });
       if (res.ok) {
+        track("vote", { incidentId, decisionType });
         await fetchVotes();
       }
     } catch {

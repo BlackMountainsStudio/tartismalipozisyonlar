@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/database/db";
 import { NO_CACHE_HEADERS } from "@/lib/api-response";
+import { SuggestionPostSchema, parseBody } from "@/lib/schemas";
 
 export async function GET(request: NextRequest) {
   try {
@@ -33,22 +34,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const body = await request.json();
-    const { category, subject, message } = body;
-
-    if (!subject?.trim() || !message?.trim()) {
-      return NextResponse.json(
-        { error: "Konu ve mesaj alanları zorunludur" },
-        { status: 400 }
-      );
+    const raw = await request.json();
+    const parsed = parseBody(SuggestionPostSchema, raw);
+    if ("error" in parsed) {
+      return NextResponse.json({ error: parsed.error }, { status: parsed.status });
     }
-
-    if (message.trim().length > 3000) {
-      return NextResponse.json(
-        { error: "Mesaj en fazla 3000 karakter olabilir" },
-        { status: 400 }
-      );
-    }
+    const { category, subject, message } = parsed.data;
 
     const name = session.user.nickname || session.user.name || "Kullanıcı";
     const email = session.user.email ?? null;
