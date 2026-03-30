@@ -7,6 +7,9 @@ const nextConfig: NextConfig = {
   // Production optimizations
   compress: true,
 
+  // Prevent SQLite (local-dev-only) packages from being bundled for Edge Runtime
+  serverExternalPackages: ["@prisma/adapter-better-sqlite3", "better-sqlite3"],
+
   // Environment variables
   env: {
     CUSTOM_KEY: process.env.CUSTOM_KEY,
