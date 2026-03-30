@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/database/db";
-import { NO_CACHE_HEADERS } from "@/lib/api-response";
+import { NO_CACHE_HEADERS, PUBLIC_CACHE_HEADERS } from "@/lib/api-response";
 import { getSeasonFromDate } from "@/lib/slug";
 
 type RefereeStats = {
@@ -79,7 +79,7 @@ export async function GET(request: NextRequest) {
 
     list.sort((a, b) => b.controversialDecisions - a.controversialDecisions);
 
-    return NextResponse.json(list, { headers: NO_CACHE_HEADERS });
+    return NextResponse.json(list, { headers: PUBLIC_CACHE_HEADERS });
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error("GET /api/statistics/referees error:", err);
