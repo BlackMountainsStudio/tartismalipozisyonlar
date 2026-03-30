@@ -73,6 +73,38 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-background font-sans text-foreground antialiased`}
       >
+        <Script
+          id="json-ld-website"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "Var Odası",
+              url: "https://varodasi.com",
+              description: "Tartışmalı hakem kararlarını AI ile analiz eden Türk futbol platformu.",
+              potentialAction: {
+                "@type": "SearchAction",
+                target: "https://varodasi.com/?q={search_term_string}",
+                "query-input": "required name=search_term_string",
+              },
+            }),
+          }}
+        />
+        <Script
+          id="json-ld-organization"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Var Odası",
+              url: "https://varodasi.com",
+              logo: "https://varodasi.com/icon.svg",
+              sameAs: [],
+            }),
+          }}
+        />
         <SessionProvider>
           <a
             href="#main-content"
