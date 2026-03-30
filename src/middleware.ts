@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { verifyAdminToken } from "@/utils/auth";
 
 const ADMIN_SECRET = process.env.ADMIN_SECRET;
 
@@ -89,11 +90,19 @@ export function middleware(request: NextRequest) {
 
   const tokenFromCookie = request.cookies.get("admin_token")?.value;
   const tokenFromHeader = request.headers.get("x-admin-token");
-  const token = tokenFromCookie || tokenFromHeader;
 
-  if (ADMIN_SECRET && token === ADMIN_SECRET) {
-    const response = NextResponse.next();
-    return setCorsHeaders(response, origin);
+  if (ADMIN_SECRET) {
+    // Check if cookie contains a hashed token
+    if (tokenFromCookie && verifyAdminToken(ADMIN_SECRET, tokenFromCookie)) {
+      const response = NextResponse.next();
+      return setCorsHeaders(response, origin);
+    }
+
+    // Check if header contains the plaintext secret (for API clients)
+    if (tokenFromHeader && tokenFromHeader === ADMIN_SECRET) {
+      const response = NextResponse.next();
+      return setCorsHeaders(response, origin);
+    }
   }
 
   if (pathname.startsWith("/api/")) {

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { adminAuthRateLimiter, getClientIP } from "@/lib/rateLimiter";
+import { validateAndHashAdminToken } from "@/utils/auth";
 
 export async function POST(request: Request) {
   // Check rate limit before processing
@@ -15,13 +16,19 @@ export async function POST(request: Request) {
   const { token } = await request.json();
   const secret = process.env.ADMIN_SECRET;
 
-  if (!secret || token !== secret) {
+  if (!secret) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  const hashedToken = validateAndHashAdminToken(token, secret);
+
+  if (!hashedToken) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const response = NextResponse.json({ ok: true });
 
-  response.cookies.set("admin_token", token, {
+  response.cookies.set("admin_token", hashedToken, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     sameSite: "strict",
