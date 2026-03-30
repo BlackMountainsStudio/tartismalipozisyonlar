@@ -4,10 +4,12 @@ import Credentials from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { prisma } from "@/database/db";
 import { compare } from "bcryptjs";
+import { authConfig } from "./auth.config";
 
 const hasGoogle = !!(process.env.AUTH_GOOGLE_ID && process.env.AUTH_GOOGLE_SECRET);
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
+  ...authConfig,
   adapter: PrismaAdapter(prisma),
   trustHost: true,
   providers: [
@@ -47,23 +49,10 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     }),
   ],
   callbacks: {
+    ...authConfig.callbacks,
     async signIn({ user, account }) {
       if (!user.email && account?.provider !== "credentials") return false;
       return true;
-    },
-    async jwt({ token, user }) {
-      if (user) {
-        token.id = user.id;
-        token.nickname = (user as { nickname?: string }).nickname ?? user.name ?? undefined;
-      }
-      return token;
-    },
-    async session({ session, token }) {
-      if (session.user) {
-        session.user.id = token.id as string;
-        session.user.nickname = (token.nickname as string) ?? undefined;
-      }
-      return session;
     },
   },
   events: {
@@ -80,9 +69,4 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       }
     },
   },
-  pages: {
-    signIn: "/giris",
-  },
-  // Credentials provider JWT gerektirir; database session ile uyumsuz
-  session: { strategy: "jwt", maxAge: 30 * 24 * 60 * 60 },
 });

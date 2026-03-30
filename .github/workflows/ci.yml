@@ -1,38 +1,42 @@
-name: CI
+name: CI Pipeline
 
 on:
-  push:
-    branches: [main]
   pull_request:
     branches: [main]
 
 jobs:
   ci:
-    name: Lint & Type Check
+    name: CI - Build, Lint & Type Check
     runs-on: ubuntu-latest
 
-    env:
-      # Minimal env vars so next build / prisma generate can run without a real DB
-      DATABASE_URL: "postgresql://ci:ci@localhost:5432/ci"
-      AUTH_SECRET: "ci-secret-placeholder"
-      ADMIN_SECRET: "ci-admin-placeholder"
-      SKIP_ENV_VALIDATION: "1"
-
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
-          cache: "npm"
+          node-version: '20'
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Run ESLint
-        run: npm run lint
+      - name: Generate Prisma Client
+        run: npx prisma generate
 
-      - name: TypeScript check
+      - name: Run ESLint
+        run: npx eslint src/
+
+      - name: Run TypeScript type check
         run: npx tsc --noEmit
+
+      - name: Build Next.js app
+        run: npm run build
+        env:
+          # Skip telemetry during CI build
+          NEXT_TELEMETRY_DISABLED: 1
+          # Provide minimal env vars for build
+          NEXTAUTH_SECRET: ci-build-secret
+          NEXTAUTH_URL: http://localhost:3000
+          DATABASE_URL: postgresql://ci:ci@localhost:5432/ci

@@ -64,7 +64,7 @@ export default function Navbar() {
               >
                 <div className="flex h-7 w-7 overflow-hidden rounded-full bg-zinc-800">
                   {session.user.image ? (
-                    <Image src={session.user.image} alt={`${session.user.nickname ?? session.user.name ?? "Kullanıcı"} profil fotoğrafı`} width={28} height={28} className="h-7 w-7 object-cover" />
+                    <Image src={session.user.image} alt={session.user.name || "User"} width={28} height={28} className="h-7 w-7 object-cover" />
                   ) : (
                     <div className="flex h-full w-full items-center justify-center">
                       <User className="h-4 w-4 text-zinc-500" />
