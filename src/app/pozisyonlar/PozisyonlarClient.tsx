@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import dynamic from "next/dynamic";
 import IncidentCard from "@/components/IncidentCard";
 import IncidentRadarSection from "@/components/IncidentRadarSection";
+import ShareButtons from "@/components/ShareButtons";
 import {
   Shield,
   Loader2,
@@ -193,12 +194,19 @@ export default function PozisyonlarClient({ initialIncidents, initialStats }: Po
   return (
     <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
       <div className="mb-10">
-        <h1 className="text-3xl font-bold text-white sm:text-4xl">
-          Var <span className="text-red-500">Odası</span>
-        </h1>
-        <p className="mt-2 text-zinc-400">
-          Türe, takıma ve lehine/aleyhine durumuna göre filtreleyip grupları açıp kapatabilirsiniz.
-        </p>
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+          <div>
+            <h1 className="text-3xl font-bold text-white sm:text-4xl">
+              Var <span className="text-red-500">Odası</span>
+            </h1>
+            <p className="mt-2 text-zinc-400">
+              Türe, takıma ve lehine/aleyhine durumuna göre filtreleyip grupları açıp kapatabilirsiniz.
+            </p>
+          </div>
+          <div className="flex-shrink-0">
+            <ShareButtons title="Var Odası - Tartışmalı Pozisyonlar" />
+          </div>
+        </div>
       </div>
 
       {/* Özet / sonuç sayısı ve lehine-aleyhine istatistikleri */}

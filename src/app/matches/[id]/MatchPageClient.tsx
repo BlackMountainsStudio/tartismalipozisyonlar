@@ -5,6 +5,7 @@ import Link from "next/link";
 import IncidentCard from "@/components/IncidentCard";
 import CommentSection from "@/components/CommentSection";
 import IncidentRadarSection from "@/components/IncidentRadarSection";
+import ShareButtons from "@/components/ShareButtons";
 import { refereeUrl } from "@/lib/links";
 import { INCIDENT_TYPE_LABELS, getIncidentImpactPoints } from "@/lib/incidentCategories";
 import { ArrowLeft, Calendar, Trophy, Shield, UserRound, Scale } from "lucide-react";
@@ -195,6 +196,9 @@ export default function MatchPageClient({ match, incidents }: MatchPageClientPro
             )}
           </div>
         )}
+        <div className="mt-6 flex justify-center">
+          <ShareButtons title={`${match.homeTeam} vs ${match.awayTeam} Tartışmalı Pozisyonlar`} />
+        </div>
       </div>
 
       {(incidents.length > 0 || radarScope === "all") && (
