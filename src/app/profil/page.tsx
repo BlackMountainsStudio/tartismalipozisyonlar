@@ -2,6 +2,7 @@
 
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
 import { Loader2, User, Camera, Save, MessageSquare, Send } from "lucide-react";
 import Link from "next/link";
@@ -196,10 +197,9 @@ export default function ProfilPage() {
             <div className="relative">
               <div className="flex h-24 w-24 overflow-hidden rounded-full border-2 border-zinc-700 bg-zinc-800">
                 {session?.user?.image ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
+                  <Image
                     src={session.user.image}
-                    alt="Profil"
+                    alt={session.user.name || "Profil"}
                     width={96}
                     height={96}
                     className="h-24 w-24 object-cover"

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
 import { MessageSquare, Send, Loader2, User, ThumbsUp, ThumbsDown, HelpCircle, Reply, Flag } from "lucide-react";
 import AuthModal from "./AuthModal";
 import ReportModal from "./ReportModal";
@@ -200,8 +201,7 @@ export default function CommentSection({ matchId, incidentId }: CommentSectionPr
           <div className="mb-4 flex items-center gap-2">
             <div className="flex h-8 w-8 overflow-hidden rounded-full bg-zinc-800">
               {session.user.image ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={session.user.image} alt="" width={32} height={32} className="h-8 w-8 object-cover" />
+                <Image src={session.user.image} alt={session.user.name || "User"} width={32} height={32} className="h-8 w-8 object-cover" />
               ) : (
                 <div className="flex h-full w-full items-center justify-center">
                   <User className="h-4 w-4 text-zinc-500" />
@@ -351,8 +351,7 @@ export default function CommentSection({ matchId, incidentId }: CommentSectionPr
                     <div className="flex items-center gap-2">
                       <div className="flex h-7 w-7 overflow-hidden rounded-full bg-zinc-800">
                         {comment.image ? (
-                          // eslint-disable-next-line @next/next/no-img-element
-                          <img src={comment.image} alt="" width={28} height={28} className="h-7 w-7 object-cover" />
+                          <Image src={comment.image} alt={comment.author} width={28} height={28} className="h-7 w-7 object-cover" />
                         ) : (
                           <div className="flex h-full w-full items-center justify-center">
                             <User className="h-3.5 w-3.5 text-zinc-400" />
@@ -432,8 +431,7 @@ export default function CommentSection({ matchId, incidentId }: CommentSectionPr
                         <div key={r.id} className="flex gap-2">
                           <div className="flex h-6 w-6 shrink-0 overflow-hidden rounded-full bg-zinc-800">
                             {r.image ? (
-                              // eslint-disable-next-line @next/next/no-img-element
-                              <img src={r.image} alt="" width={24} height={24} className="h-6 w-6 object-cover" />
+                              <Image src={r.image} alt={r.author} width={24} height={24} className="h-6 w-6 object-cover" />
                             ) : (
                               <div className="flex h-full w-full items-center justify-center">
                                 <User className="h-3 w-3 text-zinc-500" />

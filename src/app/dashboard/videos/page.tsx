@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import Image from "next/image";
 import {
   Video,
   Search,
@@ -195,9 +196,11 @@ export default function DashboardVideosPage() {
                 className="flex items-center gap-4 rounded-lg border border-zinc-800 bg-zinc-900 p-3"
               >
                 {result.thumbnail ? (
-                  <img
+                  <Image
                     src={result.thumbnail}
                     alt={result.title}
+                    width={96}
+                    height={64}
                     className="h-16 w-24 shrink-0 rounded-md object-cover"
                   />
                 ) : (
