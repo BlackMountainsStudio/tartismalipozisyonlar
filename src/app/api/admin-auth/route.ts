@@ -1,6 +1,17 @@
 import { NextResponse } from "next/server";
+import { adminAuthRateLimiter, getClientIP } from "@/lib/rateLimiter";
 
 export async function POST(request: Request) {
+  // Check rate limit before processing
+  const clientIP = getClientIP(request);
+
+  if (!adminAuthRateLimiter.isAllowed(clientIP)) {
+    return NextResponse.json(
+      { error: "Too many attempts. Please try again later." },
+      { status: 429 }
+    );
+  }
+
   const { token } = await request.json();
   const secret = process.env.ADMIN_SECRET;
 
