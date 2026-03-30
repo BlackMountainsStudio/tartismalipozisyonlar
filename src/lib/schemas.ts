@@ -31,7 +31,7 @@ export const UserProfilePatchSchema = z.object({
 export function parseBody<T>(schema: z.ZodSchema<T>, body: unknown): { data: T } | { error: string; status: number } {
   const result = schema.safeParse(body);
   if (!result.success) {
-    const message = result.error.errors[0]?.message ?? "Geçersiz istek";
+    const message = result.error.issues[0]?.message ?? "Geçersiz istek";
     return { error: message, status: 400 };
   }
   return { data: result.data };
