@@ -3,12 +3,14 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
+import { Toaster } from "sonner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SessionProvider from "@/components/SessionProvider";
 import "./globals.css";
 
 const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID;
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -115,8 +117,34 @@ export default function RootLayout({
           <Navbar />
           <main id="main-content" className="min-h-[calc(100vh-4rem-6rem)]">{children}</main>
           <Footer />
+          <Toaster
+            position="bottom-right"
+            theme="dark"
+            toastOptions={{
+              classNames: {
+                toast: "bg-zinc-900 border border-zinc-700 text-white",
+                error: "border-red-500/50",
+                success: "border-emerald-500/50",
+              },
+            }}
+          />
           <SpeedInsights />
           <Analytics />
+          {GA_ID && (
+            <>
+              <Script
+                src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+                strategy="afterInteractive"
+              />
+              <Script
+                id="google-analytics"
+                strategy="afterInteractive"
+                dangerouslySetInnerHTML={{
+                  __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}',{page_path:window.location.pathname});`,
+                }}
+              />
+            </>
+          )}
           {CLARITY_ID && (
             <Script
               id="microsoft-clarity"
