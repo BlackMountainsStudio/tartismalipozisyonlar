@@ -451,10 +451,11 @@ export default function CommentSection({ matchId, incidentId }: CommentSectionPr
                               <span className="text-xs text-zinc-600">{timeAgo(r.createdAt)}</span>
                               <button
                                 type="button"
+                                aria-label={`${r.author} yorumunu şikayet et`}
                                 onClick={() => setReportingComment({ id: r.id, author: r.author })}
                                 className="ml-auto text-xs text-zinc-500 hover:text-red-400"
                               >
-                                <Flag className="inline h-3 w-3" />
+                                <Flag className="inline h-3 w-3" aria-hidden="true" />
                               </button>
                             </div>
                             <p className="text-sm text-zinc-400">{r.content}</p>

@@ -1,8 +1,22 @@
+import type { Metadata } from "next";
 import { prisma } from "@/database/db";
 import { buildMatchSlug } from "@/lib/slug";
 import HomeClient, { type MatchForHome } from "./HomeClient";
 
 export const revalidate = 60;
+
+export const metadata: Metadata = {
+  title: "Var Odası - Süper Lig Tartışmalı Hakem Kararları",
+  description:
+    "2025-26 Süper Lig sezonundaki tartışmalı hakem kararlarını AI ile analiz eden platform. Her maçın VAR pozisyonlarını, penaltı kararlarını ve kırmızı kartları inceleyin.",
+  alternates: { canonical: "https://varodasi.com" },
+  openGraph: {
+    title: "Var Odası - Süper Lig Tartışmalı Hakem Kararları",
+    description:
+      "2025-26 Süper Lig sezonundaki tartışmalı hakem kararlarını AI ile analiz eden platform.",
+    url: "https://varodasi.com",
+  },
+};
 
 export default async function HomePage() {
   let matches: MatchForHome[] = [];

@@ -1,7 +1,21 @@
+import type { Metadata } from "next";
 import { prisma } from "@/database/db";
 import HakemlerClient, { type RefereeListItem } from "./HakemlerClient";
 
 export const revalidate = 300;
+
+export const metadata: Metadata = {
+  title: "Hakemler | Var Odası",
+  description:
+    "Süper Lig hakemlerinin tartışmalı karar istatistiklerini inceleyin. Hakem başına penaltı, kırmızı kart ve VAR müdahalesi sayıları.",
+  alternates: { canonical: "https://varodasi.com/hakemler" },
+  openGraph: {
+    title: "Hakemler | Var Odası",
+    description:
+      "Süper Lig hakemlerinin tartışmalı karar istatistiklerini inceleyin.",
+    url: "https://varodasi.com/hakemler",
+  },
+};
 
 export default async function HakemlerPage() {
   let referees: RefereeListItem[] = [];
