@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ci:
+    name: Lint & Type Check
+    runs-on: ubuntu-latest
+
+    env:
+      # Minimal env vars so next build / prisma generate can run without a real DB
+      DATABASE_URL: "postgresql://ci:ci@localhost:5432/ci"
+      AUTH_SECRET: "ci-secret-placeholder"
+      ADMIN_SECRET: "ci-admin-placeholder"
+      SKIP_ENV_VALIDATION: "1"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: TypeScript check
+        run: npx tsc --noEmit

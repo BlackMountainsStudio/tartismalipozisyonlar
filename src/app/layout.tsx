@@ -71,8 +71,14 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-background font-sans text-foreground antialiased`}
       >
         <SessionProvider>
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-red-600 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white"
+          >
+            İçeriğe atla
+          </a>
           <Navbar />
-          <main className="min-h-[calc(100vh-4rem-6rem)]">{children}</main>
+          <main id="main-content" className="min-h-[calc(100vh-4rem-6rem)]">{children}</main>
           <Footer />
           <SpeedInsights />
           <Analytics />

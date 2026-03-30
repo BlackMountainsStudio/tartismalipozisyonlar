@@ -12,6 +12,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Scripts are Node.js CommonJS files
+    "scripts/**",
+    // Example/reference files
+    "src/lib/supabase-examples.ts",
   ]),
 ]);
 

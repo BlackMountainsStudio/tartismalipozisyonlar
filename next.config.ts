@@ -12,11 +12,14 @@ const nextConfig: NextConfig = {
     CUSTOM_KEY: process.env.CUSTOM_KEY,
   },
 
-  // OAuth profil resimleri (Google)
+  // OAuth profil resimleri (Google) + YouTube thumbnail'lar
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "lh3.googleusercontent.com", pathname: "/**" },
+      { protocol: "https", hostname: "i.ytimg.com", pathname: "/**" },
+      { protocol: "https", hostname: "img.youtube.com", pathname: "/**" },
     ],
+    formats: ["image/avif", "image/webp"],
   },
 };
 

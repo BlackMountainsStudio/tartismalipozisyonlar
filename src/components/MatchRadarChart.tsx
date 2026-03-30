@@ -150,6 +150,7 @@ export default function MatchRadarChart({
 
   useEffect(() => {
     if (mode === "aggregate" && availableTeams.length >= 2) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setSelectedTeams((prev) => {
         const valid = new Set(prev);
         valid.forEach((t) => {

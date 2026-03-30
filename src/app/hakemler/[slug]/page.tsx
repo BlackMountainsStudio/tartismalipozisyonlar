@@ -133,6 +133,7 @@ export default function HakemDetailPage({
               width={96}
               height={96}
               className="mb-4 h-24 w-24 rounded-full object-cover sm:mb-0 sm:mr-6"
+              unoptimized
             />
           ) : (
             <div className="mb-4 flex h-24 w-24 shrink-0 items-center justify-center rounded-full bg-red-500/10 sm:mb-0 sm:mr-6">

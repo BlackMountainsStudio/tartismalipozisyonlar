@@ -3,7 +3,7 @@ import type { NextRequest } from "next/server";
 
 const ADMIN_SECRET = process.env.ADMIN_SECRET;
 
-const PROTECTED_PATHS = ["/dashboard", "/api/chat", "/api/crawler"];
+const PROTECTED_PATHS = ["/dashboard", "/api/chat", "/api/crawler", "/api/dev"];
 
 const ADMIN_ONLY_METHODS = ["POST", "PUT", "PATCH", "DELETE"];
 const ADMIN_API_PATHS = [
@@ -13,6 +13,7 @@ const ADMIN_API_PATHS = [
   "/api/commentators",
   "/api/referees",
   "/api/opinions",
+  "/api/match-videos",
 ];
 
 function isProtectedPath(pathname: string): boolean {

@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
 import { Loader2, User, Camera, Save, MessageSquare, Send } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 type Tab = "ayarlar" | "yorumlar" | "oneriler";
 
