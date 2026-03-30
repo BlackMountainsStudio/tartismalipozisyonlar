@@ -20,7 +20,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       prisma.match.findMany({ select: { slug: true, updatedAt: true }, take: 500 }),
       prisma.incident.findMany({ select: { slug: true, updatedAt: true }, take: 1000 }),
       prisma.referee.findMany({ select: { slug: true, updatedAt: true }, take: 200 }),
-      prisma.commentator.findMany({ select: { slug: true, updatedAt: true }, take: 200 }),
+      prisma.commentator.findMany({ select: { slug: true }, take: 200 }),
     ]);
 
     const matchRoutes: MetadataRoute.Sitemap = matches
@@ -54,7 +54,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       .filter((c) => c.slug)
       .map((c) => ({
         url: `${SITE_URL}/yorumcular/${c.slug}`,
-        lastModified: c.updatedAt ?? now,
+        lastModified: now,
         changeFrequency: "weekly" as const,
         priority: 0.7,
       }));

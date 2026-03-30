@@ -53,7 +53,7 @@ export default function DashboardVideosPage() {
           i != null && typeof i === "object" && "id" in i
       );
       setIncidents(
-        filtered.map((i) => {
+        filtered.map((i: Record<string, unknown> & { id: string }) => {
           const inc = i as unknown as Incident & { relatedVideos?: string | string[] };
           return {
             ...inc,
