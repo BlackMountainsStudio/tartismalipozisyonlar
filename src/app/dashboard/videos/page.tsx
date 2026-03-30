@@ -13,7 +13,6 @@ import {
   Globe,
   Crosshair,
 } from "lucide-react";
-import Image from "next/image";
 import { getVideoLinkLabel, getSourceLabel } from "@/lib/linkLabels";
 
 interface Incident {

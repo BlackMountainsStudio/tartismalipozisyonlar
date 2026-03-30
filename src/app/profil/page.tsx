@@ -6,7 +6,6 @@ import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
 import { Loader2, User, Camera, Save, MessageSquare, Send } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 
 type Tab = "ayarlar" | "yorumlar" | "oneriler";
 
@@ -200,7 +199,7 @@ export default function ProfilPage() {
                 {session?.user?.image ? (
                   <Image
                     src={session.user.image}
-                    alt={session.user.name || "Profil"}
+                    alt={`${session.user.nickname ?? session.user.name ?? "Kullanıcı"} profil fotoğrafı`}
                     width={96}
                     height={96}
                     className="h-24 w-24 object-cover"
