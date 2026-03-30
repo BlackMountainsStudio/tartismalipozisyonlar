@@ -20,10 +20,11 @@
 |--------|------|
 | `CLAUDE.md` (bu dosya) | Genel davranis, arac onceligi, guvenlik, Git/CI |
 | `AGENTS.md` | Proje overview, DB setup, auth, lint |
-| `.claude/settings.json` | Izinler, hook'lar, MCP ayarlari |
+| `.claude/settings.json` | Hooks ve enabledMcpjsonServers (permissions global'den devralinir) |
 | `.mcp.json` | MCP sunuculari (github, git, atlassian, context7) |
+| `~/.claude/skills/` (global) | Tum skill'ler — proje klasorune kopyalanmaz |
 
-### Skills
+### Skills (global — `~/.claude/skills/`)
 
 | Skill | Komut | Aciklama |
 |-------|-------|----------|

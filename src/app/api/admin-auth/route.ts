@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { hashAdminToken } from "@/lib/admin-auth";
 
 export async function POST(request: Request) {
   const { token } = await request.json();
@@ -8,9 +9,10 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
+  const hashedToken = await hashAdminToken(secret);
   const response = NextResponse.json({ ok: true });
 
-  response.cookies.set("admin_token", token, {
+  response.cookies.set("admin_token", hashedToken, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     sameSite: "strict",

@@ -1,35 +1,5 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "permissions": {
-    "defaultMode": "bypassPermissions",
-    "ask": [
-      "Bash(git push --force*)",
-      "Bash(git push -f *)",
-      "Bash(rm -rf *)",
-      "Bash(rm -fr *)",
-      "Bash(gh repo delete*)",
-      "Bash(shred *)"
-    ],
-    "allow": [
-      "Bash(git *)",
-      "Bash(node *)",
-      "Bash(npm *)",
-      "Bash(npx *)",
-      "Bash(tsx *)",
-      "Bash(gh *)",
-      "Bash(brew *)",
-      "Bash(mkdir *)",
-      "Bash(python3 *)",
-      "Bash(python *)",
-      "Bash(curl *)",
-      "Bash(cp *)",
-      "Bash(mv *)",
-      "Bash(env *)",
-      "Read(~/.zshrc)"
-    ],
-    "deny": []
-  },
-  "includeGitInstructions": true,
   "enabledMcpjsonServers": ["github", "git", "atlassian", "context7"],
   "hooks": {
     "Stop": [

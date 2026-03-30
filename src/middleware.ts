@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { hashAdminToken } from "@/lib/admin-auth";
 
 const ADMIN_SECRET = process.env.ADMIN_SECRET;
 
@@ -33,7 +34,7 @@ function isAdminApiWrite(pathname: string, method: string): boolean {
   );
 }
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const method = request.method;
 
@@ -41,11 +42,19 @@ export function middleware(request: NextRequest) {
 
   if (!needsAuth) return NextResponse.next();
 
+  if (!ADMIN_SECRET) {
+    return NextResponse.json({ error: "Server misconfigured" }, { status: 500 });
+  }
+
   const tokenFromCookie = request.cookies.get("admin_token")?.value;
   const tokenFromHeader = request.headers.get("x-admin-token");
-  const token = tokenFromCookie || tokenFromHeader;
 
-  if (ADMIN_SECRET && token === ADMIN_SECRET) {
+  // Cookie stores hashed token; header accepts plaintext for direct API calls
+  const expectedHash = await hashAdminToken(ADMIN_SECRET);
+  const cookieValid = tokenFromCookie === expectedHash;
+  const headerValid = tokenFromHeader === ADMIN_SECRET;
+
+  if (cookieValid || headerValid) {
     return NextResponse.next();
   }
 
