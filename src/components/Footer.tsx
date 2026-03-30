@@ -33,7 +33,7 @@ export default function Footer() {
             </ul>
           </nav>
         </div>
-        <p className="mt-6 text-center text-xs text-zinc-600">
+        <p className="mt-6 text-center text-xs text-zinc-500">
           Topluluk tartışmalarının AI analizi ile desteklenmektedir. Sonuçlar insan onayına tabidir.
         </p>
       </div>

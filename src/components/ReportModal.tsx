@@ -71,7 +71,7 @@ export default function ReportModal({
 
         <form onSubmit={handleSubmit}>
           <label className="mb-2 block text-sm font-medium text-zinc-400">
-            Neden şikayet ediyorsunuz? <span className="text-zinc-600">(opsiyonel)</span>
+            Neden şikayet ediyorsunuz? <span className="text-zinc-400">(opsiyonel)</span>
           </label>
           <textarea
             value={reason}
@@ -81,7 +81,7 @@ export default function ReportModal({
             maxLength={500}
             className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-sm text-white placeholder-zinc-500 outline-none focus:border-red-500"
           />
-          <div className="mt-1 text-right text-xs text-zinc-600">{reason.length}/500</div>
+          <div className="mt-1 text-right text-xs text-zinc-500">{reason.length}/500</div>
 
           <div className="mt-6 flex gap-3">
             <button

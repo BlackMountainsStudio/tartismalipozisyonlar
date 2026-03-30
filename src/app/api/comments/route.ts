@@ -3,6 +3,7 @@ import { auth } from "@/auth";
 import { prisma } from "@/database/db";
 import { NO_CACHE_HEADERS } from "@/lib/api-response";
 import { CommentPostSchema, parseBody } from "@/lib/schemas";
+import { filterContent } from "@/lib/content-filter";
 
 export async function GET(request: NextRequest) {
   try {
@@ -75,6 +76,11 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: parsed.error }, { status: parsed.status });
     }
     const { matchId, incidentId, parentId, content, verdict } = parsed.data;
+
+    const filterResult = filterContent(content);
+    if (!filterResult.ok) {
+      return NextResponse.json({ error: filterResult.reason ?? "Yorum gönderilemedi" }, { status: 400 });
+    }
 
     const author = session.user.nickname || session.user.name || "Kullanıcı";
 

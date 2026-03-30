@@ -50,12 +50,26 @@ export function middleware(request: NextRequest) {
   }
 
   if (pathname.startsWith("/api/")) {
-    return NextResponse.json({ error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  return NextResponse.rewrite(new URL("/not-found", request.url));
+  const loginUrl = new URL("/admin-login", request.url);
+  loginUrl.searchParams.set("from", pathname);
+  return NextResponse.redirect(loginUrl);
 }
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/api/:path*"],
+  matcher: [
+    "/dashboard/:path*",
+    "/api/crawler/:path*",
+    "/api/dev/:path*",
+    "/api/chat/:path*",
+    "/api/matches/:path*",
+    "/api/incidents/:path*",
+    "/api/commentators/:path*",
+    "/api/referees/:path*",
+    "/api/opinions/:path*",
+    "/api/match-videos/:path*",
+    "/api/suggestions/:path*",
+  ],
 };

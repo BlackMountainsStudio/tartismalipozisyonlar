@@ -6,6 +6,20 @@ import MatchPageClient from "./MatchPageClient";
 
 export const revalidate = 60;
 
+export async function generateStaticParams() {
+  const matches = await prisma.match
+    .findMany({
+      where: { league: "Süper Lig 2025-26" },
+      select: { slug: true, id: true },
+      orderBy: { date: "desc" },
+      take: 50,
+    })
+    .catch(() => []);
+  return matches
+    .filter((m) => m.slug)
+    .map((m) => ({ id: m.slug as string }));
+}
+
 const SITE_URL = "https://varodasi.com";
 
 export async function generateMetadata({

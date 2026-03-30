@@ -5,6 +5,13 @@ import HakemDetailClient, { type RefereeDetailProps } from "./HakemDetailClient"
 
 export const revalidate = 300;
 
+export async function generateStaticParams() {
+  const referees = await prisma.referee
+    .findMany({ select: { slug: true } })
+    .catch(() => []);
+  return referees.map((r) => ({ slug: r.slug }));
+}
+
 export default async function HakemDetailPage({
   params,
 }: {
