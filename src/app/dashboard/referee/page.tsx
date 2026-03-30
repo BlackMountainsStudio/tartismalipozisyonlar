@@ -45,7 +45,7 @@ export default function DashboardRefereePage() {
     try {
       const res = await fetch("/api/incidents", { cache: "no-store" });
       const data = await res.json();
-      const list = Array.isArray(data) ? data : [];
+      const list = Array.isArray(data?.data) ? data.data : (Array.isArray(data) ? data : []);
       setIncidents(
         list.map((i: Incident & { refereeComments?: string | { author: string; comment: string; source?: string }[] }) => ({
           ...i,

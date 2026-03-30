@@ -100,6 +100,8 @@ export default function VoteSection({ incidentId, refereeDecisionLabel }: VoteSe
                 type="button"
                 onClick={() => handleVote(opt.type)}
                 disabled={voting}
+                aria-pressed={isUserVote}
+                aria-label={`${opt.label}${voteData && voteData.total > 0 ? ` — %${voteData?.percentages?.[opt.type] ?? 0}` : ""}`}
                 className={`flex items-center gap-2 rounded-xl border px-4 py-2.5 text-sm font-medium transition-all ${
                   isUserVote ? `${opt.style} ring-2 ring-offset-2 ring-offset-zinc-900` : "border-zinc-700 bg-zinc-800/80 text-zinc-300 hover:border-zinc-600 hover:bg-zinc-800"
                 }`}

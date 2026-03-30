@@ -238,8 +238,8 @@ export default function IncidentCard({
   }
 
   return (
-    <div className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-5 transition-all hover:border-zinc-700">
+    <article className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-5 transition-all hover:border-zinc-700">
       {cardContent}
-    </div>
+    </article>
   );
 }

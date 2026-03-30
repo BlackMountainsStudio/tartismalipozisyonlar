@@ -52,7 +52,7 @@ export default function MatchCard({
       : matchUrl(slug ?? id);
 
   return (
-    <div className="group block rounded-xl border border-zinc-800 bg-zinc-900/50 p-5 transition-all hover:border-zinc-700 hover:bg-zinc-900">
+    <article className="group block rounded-xl border border-zinc-800 bg-zinc-900/50 p-5 transition-all hover:border-zinc-700 hover:bg-zinc-900">
       <Link href={href} className="block">
         <div className="mb-3 flex items-center justify-between">
           <span className="rounded-md bg-red-500/10 px-2 py-0.5 text-xs font-medium text-red-400">
@@ -118,6 +118,6 @@ export default function MatchCard({
           )}
         </div>
       )}
-    </div>
+    </article>
   );
 }

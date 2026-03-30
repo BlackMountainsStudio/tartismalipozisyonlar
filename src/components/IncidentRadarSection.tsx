@@ -102,7 +102,7 @@ export default function IncidentRadarSection({
       });
       const res = await fetch(`/api/incidents?${params}`, { cache: "no-store" });
       const data = await res.json();
-      const list = Array.isArray(data) ? data : [];
+      const list = Array.isArray(data?.data) ? data.data : (Array.isArray(data) ? data : []);
       setAllIncidents(
         list.map((i: { id: string; type: string; minute?: number | null; inFavorOf?: string | null; against?: string | null; opinionSummary?: { agree: number; disagree: number; neutral: number } | null; match?: { homeTeam: string; awayTeam: string } }) => ({
           id: i.id,

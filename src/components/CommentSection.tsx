@@ -404,7 +404,11 @@ export default function CommentSection({ matchId, incidentId }: CommentSectionPr
                   </div>
                   {replyingTo === comment.id && (
                     <div className="mt-3 flex gap-2">
+                      <label htmlFor={`reply-${comment.id}`} className="sr-only">
+                        {comment.author} kullanıcısına yanıt
+                      </label>
                       <textarea
+                        id={`reply-${comment.id}`}
                         value={replyContent}
                         onChange={(e) => setReplyContent(e.target.value)}
                         placeholder={`@${comment.author} yanıtla...`}

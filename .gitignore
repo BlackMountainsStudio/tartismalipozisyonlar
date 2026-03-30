@@ -46,3 +46,10 @@ next-env.d.ts
 /prisma/dev.db
 /prisma/dev.db-journal
 /prisma/dev.db-wal
+
+# jira state
+.jira-state/
+.jira_cache.json
+
+# git worktrees for parallel agents
+.worktrees/

@@ -6,6 +6,7 @@ import VoteSection from "./VoteSection";
 import SimilarPositionsSection from "./SimilarPositionsSection";
 import AIPredictionSection from "./AIPredictionSection";
 import ShareButtons from "./ShareButtons";
+import Breadcrumb from "./Breadcrumb";
 import { getSourceLabel, getVideoProviderName, getOpenInNewTabLabel, getOpinionSourceLabel } from "@/lib/linkLabels";
 import { getIncidentImpactPoints } from "@/lib/incidentCategories";
 import {
@@ -172,8 +173,17 @@ export default function IncidentDetailTemplate({
           ? { label: "Yanlış karar", style: "text-red-400", bg: "bg-red-500/10" }
           : { label: "Kararsız", style: "text-amber-400", bg: "bg-amber-500/10" };
 
+  const breadcrumbItems = [
+    { label: "Ana Sayfa", href: "/" },
+    ...(incident.match
+      ? [{ label: `${incident.match.homeTeam} vs ${incident.match.awayTeam}`, href: undefined }]
+      : []),
+    { label: typeInfo.label },
+  ];
+
   return (
     <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
+      <Breadcrumb items={breadcrumbItems} />
       {onBack && incident.match && (
         <button onClick={onBack} className="mb-6 flex items-center gap-2 text-sm text-zinc-400 transition-colors hover:text-white">
           <ArrowLeft className="h-4 w-4" />

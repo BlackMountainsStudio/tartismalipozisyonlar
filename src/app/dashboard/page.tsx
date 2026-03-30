@@ -59,14 +59,15 @@ export default function DashboardPage() {
       const suggestions = await suggestionsRes.json();
 
       const matchList = Array.isArray(matches) ? matches : [];
-      const incidentList = Array.isArray(incidents) ? incidents : [];
+      const incidentList = Array.isArray(incidents?.data) ? incidents.data : (Array.isArray(incidents) ? incidents : []);
+      const incidentTotal: number = typeof incidents?.total === "number" ? incidents.total : incidentList.length;
       const commentatorList = Array.isArray(commentators) ? commentators : [];
       const refereeList = Array.isArray(referees) ? referees : [];
       const suggestionList = Array.isArray(suggestions) ? suggestions : [];
 
       setStats({
         totalMatches: matchList.length,
-        totalIncidents: incidentList.length,
+        totalIncidents: incidentTotal,
         pendingIncidents: incidentList.filter((i: { status: string }) => i.status === "PENDING").length,
         approvedIncidents: incidentList.filter((i: { status: string }) => i.status === "APPROVED").length,
         totalCommentators: commentatorList.length,

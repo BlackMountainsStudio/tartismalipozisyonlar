@@ -72,7 +72,8 @@ export default function MatchPage({
       if (matchItem) {
         const incRes = await fetch(`/api/incidents?matchId=${matchItem.id}&status=approved`, { cache: "no-store" });
         const incData = await incRes.json();
-        setIncidents(Array.isArray(incData) ? incData.filter((i: unknown): i is Incident => i != null && typeof i === "object" && "id" in i) : []);
+        const incList = Array.isArray(incData?.data) ? incData.data : (Array.isArray(incData) ? incData : []);
+        setIncidents(incList.filter((i: unknown): i is Incident => i != null && typeof i === "object" && "id" in i));
       } else {
         setIncidents([]);
       }

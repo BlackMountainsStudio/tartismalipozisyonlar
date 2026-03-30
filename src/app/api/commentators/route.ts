@@ -15,11 +15,7 @@ export async function GET() {
     const commentators = await prisma.commentator.findMany({
       include: {
         opinions: {
-          include: {
-            incident: {
-              include: { match: true },
-            },
-          },
+          select: { id: true, stance: true },
         },
       },
       orderBy: { name: "asc" },

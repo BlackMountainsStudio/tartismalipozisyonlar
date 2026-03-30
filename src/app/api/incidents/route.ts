@@ -44,10 +44,11 @@ export async function GET(request: NextRequest) {
       });
       let match = matchWithIncidents;
       if (!match) {
-        const allMatches = await prisma.match.findMany({
-          include: { incidents: { select: { id: true, slug: true } } },
+        // Fallback: fetch only slug-relevant fields (no incidents) to avoid heavy join
+        const allMatchesSlim = await prisma.match.findMany({
+          select: { id: true, slug: true, league: true, week: true, date: true, homeTeam: true, awayTeam: true },
         });
-        match = allMatches.find(
+        const found = allMatchesSlim.find(
           (m) =>
             buildMatchSlug({
               league: m.league,
@@ -56,7 +57,13 @@ export async function GET(request: NextRequest) {
               homeTeam: m.homeTeam,
               awayTeam: m.awayTeam,
             }) === matchSlug
-        ) ?? null;
+        );
+        if (found) {
+          match = await prisma.match.findUnique({
+            where: { id: found.id },
+            include: { incidents: { select: { id: true, slug: true } } },
+          });
+        }
       }
       if (!match) return NextResponse.json(null, { status: 404, headers: NO_CACHE_HEADERS });
       const incidentRow = match.incidents.find(
@@ -165,26 +172,37 @@ export async function GET(request: NextRequest) {
       };
     }
 
-    const incidents = await prisma.incident.findMany({
-      where,
-      include: {
-        match: {
-          select: {
-            id: true,
-            homeTeam: true,
-            awayTeam: true,
-            week: true,
-            date: true,
-            league: true,
-            slug: true,
-            referee: { select: { id: true, name: true, slug: true, role: true } },
-            varReferee: { select: { id: true, name: true, slug: true, role: true } },
+    const pageParam = parseInt(searchParams.get("page") ?? "1", 10);
+    const limitParam = parseInt(searchParams.get("limit") ?? "50", 10);
+    const page = Number.isFinite(pageParam) && pageParam > 0 ? pageParam : 1;
+    const limit = Number.isFinite(limitParam) && limitParam > 0 && limitParam <= 200 ? limitParam : 50;
+    const skip = (page - 1) * limit;
+
+    const [incidents, total] = await Promise.all([
+      prisma.incident.findMany({
+        where,
+        include: {
+          match: {
+            select: {
+              id: true,
+              homeTeam: true,
+              awayTeam: true,
+              week: true,
+              date: true,
+              league: true,
+              slug: true,
+              referee: { select: { id: true, name: true, slug: true, role: true } },
+              varReferee: { select: { id: true, name: true, slug: true, role: true } },
+            },
           },
+          opinions: { select: { stance: true } },
         },
-        opinions: { select: { stance: true } },
-      },
-      orderBy: [{ minute: "asc" }, { confidenceScore: "desc" }],
-    });
+        orderBy: [{ minute: "asc" }, { confidenceScore: "desc" }],
+        take: limit,
+        skip,
+      }),
+      prisma.incident.count({ where }),
+    ]);
 
     const mapped = incidents.map((inc) => {
       const opinions = (inc as { opinions?: { stance: string }[] }).opinions ?? [];
@@ -230,7 +248,10 @@ export async function GET(request: NextRequest) {
       };
     });
 
-    return NextResponse.json(mapped, { headers: NO_CACHE_HEADERS });
+    return NextResponse.json(
+      { data: mapped, total, page, limit, totalPages: Math.ceil(total / limit) },
+      { headers: NO_CACHE_HEADERS }
+    );
   } catch (err) {
     console.error("GET /api/incidents error:", err);
     return NextResponse.json([], { headers: NO_CACHE_HEADERS });

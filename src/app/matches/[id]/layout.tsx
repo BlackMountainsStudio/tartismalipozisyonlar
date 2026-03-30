@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { prisma } from "@/database/db";
 
+export const revalidate = 60;
+
 interface MatchData {
   homeTeam: string;
   awayTeam: string;
