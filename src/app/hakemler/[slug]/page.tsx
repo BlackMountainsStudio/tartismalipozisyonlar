@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, use } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { matchUrl } from "@/lib/links";
 import {
@@ -126,10 +127,13 @@ export default function HakemDetailPage({
       <div className="mb-10 rounded-2xl border border-zinc-800 bg-zinc-900/50 p-8">
         <div className="flex flex-col items-center text-center sm:flex-row sm:items-start sm:text-left">
           {referee.photoUrl ? (
-            <img
+            <Image
               src={referee.photoUrl}
               alt={referee.name}
+              width={96}
+              height={96}
               className="mb-4 h-24 w-24 rounded-full object-cover sm:mb-0 sm:mr-6"
+              unoptimized
             />
           ) : (
             <div className="mb-4 flex h-24 w-24 shrink-0 items-center justify-center rounded-full bg-red-500/10 sm:mb-0 sm:mr-6">

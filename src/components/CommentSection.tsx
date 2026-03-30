@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useSession } from "next-auth/react";
 import { MessageSquare, Send, Loader2, User, ThumbsUp, ThumbsDown, HelpCircle, Reply, Flag } from "lucide-react";
+import Link from "next/link";
 import AuthModal from "./AuthModal";
 import ReportModal from "./ReportModal";
 
@@ -211,9 +212,9 @@ export default function CommentSection({ matchId, incidentId }: CommentSectionPr
             <span className="text-sm text-zinc-400">
               {session.user.nickname || session.user.name} olarak yorum yapıyorsunuz
             </span>
-            <a href="/profil" className="ml-auto text-xs text-red-400 hover:text-red-300">
+            <Link href="/profil" className="ml-auto text-xs text-red-400 hover:text-red-300">
               Profili düzenle
-            </a>
+            </Link>
           </div>
         )}
         <div className="mb-4">

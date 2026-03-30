@@ -12,6 +12,7 @@ import {
   Globe,
   Crosshair,
 } from "lucide-react";
+import Image from "next/image";
 import { getVideoLinkLabel, getSourceLabel } from "@/lib/linkLabels";
 
 interface Incident {
@@ -195,10 +196,13 @@ export default function DashboardVideosPage() {
                 className="flex items-center gap-4 rounded-lg border border-zinc-800 bg-zinc-900 p-3"
               >
                 {result.thumbnail ? (
-                  <img
+                  <Image
                     src={result.thumbnail}
                     alt={result.title}
+                    width={96}
+                    height={64}
                     className="h-16 w-24 shrink-0 rounded-md object-cover"
+                    unoptimized
                   />
                 ) : (
                   <div className="flex h-16 w-24 shrink-0 items-center justify-center rounded-md bg-zinc-800">

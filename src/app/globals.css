@@ -46,6 +46,17 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Focus-visible: erişilebilir klavye navigasyonu */
+:focus-visible {
+  outline: 2px solid #ef4444;
+  outline-offset: 2px;
+}
+
+/* Fare ile tıklamada outline gizle */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
 /* Mobilde font rendering iyileştirmesi */
 body {
   -webkit-font-smoothing: antialiased;

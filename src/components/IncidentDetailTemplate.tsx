@@ -5,6 +5,7 @@ import ConfidenceBadge from "./ConfidenceBadge";
 import VoteSection from "./VoteSection";
 import SimilarPositionsSection from "./SimilarPositionsSection";
 import AIPredictionSection from "./AIPredictionSection";
+import ShareButtons from "./ShareButtons";
 import { getSourceLabel, getVideoProviderName, getOpenInNewTabLabel, getOpinionSourceLabel } from "@/lib/linkLabels";
 import { getIncidentImpactPoints } from "@/lib/incidentCategories";
 import {
@@ -290,6 +291,9 @@ export default function IncidentDetailTemplate({
             )}
           </div>
         )}
+        <div className="mt-4 border-t border-zinc-800 pt-4">
+          <ShareButtons title={`${typeInfo.label}${incident.match ? ` — ${incident.match.homeTeam} vs ${incident.match.awayTeam}` : ""}`} />
+        </div>
       </div>
 
       {/* 2. POZİSYON DETAYI */}

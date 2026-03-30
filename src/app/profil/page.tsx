@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState, useRef } from "react";
 import { Loader2, User, Camera, Save, MessageSquare, Send } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 type Tab = "ayarlar" | "yorumlar" | "oneriler";
 
@@ -196,8 +197,7 @@ export default function ProfilPage() {
             <div className="relative">
               <div className="flex h-24 w-24 overflow-hidden rounded-full border-2 border-zinc-700 bg-zinc-800">
                 {session?.user?.image ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
+                  <Image
                     src={session.user.image}
                     alt="Profil"
                     width={96}

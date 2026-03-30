@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { Shield, Send, Scale, ListFilter, Menu, X, UserRound, User, LogOut } from "lucide-react";
@@ -63,8 +64,7 @@ export default function Navbar() {
               >
                 <div className="flex h-7 w-7 overflow-hidden rounded-full bg-zinc-800">
                   {session.user.image ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={session.user.image} alt="" width={28} height={28} className="h-7 w-7 object-cover" />
+                    <Image src={session.user.image} alt="" width={28} height={28} className="h-7 w-7 object-cover" />
                   ) : (
                     <div className="flex h-full w-full items-center justify-center">
                       <User className="h-4 w-4 text-zinc-500" />
@@ -97,6 +97,8 @@ export default function Navbar() {
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="flex h-10 w-10 items-center justify-center rounded-lg text-zinc-400 transition-colors active:bg-zinc-800 active:text-white md:hidden"
           aria-label="Menü"
+          aria-expanded={mobileMenuOpen}
+          aria-controls="mobile-menu"
         >
           {mobileMenuOpen ? (
             <X className="h-6 w-6" />
@@ -108,7 +110,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="border-t border-zinc-800 bg-zinc-950 md:hidden">
+        <div id="mobile-menu" className="border-t border-zinc-800 bg-zinc-950 md:hidden">
           <div className="flex flex-col py-2">
             <MobileNavLink
               href="/"
