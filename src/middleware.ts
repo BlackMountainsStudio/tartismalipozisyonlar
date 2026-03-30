@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { verifyAdminToken } from "@/utils/auth";
+import { prisma } from "@/database/db";
 
 const ADMIN_SECRET = process.env.ADMIN_SECRET;
 
@@ -26,7 +26,7 @@ const ADMIN_ONLY_METHODS = ["POST", "PUT", "PATCH", "DELETE"];
 const ADMIN_API_PATHS = [
   "/api/matches",
   "/api/incidents",
-  "/api/suggestions", // PATCH/DELETE /api/suggestions/[id] admin only; POST /api/suggestions user auth (API'de kontrol)
+  "/api/suggestions",
   "/api/commentators",
   "/api/referees",
   "/api/opinions",
@@ -39,7 +39,6 @@ function isProtectedPath(pathname: string): boolean {
 }
 
 function isAdminApiWrite(pathname: string, method: string): boolean {
-  // POST /api/suggestions: kullanıcı girişi (NextAuth) - API kendi auth kontrolü yapar
   if (pathname === "/api/suggestions" && method === "POST") return false;
   return (
     ADMIN_ONLY_METHODS.includes(method) &&
@@ -53,15 +52,12 @@ function setCorsHeaders(response: NextResponse, origin: string | null): NextResp
   if (origin && CORS_ORIGINS.includes(origin)) {
     response.headers.set("Access-Control-Allow-Origin", origin);
   } else if (process.env.NODE_ENV === "development") {
-    // Allow any origin in development
     response.headers.set("Access-Control-Allow-Origin", "*");
   }
-
   response.headers.set("Access-Control-Allow-Methods", CORS_METHODS.join(", "));
   response.headers.set("Access-Control-Allow-Headers", CORS_HEADERS.join(", "));
   response.headers.set("Access-Control-Allow-Credentials", "true");
-  response.headers.set("Access-Control-Max-Age", "86400"); // 24 hours
-
+  response.headers.set("Access-Control-Max-Age", "86400");
   return response;
 }
 
@@ -71,12 +67,11 @@ function handleCorsPrelight(request: NextRequest): NextResponse {
   return setCorsHeaders(response, origin);
 }
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const method = request.method;
   const origin = request.headers.get("origin");
 
-  // Handle CORS preflight requests
   if (method === "OPTIONS") {
     return handleCorsPrelight(request);
   }
@@ -90,16 +85,40 @@ export function middleware(request: NextRequest) {
 
   const tokenFromCookie = request.cookies.get("admin_token")?.value;
   const tokenFromHeader = request.headers.get("x-admin-token");
+  const token = tokenFromCookie || tokenFromHeader;
 
-  if (ADMIN_SECRET) {
-    // Check if cookie contains a hashed token
-    if (tokenFromCookie && verifyAdminToken(ADMIN_SECRET, tokenFromCookie)) {
+  if (!token) {
+    if (pathname.startsWith("/api/")) {
+      const response = NextResponse.json({ error: "Not found" }, { status: 404 });
+      return setCorsHeaders(response, origin);
+    }
+    return NextResponse.rewrite(new URL("/not-found", request.url));
+  }
+
+  try {
+    const session = await prisma.adminSession.findUnique({
+      where: { token },
+    });
+
+    if (session) {
+      const now = new Date();
+      if (session.expiresAt > now && !session.revokedAt) {
+        const response = NextResponse.next();
+        return setCorsHeaders(response, origin);
+      }
+      if (session.expiresAt <= now) {
+        await prisma.adminSession.delete({ where: { id: session.id } });
+      }
+    }
+
+    // Fallback: direct admin secret check (for backward compatibility)
+    if (ADMIN_SECRET && token === ADMIN_SECRET) {
       const response = NextResponse.next();
       return setCorsHeaders(response, origin);
     }
-
-    // Check if header contains the plaintext secret (for API clients)
-    if (tokenFromHeader && tokenFromHeader === ADMIN_SECRET) {
+  } catch (error) {
+    console.error("Middleware auth error:", error);
+    if (ADMIN_SECRET && token === ADMIN_SECRET) {
       const response = NextResponse.next();
       return setCorsHeaders(response, origin);
     }
