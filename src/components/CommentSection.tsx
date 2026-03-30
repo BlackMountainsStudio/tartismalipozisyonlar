@@ -232,7 +232,7 @@ export default function CommentSection({ matchId, incidentId }: CommentSectionPr
             maxLength={1000}
             className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-sm text-white placeholder-zinc-500 outline-none focus:border-red-500"
           />
-          <div className="mt-1 text-right text-xs text-zinc-600">{content.length}/1000</div>
+          <div className="mt-1 text-right text-xs text-zinc-500">{content.length}/1000</div>
         </div>
 
         {incidentId && (
@@ -290,7 +290,7 @@ export default function CommentSection({ matchId, incidentId }: CommentSectionPr
         <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-zinc-800 py-12 text-center">
           <MessageSquare className="mb-3 h-8 w-8 text-zinc-700" />
           <p className="text-sm text-zinc-400">{emptyTitle}</p>
-          <p className="mt-1 text-xs text-zinc-600">{emptySubtitle}</p>
+          <p className="mt-1 text-xs text-zinc-400">{emptySubtitle}</p>
         </div>
       ) : (
         <>
@@ -377,7 +377,7 @@ export default function CommentSection({ matchId, incidentId }: CommentSectionPr
                         </span>
                       )}
                     </div>
-                    <span className="text-xs text-zinc-600">{timeAgo(comment.createdAt)}</span>
+                    <span className="text-xs text-zinc-500">{timeAgo(comment.createdAt)}</span>
                   </div>
                   <p className="text-sm leading-relaxed text-zinc-300">{comment.content}</p>
                   <div className="mt-2 flex items-center gap-3">
@@ -448,7 +448,7 @@ export default function CommentSection({ matchId, incidentId }: CommentSectionPr
                           <div className="min-w-0 flex-1">
                             <div className="flex items-center gap-2">
                               <span className="text-sm font-medium text-white">{r.author}</span>
-                              <span className="text-xs text-zinc-600">{timeAgo(r.createdAt)}</span>
+                              <span className="text-xs text-zinc-500">{timeAgo(r.createdAt)}</span>
                               <button
                                 type="button"
                                 aria-label={`${r.author} yorumunu şikayet et`}
