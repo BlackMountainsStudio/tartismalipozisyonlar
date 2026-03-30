@@ -1,15 +1,9 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import dynamic from "next/dynamic";
 import IncidentCard from "@/components/IncidentCard";
 import IncidentRadarSection from "@/components/IncidentRadarSection";
-import IncidentHeatmap from "@/components/IncidentHeatmap";
-import {
-  getCategoryKey,
-  CATEGORY_ORDER,
-  INCIDENT_CATEGORIES,
-  INCIDENT_TYPE_LABELS,
-} from "@/lib/incidentCategories";
 import {
   Shield,
   Loader2,
@@ -19,6 +13,21 @@ import {
   BarChart3,
   X,
 } from "lucide-react";
+import {
+  getCategoryKey,
+  CATEGORY_ORDER,
+  INCIDENT_CATEGORIES,
+  INCIDENT_TYPE_LABELS,
+} from "@/lib/incidentCategories";
+
+const IncidentHeatmap = dynamic(() => import("@/components/IncidentHeatmap"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex h-48 items-center justify-center">
+      <Loader2 className="h-6 w-6 animate-spin text-zinc-500" />
+    </div>
+  ),
+});
 
 const TEAM_PILL_STYLES: Record<string, { accent: string; ring: string }> = {
   Fenerbahçe: { accent: "bg-amber-500/15 text-amber-400 ring-amber-500/40", ring: "ring-2 ring-amber-500/50" },

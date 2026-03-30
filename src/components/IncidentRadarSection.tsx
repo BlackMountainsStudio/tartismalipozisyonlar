@@ -1,11 +1,18 @@
 "use client";
 
 import { useState, useEffect, useCallback, useMemo } from "react";
-import MatchRadarChart, {
-  type RadarIncident,
-  type RadarChartMode,
-} from "@/components/MatchRadarChart";
+import dynamic from "next/dynamic";
+import type { RadarIncident, RadarChartMode } from "@/components/MatchRadarChart";
 import { Loader2 } from "lucide-react";
+
+const MatchRadarChart = dynamic(() => import("@/components/MatchRadarChart"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex h-64 items-center justify-center">
+      <Loader2 className="h-6 w-6 animate-spin text-zinc-500" />
+    </div>
+  ),
+});
 
 export type RadarDataScope = "current" | "all";
 

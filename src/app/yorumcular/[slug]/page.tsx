@@ -20,7 +20,16 @@ import {
 import { getOpinionSourceLabel } from "@/lib/linkLabels";
 import { incidentUrl } from "@/lib/links";
 import { buildMatchSlug, buildIncidentSlug } from "@/lib/slug";
-import CommentatorStatsChart from "@/components/CommentatorStatsChart";
+import dynamic from "next/dynamic";
+
+const CommentatorStatsChart = dynamic(() => import("@/components/CommentatorStatsChart"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex h-48 items-center justify-center">
+      <Loader2 className="h-6 w-6 animate-spin text-zinc-500" />
+    </div>
+  ),
+});
 
 interface Opinion {
   id: string;

@@ -1,6 +1,16 @@
 "use client";
 
-import ChatInterface from "@/components/ChatInterface";
+import dynamic from "next/dynamic";
+import { Loader2 } from "lucide-react";
+
+const ChatInterface = dynamic(() => import("@/components/ChatInterface"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex flex-1 items-center justify-center">
+      <Loader2 className="h-8 w-8 animate-spin text-zinc-500" />
+    </div>
+  ),
+});
 
 export default function DashboardChatPage() {
   return (

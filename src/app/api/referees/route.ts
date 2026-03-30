@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/database/db";
-import { NO_CACHE_HEADERS } from "@/lib/api-response";
+import { NO_CACHE_HEADERS, LONG_CACHE_HEADERS } from "@/lib/api-response";
 
 export async function GET() {
   try {
@@ -38,7 +38,7 @@ export async function GET() {
       };
     });
 
-    return NextResponse.json(list, { headers: NO_CACHE_HEADERS });
+    return NextResponse.json(list, { headers: LONG_CACHE_HEADERS });
   } catch (err) {
     console.error("GET /api/referees error:", err);
     return NextResponse.json([], { headers: NO_CACHE_HEADERS });

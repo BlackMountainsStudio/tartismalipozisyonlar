@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/database/db";
-import { NO_CACHE_HEADERS } from "@/lib/api-response";
+import { NO_CACHE_HEADERS, PUBLIC_CACHE_HEADERS } from "@/lib/api-response";
 import { buildMatchSlug } from "@/lib/slug";
 
 export async function GET(request: NextRequest) {
@@ -53,10 +53,10 @@ export async function GET(request: NextRequest) {
         ? withSlug.find((m) => m.slug === slugParam)
         : withSlug.find((m) => m.id === idParam);
       if (!one) return NextResponse.json(null, { status: 404, headers: NO_CACHE_HEADERS });
-      return NextResponse.json(one, { headers: NO_CACHE_HEADERS });
+      return NextResponse.json(one, { headers: PUBLIC_CACHE_HEADERS });
     }
 
-    return NextResponse.json(withSlug, { headers: NO_CACHE_HEADERS });
+    return NextResponse.json(withSlug, { headers: PUBLIC_CACHE_HEADERS });
   } catch (err) {
     console.error("GET /api/matches error:", err);
     return NextResponse.json([], { headers: NO_CACHE_HEADERS });
