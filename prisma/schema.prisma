@@ -67,6 +67,20 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
+// --- Admin session management ---
+model AdminSession {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+  revokedAt DateTime?
+  ipAddress String?
+  userAgent String?
+
+  @@index([token])
+  @@index([expiresAt])
+}
+
 // --- Uygulama modelleri ---
 model Match {
   id           String   @id @default(cuid())
