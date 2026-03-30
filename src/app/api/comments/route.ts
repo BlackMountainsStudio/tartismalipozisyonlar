@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/database/db";
 import { NO_CACHE_HEADERS } from "@/lib/api-response";
+import { CommentPostSchema, parseBody } from "@/lib/schemas";
 
 export async function GET(request: NextRequest) {
   try {
@@ -68,22 +69,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const body = await request.json();
-    const { matchId, incidentId, parentId, content, verdict } = body;
-
-    if ((!matchId && !incidentId && !parentId) || !content?.trim()) {
-      return NextResponse.json(
-        { error: "matchId/incidentId veya parentId ve content alanları gerekli" },
-        { status: 400 }
-      );
+    const raw = await request.json();
+    const parsed = parseBody(CommentPostSchema, raw);
+    if ("error" in parsed) {
+      return NextResponse.json({ error: parsed.error }, { status: parsed.status });
     }
-
-    if (content.trim().length > 1000) {
-      return NextResponse.json(
-        { error: "Yorum en fazla 1000 karakter olabilir" },
-        { status: 400 }
-      );
-    }
+    const { matchId, incidentId, parentId, content, verdict } = parsed.data;
 
     const author = session.user.nickname || session.user.name || "Kullanıcı";
 
