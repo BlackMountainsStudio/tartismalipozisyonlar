@@ -18,10 +18,7 @@ function createPrismaClient(): PrismaClient {
   // Fallback: SQLite for local development
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   const { PrismaBetterSqlite3 } = require("@prisma/adapter-better-sqlite3");
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  const path = require("node:path");
-  const dbPath = path.join(process.cwd(), "prisma", "dev.db");
-  const adapter = new PrismaBetterSqlite3({ url: `file:${dbPath}` });
+  const adapter = new PrismaBetterSqlite3({ url: "file:prisma/dev.db" });
   return new PrismaClient({ adapter });
 }
 
