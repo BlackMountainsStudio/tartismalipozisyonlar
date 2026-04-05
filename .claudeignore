@@ -1,0 +1,23 @@
+# .claudeignore
+node_modules/
+.next/
+.nuxt/
+dist/
+build/
+.cache/
+*.log
+logs/
+package-lock.json
+yarn.lock
+.env
+.env.*
+.idea/
+.vscode/
+*.DS_Store
+coverage/
+*.pem
+*.key
+*.mp4
+*.mp3
+*.zip
+*.tar.gz

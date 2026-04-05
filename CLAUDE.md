@@ -1,3 +1,9 @@
+# Football AI Platform — Yönlendirici
+
+> **Genel kurallar:** `~/Projects/claude-config/CLAUDE.md` — bu dosya yalnızca proje-spesifik kuralları içerir.
+
+---
+
 # Football AI Platform (Var Odasi) — Claude Code
 
 ## AI icin hizli tarama

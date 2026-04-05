@@ -17,6 +17,7 @@ export async function GET(request: NextRequest) {
   }
 
   const startedAt = new Date();
+  const results: { matchId: string; teams: string; incidents: number; mode: string }[] = [];
 
   try {
     // Find recent matches (within last 7 days) without approved incidents
@@ -32,7 +33,6 @@ export async function GET(request: NextRequest) {
         id: true,
         homeTeam: true,
         awayTeam: true,
-        league: true,
         week: true,
         date: true,
         _count: { select: { incidents: { where: { status: "APPROVED" } } } },
@@ -43,31 +43,78 @@ export async function GET(request: NextRequest) {
 
     const queued = recentMatches.filter((m) => m._count.incidents === 0);
 
-    // Log the cron run (stored as match note for now, proper table later)
-    const summary = {
+    const hasOpenAI = !!process.env.OPENAI_API_KEY;
+
+    for (const match of queued) {
+      try {
+        const { CrawlerOrchestrator } = await import("@/crawler");
+        const { detectIncidents, detectIncidentsLocal, mapIncidentType } = await import("@/agents/incidentDetector");
+
+        const orchestrator = new CrawlerOrchestrator(2);
+        orchestrator.addJob(match.homeTeam, match.awayTeam, match.id);
+        const resultsMap = await orchestrator.processQueue();
+        const crawlResults = resultsMap.get(match.id) ?? [];
+
+        const allComments: string[] = [];
+        const crawlEntries: { source: string; url: string; rawContent: string }[] = [];
+
+        for (const result of crawlResults) {
+          crawlEntries.push({
+            source: result.source,
+            url: result.url,
+            rawContent: result.content,
+          });
+          if (result.source === "reddit") {
+            const r = result as { comments: { body: string }[] };
+            allComments.push(...r.comments.map((c) => c.body));
+          } else if (result.source === "eksisozluk") {
+            const e = result as { entries: { body: string }[] };
+            allComments.push(...e.entries.map((ent) => ent.body));
+          }
+        }
+
+        if (allComments.length === 0) {
+          results.push({ matchId: match.id, teams: `${match.homeTeam} vs ${match.awayTeam}`, incidents: 0, mode: "no-content" });
+          continue;
+        }
+
+        const matchContext = `${match.homeTeam} vs ${match.awayTeam} (Week ${match.week})`;
+        const detectedIncidents = hasOpenAI
+          ? await detectIncidents(allComments, matchContext)
+          : detectIncidentsLocal(allComments, matchContext);
+
+        for (const incident of detectedIncidents) {
+          await prisma.incident.create({
+            data: {
+              matchId: match.id,
+              minute: incident.minute,
+              type: mapIncidentType(incident.type),
+              description: incident.description,
+              confidenceScore: incident.confidence,
+              sources: JSON.stringify(crawlEntries.map((e) => e.url)),
+            },
+          });
+        }
+
+        results.push({
+          matchId: match.id,
+          teams: `${match.homeTeam} vs ${match.awayTeam}`,
+          incidents: detectedIncidents.length,
+          mode: hasOpenAI ? "ai" : "local",
+        });
+      } catch (matchErr) {
+        console.error(`[cron/scrape] failed for match ${match.id}:`, matchErr);
+        results.push({ matchId: match.id, teams: `${match.homeTeam} vs ${match.awayTeam}`, incidents: 0, mode: "error" });
+      }
+    }
+
+    return NextResponse.json({
+      ok: true,
       startedAt: startedAt.toISOString(),
       recentMatchesFound: recentMatches.length,
-      matchesQueuedForScraping: queued.length,
-      queuedMatches: queued.map((m) => ({
-        id: m.id,
-        teams: `${m.homeTeam} vs ${m.awayTeam}`,
-        date: m.date.toISOString(),
-      })),
-    };
-
-    // TODO: Trigger actual scraper here when scraper service is production-ready.
-    // For now, this endpoint acts as a health check and surfaces matches
-    // that need scraping, enabling manual or webhook-triggered scraping.
-    //
-    // Example integration:
-    //   for (const match of queued) {
-    //     await fetch(`${process.env.SCRAPER_WEBHOOK_URL}`, {
-    //       method: "POST",
-    //       body: JSON.stringify({ matchId: match.id }),
-    //     });
-    //   }
-
-    return NextResponse.json({ ok: true, ...summary });
+      matchesProcessed: queued.length,
+      results,
+    });
   } catch (err) {
     console.error("[cron/scrape] error:", err);
     return NextResponse.json(
