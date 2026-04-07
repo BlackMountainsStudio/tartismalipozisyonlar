@@ -7,8 +7,7 @@ import crypto from "crypto";
  * @returns string - The hashed token
  */
 export function hashAdminToken(token: string): string {
-  // Use a fixed salt for deterministic hashing - in production this could be an env var
-  const salt = "admin_token_salt_2024";
+  const salt = process.env.ADMIN_TOKEN_SALT || "admin_token_salt_2024";
   return crypto.createHmac("sha256", salt).update(token).digest("hex");
 }
 

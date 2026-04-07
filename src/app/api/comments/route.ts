@@ -4,6 +4,7 @@ import { prisma } from "@/database/db";
 import { NO_CACHE_HEADERS } from "@/lib/api-response";
 import { CommentPostSchema, parseBody } from "@/lib/schemas";
 import { filterContent } from "@/lib/content-filter";
+import { commentRateLimiter, getClientIP } from "@/lib/rateLimiter";
 
 export async function GET(request: NextRequest) {
   try {
@@ -54,13 +55,24 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(result, { headers: NO_CACHE_HEADERS });
   } catch (err) {
     console.error("GET /api/comments error:", err);
-    return NextResponse.json([], { headers: NO_CACHE_HEADERS });
+    return NextResponse.json(
+      { error: "Yorumlar alınamadı" },
+      { status: 500, headers: NO_CACHE_HEADERS }
+    );
   }
 }
 
 const VALID_VERDICTS = ["CORRECT", "INCORRECT", "UNSURE"] as const;
 
 export async function POST(request: NextRequest) {
+  const clientIP = getClientIP(request);
+  if (!commentRateLimiter.isAllowed(clientIP)) {
+    return NextResponse.json(
+      { error: "Çok fazla yorum gönderdiniz. Lütfen biraz bekleyin." },
+      { status: 429 }
+    );
+  }
+
   try {
     const session = await auth();
     if (!session?.user?.id) {
