@@ -113,6 +113,8 @@ model Match {
   @@index([slug])
   @@index([refereeId])
   @@index([varRefereeId])
+  @@index([date])
+  @@index([league])
 }
 
 model Referee {
@@ -170,6 +172,9 @@ model Incident {
   @@index([inFavorOf])
   @@index([against])
   @@index([varIntervention])
+  @@index([createdAt])
+  @@index([updatedAt])
+  @@index([confidenceScore])
 }
 
 // Community Karar Sistemi (Fan Oylaması)

@@ -3,6 +3,7 @@ import { auth } from "@/auth";
 import { prisma } from "@/database/db";
 import { NO_CACHE_HEADERS } from "@/lib/api-response";
 import { SuggestionPostSchema, parseBody } from "@/lib/schemas";
+import { suggestionRateLimiter, getClientIP } from "@/lib/rateLimiter";
 
 export async function GET(request: NextRequest) {
   try {
@@ -20,11 +21,22 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(suggestions, { headers: NO_CACHE_HEADERS });
   } catch (err) {
     console.error("GET /api/suggestions error:", err);
-    return NextResponse.json([], { headers: NO_CACHE_HEADERS });
+    return NextResponse.json(
+      { error: "Öneriler alınamadı" },
+      { status: 500, headers: NO_CACHE_HEADERS }
+    );
   }
 }
 
 export async function POST(request: NextRequest) {
+  const clientIP = getClientIP(request);
+  if (!suggestionRateLimiter.isAllowed(clientIP)) {
+    return NextResponse.json(
+      { error: "Çok fazla öneri gönderdiniz. Lütfen daha sonra tekrar deneyin." },
+      { status: 429 }
+    );
+  }
+
   try {
     const session = await auth();
     if (!session?.user?.id) {

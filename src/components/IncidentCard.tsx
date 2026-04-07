@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { incidentUrl } from "@/lib/links";
 import { AlertTriangle, ShieldAlert, Eye, Flag, ChevronRight, Video } from "lucide-react";
 import ConfidenceBadge from "./ConfidenceBadge";
@@ -78,7 +78,6 @@ export default function IncidentCard({
   matchSlug,
   incidentSlug,
 }: IncidentCardProps) {
-  const router = useRouter();
   const typeInfo = INCIDENT_TYPE_LABELS[type] ?? {
     label: type,
     icon: <AlertTriangle className="h-4 w-4" />,
@@ -178,27 +177,17 @@ export default function IncidentCard({
               />
             </div>
           ) : (
-            <span
-              role="link"
-              tabIndex={0}
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                window.open(videoUrl, "_blank", "noopener,noreferrer");
-              }}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  window.open(videoUrl, "_blank", "noopener,noreferrer");
-                }
-              }}
-              className="inline-flex cursor-pointer items-center gap-1.5 text-xs font-medium text-red-400 hover:text-red-300"
+            <a
+              href={videoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="inline-flex items-center gap-1.5 text-xs font-medium text-red-400 hover:text-red-300"
               title={videoUrl}
             >
               <Video className="h-3.5 w-3.5" />
               {getVideoLinkLabel(videoUrl)}
-            </span>
+            </a>
           )}
         </div>
         );
@@ -220,20 +209,12 @@ export default function IncidentCard({
         ? incidentUrl(matchSlug, incidentSlug)
         : `/incidents/${id}`;
     return (
-      <div
-        role="link"
-        tabIndex={0}
-        onClick={() => router.push(incidentHref)}
-        onKeyDown={(e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            router.push(incidentHref);
-          }
-        }}
-        className="block cursor-pointer rounded-xl border border-zinc-800 bg-zinc-900/50 p-5 transition-all hover:border-red-500/30 hover:bg-zinc-900"
+      <Link
+        href={incidentHref}
+        className="block rounded-xl border border-zinc-800 bg-zinc-900/50 p-5 transition-all hover:border-red-500/30 hover:bg-zinc-900"
       >
         {cardContent}
-      </div>
+      </Link>
     );
   }
 
