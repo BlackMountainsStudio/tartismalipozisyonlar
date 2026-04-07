@@ -254,7 +254,10 @@ export async function GET(request: NextRequest) {
     );
   } catch (err) {
     console.error("GET /api/incidents error:", err);
-    return NextResponse.json([], { headers: NO_CACHE_HEADERS });
+    return NextResponse.json(
+      { error: "Pozisyonlar alınamadı", data: [], total: 0 },
+      { status: 500, headers: NO_CACHE_HEADERS }
+    );
   }
 }
 
