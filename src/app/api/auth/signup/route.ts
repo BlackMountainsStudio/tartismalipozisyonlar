@@ -1,17 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { hash } from "bcryptjs";
 import { prisma } from "@/database/db";
-import { signupRateLimiter, getClientIP } from "@/lib/rateLimiter";
 
 export async function POST(request: NextRequest) {
-  const clientIP = getClientIP(request);
-  if (!signupRateLimiter.isAllowed(clientIP)) {
-    return NextResponse.json(
-      { error: "Çok fazla deneme. Lütfen daha sonra tekrar deneyin." },
-      { status: 429 }
-    );
-  }
-
   try {
     const body = await request.json();
     const { name, email, password } = body;
@@ -27,9 +18,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (passwordStr.length < 8) {
+    if (passwordStr.length < 6) {
       return NextResponse.json(
-        { error: "Şifre en az 8 karakter olmalıdır" },
+        { error: "Şifre en az 6 karakter olmalıdır" },
         { status: 400 }
       );
     }

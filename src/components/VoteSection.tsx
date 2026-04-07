@@ -32,15 +32,14 @@ export default function VoteSection({ incidentId, refereeDecisionLabel }: VoteSe
   const [voting, setVoting] = useState(false);
   const [authModalOpen, setAuthModalOpen] = useState(false);
 
-  const fetchVotes = useCallback(async (signal?: AbortSignal) => {
+  const fetchVotes = useCallback(async () => {
     try {
-      const res = await fetch(`/api/votes?positionId=${encodeURIComponent(incidentId)}`, { cache: "no-store", signal });
+      const res = await fetch(`/api/votes?positionId=${encodeURIComponent(incidentId)}`, { cache: "no-store" });
       if (res.ok) {
         const data = await res.json();
         setVoteData(data);
       }
-    } catch (err) {
-      if (err instanceof DOMException && err.name === "AbortError") return;
+    } catch {
       setVoteData(null);
     } finally {
       setLoading(false);
@@ -48,9 +47,7 @@ export default function VoteSection({ incidentId, refereeDecisionLabel }: VoteSe
   }, [incidentId]);
 
   useEffect(() => {
-    const controller = new AbortController();
-    fetchVotes(controller.signal);
-    return () => controller.abort();
+    fetchVotes();
   }, [fetchVotes]);
 
   const handleVote = async (decisionType: string) => {
@@ -77,14 +74,7 @@ export default function VoteSection({ incidentId, refereeDecisionLabel }: VoteSe
     }
   };
 
-  if (loading) return (
-    <div className="mb-8 rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 animate-pulse">
-      <div className="h-6 w-32 rounded bg-zinc-800 mb-4" />
-      <div className="flex gap-2">
-        {[1, 2, 3, 4].map((i) => <div key={i} className="h-10 w-24 rounded-xl bg-zinc-800" />)}
-      </div>
-    </div>
-  );
+  if (loading) return null;
 
   return (
     <>

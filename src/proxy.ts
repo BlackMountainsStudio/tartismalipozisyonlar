@@ -62,7 +62,7 @@ function setCorsHeaders(response: NextResponse, origin: string | null): NextResp
   return response;
 }
 
-function handleCorsPreflight(request: NextRequest): NextResponse {
+function handleCorsPrelight(request: NextRequest): NextResponse {
   const origin = request.headers.get("origin");
   const response = new NextResponse(null, { status: 200 });
   return setCorsHeaders(response, origin);
@@ -74,7 +74,7 @@ export async function proxy(request: NextRequest) {
   const origin = request.headers.get("origin");
 
   if (method === "OPTIONS") {
-    return handleCorsPreflight(request);
+    return handleCorsPrelight(request);
   }
 
   const needsAuth = isProtectedPath(pathname) || isAdminApiWrite(pathname, method);

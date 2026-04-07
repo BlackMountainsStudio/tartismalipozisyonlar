@@ -3,7 +3,6 @@ import { auth } from "@/auth";
 import { prisma } from "@/database/db";
 import { NO_CACHE_HEADERS } from "@/lib/api-response";
 import { VotePostSchema, parseBody } from "@/lib/schemas";
-import { voteRateLimiter, getClientIP } from "@/lib/rateLimiter";
 
 export async function GET(request: NextRequest) {
   try {
@@ -68,14 +67,6 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  const clientIP = getClientIP(request);
-  if (!voteRateLimiter.isAllowed(clientIP)) {
-    return NextResponse.json(
-      { error: "Çok fazla oy gönderdiniz. Lütfen biraz bekleyin." },
-      { status: 429 }
-    );
-  }
-
   try {
     const session = await auth();
     if (!session?.user?.id) {

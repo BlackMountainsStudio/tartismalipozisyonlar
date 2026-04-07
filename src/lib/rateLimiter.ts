@@ -56,32 +56,8 @@ class RateLimiter {
 
 // Admin auth rate limiter: 5 attempts per 15 minutes
 export const adminAuthRateLimiter = new RateLimiter({
-  windowMs: 15 * 60 * 1000,
-  maxRequests: 5,
-});
-
-// Signup rate limiter: 3 attempts per 15 minutes per IP
-export const signupRateLimiter = new RateLimiter({
-  windowMs: 15 * 60 * 1000,
-  maxRequests: 3,
-});
-
-// Comment rate limiter: 10 comments per 5 minutes per IP
-export const commentRateLimiter = new RateLimiter({
-  windowMs: 5 * 60 * 1000,
-  maxRequests: 10,
-});
-
-// Vote rate limiter: 30 votes per 5 minutes per IP
-export const voteRateLimiter = new RateLimiter({
-  windowMs: 5 * 60 * 1000,
-  maxRequests: 30,
-});
-
-// Suggestion rate limiter: 3 suggestions per 15 minutes per IP
-export const suggestionRateLimiter = new RateLimiter({
-  windowMs: 15 * 60 * 1000,
-  maxRequests: 3,
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  maxRequests: 5 // 5 attempts per 15 minutes
 });
 
 // Helper function to get client IP from request
