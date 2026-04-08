@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/database/db";
-import { NO_CACHE_HEADERS } from "@/lib/api-response";
+import { NO_CACHE_HEADERS, PUBLIC_CACHE_HEADERS } from "@/lib/api-response";
 
 /** VAR müdahale analizi - Incident.varIntervention ve VarEvent tablosundan */
 export async function GET(request: NextRequest) {
@@ -65,7 +65,7 @@ export async function GET(request: NextRequest) {
           match: i.match,
         })),
       },
-      { headers: NO_CACHE_HEADERS }
+      { headers: PUBLIC_CACHE_HEADERS }
     );
   } catch (err) {
     console.error("GET /api/var-events error:", err);

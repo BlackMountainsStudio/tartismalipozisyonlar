@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/database/db";
-import { NO_CACHE_HEADERS } from "@/lib/api-response";
+import { NO_CACHE_HEADERS, PUBLIC_CACHE_HEADERS } from "@/lib/api-response";
 import { MatchVideoPostSchema, parseBody } from "@/lib/schemas";
 
 export async function GET(request: NextRequest) {
@@ -28,7 +28,7 @@ export async function GET(request: NextRequest) {
       orderBy: { createdAt: "desc" },
     });
 
-    return NextResponse.json(videos, { headers: NO_CACHE_HEADERS });
+    return NextResponse.json(videos, { headers: PUBLIC_CACHE_HEADERS });
   } catch (err) {
     console.error("GET /api/match-videos error:", err);
     return NextResponse.json([], { headers: NO_CACHE_HEADERS });
