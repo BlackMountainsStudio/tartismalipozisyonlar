@@ -22,6 +22,16 @@ export const SuggestionPostSchema = z.object({
   message: z.string().trim().min(1, "Mesaj alanı zorunludur").max(3000, "Mesaj en fazla 3000 karakter olabilir"),
 });
 
+export const MatchVideoPostSchema = z.object({
+  matchId: z.string().min(1, "matchId gerekli"),
+  videoUrl: z.string().url("Geçerli bir URL giriniz").min(1, "videoUrl gerekli"),
+  title: z.string().trim().max(500).optional(),
+  durationMin: z.number().int().min(0).max(600).optional().nullable(),
+  transcript: z.string().trim().max(50000).optional().nullable(),
+  source: z.enum(["youtube", "twitter", "instagram", "other"]).optional().default("youtube"),
+  notes: z.string().trim().max(5000).optional().nullable(),
+});
+
 export const UserProfilePatchSchema = z.object({
   name: z.string().trim().min(1).max(100).optional(),
   nickname: z.string().trim().min(1).max(50).optional(),
