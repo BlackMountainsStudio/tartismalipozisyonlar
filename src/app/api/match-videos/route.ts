@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/database/db";
 import { NO_CACHE_HEADERS } from "@/lib/api-response";
+import { MatchVideoPostSchema, parseBody } from "@/lib/schemas";
 
 export async function GET(request: NextRequest) {
   try {
@@ -36,25 +37,22 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
-    const { matchId, videoUrl, title, durationMin, transcript, source, notes } = body;
-
-    if (!matchId || !videoUrl) {
-      return NextResponse.json(
-        { error: "matchId ve videoUrl gerekli" },
-        { status: 400 }
-      );
+    const rawBody = await request.json();
+    const parsed = parseBody(MatchVideoPostSchema, rawBody);
+    if ("error" in parsed) {
+      return NextResponse.json({ error: parsed.error }, { status: parsed.status });
     }
+    const { matchId, videoUrl, title, durationMin, transcript, source, notes } = parsed.data;
 
     const video = await prisma.matchVideo.create({
       data: {
         matchId,
-        videoUrl: String(videoUrl).trim(),
-        title: title?.trim() || null,
-        durationMin: durationMin != null ? parseInt(String(durationMin), 10) : null,
-        transcript: transcript?.trim() || null,
-        source: source?.trim() || "youtube",
-        notes: notes?.trim() || null,
+        videoUrl,
+        title: title ?? null,
+        durationMin: durationMin ?? null,
+        transcript: transcript ?? null,
+        source,
+        notes: notes ?? null,
       },
       include: {
         match: {
