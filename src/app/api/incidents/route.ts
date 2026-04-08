@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/database/db";
-import { NO_CACHE_HEADERS } from "@/lib/api-response";
+import { NO_CACHE_HEADERS, PUBLIC_CACHE_HEADERS } from "@/lib/api-response";
 import { getResolvedVideoUrl } from "@/lib/incident-api";
-import { buildMatchSlug } from "@/lib/slug";
 import { buildIncidentSlug, getShortIdFromIncidentSlug } from "@/lib/slug";
 
 function parseSources(sources: string): string[] {
@@ -38,33 +37,11 @@ export async function GET(request: NextRequest) {
 
     if (matchSlug && incidentSlug) {
       const shortId = getShortIdFromIncidentSlug(incidentSlug);
-      const matchWithIncidents = await prisma.match.findFirst({
+      // Use indexed slug column — no full-table scan fallback needed
+      const match = await prisma.match.findFirst({
         where: { slug: matchSlug },
         include: { incidents: { select: { id: true, slug: true } } },
       });
-      let match = matchWithIncidents;
-      if (!match) {
-        // Fallback: fetch only slug-relevant fields (no incidents) to avoid heavy join
-        const allMatchesSlim = await prisma.match.findMany({
-          select: { id: true, slug: true, league: true, week: true, date: true, homeTeam: true, awayTeam: true },
-        });
-        const found = allMatchesSlim.find(
-          (m) =>
-            buildMatchSlug({
-              league: m.league,
-              week: m.week,
-              date: m.date,
-              homeTeam: m.homeTeam,
-              awayTeam: m.awayTeam,
-            }) === matchSlug
-        );
-        if (found) {
-          match = await prisma.match.findUnique({
-            where: { id: found.id },
-            include: { incidents: { select: { id: true, slug: true } } },
-          });
-        }
-      }
       if (!match) return NextResponse.json(null, { status: 404, headers: NO_CACHE_HEADERS });
       const incidentRow = match.incidents.find(
         (i) => i.slug === incidentSlug || (shortId && i.id.endsWith(shortId))
@@ -250,7 +227,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(
       { data: mapped, total, page, limit, totalPages: Math.ceil(total / limit) },
-      { headers: NO_CACHE_HEADERS }
+      { headers: PUBLIC_CACHE_HEADERS }
     );
   } catch (err) {
     console.error("GET /api/incidents error:", err);
