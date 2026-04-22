@@ -39,6 +39,12 @@ model Session {
   @@index([userId])
 }
 
+enum UserRole {
+  FREE
+  PREMIUM
+  ADMIN
+}
+
 model User {
   id            String    @id @default(cuid())
   name          String?
@@ -47,6 +53,8 @@ model User {
   image         String?
   nickname      String?
   password      String?   // bcrypt hash - sadece credentials ile kayıt olanlar için
+  role          UserRole  @default(FREE)
+  premiumUntil  DateTime? // null = no active premium subscription
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
@@ -57,6 +65,7 @@ model User {
   votes          Vote[]
 
   @@index([email])
+  @@index([role])
 }
 
 model VerificationToken {
