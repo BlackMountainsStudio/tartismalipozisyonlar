@@ -13,6 +13,7 @@ import {
   AlertTriangle,
 } from "lucide-react";
 import AuthModal from "@/components/AuthModal";
+import { track } from "@vercel/analytics";
 
 const CATEGORIES = [
   { value: "GENERAL", label: "Genel", icon: <MessageSquare className="h-4 w-4" /> },
@@ -69,6 +70,7 @@ export default function SuggestionPage() {
       });
 
       if (res.ok) {
+        track("suggestion_submit", { category });
         setSuccess(true);
         setCategory("GENERAL");
         setSubject("");

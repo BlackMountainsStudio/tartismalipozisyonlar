@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { Send, Loader2, Bot, User } from "lucide-react";
+import { track } from "@vercel/analytics";
 
 interface Message {
   role: "user" | "assistant";
@@ -28,6 +29,7 @@ export default function ChatInterface({ matchId }: ChatInterfaceProps) {
     const userMessage: Message = { role: "user", content: input.trim() };
     const newMessages = [...messages, userMessage];
     setMessages(newMessages);
+    track("chat_message_sent", { matchId: matchId ?? "global", messageIndex: newMessages.length });
     setInput("");
     setLoading(true);
 
