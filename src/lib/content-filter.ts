@@ -11,6 +11,17 @@ const PROFANITY_PATTERNS: RegExp[] = [
   /\bg[o0]t\b/,
   /\bpic\b/,   // piç → pic after normalise
   /\borg[i1]ya/,
+  /\bkalt[a4]k\b/,
+  /\bser[i1]f\b/,  // sövme kısaltması
+  /\bibn[e3]\b/,
+];
+
+// Turkish football jargon abuse — match on normalised text
+// These are terms that escalate match discussions to threatening language
+const FOOTBALL_ABUSE_PATTERNS: RegExp[] = [
+  /\bvur[a-z]* (hakem|var|ref)\b/, // "vur hakemi" tarzı tahrik
+  /\b(hakem|var|ref)\w* (sats[i1]n|satl[i1]k|sat[i1]ld[i1])\b/, // "hakem satıldı"
+  /\b(ol[u0]m|olum) (dilek|dilerim|istiyorum)\b/, // ölüm dilemek
 ];
 
 // Spam patterns: repetitive chars, all-caps rant, excessive punctuation
@@ -52,6 +63,12 @@ export function filterContent(text: string): FilterResult {
   for (const pattern of PROFANITY_PATTERNS) {
     if (pattern.test(normalised)) {
       return { ok: false, reason: "Yorumunuz uygunsuz içerik barındırıyor" };
+    }
+  }
+
+  for (const pattern of FOOTBALL_ABUSE_PATTERNS) {
+    if (pattern.test(normalised)) {
+      return { ok: false, reason: "Yorumunuz tartışma kurallarını ihlal ediyor" };
     }
   }
 
