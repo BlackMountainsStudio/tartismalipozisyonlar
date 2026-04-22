@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/dashboard', '/admin-login', '/api/'],
+      disallow: ['/dashboard', '/admin-login', '/api/', '/crawler', '/giris'],
     },
     sitemap: `${process.env.NEXTAUTH_URL || 'https://varodasiapp.com'}/sitemap.xml`,
   }
